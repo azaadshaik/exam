@@ -109,6 +109,12 @@ function loadSchools(instituteId){
         url: 'admin/getSchoolsByInsId/?ins_id='+instituteId,
         type: 'GET',
         success: function (data) {
+            
+
+$('#school').find('option').remove().end().append('<option value="0">Select School</option>');
+
+
+
 			$("#school").removeAttr('disabled');
 			var obj = jQuery.parseJSON(data);
 			
@@ -125,6 +131,7 @@ function loadClasses(schoolId){
         url: 'admin/getClassesBySchoolId/?school_id='+schoolId,
         type: 'GET',
         success: function (data) {
+            $('#class').find('option').remove().end().append('<option value="0">Select Class</option>');
 			$("#class").removeAttr('disabled');
 			var obj = jQuery.parseJSON(data);
 			

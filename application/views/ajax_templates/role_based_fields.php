@@ -38,7 +38,7 @@ switch($role_code){
             <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Class</label>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
                 <div class="form-group">
-                    <select class="dropdown form-control" disabled="disabled" id="class" name="class" />
+                    <select class="dropdown form-control" disabled="disabled" id="class" name="class" >
                     <option value="0">Select Class</option>
                                       
                     </select>

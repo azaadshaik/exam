@@ -9,14 +9,7 @@
                            <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">User Name <span class="mandatory">*</span></label>
                            <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="User Name" id="Username" name="username" required="">
                         </div>
-                         <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Password</label>
-                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="Password" id="Password" name="password" required="">
-                        </div>
-                        <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Conform Password</label>
-                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="Your Password" id="Con_Pwd" name="confirm_password" required="">
-                        </div>
+                         
                         <div class="adm_inputs_wrap">
                            <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Role</label>
                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
