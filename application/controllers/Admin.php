@@ -376,6 +376,20 @@ public function getClassesBySchoolId(){
 		}
 	
 }
+public function getSectionsByClassId(){
+		
+		$class_id = $this->input->get('class_id');
+		if(!empty($class_id)){
+
+			$sections = $this->adminmodel->get_sections_by_class_id($class_id);
+			echo json_encode($sections);
+			exit;
+			
+		}
+	
+}
+
+
 
 
 public function getDistrictsBystateId(){

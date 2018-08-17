@@ -49,5 +49,20 @@ class UserModel extends CI_Model
 
 
     }
+	public function map_user_to_class($data){
+		 $result = $this->db->insert('user_class', $data);
+		
+	}
+	
+	public function get_user_by_id($user_id){
+		$this->db->select('*');
+        $this->db->from('users');
+        $this->db->join('user_class', 'users.user_id = user_class.user');
+		$this->db->where("users.user_id=$user_id");
+        $result = $this->db->get()->row();
+		return $result;
+		
+	}
+	
    
 }

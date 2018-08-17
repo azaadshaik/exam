@@ -143,6 +143,24 @@ function loadClasses(schoolId){
     });
 }
 
+function loadSections(classId){
+	
+    $.ajax({
+        url: 'admin/getSectionsByClassId/?class_id='+classId,
+        type: 'GET',
+        success: function (data) {
+            $('#section').find('option').remove().end().append('<option value="0">Select Section</option>');
+			$("#section").removeAttr('disabled');
+			var obj = jQuery.parseJSON(data);
+			
+			$.each( obj, function( key, value ) {
+				$("#section").append( new Option(value.section_name,value.section_id) );
+			});
+		}
+        
+    });
+}
+
 
 function loadDistricts(stateId){
 
@@ -247,4 +265,15 @@ function deleteSchool(schoolId,divToUpdate){
        
    
    
+}
+
+function editUser(userId,divToUpdate){
+	 $.ajax({
+        url: 'user/edit_user/?user_id='+userId,
+        type: 'GET',
+        success: function (data) {
+            $('#'+divToUpdate).html(data);
+        }
+        
+    });
 }

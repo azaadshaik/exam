@@ -165,6 +165,17 @@ class AdminModel extends CI_Model
         $result = $this->db->get()->result_array();
         return $result;
     }
+	 public function get_sections_by_class_id($class_id){
+        $where ='school_classes_class_id='.$class_id.' and status=1';
+		$this->db->distinct('school_classes.school_classes_section_id');
+        $this->db->select('section_name,section_id');
+		$this->db->from('school_classes');
+		$this->db->join('sections','school_classes.school_classes_section_id=sections.section_id');
+        $this->db->where($where);
+        $result = $this->db->get()->result_array();
+        return $result;
+    }
+	
 	
     public function get_districts_by_state_id($state_id){
         $where ='district_state_id='.$state_id.' and district_status=1';
