@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>PULSE - Dashbaord</title>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+      <meta name="author" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/magnific-popup.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Oswald:200,400,700" rel="stylesheet">
+      <!-- MAIN CSS -->
+      <link rel="stylesheet" href="css/templatemo-style.css">
+      <link rel="stylesheet" href="css/custom.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script type="text/javascript">
+        $(function () {
+               $('#Studentsel1').bind('change keyup', function () {
+                  //get value of selected option
+                var value = $(this).children("option:selected").attr('value');
+                   // do something here
+                if(value == "Student")
+                {
+                    
+                    $("#selected-student").addClass("display-student");
+                }
+                else{
+                    $("#selected-student").removeClass("display-student");
+                }
+
+            }).change();
+
+        });
+    </script>
+   </head>
+   
+   <body>
+      <img class="bg_img" src="images/dashbaord_bg2.png">
+      <!-- Header -->
+      <header class="stu_header">
+         <div class="container">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+               <button class="slide-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+               <span class="icon icon-bar"></span>
+               <span class="icon icon-bar"></span>
+               <span class="icon icon-bar"></span>
+               </button>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">   
+               <img class="logo" src="images/logo.png">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-right">
+               <span class="stuhead_wel_txt col-lg-5 col-md-5 col-sm-5 col-xs-5">Welcome</span> 
+               <div class="stu_acct-wrap col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                  <div class="input-group">
+                     <div class="input-group-append">
+                        <span class="stuhead_wel_txt">Azad</span> 
+                        <a href="#" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
+                        <div class="dropdown-menu">
+                           <a class="dropdown-item" href="#">Profile</a>
+                           <a class="dropdown-item" href="#">ID : 25045</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                  <img src="images/profile-pic.png" class="profile-pic img-circle" alt="Cinque Terre" width="80" > 
+               </div>
+            </div>
+         </div>
+      </header>
+      <!-- Header ends -->
+      <!-- Center Container -->
+      <section class="stu_mid_sec">
+         <div class="top_con admin_container">
+            <div class="left_wrap1 col-lg-3 col-md-3 col-sm-4 col-xs-12">
+               <div class="stu_sec_left">
+                  <div class="bg-layer"></div>
+                  <ul class="nav nav-tabs">
+                     <li class="dash-ico nav-link active"><a  data-toggle="tab" href="#UReg_tab">User Registration</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="hist-ico nav-link"><a data-toggle="tab" href="#Edit_tab">Edit User</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="exam-ico nav-link"><a data-toggle="tab" href="#CreIns_tab">Create Institute</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="repo-ico nav-link"><a data-toggle="tab" href="#CreSchool_tab">Create School</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="repo-ico nav-link"><a data-toggle="tab" href="#MapClass_School">Map Class to School</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="repo-ico nav-link"><a data-toggle="tab" href="#CreateSub_tab">Create Subject</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="repo-ico nav-link"><a data-toggle="tab" href="#CreateTopic_tab">Create Topic</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="repo-ico nav-link"><a data-toggle="tab" href="#UploadTopic_tab">Upload Topic</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="repo-ico nav-link"><a data-toggle="tab" href="#Upload_Questions">Upload Questions</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="repo-ico nav-link"><a data-toggle="tab" href="#Image_Questions">Create Image Questions</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="repo-ico nav-link"><a data-toggle="tab" href="#Create_Question_Paper">Create Question Paper</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="repo-ico nav-link"><a data-toggle="tab" href="#User_List">User List</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                     <li class="repo-ico nav-link"><a data-toggle="tab" href="#User_Profile">User Profile</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="right_wrap1 col-lg-8 col-md-8 col-sm-8 col-xs-12 pull-right">
+               <div class="tab-content">
+                  <!-- User Registration starts here -->
+                  <div id="UReg_tab" class="tab-pane fade in active">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">User Registration</h2>
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">User Name <span class="mandatory">*</span></label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="User Name" id="Username" name="Username" required="">
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Password</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="Password" id="Password" name="Password" required="">
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Conform Password</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="Your Password" id="Con_Pwd" name="Con_Pwd" required="">
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Role</label>
+                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="Studentsel1">
+                                    <option value="Admin">Admin</option>
+                                    <option>Manager</option>
+                                    <option>Question Preparation</option>
+                                    <option value="Student">Student</option>
+                                    <option>Parent</option>
+                                 </select>
+                              </div>
+                              <!-- sub drop downs -->
+                              <div id="selected-student" style="display:none">
+                               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 drop_down">
+                                 <div class="form-group">
+                                 <select class="dropdown form-control" >
+                                    <option>School</option>
+                                    <option>VBHS</option>
+                                    <option>RSR</option>
+                                    <option>ZPHS</option>
+                                    <option>NALANDA</option>
+                                 </select>
+                                 </div>
+                              </div>
+                              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 drop_down">
+                                 <div class="form-group">
+                                 <select class="dropdown form-control" >
+                                    <option>Class</option>
+                                    <option>10 <sup>th</sup></option>
+                                    <option>9 <sup>th</sup></option>
+                                    <option>8 <sup>th</sup></option>
+                                    <option>7 <sup>th</sup></option>
+                                    <option>6 <sup>th</sup></option>
+                                 </select>
+                                 </div>
+                              </div>
+                              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 drop_down">
+                                 <div class="form-group">
+                                 <select class="dropdown form-control">
+                                     <option>Section</option>
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>C</option>
+                                    <option>D</option>
+                                    <option>E</option>
+                                 </select>
+                                 </div>
+                              </div>
+                           </div>
+                            <!-- sub drop downs -->
+                           </div>
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">First Name</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="First Name" id="FirstName" name="FirstName" >
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Last Name</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="Last Name" id="LastName" name="LastName" >
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Address</label>
+                           <textarea rows="3" cols="12" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></textarea>
+                        </div>
+                        <div class="adm_inputs_wrap adm_checkbox">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Status</label>
+                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                              <label class="checkbox-inline"><input type="checkbox" checked="checked" value="">Active</label>
+                              <label class="checkbox-inline"><input type="checkbox" value="">In Active</label>
+                           </div>
+                        </div>
+                        <div class="custom-file-upload">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">User Image</label>
+                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                              <label for="file-upload" class="custom-file-upload-label">
+                              <i class="fa fa-cloud-upload"></i> Upload Image
+                              </label>
+                              <input id="file-upload" type="file">
+                              <span class="Option_cls Option_right">(Optional)</span>
+                           </div>
+                        </div>
+                        <div class="col-md-12">
+                           <button class="signin-btn">Submit</button>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Edit User starts here -->
+                  <div id="Edit_tab" class="tab-pane fade">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Edit User</h2>
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">User Name *</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="User Name" id="Username" name="Username" readonly>
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">User Password</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="password" class="input-fields form-control"  id="UserPassword" name="UserPassword" >
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Confirm Password</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="password" class="input-fields form-control"  id="ConfPassword" name="ConfPassword" >
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Phone No</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" id="PhoneNo" name="PhoneNo" >
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Address</label>
+                           <textarea rows="3" cols="12" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                           <button class="signin-btn">Submit</button>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Create Institute starts here -->
+                  <div id="CreIns_tab" class="tab-pane fade">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create Institute</h2>
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Institution Name</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="Institution Name" id="institutionName" name="institutionName">
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Institution Code</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="Institution Code" id="InstitutionCode" name="InstitutionCode" >
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Address</label>
+                           <textarea rows="3" cols="12" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                           <button class="signin-btn">Submit</button>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Create School starts here -->
+                  <div id="CreSchool_tab" class="tab-pane fade">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create School</h2>
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">School Name</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="School Name" id="SchoolName" name="SchoolName">
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">School Code</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" class="input-fields form-control" placeholder="School Code" id="SchoolCode" name="SchoolCode" >
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">School Institution</label>
+                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="sel1">
+                                    <option>Nalanda</option>
+                                    <option>Google</option>
+                                    <option>Bhashyam</option>
+                                    <option>RSR</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">School State</label>
+                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="sel1">
+                                    <option>Andhra Pradesh</option>
+                                    <option>Telangana</option>
+                                    <option>Tamilnadu</option>
+                                    <option>Karnataka</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">School District</label>
+                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="sel1">
+                                    <option>Nellore</option>
+                                    <option>Kadapa</option>
+                                    <option>Kurnool</option>
+                                    <option>Anantapur</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">School Address</label>
+                           <textarea rows="3" cols="12" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></textarea>
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Contact Number</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" placeholder="Contact Number" id="ContactNumber" name="ContactNumber">
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">School Principal</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" placeholder="Principal Name" id="PrincipalName" name="PrincipalName">
+                        </div>
+                        <div class="adm_inputs_wrap adm_checkbox">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">School Status</label>
+                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                              <label class="checkbox-inline"><input type="checkbox" checked="checked" value="">Active</label>
+                              <label class="checkbox-inline"><input type="checkbox" value="">In Active</label>
+                           </div>
+                        </div>
+                        <div class="col-md-12">
+                           <button class="signin-btn">Submit</button>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Map Class to School starts here -->
+                  <div id="MapClass_School" class="tab-pane fade">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Map Class to School</h2>
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Select School</label>
+                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="sel1">
+                                    <option>Nalanda</option>
+                                    <option>Google</option>
+                                    <option>Bhashyam</option>
+                                    <option>RSR</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="adm_inputs_wrap adm_checkbox">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Classes Applicable</label>
+                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                              <label class="checkbox-inline"><input type="checkbox" checked value="">7 <sup>th</sup> Class</label>
+                              
+                              <label class="checkbox-inline"><input type="checkbox" value="">8 <sup>th</sup> Class</label>
+                              <label class="checkbox-inline"><input type="checkbox" value="">9 <sup>th</sup> Class</label>
+                              <label class="checkbox-inline"><input type="checkbox" value="">10 <sup>th</sup> Class</label>
+                              <label class="checkbox-inline"><input type="checkbox" value="">11 <sup>th</sup> Class</label>
+                              <label class="checkbox-inline"><input type="checkbox" value="">12 <sup>th</sup> Class</label>
+                           </div>
+                        </div>
+                        <div class="col-md-12">
+                           <button class="signin-btn">Submit</button>
+                        </div>
+                     </div>
+                  </div>
+                  <!--Create Subject starts here -->
+                  <div id="CreateSub_tab" class="tab-pane fade">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create Subject</h2>
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Subject Code</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" placeholder="Subject Code" id="SubjectCode" name="Subject Code">
+                        </div>
+                        <div class="col-md-12">
+                           <button class="signin-btn">Submit</button>
+                        </div>
+                     </div>
+                  </div>
+                  <!--Create Topics starts here -->
+                  <div id="CreateTopic_tab" class="tab-pane fade">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create Topic</h2>
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Topic Name</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" placeholder="Topic Name" id="TopicName" name="TopicName">
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Topic Subject</label>
+                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="sel1">
+                                    <option>Multiplication and Division of Integers</option>
+                                    <option>Properties of Integers</option>
+                                    <option>Properties of multiplication of integers</option>
+                                    <option>Word problems including integers</option>
+                                    <option>Triangles</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Topic Code</label>
+                           <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" placeholder="Topic Code" id="TopicCode" name="TopicCode">
+                        </div>
+                        <div class="col-md-12">
+                           <button class="signin-btn">Submit</button>
+                        </div>
+                     </div>
+                  </div>
+                  <!--Upload Topics starts here -->
+                  <div id="UploadTopic_tab" class="tab-pane fade">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Upload Topics</h2>
+                     <div class="adm_inputs_wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Select Subject</label>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                           <div class="form-group">
+                              <select class="dropdown form-control" id="sel1">
+                                 <option>Multiplication and Division of Integers</option>
+                                 <option>Properties of Integers</option>
+                                 <option>Properties of multiplication of integers</option>
+                                 <option>Word problems including integers</option>
+                                 <option>Triangles</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="custom-file-upload">
+                        <label for="file-upload" class="custom-file-upload-label">
+                        <i class="fa fa-cloud-upload"></i> Upload Topic
+                        </label>
+                        <input id="file-upload" type="file"/>
+                     </div>
+                     <div class="col-md-12">
+                        <button class="signin-btn">Submit</button>
+                     </div>
+                  </div>
+                  <!--Upload Questions starts here -->
+                  <div id="Upload_Questions" class="tab-pane fade">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Upload Questions</h2>
+                     <div class="adm_inputs_wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Select Code</label>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                           <div class="form-group">
+                              <select class="dropdown form-control" id="sel1">
+                                 <option>#12345</option>
+                                 <option>#25645</option>
+                                 <option>#84854</option>
+                                 <option>#67546</option>
+                                 <option>#85745</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="custom-file-upload">
+                        <label for="file-upload" class="custom-file-upload-label">
+                        <i class="fa fa-cloud-upload"></i> Upload Topic
+                        </label>
+                        <input id="file-upload" type="file"/>
+                     </div>
+                     <div class="col-md-12">
+                        <button class="signin-btn">Submit</button>
+                     </div>
+                  </div>
+                  <!--Image Questions starts here -->
+                  <div id="Image_Questions" class="tab-pane fade">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create Image Questions</h2>
+                     <div class="adm_inputs_wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Select Code</label>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                           <div class="form-group">
+                              <select class="dropdown form-control" id="sel1">
+                                 <option>#12345</option>
+                                 <option>#25645</option>
+                                 <option>#84854</option>
+                                 <option>#67546</option>
+                                 <option>#85745</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="adm_inputs_wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Question Text</label>
+                        <textarea rows="2" cols="12" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></textarea><span class="Option_cls">(Optional)</span>
+                     </div>
+                     <div class="custom-file-upload">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Question Image</label>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                           <label for="file-upload" class="custom-file-upload-label">
+                           <i class="fa fa-cloud-upload"></i> Upload Image
+                           </label>
+                           <input id="file-upload" type="file"/>
+                        </div>
+                     </div>
+                     <div class="custom-file-upload options-wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Option1</label>
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                           <label for="file-upload" class="custom-file-upload-label">
+                           <i class="fa fa-cloud-upload"></i> Upload Image
+                           </label>
+                           <input id="file-upload" type="file"/>
+                        </div>
+                        <span class="seperator">Or</span>
+                        <input class="col-lg-3 col-md-3 col-sm-12 col-xs-12" type="text" placeholder="Text" id="TopicCode" name="TopicCode">
+                     </div>
+                     <div class="custom-file-upload options-wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Option2</label>
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                           <label for="file-upload" class="custom-file-upload-label">
+                           <i class="fa fa-cloud-upload"></i> Upload Image
+                           </label>
+                           <input id="file-upload" type="file"/>
+                        </div>
+                        <span class="seperator">Or</span>
+                        <input class="col-lg-3 col-md-3 col-sm-12 col-xs-12" type="text" placeholder="Text" id="TopicCode" name="TopicCode">
+                     </div>
+                     <div class="custom-file-upload options-wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Option3</label>
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                           <label for="file-upload" class="custom-file-upload-label">
+                           <i class="fa fa-cloud-upload"></i> Upload Image
+                           </label>
+                           <input id="file-upload" type="file"/>
+                        </div>
+                        <span class="seperator">Or</span>
+                        <input class="col-lg-3 col-md-3 col-sm-12 col-xs-12" type="text" placeholder="Text" id="TopicCode" name="TopicCode">
+                     </div>
+                     <div class="custom-file-upload options-wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Option4</label>
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                           <label for="file-upload" class="custom-file-upload-label">
+                           <i class="fa fa-cloud-upload"></i> Upload Image
+                           </label>
+                           <input id="file-upload" type="file"/>
+                        </div>
+                        <span class="seperator">Or</span>
+                        <input class="col-lg-3 col-md-3 col-sm-12 col-xs-12" type="text" placeholder="Text" id="TopicCode" name="TopicCode">
+                     </div>
+                     <div class="adm_inputs_wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Average Time</label>
+                        <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" placeholder="Number in Mins" id="AvgTime" name="AvgTime">
+                     </div>
+                     <div class="col-md-12">
+                        <button class="signin-btn">Submit</button>
+                     </div>
+                  </div>
+                  <!--Image Questions starts here -->
+                  <div id="Create_Question_Paper" class="tab-pane fade">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create Question Paper</h2>
+                     <div class="adm_inputs_wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Question Paper Name <span class="mandatory">*</span></label>
+                        <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" placeholder="Question Paper Name" id="Question_Paper_Name" name="Question_Paper_Name" required="">
+                     </div>
+                     <div class="adm_inputs_wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Select Class</label>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                           <div class="form-group">
+                              <select class="dropdown form-control" id="sel1">
+                                 <option>6<sup>th</sup> Class</option>
+                                 <option>7<sup>th</sup> Class</option>
+                                 <option>8<sup>th</sup> Class</option>
+                                 <option>9<sup>th</sup> Class</option>
+                                 <option>10<sup>th</sup> Class</option>
+                                 <option>11<sup>th</sup> Class</option>
+                                 <option>12<sup>th</sup> Class</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="adm_inputs_wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Select Subject</label>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                           <div class="form-group">
+                              <select class="dropdown form-control" id="sel1">
+                                 <option>Multiplication and Division of Integers</option>
+                                 <option>Properties of Integers</option>
+                                 <option>Properties of multiplication of integers</option>
+                                 <option>Word problems including integers</option>
+                                 <option>Triangles</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="adm_inputs_wrap">
+                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Select Topic</label>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                           <div class="form-group">
+                              <select class="dropdown form-control" id="sel1">
+                                 <option>Topic 1</option>
+                                 <option>Topic 2</option>
+                                 <option>Topic 3</option>
+                                 <option>Topic 4</option>
+                                 <option>Topic 5</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-12">
+                        <button class="signin-btn">Submit</button>
+                     </div>
+                  </div>
+                  <!--User List starts here -->
+                  <div id="User_List" class="tab-pane fade">
+                     <h2 class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-left">User List</h2>
+                     <div id="table-search-input">
+                     <div class="input-group col-md-4 pull-right">
+                              <input type="text" class="form-control input-lg" placeholder="Search" />
+                              <span class="input-group-btn">
+                              <button class="btn btn-info btn-lg" type="button">
+                              <i class="fa fa-search-plus"></i>
+                              </button>
+                              </span>
+                           </div>
+                     </div>
+                     <div class="user-list-header">
+                        <div class="adm_inputs_wrap">
+                           
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
+                              <label>Institution</label>
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="sel1">
+                                    <option>Nalanda</option>
+                                    <option>Google</option>
+                                    <option>Bhashyam</option>
+                                    <option>RSR</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
+                              <label>School</label>
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="sel1">
+                                    <option>Nalanda</option>
+                                    <option>Google</option>
+                                    <option>Bhashyam</option>
+                                    <option>RSR</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
+                              <label>Class</label>
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="sel1">
+                                    <option>6<sup>th</sup></option>
+                                    <option>7<sup>th</sup></option>
+                                    <option>8<sup>th</sup></option>
+                                    <option>9<sup>th</sup></option>
+                                    <option>10<sup>th</sup></option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
+                              <label>Role</label>
+                              <select class="dropdown form-control" id="">
+                                    <option>Admin</option>
+                                    <option>Manager</option>
+                                    <option>Question Preparation</option>
+                                    <option >Student</option>
+                                    <option>Parent</option>
+                                 </select>
+                           </div>
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
+                              <label>State</label>
+                              <select class="dropdown form-control" id="">
+                                    <option >Andhara Pradesh</option>
+                                    <option>Telangana</option>
+                                    <option>Tamilnadu</option>
+                                    <option>Arunachal Pradesh</option>
+                                 </select>
+                           </div>
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
+                              <button class="apply-btn">Apply</button>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           
+                           <button class="addnew-btn pull-left">Add new</button>
+                        </div>
+                        </div>
+                        <div class="user-table">
+                           <table class="table table-bordered table-striped">
+                              <thead>
+                                 <tr>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">School</th>
+                                    <th scope="col">Class</th>
+                                    <th scope="col">Actions</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>Azad</td>
+                                    <td>Admin</td>
+                                    <td>VBHS</td>
+                                    <td>9</td>
+                                    <td class="sub-table">
+                                       <table class="table table-bordered table-striped">
+                                          <tbody>
+                                             <tr>
+                                                <td><a href="#" data-toggle="dropdown" title="View"><i class="fa fa-eye"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Edit"><i class="fa fa-pencil-square-o"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Delete"><i class="fa fa-trash"></i></a></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>Wasim</td>
+                                    <td>Manager</td>
+                                    <td>Nalands</td>
+                                    <td>8</td>
+                                    <td class="sub-table">
+                                       <table class="table table-bordered table-striped">
+                                          <tbody>
+                                             <tr>
+                                                <td><a href="#" data-toggle="dropdown" title="View"><i class="fa fa-eye"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Edit"><i class="fa fa-pencil-square-o"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Delete"><i class="fa fa-trash"></i></a></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>Akram</td>
+                                    <td>admin2</td>
+                                    <td>ZPHS</td>
+                                    <td>7</td>
+                                    <td class="sub-table">
+                                       <table class="table table-bordered table-striped">
+                                          <tbody>
+                                             <tr>
+                                                <td><a href="#" data-toggle="dropdown" title="View"><i class="fa fa-eye"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Edit"><i class="fa fa-pencil-square-o"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Delete"><i class="fa fa-trash"></i></a></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>Akram</td>
+                                    <td>admin2</td>
+                                    <td>ZPHS</td>
+                                    <td>7</td>
+                                    <td class="sub-table">
+                                       <table class="table table-bordered table-striped">
+                                          <tbody>
+                                             <tr>
+                                                <td><a href="#" data-toggle="dropdown" title="View"><i class="fa fa-eye"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Edit"><i class="fa fa-pencil-square-o"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Delete"><i class="fa fa-trash"></i></a></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>Akram</td>
+                                    <td>admin2</td>
+                                    <td>ZPHS</td>
+                                    <td>7</td>
+                                    <td class="sub-table">
+                                       <table class="table table-bordered table-striped">
+                                          <tbody>
+                                             <tr>
+                                                <td><a href="#" data-toggle="dropdown" title="View"><i class="fa fa-eye"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Edit"><i class="fa fa-pencil-square-o"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Delete"><i class="fa fa-trash"></i></a></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>Akram</td>
+                                    <td>admin2</td>
+                                    <td>ZPHS</td>
+                                    <td>7</td>
+                                    <td class="sub-table">
+                                       <table class="table table-bordered table-striped">
+                                          <tbody>
+                                             <tr>
+                                                <td><a href="#" data-toggle="dropdown" title="View"><i class="fa fa-eye"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Edit"><i class="fa fa-pencil-square-o"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Delete"><i class="fa fa-trash"></i></a></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>Akram</td>
+                                    <td>admin2</td>
+                                    <td>ZPHS</td>
+                                    <td>7</td>
+                                    <td class="sub-table">
+                                       <table class="table table-bordered table-striped">
+                                          <tbody>
+                                             <tr>
+                                                <td><a href="#" data-toggle="dropdown" title="View"><i class="fa fa-eye"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Edit"><i class="fa fa-pencil-square-o"></i></a></td>
+                                                <td><a href="#" data-toggle="dropdown" title="Delete"><i class="fa fa-trash"></i></a></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     
+                  </div>
+
+                   <!--User Profile starts here -->
+                  <div id="User_Profile" class="tab-pane fade">
+                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">User Profile</h2>
+                    
+                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                        <div class="user-profile_container">
+                           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                              <div class="user-pro-pic">
+                              <img src="images/profile-pic.png" class="img-thumbnail" alt="Cinque Terre" width="200" height="236"> 
+                              <a href="#" data-toggle="dropdown" title="Edit">Change Image <i class="fa fa-pencil-square-o"></i></a>
+                              </div>
+                           </div>
+                           <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                              <div class="adm_inputs_wrap">
+                           <label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">User Name <span class="mandatory">*</span></label>
+                           <input class="col-lg-8 col-md-8 col-sm-12 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" required="">
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Password</label>
+                           <input class="col-lg-8 col-md-8 col-sm-12 col-xs-12" type="text" placeholder="Password" id="Password" name="Password" required="">
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Role</label>
+                           <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 drop_down">
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="sel1">
+                                    <option>Admin</option>
+                                    <option>Manager</option>
+                                    <option>Question Preparation</option>
+                                    <option>Student</option>
+                                    <option>Parent</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="adm_inputs_wrap">
+                           <label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Last Login</label>
+                           <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                              <span class="date">30 JULY 2018</span>
+                           </div>
+                        </div>
+                        <div class="col-md-12">
+                           <button class="signin-btn">Submit</button>
+                        </div>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         </div>
+      </section>
+      <!-- Center Container ends-->
+      <footer class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+         <p>Copyright © 2018</p>
+      </footer>
+      <!-- SCRIPTS -->
+      <script type="text/javascript">
+         $(".slide-toggle").click(function(){
+         $(".top_con").toggleClass("minimise_Con");
+         });
+      </script>
+      <script type="text/javascript">
+         $(document).ready(function(){
+             $(".slide-toggle").click(function(){
+                 $(".left_wrap1").animate({
+                     width: "toggle"
+                 });
+                  $(".right_wrap1").animate({
+                     width: "toggle"
+                 });
+             });
+         });
+      </script>
+      <script src="js/jquery.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/jquery.stellar.min.js"></script>
+      <script src="js/jquery.magnific-popup.min.js"></script>
+      <script src="js/smoothscroll.js"></script>
+      <script src="js/custom.js"></script>
+   </body>
+</html>
