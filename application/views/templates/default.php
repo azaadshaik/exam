@@ -35,16 +35,18 @@
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">   
                <img src="<?php echo $asset_url; ?>/images/logo.png">
             </div>
+			<?php
+			if($this->session->userdata('user_name')){ ?>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right">
                <span class="stuhead_wel_txt col-lg-5 col-md-5 col-sm-5 col-xs-5">Welcome</span> 
                <div class="stu_acct-wrap col-lg-4 col-md-4 col-sm-4 col-xs-4">
                   <div class="input-group">
                      <div class="input-group-append">
-                        <span class="stuhead_wel_txt">Azad</span> 
+                        <span class="stuhead_wel_txt"><?php echo $this->session->userdata('user_name');?></span> 
                         <a href="#" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
                         <div class="dropdown-menu">
-                           <a class="dropdown-item" href="#">Profile</a>
-                           <a class="dropdown-item" href="#">ID : 25045</a>
+                            <a style="padding-bottom:10px;" class="dropdown-item" href="#" onclick="viewUser(<?php echo $this->session->userdata('user_id');?>,'users_tab');" >Profile</a>
+                           <a class="dropdown-item" href="pulseauth/logout">Logout</a>
                         </div>
                      </div>
                   </div>
@@ -53,6 +55,9 @@
                   <img src="<?php echo $asset_url; ?>/images/profile-pic.png" class="profile-pic img-circle" alt="Cinque Terre" width="80" > 
                </div>
             </div>
+			
+			<?php } ?>
+			
          </div>
       </header>
 

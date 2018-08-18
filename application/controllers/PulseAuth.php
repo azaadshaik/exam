@@ -135,14 +135,8 @@ class PulseAuth extends CI_Controller
 	 */
 	public function logout()
 	{
-		$this->data['title'] = "Logout";
-
-		// log the user out
-		$logout = $this->ion_auth->logout();
-
-		// redirect them to the login page
-		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('auth/login', 'refresh');
+		$this->session->sess_destroy();
+		redirect('pulseauth/login', 'refresh');
 	}
 
 	public function is_logged_in(){

@@ -9,8 +9,8 @@
                   
                   <li class="exam-ico nav-link"><a data-toggle="tab" href="#institutions_tab" data-url="admin/institutions"> Institutions</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
                   <li class="repo-ico nav-link"><a data-toggle="tab" href="#schools_tab" data-url="admin/schools"> Schools</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
-                  <li class="repo-ico nav-link"><a data-toggle="tab" href="#CreateSub_tab">Subjects</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
-                  <li class="repo-ico nav-link"><a data-toggle="tab" href="#CreateTopic_tab">Topics</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                  <li class="repo-ico nav-link"><a data-toggle="tab" href="#subjects_tab" data-url="admin/subjects">Subjects</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                  <li class="repo-ico nav-link"><a data-toggle="tab" href="#topics_tab" data-url="admin/topics">Topics</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
                   <li class="repo-ico nav-link"><a data-toggle="tab" href="#Upload_Questions">Upload Questions</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
                   <li class="repo-ico nav-link"><a data-toggle="tab" href="#Image_Questions">Create Image Questions</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
                   <li class="repo-ico nav-link"><a data-toggle="tab" href="#Create_Question_Paper">Create Question Paper</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
@@ -28,6 +28,10 @@
             <div id="institutions_tab" class="tab-pane fade">
             </div>
             <div id="schools_tab" class="tab-pane fade">
+            </div>
+            <div id="subjects_tab" class="tab-pane fade">
+            </div>
+            <div id="topics_tab" class="tab-pane fade">
             </div>
 
             </div>

@@ -54,6 +54,18 @@ class Admin extends CI_Controller
 		$data['institution_list'] = $institution_list;
 		$this->load->view('admin/institution_list', $data);
 	}
+	public function subjects(){
+
+		$subjects_list = $this->adminmodel->get_all_subjects();
+		$data['subjects_list'] = $subjects_list;
+		$this->load->view('admin/subjects_list', $data);
+	}
+	public function topics(){
+
+		$topics_list = $this->adminmodel->get_all_topics();
+		$data['topics_list'] = $topics_list;
+		$this->load->view('admin/topics_list', $data);
+	}
 	
 	public function create_institute(){
 
@@ -75,6 +87,142 @@ class Admin extends CI_Controller
 		else{
 			
 			$this->load->view('admin/create_institute', $data);
+			
+		}
+		
+	}
+	public function create_subject(){
+
+		$data['title'] = 'New Subject';
+		$this->form_validation->set_rules('subject_name', 'Subject name ', 'required');
+		$this->form_validation->set_rules('subject_code', 'Subject code ', 'required');
+		
+		if ($this->form_validation->run() === TRUE)
+		{
+			
+			$subject_data['subject_code'] = $this->input->post('subject_code');
+			$subject_data['subject_name'] = $this->input->post('subject_name');
+			$subject_data['subject_class_id'] = $this->input->post('class');
+			$status = $this->input->post('status');
+			$subject_data['subject_status'] = ($status) ? 1:0;
+			
+						
+
+			$this->adminmodel->create_subject($subject_data);
+			$this->subjects();
+			
+
+
+		}
+		else{
+			$data['classes_list'] = $this->adminmodel->get_all_classes();
+			$this->load->view('admin/create_subject', $data);
+			
+		}
+		
+	}
+
+	public function create_topic(){
+
+		$data['title'] = 'New Topic';
+		$this->form_validation->set_rules('topic_name', 'Topic name ', 'required');
+		$this->form_validation->set_rules('topic_code', 'Topic code ', 'required');
+		
+		if ($this->form_validation->run() === TRUE)
+		{
+			
+			
+			$topic_data['topic_code'] = $this->input->post('topic_code');
+			$topic_data['topic_name'] = $this->input->post('topic_name');
+			$topic_data['topic_class_id'] = $this->input->post('class');
+			$topic_data['topic_subject_id'] = $this->input->post('subject');
+			$status = $this->input->post('status');
+			$topic_data['topic_status'] = ($status) ? 1:0;
+			
+						
+
+			$this->adminmodel->create_topic($topic_data);
+			$this->topics();
+			
+
+
+		}
+		else{
+			$data['classes_list'] = $this->adminmodel->get_all_classes();
+			$this->load->view('admin/create_topic', $data);
+			
+		}
+		
+	}
+
+	public function edit_topic(){
+
+		$data['title'] = 'Update Topic';
+		$this->form_validation->set_rules('topic_name', 'Topic name ', 'required');
+		$this->form_validation->set_rules('topic_code', 'Topic code ', 'required');
+		
+		if ($this->form_validation->run() === TRUE)
+		{
+			
+			$topic_id=$this->input->post('topic_id');
+			$topic_data['topic_code'] = $this->input->post('topic_code');
+			$topic_data['topic_name'] = $this->input->post('topic_name');
+			$topic_data['topic_class_id'] = $this->input->post('class');
+			$topic_data['topic_subject_id'] = $this->input->post('subject');
+			$status = $this->input->post('status');
+			$topic_data['topic_status'] = ($status) ? 1:0;
+			
+						
+
+			$this->adminmodel->update_topic($topic_data,$topic_id);
+			$this->topics();
+			
+
+
+		}
+		else{
+			$topic_id = $this->input->get('topic_id');
+			$topic_data = $this->adminmodel->get_topic_by_id($topic_id);
+			$topic_subjects = $this->adminmodel->get_subjects_by_class_id($topic_data->topic_class_id);			
+			$data['topic_data'] = $topic_data;
+			$data['topic_subjects'] = $topic_subjects;
+			$data['classes_list'] = $this->adminmodel->get_all_classes();
+			$this->load->view('admin/edit_topic', $data);
+			
+		}
+		
+	}
+
+	public function edit_subject(){
+
+		
+
+		$data['title'] = 'Update Subject';
+		$this->form_validation->set_rules('subject_name', 'Subject name ', 'required');
+		$this->form_validation->set_rules('subject_code', 'Subject code ', 'required');
+		
+		if ($this->form_validation->run() === TRUE)
+		{
+			$subject_id = $this->input->post('subject_id');
+			$subject_data['subject_code'] = $this->input->post('subject_code');
+			$subject_data['subject_name'] = $this->input->post('subject_name');
+			$subject_data['subject_class_id'] = $this->input->post('class');
+			$status = $this->input->post('status');
+			$subject_data['subject_status'] = ($status) ? 1:0;
+			
+						
+
+			$this->adminmodel->update_subject($subject_data,$subject_id);
+			$this->subjects();
+			
+
+
+		}
+		else{
+			$subject_id = $this->input->get('subject_id');
+			$data['classes_list'] = $this->adminmodel->get_all_classes();
+			$data['subject_data'] = $this->adminmodel->get_subject_by_id($subject_id);
+			$this->load->view('admin/edit_subject', $data);
 			
 		}
 		
@@ -175,6 +323,13 @@ class Admin extends CI_Controller
 		$this->institutions();
 		
 	}
+	public function delete_subject(){
+		$subject_id = $this->input->get('subject_id');
+		$status = 0;
+		$this->adminmodel->update_subject_status($subject_id,$status);
+		$this->subjects();
+		
+	}
 	public function view_school(){
 		
 		
@@ -199,6 +354,28 @@ class Admin extends CI_Controller
 		
 		
 	}
+	public function view_subject(){
+		
+		
+		$subject_id = $this->input->get('subject_id');
+		$result = $this->adminmodel->get_subject_by_id($subject_id);
+		$data['subject_data'] = $result;
+		
+		$this->load->view('admin/view_subject', $data);
+	
+	
+}
+public function view_topic(){
+		
+		
+	$topic_id = $this->input->get('topic_id');
+	$result = $this->adminmodel->get_topic_by_id($topic_id);
+	$data['topic_data'] = $result;
+	
+	$this->load->view('admin/view_topic', $data);
+
+
+}
 	public function edit_school(){
 		$this->form_validation->set_rules('school_name', 'School name is required', 'required');
 		$this->form_validation->set_rules('school_code', 'School code is required', 'required');
@@ -275,6 +452,13 @@ class Admin extends CI_Controller
 		$status = 0;
 		$this->adminmodel->update_school_status($school_id,$status);
 		$this->schools();
+		
+	}
+	public function delete_topic(){
+		$topic_id = $this->input->get('topic_id');
+		$status = 0;
+		$this->adminmodel->update_topic_status($topic_id,$status);
+		$this->topics();
 		
 	}
 	public function update_classes_and_sections($school_id,$classes_selected,$sections_selected){
@@ -364,6 +548,19 @@ class Admin extends CI_Controller
 		}
 	
 }
+public function getSubjectsByClassId(){
+		
+	$class_id = $this->input->get('class_id');
+	if(!empty($class_id)){
+
+		$subjects = $this->adminmodel->get_subjects_by_class_id($class_id);
+		echo json_encode($subjects);
+		exit;
+		
+	}
+
+}
+
 public function getClassesBySchoolId(){
 		
 		$school_id = $this->input->get('school_id');
@@ -431,6 +628,14 @@ private function mapClassesToSchool($school_id,$classes,$sections){
 
 			}
 		}
+}
+
+public function delete_user(){
+
+	$user_id= $this->input->get('user_id');
+	$user_data = $this->usermodel->delete_user($user_id);
+	$this->users();
+	
 }
 
 }

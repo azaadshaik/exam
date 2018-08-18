@@ -39,6 +39,36 @@ class AdminModel extends CI_Model
         $result = $this->db->get()->result_array();
         return $result;
     }
+    public function get_all_subjects(){
+        $this->db->select('subjects.subject_name,subjects.subject_id,subjects.subject_code,subjects.subject_status,classes.class_name,classes.class_id');
+        $this->db->from('subjects');
+        $this->db->join('classes','subjects.subject_class_id = classes.class_id');
+		$this->db->where('subject_status=1');
+        $this->db->order_by("subject_id", "desc");
+        
+        $result = $this->db->get()->result_array();
+        
+        return $result;
+    }
+    public function get_all_topics(){
+        $this->db->select('topics.topic_name,topics.topic_id,topics.topic_code,topics.topic_status,classes.class_name,classes.class_id,subjects.subject_name,subjects.subject_id');
+        $this->db->from('topics');
+        $this->db->join('classes','classes.class_id = topics.topic_class_id');
+        $this->db->join('subjects','subjects.subject_id = topics.topic_subject_id');
+		$this->db->where('topic_status=1');
+        $this->db->order_by("topic_id", "desc");
+        $result = $this->db->get()->result_array();
+        
+        return $result;
+    }
+    public function get_subject_by_id($subject_id){
+        $this->db->select('subjects.subject_name,subjects.subject_id,subjects.subject_code,subjects.subject_status,subjects.subject_class_id,classes.class_name,classes.class_id');
+        $this->db->from('subjects');
+        $this->db->join('classes','subjects.subject_class_id = classes.class_id');
+        $this->db->where('subjects.subject_id ='.$subject_id);
+        $result = $this->db->get()->row();
+        return $result;
+		}
     public function get_school_by_id($school_id){
 
         $this->db->select('*');
@@ -90,6 +120,15 @@ class AdminModel extends CI_Model
 
        
     }
+    public function create_subject($subject_data){
+
+        
+        $result= $this->db->insert('subjects', $subject_data);
+        return $result;
+           
+
+       
+    }
 	public function get_institution_by_id($institution_id){
 		$where ='institution_id='.$institution_id;
         $this->db->select('*');
@@ -97,12 +136,33 @@ class AdminModel extends CI_Model
 		$this->db->where($where);
         $result = $this->db->get()->row();
         return $result;
-	}
+    }
+    public function get_topic_by_id($topic_id){
+		$where ='topic_id='.$topic_id;
+        $this->db->select('*');
+        $this->db->from('topics');
+        $this->db->join('classes','classes.class_id=topics.topic_class_id');
+        $this->db->join('subjects','subjects.subject_id=topics.topic_subject_id');
+		$this->db->where($where);
+        $result = $this->db->get()->row();
+        return $result;
+    }
+    
 	public function get_institution_schools_by_id($institution_id){
 		$where ='institution_id='.$institution_id;
         $this->db->select('*');
         $this->db->from('institution');
 		$this->db->join('schools','institution.institution_id=schools.school_institution','left');
+		$this->db->where($where);
+        $result = $this->db->get()->result_array();
+        return $result;
+    }
+    
+    public function get_subjects_by_class_id($class_id){
+		$where ='subjects.subject_class_id='.$class_id.' and subjects.subject_status=1';
+        $this->db->select('subjects.subject_id,subjects.subject_name');
+        $this->db->from('subjects');
+		$this->db->join('classes','subjects.subject_class_id=classes.class_id');
 		$this->db->where($where);
         $result = $this->db->get()->result_array();
         return $result;
@@ -116,9 +176,30 @@ class AdminModel extends CI_Model
 
        
     }
+    public function create_topic($topic_data){
+
+        
+        $result= $this->db->insert('topics', $topic_data);
+        return $result;
+           
+
+       
+    }
 	 public function update_school($school_data,$school_id){
        
         $result= $this->db->update('schools', $school_data, "school_id = $school_id");
+        return $result;
+  
+    }
+    public function update_topic($topic_data,$topic_id){
+       
+        $result= $this->db->update('topics', $topic_data, "topic_id = $topic_id");
+        return $result;
+  
+    }
+    public function update_subject($subject_data,$subject_id){
+       
+        $result= $this->db->update('subjects', $subject_data, "subject_id = $subject_id");
         return $result;
   
     }
@@ -131,7 +212,15 @@ class AdminModel extends CI_Model
 	public function update_institution_status($institution_id,$status){
 		 $result= $this->db->update('institution', array('institution_status'=>$status), "institution_id = $institution_id");
         return $result;
-	}
+    }
+    public function update_subject_status($subject_id,$status){
+        $result= $this->db->update('subjects', array('subject_status'=>$status), "subject_id = $subject_id");
+       return $result;
+   }
+   public function update_topic_status($topic_id,$status){
+    $result= $this->db->update('topics', array('topic_status'=>$status), "topic_id = $topic_id");
+   return $result;
+}
 	public function update_school_status($school_id,$status){
 		
 		 $result= $this->db->update('schools', array('school_status'=>$status), "school_id = $school_id");
@@ -233,6 +322,8 @@ class AdminModel extends CI_Model
 		$sql = "update school_classes set status=1 WHERE school_classes_school_id = ? AND school_classes_class_id = ? AND school_classes_section_id = ?";
 		$result = $this->db->query($sql, array($school_id, $class_id, $section_id));
 		return $result;
-	}
+    }
+    
+    
    
 }

@@ -66,13 +66,45 @@ body {
   -moz-border-radius: 35px;
   -webkit-border-radius: 35px;
 }
-
+#User_List h2{width:auto !important;}
+.addnew-btn {
+  background: #f3db14;
+  padding: 15px 70px;
+  margin-bottom: 20px;
+  border: none;
+  outline: none;
+  color: #000000;
+  border-radius: 35px;
+  -moz-border-radius: 35px;
+  -webkit-border-radius: 35px;
+}
+.apply-btn{background: #f3db14;
+    padding: 8px 31px;
+    border: none;
+    outline: none;
+    color: #000000;
+    border-radius: 35px;
+    -moz-border-radius: 35px;
+    -webkit-border-radius: 35px;
+    margin-top: 58px;
+    margin-left: 15px;}
 .login-center {
   background: url("../images/frontpage-bg.jpg");
 }
-
+.user-static{color: #f3db14;
+    font-size: 18px;
+    display: inline-block;
+    font-weight: 300;
+    text-align: left;
+    line-height: 36px;
+    margin: 15px 0;}
+.userprof2 .adm_inputs_wrap{margin:0;}
+.userprof2 .adm_inputs_wrap label,.userprof2 .adm_inputs_wrap .user-static{    margin: 5px 0 !important;}
+.form-control{height: auto !important;}
+.user-list-header .adm_inputs_wrap .drop_down{padding: 0 5px;}
+.user-list-header .adm_inputs_wrap label{width: 100%;display: inline-block;width: 100%;}
 .bg-cls,
-.signin-btn:hover {
+.signin-btn:hover,.addnew-btn:hover {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#195fbf+0,1071dd+100 */
   background: #f3db14;
   /* Old browsers */
@@ -85,7 +117,26 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3db14', endColorstr='#ebb511', GradientType=1);
   /* IE6-9 */
 }
-
+.user-profile_container{
+      display: inline-block;
+    width: 100%;
+    padding: 20px 0;
+}
+.display-student{display: inline-block !important;    width: 100%;}
+.display-student .form-group{width:90%;}
+.user-pro-pic{position: relative;}
+.user-pro-pic a{position: absolute;
+    color: #ffffff;
+    bottom: 6px;
+    right: 9px;
+    font-size: 16px;
+    background: rgba(0,0,0,0.4);
+    padding: 4px;
+    width: 92%;
+    margin: 0;
+    left: 6px;}
+ .user-profile_container .date{ color: #ffffff;   line-height: 51px;
+    padding: 15px 0;}
 .signin-btn:active {
   background: #ebb511;
 }
@@ -228,10 +279,14 @@ input:-moz-placeholder {
   padding: 0;
   position: relative;
 }
-
+.logo{max-width: 100%;}
+footer{
+  margin-top: 50px;
+}
 .bg_img {
   position: absolute;
   left: 0;
+  max-width: 100%;
 }
 
 .stu_sec_left {
@@ -356,7 +411,17 @@ input:-moz-placeholder {
   text-align: left;
      line-height: 30px;
     margin: 15px 0;
+	    padding: 0;
 }
+#View_school_tab .adm_inputs_wrap{margin: 0;}
+#View_school_tab .adm_inputs_wrap label,
+#View_school_tab .adm_inputs_wrap .user-static{
+    margin: 5px 0 !important;
+}
+#User_Profile1 .nav-tabs li a{color:#ffffff;}
+#User_Profile1 .nav-tabs li a:hover,#User_Profile1 .nav-tabs li.active a:hover{color:#f3db14;background: transparent;}
+#User_Profile1 .nav-tabs li.active a{color:#555555;}
+
 .custom-file-upload{display:inline-block;width: 100%;    margin: 10px 0;}
 .custom-file-upload input[type="file"] {
     display: none;
@@ -497,4 +562,20 @@ border:2px solid red !important;
   color:red;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media (max-width: 768px){
+  .logo{
+        margin-top: 15px;
+  }
+  .stuhead_wel_txt{
+    font-size: 12px;
+  }
+  .profile-pic{
+    max-width: 100%;
+  }
+  .left_wrap1{
+    padding:0 15px !important;
+  }
+}
+
 

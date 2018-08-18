@@ -42,6 +42,7 @@ class UserModel extends CI_Model
         $this->db->select('*');
         $this->db->from('users');
         $this->db->join('roles', 'users.user_role = roles.role_id');
+        $this->db->where('users.user_status = 1');
         $this->db->order_by("user_reg_date", "desc");
         
         $result = $this->db->get()->result_array();
@@ -57,12 +58,35 @@ class UserModel extends CI_Model
 	public function get_user_by_id($user_id){
 		$this->db->select('*');
         $this->db->from('users');
-        $this->db->join('user_class', 'users.user_id = user_class.user');
-		$this->db->where("users.user_id=$user_id");
+        $this->db->join('user_class', 'users.user_id = user_class.user','left');
+        $this->db->join('roles', 'roles.role_id = users.user_role');
+        $this->db->where("users.user_id=$user_id");
         $result = $this->db->get()->row();
+        
 		return $result;
 		
-	}
+    }
+    public function load_user_profile($user_id){
+		$this->db->select('*');
+        $this->db->from('users');
+        $this->db->join('user_class', 'users.user_id = user_class.user','left');
+        $this->db->join('roles', 'roles.role_id = users.user_role');
+        $this->db->join('institution', 'institution.institution_id = user_class.institution','left');
+        $this->db->join('schools', 'schools.school_id = user_class.school','left');
+        $this->db->join('classes', 'classes.class_id = user_class.class','left');
+        $this->db->join('sections', 'sections.section_id = user_class.section','left');
+        $this->db->where("users.user_id=$user_id");
+        $result = $this->db->get()->row();
+        echo $this->db->last_query();
+		return $result;
+		
+    }
+
+     public function delete_user($user_id){
+        $result= $this->db->update('users', array('user_status'=>0), "user_id = $user_id");
+       return $result;
+   }
+    
 	
    
 }

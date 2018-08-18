@@ -50,7 +50,7 @@ function submitForm(formId,redirect,contentDiv){
         data: formData,
         enctype: 'multipart/form-data',
         success: function (data) {
-            alert(contentDiv);
+            
            // loadRedirect(redirect,contentDiv);
            $('#'+contentDiv).html(data);
         },
@@ -125,6 +125,28 @@ $('#school').find('option').remove().end().append('<option value="0">Select Scho
         
     });
 }
+function loadSubjects(classId){
+	
+    $.ajax({
+        url: 'admin/getSubjectsByClassId/?class_id='+classId,
+        type: 'GET',
+        success: function (data) {
+            
+
+$('#subject').find('option').remove().end().append('<option value="0">Select Subject</option>');
+
+
+
+			$("#subject").removeAttr('disabled');
+			var obj = jQuery.parseJSON(data);
+			
+			$.each( obj, function( key, value ) {
+				$("#subject").append( new Option(value.subject_name,value.subject_id) );
+			});
+		}
+        
+    });
+}
 function loadClasses(schoolId){
 	
     $.ajax({
@@ -186,6 +208,17 @@ function viewSchool(schoolId,divToUpdate){
         
     });
 }
+function viewSubject(subjectId,divToUpdate){
+
+    $.ajax({
+        url: 'admin/view_subject/?subject_id='+subjectId,
+        type: 'GET',
+        success: function (data) {
+            $('#'+divToUpdate).html(data);
+        }
+        
+    });
+}
 function editSchool(schoolId,divToUpdate){
 
     $.ajax({
@@ -197,6 +230,31 @@ function editSchool(schoolId,divToUpdate){
         
     });
 }
+
+function editSubject(subjectId,divToUpdate){
+
+    $.ajax({
+        url: 'admin/edit_subject/?subject_id='+subjectId,
+        type: 'GET',
+        success: function (data) {
+            $('#'+divToUpdate).html(data);
+        }
+        
+    });
+}
+function editTopic(topicId,divToUpdate){
+
+    $.ajax({
+        url: 'admin/edit_topic/?topic_id='+topicId,
+        type: 'GET',
+        success: function (data) {
+            $('#'+divToUpdate).html(data);
+        }
+        
+    });
+}
+
+
 
 function editInstitution(institutionId,divToUpdate){
 
@@ -267,6 +325,51 @@ function deleteSchool(schoolId,divToUpdate){
    
 }
 
+function deleteTopic(topicId,divToUpdate){
+
+    $.confirm({
+           text: "Are you sure to delete?",
+           confirm: function(button) {
+                $.ajax({
+                   url: 'admin/delete_topic/?topic_id='+topicId,
+                   type: 'GET',
+                   success: function (data) {
+                       $('#'+divToUpdate).html(data);
+                   }
+           
+               });
+           },
+           cancel: function(button) {
+            return false;
+           }
+       });
+          
+      
+      
+   }
+function deleteSubject(subjectId,divToUpdate){
+
+    $.confirm({
+           text: "Are you sure to delete?",
+           confirm: function(button) {
+                $.ajax({
+                   url: 'admin/delete_subject/?subject_id='+subjectId,
+                   type: 'GET',
+                   success: function (data) {
+                       $('#'+divToUpdate).html(data);
+                   }
+           
+               });
+           },
+           cancel: function(button) {
+            return false;
+           }
+       });
+          
+      
+      
+   }
+
 function editUser(userId,divToUpdate){
 	 $.ajax({
         url: 'user/edit_user/?user_id='+userId,
@@ -277,3 +380,46 @@ function editUser(userId,divToUpdate){
         
     });
 }
+function viewUser(userId,divToUpdate){
+    $.ajax({
+       url: 'user/view_user/?user_id='+userId,
+       type: 'GET',
+       success: function (data) {
+           $('#'+divToUpdate).html(data);
+       }
+       
+   });
+}
+
+function viewTopic(topicId,divToUpdate){
+    $.ajax({
+       url: 'admin/view_topic/?topic_id='+topicId,
+       type: 'GET',
+       success: function (data) {
+           $('#'+divToUpdate).html(data);
+       }
+       
+   });
+}
+function deleteUser(userId,divToUpdate){
+
+
+    $.confirm({
+        text: "Are you sure to delete?",
+        confirm: function(button) {
+            $.ajax({
+                url: 'user/delete_user/?user_id='+userId,
+                type: 'GET',
+                success: function (data) {
+                    $('#'+divToUpdate).html(data);
+                }
+                
+            });
+        },
+        cancel: function(button) {
+         return false;
+        }
+    });
+    
+}
+

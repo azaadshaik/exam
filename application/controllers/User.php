@@ -9,7 +9,7 @@ class User extends CI_Controller {
 		
 		parent::__construct();
 		$this->load->library(array('form_validation'));
-		$this->load->model('usermodel');
+		$this->load->model(array('usermodel','adminmodel'));
 		
 	}
 	public function index()
@@ -35,8 +35,21 @@ class User extends CI_Controller {
 		
 		if ($this->form_validation->run() === TRUE)
 		{
-			$upload_config = $this->config->item('file_upload');
-			$this->load->library('upload', $upload_config);	
+			if (empty($_FILES['userimage']['name'])) {
+
+				$upload_config = $this->config->item('file_upload');
+				$this->load->library('upload', $upload_config);	
+				if ( ! $this->upload->do_upload('userimage'))
+         		{
+				 
+				   	$error = array('error' => $this->upload->display_errors());
+				}
+				else{
+					$image_data = $this->upload->data();
+					$user_data['user_image'] = $image_data['orig_name'];
+				}
+			}
+			
 			$user_data['user_name'] = $this->input->post('username');
 			$user_data['password'] = password_hash($this->input->post('username'), PASSWORD_DEFAULT);
 			$user_data['user_firstname'] = $this->input->post('firstname');
@@ -44,28 +57,16 @@ class User extends CI_Controller {
 			$user_data['user_reg_date'] = date('Y-m-d');
 			$user_data['user_status'] = 1;
 			$user_data['user_role'] = $this->input->post('role');
-			if ( ! $this->upload->do_upload('userimage'))
-         	{
-				
-                $error = array('error' => $this->upload->display_errors());
-				
-		                  
-		
-			}
-		else{
 			
-			$image_data = $this->upload->data();
-			$user_data['user_image'] = $image_data['orig_name'];
+			
+			
 			$result = $this->usermodel->add_user($user_data);
 			$user_id = $this->db->insert_id();
 			$role = $this->usermodel->get_role_by_id($user_data['user_role']);
 			$role_code = $role->role_code;
 			$this->map_users_to_classes($role_code,$user_id);
-
-		}
-			
 			$data['message'] = 'User created successfully';
-			$this->load->view('user/profile', $data);
+			$this->users();
 
 		}
 		else{
@@ -126,17 +127,46 @@ class User extends CI_Controller {
 		else{
 			$user_id = $this->input->get('user_id');
 			$result = $this->usermodel->get_user_by_id($user_id);
-			echo "<pre>";
-			print_r($result);
-			die;
+			
+			$institutions = $this->adminmodel->get_all_institutions();
+			if(isset($result->institution)){
+				$schools = $this->adminmodel->get_schools_by_institution_id($result->institution);
+				$data['schools'] = $schools;
+			}
+			
+			if(isset($result->school)){
+			$classes = $this->adminmodel->get_classes_by_school_id($result->school);
+			$data['classes'] = $classes;
+			}
+			if(isset($result->class)){
+			$sections = $this->adminmodel->get_sections_by_class_id($result->class);
+			$data['sections'] = $sections;
+			}
 			$roles = $this->usermodel->get_roles();
 			$data['roles'] = $roles;
+			$data['user_data'] = $result;
+			
+			
+			
+			
+			
 
 			$this->load->view('user/edit', $data);
 		}
 		
 		
 	}
+
+	public function view_user(){
+
+		$user_id= $this->input->get('user_id');
+		$user_data = $this->usermodel->load_user_profile($user_id);
+		$data['user_data'] = $user_data;
+		$this->load->view('user/profile', $data);
+	}
+
+	
+	
 
 	function map_users_to_classes($role_code,$user_id){
 		
