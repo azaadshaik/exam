@@ -41,6 +41,8 @@ class Admin extends CI_Controller
 		$user_list = $this->usermodel->get_all_users();
 		$data['user_list'] = $user_list;
 		$this->load->view('admin/user_list', $data);
+		
+		
 	}
 	public function schools(){
 
@@ -66,6 +68,12 @@ class Admin extends CI_Controller
 		$data['topics_list'] = $topics_list;
 		$this->load->view('admin/topics_list', $data);
 	}
+	public function questions(){
+
+		$questions_list = $this->adminmodel->get_all_questions();
+		$data['question_list'] = $questions_list;
+		$this->load->view('admin/questions_list', $data);
+	}
 	
 	public function create_institute(){
 
@@ -77,9 +85,11 @@ class Admin extends CI_Controller
 		{
 			$institution_data['institution_code'] = $this->input->post('institution_code');
 			$institution_data['institution_name'] = $this->input->post('institution_name');
+			$institution_data['institution_status'] = 1;
 			
 						
 			$this->adminmodel->create_institution($institution_data);
+			$this->institutions();
 			
 
 
@@ -239,6 +249,8 @@ class Admin extends CI_Controller
 			$institution_id = $this->input->post('institution_id');
 			$institution_data['institution_code'] = $this->input->post('institution_code');
 			$institution_data['institution_name'] = $this->input->post('institution_name');
+			$status = $this->input->post('status');
+			$institution_data['institution_status'] = ($status) ? 1:0;
 			
 						
 			$this->adminmodel->update_institution($institution_data,$institution_id);
@@ -305,17 +317,154 @@ class Admin extends CI_Controller
 		}
         
 	}
+	public function create_question(){
+		$data['title'] = 'New School';
+		$this->form_validation->set_rules('topic', 'Topic code', 'required');
+		//$this->form_validation->set_rules('school_code', 'School code is required', 'required');
+		
+			
+		if ($this->form_validation->run() === TRUE)
+		{
+			
+				
+			$question_data['question'] = $this->input->post('question_text');
+			$question_data['topic_id'] = $this->input->post('topic');
+			$question_data['avg_time'] = $this->input->post('AvgTime');
+			$question_data['difficulty_level'] = $this->input->post('difficulty_level');
+			$question_data['question_status'] = 1;
+			if (!empty($_FILES['question_image']['name'])) {
+
+				$upload_config = $this->config->item('question_upload');
+				$this->load->library('upload', $upload_config);	
+				if ( ! $this->upload->do_upload('question_image'))
+         		{
+				 
+					   $error = array('error' => $this->upload->display_errors());
+					   
+				}
+				else{
+					$question_image_data = $this->upload->data();
+					$question_data['question_image'] = $question_image_data['orig_name'];
+				}
+			}
+			$this->adminmodel->create_question($question_data);
+			$new_question_id = $this->db->insert_id();
+			if($new_question_id){
+				$this->create_question_options($new_question_id);
+			}
+						
+			$this->questions();
+
+
+		}
+		else{
+			
+			
+			$topics_list = $this->adminmodel->get_all_topics();
+			
+
+			$data['topics_list'] = $topics_list;
+			
+			$this->load->view('admin/create_question', $data);
+		}
+		
+	}
+	public function edit_question(){
+		$data['title'] = 'Update School';
+		$this->form_validation->set_rules('topic', 'Topic code', 'required');
+		//$this->form_validation->set_rules('school_code', 'School code is required', 'required');
+		
+			
+		if ($this->form_validation->run() === TRUE)
+		{
+			
+				
+			$question_data['question'] = $this->input->post('question_text');
+			$question_data['topic_id'] = $this->input->post('topic');
+			$question_data['avg_time'] = $this->input->post('AvgTime');
+			$question_data['difficulty_level'] = $this->input->post('difficulty_level');
+			$question_data['question_status'] = 1;
+			if (!empty($_FILES['question_image']['name'])) {
+
+				$upload_config = $this->config->item('question_upload');
+				$this->load->library('upload', $upload_config);	
+				if ( ! $this->upload->do_upload('question_image'))
+         		{
+				 
+					   $error = array('error' => $this->upload->display_errors());
+					   
+				}
+				else{
+					$question_image_data = $this->upload->data();
+					$question_data['question_image'] = $question_image_data['orig_name'];
+				}
+			}
+			$this->adminmodel->create_question($question_data);
+			$new_question_id = $this->db->insert_id();
+			if($new_question_id){
+				$this->create_question_options($new_question_id);
+			}
+						
+			$this->questions();
+
+
+		}
+		else{
+			
+			$question_id = $this->input->get('question_id');
+			$data['topics_list'] = $this->adminmodel->get_all_topics();
+			$data['question_data'] = $this->adminmodel->get_question_by_id($question_id);
+			
+			$this->load->view('admin/edit_question', $data);
+		}
+		
+	}
+
+	public function create_question_options($question_id){
+
+			$options_count = $this->input->post('options_count');
+			$choice_data['question_id'] = $question_id;
+			for($i=1; $i<=$options_count; $i++){
+				$current_text_option = 'option-'.$i.'-text';
+				$current_image_option = 'option-'.$i.'-image';	
+				$choice_data['choice_text'] = $this->input->post($current_text_option);
+				if (!empty($_FILES[$current_image_option]['name'])) {
+
+					$upload_config = $this->config->item('question_upload');
+					$this->load->library('upload', $upload_config);	
+					if ( ! $this->upload->do_upload($current_image_option))
+         			{
+				 
+				   		$error = array('error' => $this->upload->display_errors());
+					}
+					else{
+						$option_image_data = $this->upload->data();
+						$choice_data['choice_image'] = $option_image_data['orig_name'];
+					}
+				}
+
+				$this->adminmodel->create_question_option($choice_data);
+			    $created_choices[] = $this->db->insert_id(); 
+			
+			}
+			$correct_option = $this->input->post('correct_option');
+			$question_answer['question_id'] = $question_id;
+			$question_answer['choice_id'] = $created_choices[$correct_option-1];
+			$this->adminmodel->create_question_answer($question_answer);
+	}
 	
 	public function view_institution(){
 		
 		
 			$institution_id = $this->input->get('institution_id');
 			$result = $this->adminmodel->get_institution_schools_by_id($institution_id);
+			
 			$data['institution_data'] = $result;
 			$this->load->view('admin/view_institution', $data);
 		
 		
 	}
+
 	public function delete_institution(){
 		$institution_id = $this->input->get('institution_id');
 		$status = 0;
@@ -637,5 +786,18 @@ public function delete_user(){
 	$this->users();
 	
 }
+
+public function renderQuestionOptions(){
+
+	$options_count = $this->input->get('options_count');
+	if(!empty($options_count)){
+
+		
+		$data['options_count'] = $options_count;
+		
+		$this->load->view('ajax_templates/choice_options', $data);
+	}
+}
+
 
 }

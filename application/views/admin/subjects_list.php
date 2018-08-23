@@ -6,11 +6,11 @@ if(empty($subjects_list)){
 <div class="alert alert-warning">No subjects found.</div>
 <div class="col-md-12 col-lg-12 col-sm-12  pull-right">
                              
-                             <span class="input-group-btn">
-                             <button class="btn btn-info btn-lg" type="button" onclick="createNew('admin/create_subject','subjects_tab');">
-                             <i class="fa fa-search-plus">Create New</i>
+                             
+                             <button class="addnew-btn pull-left" type="button" onclick="createNew('admin/create_subject','subjects_tab');">
+                             Add New
                              </button>
-                             </span>
+                             
                           </div>
 <?php  
 exit;                        
@@ -32,11 +32,11 @@ exit;
                            </div>
 						   <div class="col-md-3 pull-right">
                               
-                              <span class="input-group-btn">
-                              <button class="btn btn-info btn-lg" type="button" onclick="createNew('admin/create_subject','subjects_tab');">
-                              <i class="fa fa-search-plus">Create New</i>
+                              
+                              <button class="addnew-btn pull-left" type="button" onclick="createNew('admin/create_subject','subjects_tab');">
+                              Add New
                               </button>
-                              </span>
+                              
                            </div>
                         </div>
                         <div class="user-table">

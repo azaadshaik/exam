@@ -26,11 +26,12 @@ $('.admin_container .nav-tabs li > a').click(function(e){
         
         return;
    }*/
-   
+   $('#loader').show();
     $.ajax({
         url: url,
         type: 'GET',
         success: function (data) {
+		$('#loader').hide();
             $(contentDiv).html(data);
         }
         
@@ -39,7 +40,7 @@ $('.admin_container .nav-tabs li > a').click(function(e){
 });
 
 function submitForm(formId,redirect,contentDiv){
-    
+    $('#loader').show();
     var thisform = document.getElementById(formId);
     var action = thisform.getAttribute('action');
     var formData = new FormData(thisform);
@@ -50,7 +51,7 @@ function submitForm(formId,redirect,contentDiv){
         data: formData,
         enctype: 'multipart/form-data',
         success: function (data) {
-            
+            $('#loader').hide();
            // loadRedirect(redirect,contentDiv);
            $('#'+contentDiv).html(data);
         },
@@ -62,11 +63,12 @@ function submitForm(formId,redirect,contentDiv){
 }
 
 function loadRedirect(url,divToUpdate){
-
+$('#loader').show();
     $.ajax({
         url: url,
         type: 'GET',
         success: function (data) {
+		$('#loader').hide();
             $('#'+divToUpdate).html(data);
         }
         
@@ -76,12 +78,13 @@ function loadRedirect(url,divToUpdate){
 
 function createNew(url,divToUpdate){
  
-    
+    $('#loader').show();
        
     $.ajax({
         url: url,
         type: 'GET',
         success: function (data) {
+		$('#loader').hide();
             $('#'+divToUpdate).html(data);
         }
         
@@ -102,6 +105,21 @@ function renderRolebasedFields(option){
 
 
 }
+function renderQuestionOptions(options_count){
+    
+    $.ajax({
+        url: 'admin/renderQuestionOptions/?options_count='+options_count,
+        type: 'GET',
+        success: function (data) {
+            $('#question_options').html(data);
+        }
+        
+    });
+
+
+
+}
+
 
 function loadSchools(instituteId){
 	
@@ -198,33 +216,38 @@ function loadDistricts(stateId){
     
 }
 function viewSchool(schoolId,divToUpdate){
-
+	
+	$('#loader').show();
     $.ajax({
         url: 'admin/view_school/?school_id='+schoolId,
         type: 'GET',
         success: function (data) {
+		$('#loader').hide();
             $('#'+divToUpdate).html(data);
+			
         }
         
     });
 }
 function viewSubject(subjectId,divToUpdate){
-
+	$('#loader').show();
     $.ajax({
         url: 'admin/view_subject/?subject_id='+subjectId,
         type: 'GET',
         success: function (data) {
+			$('#loader').hide();
             $('#'+divToUpdate).html(data);
         }
         
     });
 }
 function editSchool(schoolId,divToUpdate){
-
+	$('#loader').show();
     $.ajax({
         url: 'admin/edit_school/?school_id='+schoolId,
         type: 'GET',
         success: function (data) {
+		$('#loader').hide();
             $('#'+divToUpdate).html(data);
         }
         
@@ -232,22 +255,24 @@ function editSchool(schoolId,divToUpdate){
 }
 
 function editSubject(subjectId,divToUpdate){
-
+	$('#loader').show();
     $.ajax({
         url: 'admin/edit_subject/?subject_id='+subjectId,
         type: 'GET',
         success: function (data) {
+		$('#loader').hide();
             $('#'+divToUpdate).html(data);
         }
         
     });
 }
 function editTopic(topicId,divToUpdate){
-
+$('#loader').show();
     $.ajax({
         url: 'admin/edit_topic/?topic_id='+topicId,
         type: 'GET',
         success: function (data) {
+		$('#loader').hide();
             $('#'+divToUpdate).html(data);
         }
         
@@ -257,11 +282,12 @@ function editTopic(topicId,divToUpdate){
 
 
 function editInstitution(institutionId,divToUpdate){
-
+$('#loader').show();
     $.ajax({
         url: 'admin/edit_institution/?institution_id='+institutionId,
         type: 'GET',
         success: function (data) {
+		$('#loader').hide();
             $('#'+divToUpdate).html(data);
         }
         
@@ -269,11 +295,12 @@ function editInstitution(institutionId,divToUpdate){
 }
 
 function viewInstitution(institutionId,divToUpdate){
-
+$('#loader').show();
     $.ajax({
         url: 'admin/view_institution/?institution_id='+institutionId,
         type: 'GET',
         success: function (data) {
+		$('#loader').hide();
             $('#'+divToUpdate).html(data);
         }
         
@@ -284,10 +311,12 @@ function deleteInstitution(institutionId,divToUpdate){
  $.confirm({
         text: "Are you sure to delete?",
         confirm: function(button) {
+		$('#loader').show();
              $.ajax({
 				url: 'admin/delete_institution/?institution_id='+institutionId,
 				type: 'GET',
 				success: function (data) {
+				$('#loader').hide();
 					$('#'+divToUpdate).html(data);
 				}
         
@@ -307,10 +336,12 @@ function deleteSchool(schoolId,divToUpdate){
  $.confirm({
         text: "Are you sure to delete?",
         confirm: function(button) {
+		$('#loader').show();
              $.ajax({
 				url: 'admin/delete_school/?school_id='+schoolId,
 				type: 'GET',
 				success: function (data) {
+				$('#loader').hide();
 					$('#'+divToUpdate).html(data);
 				}
         
@@ -330,10 +361,13 @@ function deleteTopic(topicId,divToUpdate){
     $.confirm({
            text: "Are you sure to delete?",
            confirm: function(button) {
+		   $('#loader').show();
                 $.ajax({
+				
                    url: 'admin/delete_topic/?topic_id='+topicId,
                    type: 'GET',
                    success: function (data) {
+				   $('#loader').hide();
                        $('#'+divToUpdate).html(data);
                    }
            
@@ -352,10 +386,12 @@ function deleteSubject(subjectId,divToUpdate){
     $.confirm({
            text: "Are you sure to delete?",
            confirm: function(button) {
+		   $('#loader').show();
                 $.ajax({
                    url: 'admin/delete_subject/?subject_id='+subjectId,
                    type: 'GET',
                    success: function (data) {
+				   $('#loader').hide();
                        $('#'+divToUpdate).html(data);
                    }
            
@@ -371,20 +407,24 @@ function deleteSubject(subjectId,divToUpdate){
    }
 
 function editUser(userId,divToUpdate){
+$('#loader').show();
 	 $.ajax({
         url: 'user/edit_user/?user_id='+userId,
         type: 'GET',
         success: function (data) {
+		$('#loader').hide();
             $('#'+divToUpdate).html(data);
         }
         
     });
 }
 function viewUser(userId,divToUpdate){
+$('#loader').show();
     $.ajax({
        url: 'user/view_user/?user_id='+userId,
        type: 'GET',
        success: function (data) {
+	   $('#loader').hide();
            $('#'+divToUpdate).html(data);
        }
        
@@ -392,10 +432,12 @@ function viewUser(userId,divToUpdate){
 }
 
 function viewTopic(topicId,divToUpdate){
+$('#loader').show();
     $.ajax({
        url: 'admin/view_topic/?topic_id='+topicId,
        type: 'GET',
        success: function (data) {
+	   $('#loader').hide();
            $('#'+divToUpdate).html(data);
        }
        
@@ -407,10 +449,12 @@ function deleteUser(userId,divToUpdate){
     $.confirm({
         text: "Are you sure to delete?",
         confirm: function(button) {
+		$('#loader').show();
             $.ajax({
                 url: 'user/delete_user/?user_id='+userId,
                 type: 'GET',
                 success: function (data) {
+				$('#loader').hide();
                     $('#'+divToUpdate).html(data);
                 }
                 
@@ -422,4 +466,42 @@ function deleteUser(userId,divToUpdate){
     });
     
 }
+
+function renderOptionImage(input,id) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+  
+        reader.onload = function (e) {
+            $('#'+id)
+                .attr('src', e.target.result)
+                .width(50)
+                .height(50);
+                $('#'+id).removeClass('hide');
+                $('#'+id).addClass('image_holder');   
+        };
+  
+        reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  function editQuestion(questionId,divToUpdate){
+    $('#loader').show();
+        $.ajax({
+            url: 'admin/edit_question/?question_id='+questionId,
+            type: 'GET',
+            success: function (data) {
+            $('#loader').hide();
+                $('#'+divToUpdate).html(data);
+            }
+            
+        });
+    }
+
+    function resetImageInput(link,elementId,imageId){
+        var ele = document.getElementById(elementId);
+        document.getElementById(elementId).value='';
+        $('#'+imageId).attr('src','#');
+        $('#'+imageId).addClass('hide');
+        link.hide();
+    }
 

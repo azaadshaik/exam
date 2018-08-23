@@ -73,8 +73,8 @@
                               <tr>
                                  <th scope="col">User Name</th>
                                  <th scope="col">Role</th>
-                                 <th scope="col">School</th>
-                                 <th scope="col">Class</th>
+                                 <th scope="col">Firstname</th>
+                                 <th scope="col">Lastname</th>
                                  <th scope="col">Actions</th>
                               </tr>
                            </thead>
@@ -87,8 +87,8 @@
                                  <tr>
                                     <td><?php echo $user['user_name'];?></td>
                                     <td><?php echo $user['role_name'];?></td>
-                                    <td>VBHS</td>
-                                    <td>9</td>
+                                    <td><?php echo $user['user_firstname'];?></td>
+                                    <td><?php echo $user['user_lastname'];?></td>
                                     <td class="sub-table">
                                        <table class="table table-bordered table-striped">
                                           <tbody>

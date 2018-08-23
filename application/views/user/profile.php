@@ -74,16 +74,10 @@
                                  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                     <div class="adm_inputs_wrap">
                                        <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Parent Name</label>
-                                       <span class="user-static col-lg-8 col-md-8 col-sm-8 col-xs-8"><?php echo $user_data->institution_name;?></span>
+                                       <span class="user-static col-lg-8 col-md-8 col-sm-8 col-xs-8"><?php echo 'Yet to implement';?></span>
                                     </div>
-                                    <div class="adm_inputs_wrap">
-                                       <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Location</label>
-                                       <span class="user-static col-lg-8 col-md-8 col-sm-8 col-xs-8"><?php echo $user_data->institution_name;?></span>
-                                    </div>
-                                    <div class="adm_inputs_wrap">
-                                       <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Mobile Number</label>
-                                       <span class="user-static col-lg-8 col-md-8 col-sm-8 col-xs-8"><?php echo $user_data->school_phone;?></span>
-                                    </div>
+                                    
+                                    
                                    
                                     
                                    

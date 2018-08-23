@@ -1,35 +1,23 @@
-<?php
-// echo "<pre>";
-// print_r($institution_data);
-// die;
-?>
-                  
 <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><?php echo $institution_data[0]['institution_name'];?></h2>
-                     
-                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        
-                        <div class="user-table">
-                           <table class="table table-bordered table-striped">
-                           <tbody>
-                                 <tr>
-                                    <td>Institution Name</td><td><?php echo $institution_data[0]['institution_name'];?></td>
-                                  </tr>
-                                  <tr>  
-                                    <td>Institution Code</td><td><?php echo $institution_data[0]['institution_code'];?></td>
-                                   </tr> 
-                                  <tr>
-                                    <td>Number Of Schools</td><td><?php echo count($institution_data);?></td>
-                                   </tr>
-                                  <tr>
-                                                                                
-                              
-                                                               
-                              </tbody>
-                           </table>
-                        </div>
-                     </div>
+                     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                    <div class="adm_inputs_wrap">
+                                       <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> Name</label>
+                                       <span class="user-static col-lg-8 col-md-8 col-sm-8 col-xs-8"><?php echo $institution_data[0]['institution_name'];?></span>
+                                    </div>
+                                    <div class="adm_inputs_wrap">
+                                       <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> Code</label>
+                                       <span class="user-static col-lg-8 col-md-8 col-sm-8 col-xs-8"><?php echo $institution_data[0]['institution_code'];?></span>
+                                    </div>
+                                     <div class="adm_inputs_wrap">
+                                       <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Status</label>
+                                       <span class="user-static col-lg-8 col-md-8 col-sm-8 col-xs-8"><?php echo $institution_data[0]['institution_status']?'Active':'Inactive';?></span>
+                                    </div>
+                                    
+                    </div>
+                                    
+
 <?php					 
-if(count($institution_data) > 1 && $institution_data[0]['school_id']){ ?>
+if(count($institution_data) > 0 && $institution_data[0]['school_id']){ ?>
 <h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="color:#FFF;">Schools Associated With This Institution</h3>		 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         
                         <div class="user-table">
@@ -58,7 +46,7 @@ if(count($institution_data) > 1 && $institution_data[0]['school_id']){ ?>
 <?php	
 }
 else{
-	echo '<h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="color:#FFF;">No Schools Associated With This Institution</h3>';
+	echo '<h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="color:#FFF;">So Far No Schools Associated With This Institution </h3>';
 }					 
 
 					 

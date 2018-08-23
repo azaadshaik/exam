@@ -1,4 +1,22 @@
-             
+<?php
+if(empty($institution_list)){
+ 
+ ?>
+<div><h2>Institutions</h2></div>
+<div class="alert alert-warning">No institutions found.</div>
+<div class="col-md-12 col-lg-12 col-sm-12  pull-right">
+                             
+                             
+                             <button class="addnew-btn pull-left" type="button" onclick="createNew('admin/create_institute','institutions_tab');">
+                             Add New
+                             </button>
+                             
+                          </div>
+<?php  
+exit;                        
+}
+
+?>            
 <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Institutions</h2>
                      
                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

@@ -21,6 +21,19 @@ class UserModel extends CI_Model
 
        
     }
+    public function update_user($user_data,$user_id){
+       
+        $result= $this->db->update('users', $user_data, "user_id = $user_id");
+        return $result;
+  
+    }
+    public function update_user_to_class($user_data,$user_id){
+       
+        $result= $this->db->update('user_class', $user_data, "user = $user_id");
+        return $result;
+  
+    }
+    
 
    
     public function get_roles(){
@@ -77,8 +90,7 @@ class UserModel extends CI_Model
         $this->db->join('sections', 'sections.section_id = user_class.section','left');
         $this->db->where("users.user_id=$user_id");
         $result = $this->db->get()->row();
-        echo $this->db->last_query();
-		return $result;
+    	return $result;
 		
     }
 

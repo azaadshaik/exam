@@ -15,7 +15,19 @@
     
 </div>
 <div class="validationError"><?php echo form_error('institution_code'); ?></div>
+<div class="adm_inputs_wrap adm_checkbox">
+                           <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Status </label>
+                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+                              
+                                
+                                <span><label class="checkbox-inline"><input type="checkbox" name="status" <?php echo $institution_data->institution_status ? 'checked="checked"' : '';?>  value="<?php echo $institution_data->institution_status ? 1 : 0;?> "></span>
+                                
+                                
+                                </div>  
+                                
 
+                              
+                           </div>
 <div class="col-md-12">
     <button class="signin-btn" onclick="submitForm('insForm','admin/institutions','institutions_tab');" type="button">Submit</button>
 </div>

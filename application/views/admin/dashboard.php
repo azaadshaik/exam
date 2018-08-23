@@ -11,9 +11,10 @@
                   <li class="repo-ico nav-link"><a data-toggle="tab" href="#schools_tab" data-url="admin/schools"> Schools</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
                   <li class="repo-ico nav-link"><a data-toggle="tab" href="#subjects_tab" data-url="admin/subjects">Subjects</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
                   <li class="repo-ico nav-link"><a data-toggle="tab" href="#topics_tab" data-url="admin/topics">Topics</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
-                  <li class="repo-ico nav-link"><a data-toggle="tab" href="#Upload_Questions">Upload Questions</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                  <li class="repo-ico nav-link"><a data-toggle="tab" href="#questions_tab" data-url="admin/questions">Questions Bank</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                  <!--<li class="repo-ico nav-link"><a data-toggle="tab" href="#Upload_Questions">Upload Questions</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
                   <li class="repo-ico nav-link"><a data-toggle="tab" href="#Image_Questions">Create Image Questions</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
-                  <li class="repo-ico nav-link"><a data-toggle="tab" href="#Create_Question_Paper">Create Question Paper</a><i  class="fa fa-caret-down" style="display: none;"></i></li>
+                  <li class="repo-ico nav-link"><a data-toggle="tab" href="#Create_Question_Paper">Create Question Paper</a><i  class="fa fa-caret-down" style="display: none;"></i></li>-->
                </div>
             </div>
 
@@ -33,7 +34,9 @@
             </div>
             <div id="topics_tab" class="tab-pane fade">
             </div>
-
+            <div id="questions_tab" class="tab-pane fade">
+            </div>
+			<div id="loader"></div>
             </div>
            </div> 
             

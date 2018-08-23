@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
--- http://www.phpmyadmin.net
+-- version 4.8.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2018 at 06:29 PM
--- Server version: 5.6.20
--- PHP Version: 5.5.15
+-- Generation Time: Aug 23, 2018 at 01:58 PM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `onlineexam`
@@ -26,11 +28,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `classes`
 --
 
-CREATE TABLE IF NOT EXISTS `classes` (
-`class_id` int(11) NOT NULL,
+CREATE TABLE `classes` (
+  `class_id` int(11) NOT NULL,
   `class_name` varchar(255) NOT NULL,
   `class_code` varchar(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `classes`
@@ -50,12 +52,12 @@ INSERT INTO `classes` (`class_id`, `class_name`, `class_code`) VALUES
 -- Table structure for table `class_sections`
 --
 
-CREATE TABLE IF NOT EXISTS `class_sections` (
-`class_sections_id` int(10) unsigned NOT NULL,
+CREATE TABLE `class_sections` (
+  `class_sections_id` int(10) UNSIGNED NOT NULL,
   `class_sections_school_classes_id` int(11) NOT NULL,
   `class_sections_section_id` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -63,12 +65,12 @@ CREATE TABLE IF NOT EXISTS `class_sections` (
 -- Table structure for table `districts`
 --
 
-CREATE TABLE IF NOT EXISTS `districts` (
-`district_id` int(10) unsigned NOT NULL,
+CREATE TABLE `districts` (
+  `district_id` int(10) UNSIGNED NOT NULL,
   `district_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `district_state_id` int(11) NOT NULL,
   `district_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `districts`
@@ -84,13 +86,13 @@ INSERT INTO `districts` (`district_id`, `district_name`, `district_state_id`, `d
 -- Table structure for table `exam`
 --
 
-CREATE TABLE IF NOT EXISTS `exam` (
-`exam_id` int(10) unsigned NOT NULL,
+CREATE TABLE `exam` (
+  `exam_id` int(10) UNSIGNED NOT NULL,
   `exam_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `exam_datetime` datetime NOT NULL,
   `exam_duration` int(11) NOT NULL,
   `exam_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -98,8 +100,8 @@ CREATE TABLE IF NOT EXISTS `exam` (
 -- Table structure for table `exam_answers`
 --
 
-CREATE TABLE IF NOT EXISTS `exam_answers` (
-  `exam_answers_id` int(10) unsigned NOT NULL,
+CREATE TABLE `exam_answers` (
+  `exam_answers_id` int(10) UNSIGNED NOT NULL,
   `exam_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
@@ -116,12 +118,12 @@ CREATE TABLE IF NOT EXISTS `exam_answers` (
 -- Table structure for table `exam_enrollment`
 --
 
-CREATE TABLE IF NOT EXISTS `exam_enrollment` (
-`exam_enrollment_id` int(10) unsigned NOT NULL,
+CREATE TABLE `exam_enrollment` (
+  `exam_enrollment_id` int(10) UNSIGNED NOT NULL,
   `exam_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -129,12 +131,12 @@ CREATE TABLE IF NOT EXISTS `exam_enrollment` (
 -- Table structure for table `exam_results`
 --
 
-CREATE TABLE IF NOT EXISTS `exam_results` (
-`result_id` int(10) unsigned NOT NULL,
+CREATE TABLE `exam_results` (
+  `result_id` int(10) UNSIGNED NOT NULL,
   `exam_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `total_score` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -142,24 +144,19 @@ CREATE TABLE IF NOT EXISTS `exam_results` (
 -- Table structure for table `institution`
 --
 
-CREATE TABLE IF NOT EXISTS `institution` (
-`institution_id` int(11) NOT NULL,
+CREATE TABLE `institution` (
+  `institution_id` int(11) NOT NULL,
   `institution_name` varchar(255) NOT NULL,
   `institution_code` varchar(255) NOT NULL,
   `institution_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `institution`
 --
 
 INSERT INTO `institution` (`institution_id`, `institution_name`, `institution_code`, `institution_status`) VALUES
-(1, 'Nalanda Group', 'NLG', 1),
-(2, 'Narayana Group', 'NG', 1),
-(3, 'Ratnam Group', 'RG', 1),
-(4, 'Bhashyam Groups', 'BHS', 0),
-(5, 'RBS Group', 'RBSG', 1),
-(6, 'Masters Group Of Schools', 'MGS', 1);
+(8, 'Master Group Of School ', 'MGS', 1);
 
 -- --------------------------------------------------------
 
@@ -167,11 +164,18 @@ INSERT INTO `institution` (`institution_id`, `institution_name`, `institution_co
 -- Table structure for table `question_answers`
 --
 
-CREATE TABLE IF NOT EXISTS `question_answers` (
-`answer_id` int(10) unsigned NOT NULL,
+CREATE TABLE `question_answers` (
+  `answer_id` int(10) UNSIGNED NOT NULL,
   `question_id` int(11) NOT NULL,
   `choice_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `question_answers`
+--
+
+INSERT INTO `question_answers` (`answer_id`, `question_id`, `choice_id`) VALUES
+(3, 4, 10);
 
 -- --------------------------------------------------------
 
@@ -179,15 +183,22 @@ CREATE TABLE IF NOT EXISTS `question_answers` (
 -- Table structure for table `question_bank`
 --
 
-CREATE TABLE IF NOT EXISTS `question_bank` (
-`question_id` int(10) unsigned NOT NULL,
+CREATE TABLE `question_bank` (
+  `question_id` int(10) UNSIGNED NOT NULL,
   `question` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `question_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `topic_id` int(11) NOT NULL,
   `avg_time` int(11) NOT NULL,
   `difficulty_level` int(11) NOT NULL,
-  `question_type` enum('image','text') COLLATE utf8mb4_unicode_ci NOT NULL,
   `question_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `question_bank`
+--
+
+INSERT INTO `question_bank` (`question_id`, `question`, `question_image`, `topic_id`, `avg_time`, `difficulty_level`, `question_status`) VALUES
+(4, 'Identify the person in this picture ', 'sardar.jpg', 3, 90, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -195,12 +206,22 @@ CREATE TABLE IF NOT EXISTS `question_bank` (
 -- Table structure for table `question_choices`
 --
 
-CREATE TABLE IF NOT EXISTS `question_choices` (
-`choice_id` int(10) unsigned NOT NULL,
+CREATE TABLE `question_choices` (
+  `choice_id` int(10) UNSIGNED NOT NULL,
   `choice_text` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `choice_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `choice_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `question_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `question_choices`
+--
+
+INSERT INTO `question_choices` (`choice_id`, `choice_text`, `choice_image`, `question_id`) VALUES
+(9, 'Mahatma Gandhi', '', 4),
+(10, 'Sardar Vallabhai Patel', '', 4),
+(11, 'Jawaharlal Nehru', '', 4),
+(12, 'Subhash Chandra Bose', '', 4);
 
 -- --------------------------------------------------------
 
@@ -208,12 +229,12 @@ CREATE TABLE IF NOT EXISTS `question_choices` (
 -- Table structure for table `question_paper`
 --
 
-CREATE TABLE IF NOT EXISTS `question_paper` (
-`question_paper_id` int(10) unsigned NOT NULL,
+CREATE TABLE `question_paper` (
+  `question_paper_id` int(10) UNSIGNED NOT NULL,
   `question_id` int(11) NOT NULL,
   `exam_id` int(11) NOT NULL,
   `question_paper_status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -221,11 +242,11 @@ CREATE TABLE IF NOT EXISTS `question_paper` (
 -- Table structure for table `roles`
 --
 
-CREATE TABLE IF NOT EXISTS `roles` (
-`role_id` int(11) unsigned NOT NULL,
+CREATE TABLE `roles` (
+  `role_id` int(11) UNSIGNED NOT NULL,
   `role_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `roles`
@@ -244,8 +265,8 @@ INSERT INTO `roles` (`role_id`, `role_code`, `role_name`) VALUES
 -- Table structure for table `schools`
 --
 
-CREATE TABLE IF NOT EXISTS `schools` (
-`school_id` int(11) NOT NULL,
+CREATE TABLE `schools` (
+  `school_id` int(11) NOT NULL,
   `school_name` varchar(255) NOT NULL,
   `school_code` varchar(11) NOT NULL,
   `school_institution` int(11) NOT NULL,
@@ -255,16 +276,14 @@ CREATE TABLE IF NOT EXISTS `schools` (
   `school_principal` varchar(255) NOT NULL,
   `school_phone` varchar(255) NOT NULL,
   `school_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `schools`
 --
 
 INSERT INTO `schools` (`school_id`, `school_name`, `school_code`, `school_institution`, `school_state`, `school_district`, `school_address`, `school_principal`, `school_phone`, `school_status`) VALUES
-(22, 'RFS ', 'RFS', 6, 2, 1, '', 'azaad', '343434343434', 1),
-(23, 'Nalanda EM High School', 'NLEM', 1, 2, 2, 'Gayatri Nagar, Kavali', 'Maamu', '7305544866', 0),
-(24, 'Master Roots', 'MR', 6, 2, 1, 'Santhi Nagar, Kavali', 'Azaad', '7504477466', 0);
+(27, 'Redfields International School', 'RFS', 8, 2, 1, 'Musunur,Kavali', 'Chandra Sekhar', '7305544866', 1);
 
 -- --------------------------------------------------------
 
@@ -272,44 +291,35 @@ INSERT INTO `schools` (`school_id`, `school_name`, `school_code`, `school_instit
 -- Table structure for table `school_classes`
 --
 
-CREATE TABLE IF NOT EXISTS `school_classes` (
-`school_classes_id` int(11) NOT NULL,
+CREATE TABLE `school_classes` (
+  `school_classes_id` int(11) NOT NULL,
   `school_classes_class_id` int(11) DEFAULT NULL,
   `school_classes_school_id` int(11) NOT NULL,
-  `school_classes_section_id` int(11) NOT NULL,
+  `school_classes_section_id` tinyint(1) NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `school_classes`
 --
 
 INSERT INTO `school_classes` (`school_classes_id`, `school_classes_class_id`, `school_classes_school_id`, `school_classes_section_id`, `status`) VALUES
-(26, 1, 22, 1, 1),
-(27, 2, 22, 2, 0),
-(28, 5, 22, 3, 0),
-(29, 5, 22, 5, 1),
-(30, 6, 22, 4, 0),
-(31, 6, 22, 5, 0),
-(32, 2, 22, 1, 1),
-(33, 7, 22, 1, 0),
-(34, 7, 22, 5, 0),
-(35, 2, 22, 3, 0),
-(36, 5, 22, 4, 1),
-(37, 1, 22, 2, 1),
-(38, 1, 23, 1, 1),
-(39, 1, 23, 2, 1),
-(40, 1, 23, 3, 1),
-(41, 2, 23, 1, 1),
-(42, 2, 23, 2, 1),
-(43, 2, 23, 3, 1),
-(44, 5, 23, 1, 1),
-(45, 5, 23, 2, 1),
-(46, 6, 23, 1, 1),
-(47, 7, 23, 3, 1),
-(48, 1, 24, 1, 1),
-(49, 1, 24, 2, 1),
-(50, 2, 24, 1, 1);
+(56, 1, 27, 1, 1),
+(57, 1, 27, 2, 1),
+(58, 2, 27, 1, 1),
+(59, 2, 27, 2, 1),
+(60, 2, 27, 3, 1),
+(61, 5, 27, 1, 1),
+(62, 5, 27, 2, 1),
+(63, 5, 27, 3, 1),
+(64, 5, 27, 4, 1),
+(65, 6, 27, 1, 1),
+(66, 6, 27, 2, 1),
+(67, 6, 27, 3, 1),
+(68, 6, 27, 4, 1),
+(69, 6, 27, 5, 1),
+(70, 1, 27, 4, 1),
+(71, 1, 27, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -317,11 +327,11 @@ INSERT INTO `school_classes` (`school_classes_id`, `school_classes_class_id`, `s
 -- Table structure for table `sections`
 --
 
-CREATE TABLE IF NOT EXISTS `sections` (
-`section_id` int(11) NOT NULL,
+CREATE TABLE `sections` (
+  `section_id` int(11) NOT NULL,
   `section_name` varchar(255) NOT NULL,
   `section_code` varchar(10) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sections`
@@ -340,12 +350,12 @@ INSERT INTO `sections` (`section_id`, `section_name`, `section_code`) VALUES
 -- Table structure for table `states`
 --
 
-CREATE TABLE IF NOT EXISTS `states` (
-`state_id` int(11) NOT NULL,
+CREATE TABLE `states` (
+  `state_id` int(11) NOT NULL,
   `state_name` varchar(255) NOT NULL,
   `state_code` varchar(255) NOT NULL,
   `state_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `states`
@@ -358,26 +368,14 @@ INSERT INTO `states` (`state_id`, `state_name`, `state_code`, `state_status`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student_enrollment`
---
-
-CREATE TABLE IF NOT EXISTS `student_enrollment` (
-`enrollment_id` int(10) unsigned NOT NULL,
-  `student_id` int(11) NOT NULL,
-  `class_section_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `student_parent`
 --
 
-CREATE TABLE IF NOT EXISTS `student_parent` (
-`student_parent_id` int(10) unsigned NOT NULL,
+CREATE TABLE `student_parent` (
+  `student_parent_id` int(10) UNSIGNED NOT NULL,
   `student_id` int(11) NOT NULL,
   `parent_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -385,13 +383,21 @@ CREATE TABLE IF NOT EXISTS `student_parent` (
 -- Table structure for table `subjects`
 --
 
-CREATE TABLE IF NOT EXISTS `subjects` (
-`subject_id` int(10) unsigned NOT NULL,
+CREATE TABLE `subjects` (
+  `subject_id` int(10) UNSIGNED NOT NULL,
   `subject_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `subject_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `subject_class_id` int(11) NOT NULL,
   `subject_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`subject_id`, `subject_name`, `subject_code`, `subject_class_id`, `subject_status`) VALUES
+(8, 'Physics for 7th class', 'PS-7', 1, 1),
+(9, '7th class GK', 'GK-7', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -399,11 +405,11 @@ CREATE TABLE IF NOT EXISTS `subjects` (
 -- Table structure for table `subject_class`
 --
 
-CREATE TABLE IF NOT EXISTS `subject_class` (
-`subject_class_id` int(10) unsigned NOT NULL,
+CREATE TABLE `subject_class` (
+  `subject_class_id` int(10) UNSIGNED NOT NULL,
   `class_id` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -411,12 +417,12 @@ CREATE TABLE IF NOT EXISTS `subject_class` (
 -- Table structure for table `subject_teacher`
 --
 
-CREATE TABLE IF NOT EXISTS `subject_teacher` (
-`subject_teacher_id` int(10) unsigned NOT NULL,
+CREATE TABLE `subject_teacher` (
+  `subject_teacher_id` int(10) UNSIGNED NOT NULL,
   `school_class_id` int(11) NOT NULL,
   `subject_class_id` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -424,12 +430,22 @@ CREATE TABLE IF NOT EXISTS `subject_teacher` (
 -- Table structure for table `topics`
 --
 
-CREATE TABLE IF NOT EXISTS `topics` (
-`topic_id` int(10) unsigned NOT NULL,
+CREATE TABLE `topics` (
+  `topic_id` int(10) UNSIGNED NOT NULL,
   `topic_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `topic_subject_class_id` int(11) NOT NULL,
+  `topic_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `topic_class_id` int(11) NOT NULL,
+  `topic_subject_id` int(11) NOT NULL,
   `topic_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `topics`
+--
+
+INSERT INTO `topics` (`topic_id`, `topic_name`, `topic_code`, `topic_class_id`, `topic_subject_id`, `topic_status`) VALUES
+(2, 'Motion And Time', 'MT', 1, 8, 1),
+(3, 'Indian Polity', 'IP', 1, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -437,8 +453,8 @@ CREATE TABLE IF NOT EXISTS `topics` (
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-`user_id` int(11) NOT NULL,
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `password` text NOT NULL,
   `user_firstname` varchar(255) NOT NULL,
@@ -446,23 +462,42 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_address` text NOT NULL,
   `user_image` text NOT NULL,
   `user_role` int(11) NOT NULL,
+  `user_dob` date NOT NULL,
   `user_reg_date` date NOT NULL,
   `user_last_login` datetime NOT NULL,
   `user_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_name`, `password`, `user_firstname`, `user_lastname`, `user_address`, `user_image`, `user_role`, `user_reg_date`, `user_last_login`, `user_status`) VALUES
-(4, 'admin', '$2y$10$srbIg0BC/7m8L/ePlmWBeurQghchb78XvxjTrBD0ej1zU1AOlNF7m', 'Azaad', 'Shaik', '', '', 1, '2018-07-17', '0000-00-00 00:00:00', 1),
-(5, 'azaadshaik', '$2y$10$zZZFkotyfHDkuHe0Vg7xWu8VDZNuNLPJJOBVrMqSJm/6EjlJtPIZC', 'Azaad', 'Shaik', '', 'DSC_6372_-_Copy.JPG', 2, '2018-07-25', '0000-00-00 00:00:00', 1),
-(6, 'sddsdsad', '$2y$10$Jaa0GacWR8JxBRBG5/ZQqOJA9s7eaSWri5bbw.fCNP77z63NGOjRe', '', '', '', '', 0, '2018-07-25', '0000-00-00 00:00:00', 1),
-(7, 'sasas', '$2y$10$c7EZsFNkvN1JJflEeehk/eL0IM.XifO8u1GOQUawmFq8uhjAQn1d2', '', '', '', '', 0, '2018-07-25', '0000-00-00 00:00:00', 1),
-(8, 'xzxzX', '$2y$10$E4bODVKTuY6TciNxORjeOejptPpGPWmnre4jZOnbOXk/900ugKhNG', '', '', '', '', 0, '2018-07-25', '0000-00-00 00:00:00', 1),
-(9, 'asssasA', '$2y$10$hWrl4uavUHDHoueNO/.egObtDTCL5pVPJPfkgSITx9NfmFaeQYl8W', '', '', '', '', 0, '2018-07-25', '0000-00-00 00:00:00', 1),
-(10, 'praveen', '$2y$10$k914VimHFlrjnRk03ZTGDePNlEfDkQ/OjBDem/zuH2tps2SeCaT92', '', '', '', 'DSC_6372_-_Copy.JPG', 3, '2018-08-01', '0000-00-00 00:00:00', 1);
+INSERT INTO `users` (`user_id`, `user_name`, `password`, `user_firstname`, `user_lastname`, `user_address`, `user_image`, `user_role`, `user_dob`, `user_reg_date`, `user_last_login`, `user_status`) VALUES
+(4, 'admin', '$2y$10$srbIg0BC/7m8L/ePlmWBeurQghchb78XvxjTrBD0ej1zU1AOlNF7m', 'Azaad', 'Shaik', '', '', 1, '0000-00-00', '2018-07-17', '0000-00-00 00:00:00', 1),
+(10022, 'manojkumar', '$2y$10$nVYB8IgxlLC2zs3iqTr7xeDFbwuVP5DvwTAvhPmY638JBWrshR4T.', 'Manoj', 'Kumar', 'Janathapet , Kavali', 'profile-pic.png', 1, '0000-00-00', '2018-08-21', '0000-00-00 00:00:00', 1),
+(10025, 'wasimshaik', '$2y$10$w7.23Ev26UiCizxsOMTIlukmW79.XXipQy9AKtoOSwYZnuM4QszFC', 'Wasim', 'Shaik', 'Janathapet kavali', 'profile-pic.png', 2, '0000-00-00', '2018-08-20', '0000-00-00 00:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_class`
+--
+
+CREATE TABLE `user_class` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user` int(11) NOT NULL,
+  `institution` int(11) NOT NULL,
+  `school` int(11) NOT NULL,
+  `class` int(11) NOT NULL,
+  `section` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_class`
+--
+
+INSERT INTO `user_class` (`id`, `user`, `institution`, `school`, `class`, `section`) VALUES
+(5, 10025, 8, 27, 1, 2);
 
 --
 -- Indexes for dumped tables
@@ -472,145 +507,156 @@ INSERT INTO `users` (`user_id`, `user_name`, `password`, `user_firstname`, `user
 -- Indexes for table `classes`
 --
 ALTER TABLE `classes`
- ADD PRIMARY KEY (`class_id`), ADD UNIQUE KEY `class_name` (`class_name`), ADD UNIQUE KEY `class code` (`class_code`);
+  ADD PRIMARY KEY (`class_id`),
+  ADD UNIQUE KEY `class_name` (`class_name`),
+  ADD UNIQUE KEY `class code` (`class_code`);
 
 --
 -- Indexes for table `class_sections`
 --
 ALTER TABLE `class_sections`
- ADD PRIMARY KEY (`class_sections_id`);
+  ADD PRIMARY KEY (`class_sections_id`);
 
 --
 -- Indexes for table `districts`
 --
 ALTER TABLE `districts`
- ADD PRIMARY KEY (`district_id`);
+  ADD PRIMARY KEY (`district_id`);
 
 --
 -- Indexes for table `exam`
 --
 ALTER TABLE `exam`
- ADD PRIMARY KEY (`exam_id`);
+  ADD PRIMARY KEY (`exam_id`);
 
 --
 -- Indexes for table `exam_answers`
 --
 ALTER TABLE `exam_answers`
- ADD PRIMARY KEY (`exam_answers_id`);
+  ADD PRIMARY KEY (`exam_answers_id`);
 
 --
 -- Indexes for table `exam_enrollment`
 --
 ALTER TABLE `exam_enrollment`
- ADD PRIMARY KEY (`exam_enrollment_id`);
+  ADD PRIMARY KEY (`exam_enrollment_id`);
 
 --
 -- Indexes for table `exam_results`
 --
 ALTER TABLE `exam_results`
- ADD PRIMARY KEY (`result_id`);
+  ADD PRIMARY KEY (`result_id`);
 
 --
 -- Indexes for table `institution`
 --
 ALTER TABLE `institution`
- ADD PRIMARY KEY (`institution_id`), ADD UNIQUE KEY `institution_name` (`institution_name`), ADD UNIQUE KEY `institution_code` (`institution_code`);
+  ADD PRIMARY KEY (`institution_id`),
+  ADD UNIQUE KEY `institution_name` (`institution_name`),
+  ADD UNIQUE KEY `institution_code` (`institution_code`);
 
 --
 -- Indexes for table `question_answers`
 --
 ALTER TABLE `question_answers`
- ADD PRIMARY KEY (`answer_id`);
+  ADD PRIMARY KEY (`answer_id`);
 
 --
 -- Indexes for table `question_bank`
 --
 ALTER TABLE `question_bank`
- ADD PRIMARY KEY (`question_id`);
+  ADD PRIMARY KEY (`question_id`);
 
 --
 -- Indexes for table `question_choices`
 --
 ALTER TABLE `question_choices`
- ADD PRIMARY KEY (`choice_id`);
+  ADD PRIMARY KEY (`choice_id`);
 
 --
 -- Indexes for table `question_paper`
 --
 ALTER TABLE `question_paper`
- ADD PRIMARY KEY (`question_paper_id`);
+  ADD PRIMARY KEY (`question_paper_id`);
 
 --
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
- ADD PRIMARY KEY (`role_id`);
+  ADD PRIMARY KEY (`role_id`);
 
 --
 -- Indexes for table `schools`
 --
 ALTER TABLE `schools`
- ADD PRIMARY KEY (`school_id`), ADD UNIQUE KEY `school_code` (`school_code`);
+  ADD PRIMARY KEY (`school_id`),
+  ADD UNIQUE KEY `school_code` (`school_code`);
 
 --
 -- Indexes for table `school_classes`
 --
 ALTER TABLE `school_classes`
- ADD PRIMARY KEY (`school_classes_id`), ADD KEY `school_classes_fk0` (`school_classes_class_id`), ADD KEY `school_classes_fk1` (`school_classes_school_id`);
+  ADD PRIMARY KEY (`school_classes_id`),
+  ADD KEY `school_classes_fk0` (`school_classes_class_id`),
+  ADD KEY `school_classes_fk1` (`school_classes_school_id`);
 
 --
 -- Indexes for table `sections`
 --
 ALTER TABLE `sections`
- ADD PRIMARY KEY (`section_id`), ADD UNIQUE KEY `section_name` (`section_name`);
+  ADD PRIMARY KEY (`section_id`),
+  ADD UNIQUE KEY `section_name` (`section_name`);
 
 --
 -- Indexes for table `states`
 --
 ALTER TABLE `states`
- ADD PRIMARY KEY (`state_id`), ADD UNIQUE KEY `state_name` (`state_name`), ADD UNIQUE KEY `state_code` (`state_code`);
-
---
--- Indexes for table `student_enrollment`
---
-ALTER TABLE `student_enrollment`
- ADD PRIMARY KEY (`enrollment_id`);
+  ADD PRIMARY KEY (`state_id`),
+  ADD UNIQUE KEY `state_name` (`state_name`),
+  ADD UNIQUE KEY `state_code` (`state_code`);
 
 --
 -- Indexes for table `student_parent`
 --
 ALTER TABLE `student_parent`
- ADD PRIMARY KEY (`student_parent_id`);
+  ADD PRIMARY KEY (`student_parent_id`);
 
 --
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
- ADD PRIMARY KEY (`subject_id`);
+  ADD PRIMARY KEY (`subject_id`);
 
 --
 -- Indexes for table `subject_class`
 --
 ALTER TABLE `subject_class`
- ADD PRIMARY KEY (`subject_class_id`);
+  ADD PRIMARY KEY (`subject_class_id`);
 
 --
 -- Indexes for table `subject_teacher`
 --
 ALTER TABLE `subject_teacher`
- ADD PRIMARY KEY (`subject_teacher_id`);
+  ADD PRIMARY KEY (`subject_teacher_id`);
 
 --
 -- Indexes for table `topics`
 --
 ALTER TABLE `topics`
- ADD PRIMARY KEY (`topic_id`);
+  ADD PRIMARY KEY (`topic_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`user_id`), ADD UNIQUE KEY `user_name` (`user_name`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_name` (`user_name`);
+
+--
+-- Indexes for table `user_class`
+--
+ALTER TABLE `user_class`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -620,117 +666,140 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `class_sections`
 --
 ALTER TABLE `class_sections`
-MODIFY `class_sections_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `class_sections_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `districts`
 --
 ALTER TABLE `districts`
-MODIFY `district_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `district_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-MODIFY `exam_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `exam_enrollment`
 --
 ALTER TABLE `exam_enrollment`
-MODIFY `exam_enrollment_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `exam_enrollment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `exam_results`
 --
 ALTER TABLE `exam_results`
-MODIFY `result_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `institution`
 --
 ALTER TABLE `institution`
-MODIFY `institution_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `institution_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `question_answers`
 --
 ALTER TABLE `question_answers`
-MODIFY `answer_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `answer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `question_bank`
 --
 ALTER TABLE `question_bank`
-MODIFY `question_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `question_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `question_choices`
 --
 ALTER TABLE `question_choices`
-MODIFY `choice_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `choice_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `question_paper`
 --
 ALTER TABLE `question_paper`
-MODIFY `question_paper_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `question_paper_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-MODIFY `role_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `role_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `schools`
 --
 ALTER TABLE `schools`
-MODIFY `school_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+  MODIFY `school_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- AUTO_INCREMENT for table `school_classes`
 --
 ALTER TABLE `school_classes`
-MODIFY `school_classes_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
+  MODIFY `school_classes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+
 --
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `states`
 --
 ALTER TABLE `states`
-MODIFY `state_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `student_enrollment`
---
-ALTER TABLE `student_enrollment`
-MODIFY `enrollment_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `state_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `student_parent`
 --
 ALTER TABLE `student_parent`
-MODIFY `student_parent_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `student_parent_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-MODIFY `subject_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `subject_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `subject_class`
 --
 ALTER TABLE `subject_class`
-MODIFY `subject_class_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `subject_class_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `subject_teacher`
 --
 ALTER TABLE `subject_teacher`
-MODIFY `subject_teacher_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `subject_teacher_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `topics`
 --
 ALTER TABLE `topics`
-MODIFY `topic_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `topic_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10026;
+
+--
+-- AUTO_INCREMENT for table `user_class`
+--
+ALTER TABLE `user_class`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- Constraints for dumped tables
 --
@@ -739,8 +808,9 @@ MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 -- Constraints for table `school_classes`
 --
 ALTER TABLE `school_classes`
-ADD CONSTRAINT `school_classes_fk0` FOREIGN KEY (`school_classes_class_id`) REFERENCES `classes` (`class_id`),
-ADD CONSTRAINT `school_classes_fk1` FOREIGN KEY (`school_classes_school_id`) REFERENCES `schools` (`school_id`);
+  ADD CONSTRAINT `school_classes_fk0` FOREIGN KEY (`school_classes_class_id`) REFERENCES `classes` (`class_id`),
+  ADD CONSTRAINT `school_classes_fk1` FOREIGN KEY (`school_classes_school_id`) REFERENCES `schools` (`school_id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

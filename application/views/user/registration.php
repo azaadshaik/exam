@@ -43,7 +43,7 @@
                         
                         <div class="adm_inputs_wrap">
                            <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Address</label>
-                           <textarea rows="3" cols="12" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></textarea>
+                           <textarea rows="3" cols="12" name="user_address" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></textarea>
                         </div>
                        
                         <div class="custom-file-upload">

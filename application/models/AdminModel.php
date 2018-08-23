@@ -61,6 +61,18 @@ class AdminModel extends CI_Model
         
         return $result;
     }
+    public function get_all_questions(){
+        $this->db->select('question_bank.*,topics.topic_id,topics.topic_code,topics.topic_name,classes.class_name,classes.class_id,subjects.subject_name,subjects.subject_id');
+        $this->db->from('question_bank');
+        $this->db->join('topics','topics.topic_id = question_bank.topic_id');
+        $this->db->join('subjects','subjects.subject_id = topics.topic_subject_id');
+        $this->db->join('classes','classes.class_id = topics.topic_class_id');
+		$this->db->where('question_status=1');
+        $this->db->order_by("question_id", "desc");
+        $result = $this->db->get()->result_array();
+        
+        return $result;
+    }
     public function get_subject_by_id($subject_id){
         $this->db->select('subjects.subject_name,subjects.subject_id,subjects.subject_code,subjects.subject_status,subjects.subject_class_id,classes.class_name,classes.class_id');
         $this->db->from('subjects');
@@ -323,6 +335,41 @@ class AdminModel extends CI_Model
 		$result = $this->db->query($sql, array($school_id, $class_id, $section_id));
 		return $result;
     }
+
+    public function create_question($question_data){
+        
+        $result= $this->db->insert('question_bank', $question_data);
+        return $result;
+    }
+    public function create_question_option($option_data){
+
+        $result= $this->db->insert('question_choices', $option_data);
+        return $result;
+       
+    }
+    public function create_question_answer($question_answer){
+        
+        $result= $this->db->insert('question_answers', $question_answer);
+        return $result;
+       
+    }
+    public function get_question_by_id($question_id){
+
+        
+            $where ='question_bank.question_id='.$question_id.' and question_bank.question_status=1';
+            $this->db->select('question_bank.*,question_choices.*,question_answers.*');
+            $this->db->from('question_bank');
+            $this->db->join('question_choices','question_choices.question_id=question_bank.question_id');
+            $this->db->join('question_answers','question_answers.choice_id=question_choices.choice_id','left');
+            $this->db->where($where);
+            $this->db->order_by('question_choices.choice_id','asc');
+            $result = $this->db->get()->result_array();
+            echo $this->db->last_query();
+            return $result;
+        
+
+    }
+    
     
     
    

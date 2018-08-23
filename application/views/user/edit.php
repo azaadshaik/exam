@@ -5,6 +5,7 @@
                   <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Update User</h2>
                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					 <form action="user/edit_user" method="post" enctype="multipart/form-data" id="regForm">
+                     <input type="hidden" name="user_id" value="<?php echo $user_data->user_id;?>" >
                         <div class="adm_inputs_wrap">
                            <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">User Name <span class="mandatory">*</span></label>
                            <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" value="<?php echo $user_data->user_name;?>" type="text" class="input-fields form-control" placeholder="User Name" id="Username" name="username" required="">
@@ -41,6 +42,7 @@
                     <option value="0">Select Institution</option>
                     <?php
                         foreach($institutions as $institution){
+                            
                             if($institution['institution_id']==$user_data->institution){
                             echo "<option selected='selected' value=".$institution['institution_id'].">".$institution['institution_name']."</option>";
                             }
@@ -138,7 +140,7 @@
                         
                         <div class="adm_inputs_wrap">
                            <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Address</label>
-                           <textarea rows="3" cols="12" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><?php echo $user_data->user_address;?></textarea>
+                           <textarea rows="3" cols="12" name="user_address" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><?php echo $user_data->user_address;?></textarea>
                         </div>
                        
                         <div class="custom-file-upload">
