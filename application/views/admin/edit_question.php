@@ -1,6 +1,12 @@
+
+<?php
+// echo "<pre>";
+// print_r($question_data);
+// die;
+?>
 <!--Image Questions starts here -->
                   <div id="question_bank" class="tab-pane">
-				  <form action="admin/create_question" method="post" enctype="multipart/form-data" id="questionForm">
+				  <form action="admin/edit_question" method="post" enctype="multipart/form-data" id="questionForm">
                   <input type="hidden" name="question_id" value="<?php echo $question_data[0]['question_id'];?>" >
                      <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create Question</h2>
                      <div class="adm_inputs_wrap">

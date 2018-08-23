@@ -221,6 +221,7 @@ class AdminModel extends CI_Model
         return $result;
   
     }
+	
 	public function update_institution_status($institution_id,$status){
 		 $result= $this->db->update('institution', array('institution_status'=>$status), "institution_id = $institution_id");
         return $result;
@@ -341,6 +342,12 @@ class AdminModel extends CI_Model
         $result= $this->db->insert('question_bank', $question_data);
         return $result;
     }
+	 public function update_question($question_data,$question_id){
+       
+        $result= $this->db->update('question_bank', $question_data, "question_id = $question_id");
+        return $result;
+  
+    }
     public function create_question_option($option_data){
 
         $result= $this->db->insert('question_choices', $option_data);
@@ -357,9 +364,23 @@ class AdminModel extends CI_Model
 
         
             $where ='question_bank.question_id='.$question_id.' and question_bank.question_status=1';
-            $this->db->select('question_bank.*,question_choices.*,question_answers.*');
+            $this->db->select('question_bank.*,question_choices.choice_id,choice_text,choice_image,question_answers.answer_id,question_answers.answer_id as selected_choice');
             $this->db->from('question_bank');
             $this->db->join('question_choices','question_choices.question_id=question_bank.question_id');
+            $this->db->join('question_answers','question_answers.choice_id=question_choices.choice_id','left');
+            $this->db->where($where);
+            $this->db->order_by('question_choices.choice_id','asc');
+            $result = $this->db->get()->result_array();
+            return $result;
+        
+
+    }
+	public function get_question_choices_by_id($question_id){
+
+        
+            $where ='question_choices.question_id='.$question_id ;
+            $this->db->select('question_choices.*','question_answers.*');
+            $this->db->from('question_choices');
             $this->db->join('question_answers','question_answers.choice_id=question_choices.choice_id','left');
             $this->db->where($where);
             $this->db->order_by('question_choices.choice_id','asc');
@@ -369,6 +390,7 @@ class AdminModel extends CI_Model
         
 
     }
+	
     
     
     
