@@ -467,22 +467,7 @@ function deleteUser(userId,divToUpdate){
     
 }
 
-function renderOptionImage(input,id) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-  
-        reader.onload = function (e) {
-            $('#'+id)
-                .attr('src', e.target.result)
-                .width(50)
-                .height(50);
-                $('#'+id).removeClass('hide');
-                $('#'+id).addClass('image_holder');   
-        };
-  
-        reader.readAsDataURL(input.files[0]);
-    }
-  }
+
 
   function editQuestion(questionId,divToUpdate){
     $('#loader').show();
@@ -497,11 +482,31 @@ function renderOptionImage(input,id) {
         });
     }
 
-    function resetImageInput(link,elementId,imageId){
-        var ele = document.getElementById(elementId);
-        document.getElementById(elementId).value='';
+    function resetImageInput(closeLinkId,elementId,imageId){
+        
+        $('#'+elementId).val('');
+        $('#hidden-'+elementId).val('');
         $('#'+imageId).attr('src','#');
         $('#'+imageId).addClass('hide');
-        link.hide();
+        $('#'+closeLinkId).addClass('hide')
+        
     }
+    function renderOptionImage(input,id) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+      
+            reader.onload = function (e) {
+                $('#'+id)
+                    .attr('src', e.target.result)
+                    .width(50)
+                    .height(50);
+                    $('#'+id).removeClass('hide');
+                    $('#'+id).addClass('image_holder');
+                    $('#'+id).siblings().removeClass('hide');
+                    
+            };
+      
+            reader.readAsDataURL(input.files[0]);
+        }
+      }
 

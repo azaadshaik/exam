@@ -378,15 +378,17 @@ class Admin extends CI_Controller
 		if ($this->form_validation->run() === TRUE)
 		{
 			
-			
+			$question_image = $this->input->post('hidden-question_image'); 
 			$question_id = 	$this->input->post('question_id');
 			$question_data['question'] = $this->input->post('question_text');
 			$question_data['topic_id'] = $this->input->post('topic');
 			$question_data['avg_time'] = $this->input->post('AvgTime');
 			$question_data['difficulty_level'] = $this->input->post('difficulty_level');
 			$question_data['question_status'] = 1;
+			$question_data['question_image'] = $question_image;
+			if(empty($question_image)){
 			if (!empty($_FILES['question_image']['name'])) {
-
+					
 				$upload_config = $this->config->item('question_upload');
 				$this->load->library('upload', $upload_config);	
 				if ( ! $this->upload->do_upload('question_image'))
@@ -400,6 +402,9 @@ class Admin extends CI_Controller
 					$question_data['question_image'] = $question_image_data['orig_name'];
 				}
 			}
+
+		 }
+		 
 			$result = $this->adminmodel->update_question($question_data,$question_id);
 		
 			if($result){
@@ -429,6 +434,8 @@ class Admin extends CI_Controller
 				$current_text_option = 'option-'.$i.'-text';
 				$current_image_option = 'option-'.$i.'-image';	
 				$choice_data['choice_text'] = $this->input->post($current_text_option);
+				$hidden_option_image = $this->input->post('hidden-'.$current_text_option);
+				if(empty($hidden_option_image)){
 				if (!empty($_FILES[$current_image_option]['name'])) {
 
 					$upload_config = $this->config->item('question_upload');
@@ -442,6 +449,10 @@ class Admin extends CI_Controller
 						$option_image_data = $this->upload->data();
 						$choice_data['choice_image'] = $option_image_data['orig_name'];
 					}
+				}
+				}
+				else{
+					$choice_data['choice_image'] = $hidden_option_image;
 				}
 
 				$this->adminmodel->create_question_option($choice_data);
@@ -461,6 +472,8 @@ class Admin extends CI_Controller
 				$current_image_option = 'option-'.$i.'-image';	
 				$choice_data['choice_text'] = $this->input->post($current_text_option);
 				$choice_data['choice_image']='';
+				$hidden_option_image = $this->input->post('hidden-'.$current_text_option);
+				if(empty($hidden_option_image)){
 				if (!empty($_FILES[$current_image_option]['name'])) {
 
 					$upload_config = $this->config->item('question_upload');
@@ -474,6 +487,10 @@ class Admin extends CI_Controller
 						$option_image_data = $this->upload->data();
 						$choice_data['choice_image'] = $option_image_data['orig_name'];
 					}
+				}
+				}
+				else{
+					$choice_data['choice_image'] = $hidden_option_image;
 				}
 
 				$this->adminmodel->update_question_option($choice_data,$choice_id);

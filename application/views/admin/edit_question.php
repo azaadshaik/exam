@@ -8,15 +8,17 @@
                   <div id="question_bank" class="tab-pane">
 				  <form action="admin/edit_question" method="post" enctype="multipart/form-data" id="questionForm">
                   <input type="hidden" name="question_id" value="<?php echo $question_data[0]['question_id'];?>" >
+                   <input type="hidden" id="hidden-question_image" name="hidden-question_image" value="<?php echo $question_data[0]['question_image'];?>" > 
+                     
 				  <?php
 				  foreach($question_data as $key => $data){
 					  if($data['answer_id']){
 						  ?>
 						  <input type="hidden" name="answer_id" value="<?php echo $data['answer_id'];?>" > 
 						<?php  
-					  }
-					  ?>
-					   <input type="hidden" name="choice_image-<?php echo $key+1;?>" value="<?php echo $data['choice_image'];?>" > 
+                      }
+                      ?>
+					   <input type="hidden" id="hidden-option-<?php echo $key+1;?>-image" name="hidden-option-<?php echo $key+1;?>-image;?>" value="<?php echo $data['choice_image'];?>" > 
 					   <?php
 				  }
 				  ?>
@@ -49,8 +51,25 @@
                      <div class="custom-file-upload">
                         <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Question Image</label>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <img id="question_imageBox" class="image_holder" src="<?php echo ($question_data[0]['question_image'])?$this->config->item('asset_url').'/uploads/question_images/'.$question_data[0]['question_image'] :'#';?>"   />
-                        <a href="#" data-toggle="dropdown" onclick="resetImageInput(this,'question_image','question_imageBox');" ><i class="fa fa-close" style="font-size:36px;"></i></a> 
+                           <?php
+                           if(!empty($question_data[0]['question_image'])){
+                               
+                            ?>
+                            <img id="question_imageBox" class="image_holder" src="<?php echo $this->config->item('asset_url').'/uploads/question_images/'.$question_data[0]['question_image'] ;?>"   />
+                        <a href="#" data-toggle="dropdown" id="closelink" onclick="resetImageInput(this.id,'question_image','question_imageBox');" ><i class="fa fa-close" style="font-size:36px;"></i></a>
+
+                            <?php
+
+                           }
+                           else{
+                               ?>
+                               <img id="question_imageBox" class="image_holder hide" src="<?php echo ($question_data[0]['question_image'])?$this->config->item('asset_url').'/uploads/question_images/'.$question_data[0]['question_image'] :'#';?>"   />
+                        <a href="#" data-toggle="dropdown" id="closelink" class="hide" onclick="resetImageInput(this.id,'question_image','question_imageBox');" ><i class="fa fa-close" style="font-size:36px;"></i></a>
+                               <?php
+                           }
+                           ?>             
+                        
+
                            <label for="question_image" class="custom-file-upload-label">
                            <i class="fa fa-cloud-upload"></i> Upload Image
                            </label>
@@ -120,6 +139,7 @@
                                                          ?>
 
                                                             <img id="option-<?php echo $i;?>-imageBox" class="image_holder" src="<?php echo $this->config->item('asset_url').'/uploads/question_images/'.$question_data[$i-1]['choice_image'] ;?>"   />
+                                                            <a href="#" data-toggle="dropdown" id="closelink-option-<?php echo $i;?>-image" onclick="resetImageInput(this.id,'option-<?php echo $i;?>-image','option-<?php echo $i;?>-imageBox');" ><i class="fa fa-close" style="font-size:36px;"></i></a> 
 
                                                          <?php   
 
@@ -127,6 +147,7 @@
                                                     else{
                                                         ?>
                                                             <img id="option-<?php echo $i;?>-imageBox" src="#" class="hide image_holder"   />
+                                                            <a href="#" data-toggle="dropdown" class="hide"                                id="closelink-option-<?php echo $i;?>-image" onclick="resetImageInput(this.id,'option-<?php echo $i;?>-image','option-<?php echo $i;?>-imageBox');" ><i class="fa fa-close" style="font-size:36px;"></i></a>
                                                  <?php       
                                                     }
                                                 ?>
