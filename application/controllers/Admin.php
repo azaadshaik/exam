@@ -453,18 +453,14 @@ class Admin extends CI_Controller
 			$question_answer['choice_id'] = $created_choices[$correct_option-1];
 			$this->adminmodel->create_question_answer($question_answer);
 	}
-	public function update_question_options($question_id){
+	public function map_question_options($choices_array){
 		
-			$options_count = $this->input->post('options_count');
-			$existing_choices = $this->adminmodel->get_question_choices_by_id($question_id);
-			if($options_count == count($existing_choices)){ 
-			
-			// A new choice is added.update the old choices and add the new choice
-				for($i=1; $i<=count($existing_choices); $i++){
-				$choice_id = $existing_choices[$i-1]['choice_id'];				
+		for($i=1; $i<=count($choices_array); $i++){
+				$choice_id = $choices_array[$i-1]['choice_id'];				
 				$current_text_option = 'option-'.$i.'-text';
 				$current_image_option = 'option-'.$i.'-image';	
 				$choice_data['choice_text'] = $this->input->post($current_text_option);
+				$choice_data['choice_image']='';
 				if (!empty($_FILES[$current_image_option]['name'])) {
 
 					$upload_config = $this->config->item('question_upload');
@@ -481,43 +477,32 @@ class Admin extends CI_Controller
 				}
 
 				$this->adminmodel->update_question_option($choice_data,$choice_id);
-			    $choices[] = $choice_id; 
+			    $choices[] = $choice_id;
+				
 			
 			}
+			return $choices;	
+	}
+	public function update_question_options($question_id){
+		
+			$answer_id = $this->input->post('answer_id');
+			$options_count = $this->input->post('options_count');
+			$existing_choices = $this->adminmodel->get_question_choices_by_id($question_id);
+			if($options_count == count($existing_choices)){ 
+			
+				$choice_id_array = $this->map_question_options($existing_choices);
+				
 			}
 			else if($options_count > count($existing_choices)){ 
 			
 				$additional_options = $options_count - count($existing_choices);
 			// A new choice is added.update the old choices and add the new choice
-				for($i=1; $i<=count($existing_choices); $i++){
-				$choice_id = $existing_choices[$i-1]['choice_id'];				
-				$current_text_option = 'option-'.$i.'-text';
-				$current_image_option = 'option-'.$i.'-image';	
-				$choice_data['choice_text'] = $this->input->post($current_text_option);
-				if (!empty($_FILES[$current_image_option]['name'])) {
-
-					$upload_config = $this->config->item('question_upload');
-					$this->load->library('upload', $upload_config);	
-					if ( ! $this->upload->do_upload($current_image_option))
-         			{
-				 
-				   		$error = array('error' => $this->upload->display_errors());
-					}
-					else{
-						$option_image_data = $this->upload->data();
-						$choice_data['choice_image'] = $option_image_data['orig_name'];
-					}
-				}
-
-				$this->adminmodel->update_question_option($choice_data,$choice_id);
-				
-			    $choices[] = $choice_id; 
+				$choice_id_array = $this->map_question_options($existing_choices);
 			
-			}
 			for($i=1; $i<=$additional_options; $i++){
 						
-				$current_text_option = 'option-'.$i.'-text';
-				$current_image_option = 'option-'.$i.'-image';	
+				$current_text_option = 'option-'.(count($existing_choices)+1).'-text';
+				$current_image_option = 'option-'.(count($existing_choices)+1).'-image';	
 				$choice_data['choice_text'] = $this->input->post($current_text_option);
 				if (!empty($_FILES[$current_image_option]['name'])) {
 
@@ -533,53 +518,32 @@ class Admin extends CI_Controller
 						$choice_data['choice_image'] = $option_image_data['orig_name'];
 					}
 				}
-
+				$choice_data['question_id'] = $question_id;
 				$this->adminmodel->create_question_option($choice_data);
-			    $choices[] =$this->db->insert_id(); 
+			    $choice_id_array[] =$this->db->insert_id(); 
 			}
 			
 			}
 			else if($options_count < count($existing_choices)){ 
 			
 				$reduced_options =   count($existing_choices) - $options_count;
-			// A new choice is added.update the old choices and add the new choice
-				for($i=1; $i<=$options_count; $i++){
-				$choice_id = $existing_choices[$i-1]['choice_id'];				
-				$current_text_option = 'option-'.$i.'-text';
-				$current_image_option = 'option-'.$i.'-image';	
-				$choice_data['choice_text'] = $this->input->post($current_text_option);
-				if (!empty($_FILES[$current_image_option]['name'])) {
-
-					$upload_config = $this->config->item('question_upload');
-					$this->load->library('upload', $upload_config);	
-					if ( ! $this->upload->do_upload($current_image_option))
-         			{
-				 
-				   		$error = array('error' => $this->upload->display_errors());
-					}
-					else{
-						$option_image_data = $this->upload->data();
-						$choice_data['choice_image'] = $option_image_data['orig_name'];
-					}
-				}
-
-				$this->adminmodel->update_question_option($choice_data,$choice_id);
+		
+				$choice_id_array = $this->map_question_options($existing_choices);
 				
-			    $choices[] = $choice_id; 
-			
-			}
 			for($i=count($existing_choices); $i>$options_count; $i--){
 						
-				$choice_id = $existing_choices[$i-1];		
+				$choice_id = $existing_choices[$i-1]['choice_id'];		
 				$this->adminmodel->delete_question_option($choice_id);
 			 
 			}
 			
 			}
+			
 			$correct_option = $this->input->post('correct_option');
+			$this->adminmodel->get_question_choices_by_id($question_id);
 			$question_answer['question_id'] = $question_id;
-			$question_answer['choice_id'] = $created_choices[$correct_option-1];
-			$this->adminmodel->create_question_answer($question_answer);
+			$question_answer['choice_id'] = $choice_id_array[$correct_option-1];
+			$this->adminmodel->update_question_answer($question_answer,$answer_id);
 	}
 	
 	public function view_institution(){

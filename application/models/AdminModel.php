@@ -221,6 +221,18 @@ class AdminModel extends CI_Model
         return $result;
   
     }
+	 public function update_question_option($options_data,$choice_id){
+       
+        $result= $this->db->update('question_choices', $options_data, "choice_id = $choice_id");
+        return $result;
+  
+    }
+	public function update_question_answer($answer_data,$answer_id){
+       
+        $result= $this->db->update('question_answers', $answer_data, "answer_id = $answer_id");
+        return $result;
+  
+    }
 	
 	public function update_institution_status($institution_id,$status){
 		 $result= $this->db->update('institution', array('institution_status'=>$status), "institution_id = $institution_id");
@@ -229,6 +241,10 @@ class AdminModel extends CI_Model
     public function update_subject_status($subject_id,$status){
         $result= $this->db->update('subjects', array('subject_status'=>$status), "subject_id = $subject_id");
        return $result;
+   }
+   public function delete_question_option($choice_id){
+	   $result = $this->db->delete('question_choices', array('choice_id' => $choice_id));
+	   return $result;
    }
    public function update_topic_status($topic_id,$status){
     $result= $this->db->update('topics', array('topic_status'=>$status), "topic_id = $topic_id");

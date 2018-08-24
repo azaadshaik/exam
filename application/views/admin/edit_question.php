@@ -8,6 +8,18 @@
                   <div id="question_bank" class="tab-pane">
 				  <form action="admin/edit_question" method="post" enctype="multipart/form-data" id="questionForm">
                   <input type="hidden" name="question_id" value="<?php echo $question_data[0]['question_id'];?>" >
+				  <?php
+				  foreach($question_data as $key => $data){
+					  if($data['answer_id']){
+						  ?>
+						  <input type="hidden" name="answer_id" value="<?php echo $data['answer_id'];?>" > 
+						<?php  
+					  }
+					  ?>
+					   <input type="hidden" name="choice_image-<?php echo $key+1;?>" value="<?php echo $data['choice_image'];?>" > 
+					   <?php
+				  }
+				  ?>
                      <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create Question</h2>
                      <div class="adm_inputs_wrap">
                         <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Topic Code</label>
@@ -32,9 +44,7 @@
 					 
                      <div class="adm_inputs_wrap">
                         <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Question Text</label>
-                        <textarea rows="2" name="question_text" id="question_text" cols="12" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <?php echo $question_data[0]['question'];?>
-                        </textarea>
+                        <textarea rows="2" name="question_text" id="question_text" cols="12" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><?php echo $question_data[0]['question'];?></textarea>
                      </div>
                      <div class="custom-file-upload">
                         <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Question Image</label>
@@ -109,7 +119,7 @@
                                                     if($question_data[$i-1]['choice_image']){
                                                          ?>
 
-                                                            <img id="option-<?php echo $i;?>-imageBox" class="image_holder" src="<?php echo $this->config->item('asset_url').'/uploads/question_images/'.$question_data[0]['choice_image'] ;?>"   />
+                                                            <img id="option-<?php echo $i;?>-imageBox" class="image_holder" src="<?php echo $this->config->item('asset_url').'/uploads/question_images/'.$question_data[$i-1]['choice_image'] ;?>"   />
 
                                                          <?php   
 
