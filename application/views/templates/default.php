@@ -63,6 +63,7 @@
 
       <?php echo $body; ?>
       <script src="<?php echo $asset_url; ?>/js/jquery.js"></script>
+	  <script src="<?php echo $asset_url; ?>/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
       <script src="<?php echo $asset_url; ?>/js/bootstrap.min.js"></script>
       <script src="<?php echo $asset_url; ?>/js/jquery.stellar.min.js"></script>
       <script src="<?php echo $asset_url; ?>/js/jquery.magnific-popup.min.js"></script>
@@ -71,6 +72,8 @@
       <script src="<?php echo $asset_url; ?>/js/smoothscroll.js"></script>
       <script src="<?php echo $asset_url; ?>/js/custom.js"></script>
       <script src="<?php echo $asset_url; ?>/js/ajaxcalls.js"></script>
+	  
+	
       
 
 </body>

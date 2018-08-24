@@ -2,7 +2,7 @@
                      <h2 class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-left">User List</h2>
                      <div id="table-search-input">
                         <div class="input-group col-md-4 pull-right">
-                           <input type="text" class="form-control input-lg" placeholder="Search By Username" />
+                           <input type="text" id="user_search" data-table="users" data-autocomplete="search/index" class="form-control input-lg" placeholder="Search By Username" />
                            <span class="input-group-btn">
                            <button class="btn btn-info btn-lg" type="button">
                            <i class="fa fa-search-plus"></i>
@@ -110,3 +110,5 @@
                         </table>
                      </div>
                   </div>
+
+				  
