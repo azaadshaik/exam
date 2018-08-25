@@ -16,27 +16,33 @@
         processData: false
     });
 });*/
-$(document).delegate(":input[data-autocomplete]", "focus", function() {
+$(document).delegate(":input[data-search]", "keyup", function() {
 	var eleId = this.id;
-	
-	
-    $('#'+eleId).autocomplete({
-        source: function(request, response) {
-           		
-        $.ajax({
-            url: $('#'+eleId).attr('data-autocomplete'),
-            dataType: "json",
-            data: {
-                term : request.term,
-                module:$('#'+eleId).attr('data-table')
-            },
-            success: function(data) {
-								
-            }
-        });
-    },
-		min_length: 3,
-    });
+		$('.search-result').hide();
+        if($('#'+eleId).val().length > 2 ){
+			
+			$('#'+eleId).addClass('ui-autocomplete-loading');	
+			$('.search-button').hide();
+			$.ajax({
+				url: $('#'+eleId).attr('data-search'),
+				 type: 'GET',
+				data: {
+					term : $('#'+eleId).val(),
+					module:$('#'+eleId).attr('data-table')
+				},
+				success: function(data) {
+					$('.search-button').show();
+					$('#'+eleId).removeClass('ui-autocomplete-loading');
+					$('.search-result').html(data);
+					$('.search-result').show();
+						
+				}
+			});
+		}
+		else{
+			return false;
+		}
+  
 })
  
 
@@ -62,29 +68,6 @@ $('.admin_container .nav-tabs li > a').click(function(e){
 
 });
 
-$('#user_search').focus(function(){
-
-	$("#user_search").autocomplete({
-    source: function(request, response) {
-		
-        $.ajax({
-            url: 'search',
-            dataType: "json",
-            data: {
-                term : request.term,
-                country_id : 1
-            },
-            success: function(data) {
-				
-				alert('iam in0');
-                response(data);
-            }
-        });
-    },
-    min_length: 3,
-    delay: 300
-});
-});
 
 function submitForm(formId,redirect,contentDiv){
     $('#loader').show();
@@ -520,6 +503,18 @@ function deleteUser(userId,divToUpdate){
     $('#loader').show();
         $.ajax({
             url: 'admin/edit_question/?question_id='+questionId,
+            type: 'GET',
+            success: function (data) {
+            $('#loader').hide();
+                $('#'+divToUpdate).html(data);
+            }
+            
+        });
+    }
+	function viewQuestion(questionId,divToUpdate){
+    $('#loader').show();
+        $.ajax({
+            url: 'admin/view_question/?question_id='+questionId,
             type: 'GET',
             success: function (data) {
             $('#loader').hide();

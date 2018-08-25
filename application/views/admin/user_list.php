@@ -2,14 +2,18 @@
                      <h2 class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-left">User List</h2>
                      <div id="table-search-input">
                         <div class="input-group col-md-4 pull-right">
-                           <input type="text" id="user_search" data-table="users" data-autocomplete="search/index" class="form-control input-lg" placeholder="Search By Username" />
-                           <span class="input-group-btn">
+                           <input type="text" id="user_search" data-table="users" data-search="search/index" class="form-control input-lg " placeholder="Search By Username" />
+                           <span class="input-group-btn search-button">
                            <button class="btn btn-info btn-lg" type="button">
                            <i class="fa fa-search-plus"></i>
                            </button>
                            </span>
                         </div>
+						 <div class="search-result">
+					
+					 </div>
                      </div>
+					
                      <div class="user-list-header">
                         <div class="adm_inputs_wrap">
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">

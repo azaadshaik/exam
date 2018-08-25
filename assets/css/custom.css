@@ -590,6 +590,32 @@ img.image_holder{
   width:50px;
   float:left;
 }
+  .ui-autocomplete-loading {
+    background: white url("../images/ui-anim_basic_16x16.gif") right center no-repeat;
+  }
+  .search-result {
+    position: absolute;
+	float: right;
+	z-index: 100;
+	top: 10%;
+	right: 20%;
+	background: rgba(255,255,255,.5);
+	padding: 25px;
+	display:none;
+}
+ol{
+padding-left:10px;
+}
+.fa-close {
+	color : #9c0303;
+	font-size:25px;
+	margin-left:10px;
+}
+.fa-check {
+	color : #0be00b;
+	font-size:25px;
+	margin-left:10px;
+}
 
 @media (max-width: 768px){
   .logo{

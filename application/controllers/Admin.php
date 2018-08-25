@@ -613,6 +613,18 @@ class Admin extends CI_Controller
 		
 		
 	}
+	public function view_question(){
+		
+		
+			$question_id = $this->input->get('question_id');
+			$result = $this->adminmodel->get_question_by_id($question_id);
+			$data['question_data'] = $result;
+			
+			
+			$this->load->view('admin/view_question', $data);
+		
+		
+	}
 	public function view_subject(){
 		
 		
@@ -908,6 +920,59 @@ public function renderQuestionOptions(){
 		$this->load->view('ajax_templates/choice_options', $data);
 	}
 }
+
+public function create_question_paper(){
+		$data['title'] = 'New Question Paper';
+		$this->form_validation->set_rules('question_paper_name', 'Question Paper Title', 'required');
+		$this->form_validation->set_rules('question_paper_code', 'Question Paper Code', 'required');
+		
+			
+		if ($this->form_validation->run() === TRUE)
+		{
+			
+				
+			$question_paper_data['question_paper_name'] = $this->input->post('question_paper_name');
+			$question_paper_data['question_paper_code'] = $this->input->post('question_paper_code');
+			$question_paper_data['question_paper_status'] = $this->input->post('question_paper_status');
+			$question_data['difficulty_level'] = $this->input->post('difficulty_level');
+			$question_data['question_status'] = 1;
+			if (!empty($_FILES['question_image']['name'])) {
+
+				$upload_config = $this->config->item('question_upload');
+				$this->load->library('upload', $upload_config);	
+				if ( ! $this->upload->do_upload('question_image'))
+         		{
+				 
+					   $error = array('error' => $this->upload->display_errors());
+					   
+				}
+				else{
+					$question_image_data = $this->upload->data();
+					$question_data['question_image'] = $question_image_data['orig_name'];
+				}
+			}
+			$this->adminmodel->create_question($question_data);
+			$new_question_id = $this->db->insert_id();
+			if($new_question_id){
+				$this->create_question_options($new_question_id);
+			}
+						
+			$this->questions();
+
+
+		}
+		else{
+			
+			
+			$topics_list = $this->adminmodel->get_all_topics();
+			
+
+			$data['topics_list'] = $topics_list;
+			
+			$this->load->view('admin/create_question', $data);
+		}
+		
+	}
 
 
 }

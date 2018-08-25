@@ -380,8 +380,9 @@ class AdminModel extends CI_Model
 
         
             $where ='question_bank.question_id='.$question_id.' and question_bank.question_status=1';
-            $this->db->select('question_bank.*,question_choices.choice_id,choice_text,choice_image,question_answers.answer_id,question_answers.answer_id as selected_choice');
+            $this->db->select('question_bank.*,question_choices.choice_id,choice_text,choice_image,question_answers.answer_id,question_answers.answer_id as selected_choice,topics.topic_name,topics.topic_code');
             $this->db->from('question_bank');
+			$this->db->join('topics','question_bank.topic_id=topics.topic_id');
             $this->db->join('question_choices','question_choices.question_id=question_bank.question_id');
             $this->db->join('question_answers','question_answers.choice_id=question_choices.choice_id','left');
             $this->db->where($where);
