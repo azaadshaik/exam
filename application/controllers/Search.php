@@ -14,10 +14,12 @@ class Search extends CI_Controller
 	 */
 	public function index()
 	{
-                
-       echo "<pre>";
-	   print_r($_GET);
-	   die;
+	  $module = $this->input->get('module');
+	  $search = $this->input->get('term');
+       switch($module){
+		   case 'users':
+		   break;
+	   }
         
 	}
 

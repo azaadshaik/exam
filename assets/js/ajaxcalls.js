@@ -19,26 +19,19 @@
 $(document).delegate(":input[data-autocomplete]", "focus", function() {
 	var eleId = this.id;
 	
-	var url = $('#'+eleId).attr('data-autocomplete');
-	var module = $('#'+eleId).attr("data-table");
-	// alert(url);
-	// alert(module);
-    $(this).autocomplete({
-        source: function(request, response,module,url) {
-		console.log(this.element.id);
-		alert(url);
-		
+	
+    $('#'+eleId).autocomplete({
+        source: function(request, response) {
+           		
         $.ajax({
-            url: url,
+            url: $('#'+eleId).attr('data-autocomplete'),
             dataType: "json",
             data: {
                 term : request.term,
-                module:module,
+                module:$('#'+eleId).attr('data-table')
             },
             success: function(data) {
-				
-				alert('iam in0');
-                response(data);
+								
             }
         });
     },
