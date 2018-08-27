@@ -2,6 +2,9 @@
 <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create Question paper</h2>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <form action="admin/create_question_paper" method="post"  id="questionPaperForm">
+<div id="hidden_elements">
+
+</div>
 <div class="adm_inputs_wrap">
     <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Question Paper Name</label>
     <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12 <?php echo form_error('question_paper_name') ? 'error':'';?> " value="<?php echo set_value('question_paper_name');?>" type="text"  placeholder="Question Paper Name" id="questionPaperName" name="question_paper_name">
@@ -18,8 +21,8 @@
 <div class="validationError"><?php echo form_error('question_paper_code'); ?></div>
 
 <div class="adm_inputs_wrap">
-	<label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Exam</label>
-	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+	<label class="col-lg-3 col-md-3 col-sm-12 col-xs-12 drop_down">Exam</label>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
 	<div class="form-group">
 	<select class="dropdown form-control" id="exam_id" name="exam_id" >
 	<option value="">Select </option>
@@ -32,15 +35,17 @@
 
 	</select>
 	</div>
+	<div class="validationError"><?php echo form_error('exam_id'); ?></div>
+
 	</div>
 </div>
-<div class="validationError"><?php echo form_error('exam_id'); ?></div>
 
 <div class="row" >
 <div  class="col-sm-6" id="drag-drop-filters" >
 <!--FIlters comes here -->
-<div class="user-list-header">
+			<div class="user-list-header">
                         <div class="adm_inputs_wrap">
+						
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                              
                               <div class="form-group">
@@ -59,25 +64,23 @@
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                              
                               <div class="form-group">
-                                 <select class="dropdown form-control" id="subject">
+                                 <select class="dropdown form-control" id="subject" onchange="loadTopics(this.value);">
                                     <option value="0">Subject</option>
-                                    <option>Google</option>
-                                    <option>Bhashyam</option>
-                                    <option>RSR</option>
+                                   
                                  </select>
                               </div>
                            </div>
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                             
                               <div class="form-group">
-                                 <select class="dropdown form-control" id="sel1">
+                                 <select class="dropdown form-control" id="topic">
                                     <option value="0">Topic</option>
                                   </select>
                               </div>
                            </div>
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                        
-                              <select class="dropdown form-control" id="">
+                              <select class="dropdown form-control" id="level">
 							  
 							   <option value="0">Level</option>
                                  <option value="1">1</option>
@@ -89,14 +92,15 @@
                            </div>
                            
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
-                              <button class="apply-btn">Apply</button>
+                              <button class="apply-btn" type="button" onclick="updateQuestions();">Apply</button>
                            </div>
+						  
                         </div>
                      </div>
 					 <!-- filters ends here -->
 
 </div>  
-<div  class="col-sm-6"  ><span>Added:</span> <span id="qcount">0</span>Question paper Duration:</span><span id="qtime">0</span><span>&nbsp;Min</span></div>
+<div  class="col-sm-6"  ><span>Questions:</span> <span id="qcount">0</span> Duration:</span><span id="qtime">0</span><span>&nbsp;Min</span></div>
 </div>
  <div class="row" >
 
@@ -147,7 +151,7 @@ foreach($question_list as $question) { ?>
 
 
 <div class="col-md-12">
-    <button class="signin-btn" onclick="submitForm('questionPaperForm','bla','question_papers_tab');" type="button">Submit</button>
+    <button class="signin-btn" onclick="validateQuestionPaperForm();" type="button">Submit</button>
 </div>
 </form>
 </div>
@@ -176,9 +180,18 @@ document.addEventListener("dragend", function( event ) {
    
 	 var time =0;
      var numItems = $('#div2 > div').length;
+	 $("#hidden_elements").empty();
     $('#div2 > div').each(function(){
 	var idArray = (this.id).split('-');
     time = Number(time)+Number(idArray[1]) ;
+	
+	
+	  var element = document.createElement("Input");
+        element.setAttribute("type", "hidden");
+        element.setAttribute("value", idArray[0]);
+        element.setAttribute("name", "questions_added[]");
+	var divElement = document.getElementById('hidden_elements');
+	divElement.appendChild(element);
 	});
 	var timeInMin = time /60;
     $('#qcount').html(numItems);

@@ -188,6 +188,15 @@ class AdminModel extends CI_Model
         $result = $this->db->get()->result_array();
         return $result;
 	}
+	public function get_topics_by_subject_id($subject_id){
+		$where ='topics.topic_subject_id='.$subject_id.' and topics.topic_status=1';
+        $this->db->select('topics.topic_id,topics.topic_name');
+        $this->db->from('topics');
+		$this->db->join('subjects','topics.topic_subject_id=subjects.subject_id');
+		$this->db->where($where);
+        $result = $this->db->get()->result_array();
+        return $result;
+	}
     public function create_school($school_data){
 
         
@@ -459,6 +468,34 @@ class AdminModel extends CI_Model
         $result= $this->db->insert('question_paper', $question_paper_data);
         return $result;
     }
+	
+	public function getFilteredQuestions(array $filters){
+        
+          $where ='question_bank.question_status=1';
+		  if(isset($filters['class_id']) && !empty($filters['class_id'] )){
+			  $where.=" and classes.class_id=".$filters['class_id'];
+		  }
+		   if(isset($filters['subject_id'])  && !empty($filters['subject_id'])){
+			  $where.=" and subjects.subject_id=".$filters['subject_id'];
+		  }
+		   if(isset($filters['topic_id'])  && !empty($filters['topic_id'])){
+			  $where.=" and topics.topic_id=".$filters['topic_id'];
+		  }
+		   if(isset($filters['level'])  && !empty($filters['level'])){
+			  $where.=" and question_bank.difficulty_level=".$filters['level'];
+		  }
+            $this->db->select('question_bank.*,topics.topic_name,topics.topic_code,classes.class_name,subjects.subject_name');
+            $this->db->from('question_bank');
+			$this->db->join('topics','question_bank.topic_id=topics.topic_id');
+            $this->db->join('subjects','subjects.subject_id=topics.topic_subject_id');
+            $this->db->join('classes','classes.class_id=subjects.subject_class_id');
+            $this->db->where($where);
+            $this->db->order_by('question_bank.question_id','desc');
+            $result = $this->db->get()->result_array();
+		    return $result;
+    }
+	
+	
     
     
     

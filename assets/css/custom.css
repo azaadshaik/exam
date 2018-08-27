@@ -559,7 +559,7 @@ footer p {
   float:left;
 }
 
-input.error{
+input.error,select.error,textarea.error{
 
 border:2px solid red !important;
 }
@@ -645,6 +645,11 @@ padding:0px;
 #drag-drop-filters .apply-btn {
 margin:0;
 padding:0;
+}
+#qcount,#qtime{
+font-size: 25px;
+color: #FFF;
+margin: 10px;
 }
 
 @media (max-width: 768px){

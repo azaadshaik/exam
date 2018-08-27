@@ -843,6 +843,18 @@ public function getSubjectsByClassId(){
 	}
 
 }
+public function getTopicsBySubjectId(){
+		
+	$subject_id = $this->input->get('subject_id');
+	if(!empty($subject_id)){
+
+		$topics = $this->adminmodel->get_topics_by_subject_id($subject_id);
+		echo json_encode($topics);
+		exit;
+		
+	}
+
+}
 
 public function getClassesBySchoolId(){
 		
@@ -1036,10 +1048,12 @@ public function create_exam(){
 	}
 
 	public function create_question_paper(){
-		$data['title'] = 'New Question paper';
-		$this->form_validation->set_rules('question_paper_name', 'Question Paper Name', 'required');
-		$this->form_validation->set_rules('question_paper_code', 'Question Paper Code', 'required');
-		$this->form_validation->set_rules('exam_id', 'Exam ', 'required');
+		
+		
+		 $data['title'] = 'New Question paper';
+		 $this->form_validation->set_rules('question_paper_name', 'Question Paper Name', 'required');
+		 $this->form_validation->set_rules('question_paper_code', 'Question Paper Code', 'required');
+		 $this->form_validation->set_rules('exam_id', 'Exam ', 'required');
 		
 		
 			
@@ -1051,14 +1065,13 @@ public function create_exam(){
 			$question_paper_data['question_paper_code'] = $this->input->post('question_paper_code');
 			$question_paper_data['question_paper_status'] = 1;
 			$question_paper_data['exam_id'] = $this->input->post('exam_id');
-			
+			$question_ids = $this->input->post('questions_added');
+			$question_paper_questions = serialize($question_ids);
+			$question_paper_data['question_paper_questions'] = $question_paper_questions;
 			
 			
 			$this->adminmodel->create_question_paper($question_paper_data);
-			$new_paper_id = $this->db->insert_id();
-			if($new_paper_id){
-				//$this->create_question_paper($new_question_id);
-			}
+			
 						
 			$this->question_papers();
 
@@ -1071,6 +1084,7 @@ public function create_exam(){
 			$questions_list = $this->adminmodel->get_all_questions();
 			$classes_list = $this->adminmodel->get_all_classes();
 			$exam_list = $this->adminmodel->get_all_exams();
+		
 
 			$data['question_list'] = $questions_list;
 			$data['exam_list'] = $exam_list;
@@ -1081,13 +1095,25 @@ public function create_exam(){
 		
 	}
 
+public function loadQuestions(){
+	$filters = array();
+	$filters['class_id'] = $this->input->post('class_id');
+	$filters['subject_id'] = $this->input->post('subject_id');
+	$filters['topic_id'] = $this->input->post('topic_id');
+	$filters['level'] = $this->input->post('level');
+	$result = $this->adminmodel->getFilteredQuestions($filters);
+	$data['filtered_questions'] = $result;
+	$this->load->view('ajax_templates/filtered_questions', $data);
+}
 
-	/*public function load_questions_for_exam(){
-
-		$questions_list = $this->adminmodel->get_all_questions();
-		$data['question_list'] = $questions_list;
-		$this->load->view('admin/iframe_questions_list', $data);
-	}*/
+public function create_question_paper_questions($question_paper_id){
+	$question_ids = $this->input->post('hidden_elements');
+	if(!empty($question_ids)){
+		foreach($question_ids as $id){
+			
+		}
+	}
+}
 	
 
 

@@ -70,6 +70,8 @@ $('.admin_container .nav-tabs li > a').click(function(e){
 
 
 function submitForm(formId,redirect,contentDiv){
+	
+	
     $('#loader').show();
     var thisform = document.getElementById(formId);
     var action = thisform.getAttribute('action');
@@ -190,6 +192,28 @@ $('#subject').find('option').remove().end().append('<option value="0">Select Sub
 			
 			$.each( obj, function( key, value ) {
 				$("#subject").append( new Option(value.subject_name,value.subject_id) );
+			});
+		}
+        
+    });
+}
+function loadTopics(subjectId){
+	
+    $.ajax({
+        url: 'admin/getTopicsBySubjectId/?subject_id='+subjectId,
+        type: 'GET',
+        success: function (data) {
+            
+
+$('#topic').find('option').remove().end().append('<option value="0">Topic</option>');
+
+
+
+			$("#topic").removeAttr('disabled');
+			var obj = jQuery.parseJSON(data);
+			
+			$.each( obj, function( key, value ) {
+				$("#topic").append( new Option(value.topic_name,value.topic_id) );
 			});
 		}
         
@@ -610,7 +634,7 @@ function deleteUser(userId,divToUpdate){
           });
         });
 
-        $(document).delegate("input", "focus", function() {
+        $(document).delegate(":input", "focus", function() {
             if($(this).hasClass('error')){    
                 $( this ).removeClass('error');
                 $( this ).parent().next('div' ).hide();
@@ -618,17 +642,62 @@ function deleteUser(userId,divToUpdate){
 
         });
 
-       /* $( function() {
-            $( "#draggable" ).draggable();
-            $( "#droppable" ).droppable({
-              drop: function( event, ui ) {
-                $( this )
-                  .addClass( "ui-state-highlight" )
-                  .find( "p" )
-                    .html( "Dropped!" );
-              }
-            });
-          } );*/
-          
-          
+function updateQuestions(){
+$('#loader').show();
+var selectedClass = $('#class').val();
+var selectedSubject = $('#subject').val();
+var selectedtopic = $('#topic').val();
+var selectedlevel = $('#level').val();
+    $.ajax({
+        url: 'admin/loadQuestions',
+        type: 'POST',
+		data:{class_id:selectedClass,subject_id:selectedSubject,topic_id:selectedtopic,level:selectedlevel},
+        success: function (data) {
+		$('#loader').hide();
+            $('#div1').html(data);
+        }
+        
+    });   
+}
+
+function validateQuestionPaperForm(){
+
+if($('#questionPaperName').val()==''){
+	$('#questionPaperName').addClass('error');
+	$('#questionPaperName').parent().next('div' ).html('<p>Question Paper Name is required</p> ');
+	
+	$('#questionPaperName').parent().next('div' ).show();
+	return false;
+}
+else if($('#questionPaperCode').val()==''){
+	$('#questionPaperCode').addClass('error');
+	$('#questionPaperCode').parent().next('div' ).html('<p>Question Paper Code is required</p> ');
+	
+	$('#questionPaperCode').parent().next('div' ).show();
+}
+else if($('#exam_id').val()==0){
+	$('#exam_id').addClass('error');
+	$('#exam_id').parent().next('div' ).html('<p>Exam Name is required</p> ');
+	
+	$('#exam_id').parent().next('div' ).show();
+}
+else{
+	submitForm('questionPaperForm','bla','question_papers_tab');
+}
+var selectedSubject = $('#subject').val();
+var selectedtopic = $('#topic').val();
+var selectedlevel = $('#level').val();
+    $.ajax({
+        url: 'admin/loadQuestions',
+        type: 'POST',
+		data:{class_id:selectedClass,subject_id:selectedSubject,topic_id:selectedtopic,level:selectedlevel},
+        success: function (data) {
+		$('#loader').hide();
+            $('#div1').html(data);
+        }
+        
+    });   
+}
+
+ 
 
