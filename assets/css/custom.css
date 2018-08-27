@@ -616,6 +616,19 @@ padding-left:10px;
 	font-size:25px;
 	margin-left:10px;
 }
+.header span{
+  background-color: #215dba;
+  height:30px;
+  border:1px solid #FFF;
+}
+.draggable-row span {
+  border:1px solid #FFF;
+  background-color: #aa7bf6;
+  color: #000;
+  font-size:12px;
+  height:80px;
+  padding:10px 0;
+}
 
 @media (max-width: 768px){
   .logo{

@@ -56,6 +56,18 @@ class Admin extends CI_Controller
 		$data['institution_list'] = $institution_list;
 		$this->load->view('admin/institution_list', $data);
 	}
+	public function exams(){
+
+		$exams_list = $this->adminmodel->get_all_exams();
+		$data['exams_list'] = $exams_list;
+		$this->load->view('admin/exams_list', $data);
+	}
+	public function question_papers(){
+
+		$question_papers_list = $this->adminmodel->get_all_question_papers();
+		$data['question_papers_list'] = $question_papers_list;
+		$this->load->view('admin/question_papers_list', $data);
+	}
 	public function subjects(){
 
 		$subjects_list = $this->adminmodel->get_all_subjects();
@@ -921,10 +933,114 @@ public function renderQuestionOptions(){
 	}
 }
 
-public function create_question_paper(){
-		$data['title'] = 'New Question Paper';
-		$this->form_validation->set_rules('question_paper_name', 'Question Paper Title', 'required');
+public function create_exam(){
+		$data['title'] = 'New Exam';
+		$this->form_validation->set_rules('exam_name', 'Exam Name', 'required');
+		$this->form_validation->set_rules('exam_code', 'Exam Code', 'required');
+		$this->form_validation->set_rules('exam_duration', 'Exam Duration', 'required');
+		$this->form_validation->set_rules('exam_marks', 'Exam Marks', 'required');
+		$this->form_validation->set_rules('exam_datetime', 'Exam Date Time', 'required');
+		
+			
+		if ($this->form_validation->run() === TRUE)
+		{
+			
+				
+			$exam_data['exam_name'] = $this->input->post('exam_name');
+			$exam_data['exam_code'] = $this->input->post('exam_code');
+			$exam_data['exam_status'] = 1;
+			$exam_data['exam_duration'] = $this->input->post('exam_duration');
+			$exam_data['exam_marks'] = $this->input->post('exam_marks');
+			$exam_data['exam_datetime'] = $this->input->post('exam_datetime');
+			
+			
+			$this->adminmodel->create_exam($exam_data);
+			$new_exam_id = $this->db->insert_id();
+			if($new_exam_id){
+				//$this->create_question_paper($new_question_id);
+			}
+						
+			$this->exams();
+
+
+		}
+		else{
+			
+			
+			$exams_list = $this->adminmodel->get_all_exams();
+			
+
+			$data['exams_list'] = $exams_list;
+			
+			$this->load->view('admin/create_exam', $data);
+		}
+		
+	}
+	public function edit_exam(){
+		$data['title'] = 'Update Exam';
+		$this->form_validation->set_rules('exam_name', 'Exam Name', 'required');
+		$this->form_validation->set_rules('exam_code', 'Exam Code', 'required');
+		$this->form_validation->set_rules('exam_duration', 'Exam Duration', 'required');
+		$this->form_validation->set_rules('exam_marks', 'Exam Marks', 'required');
+		$this->form_validation->set_rules('exam_datetime', 'Exam Date Time', 'required');
+		
+			
+		if ($this->form_validation->run() === TRUE)
+		{
+			
+			$exam_id = $this->input->post('exam_id');	
+			$exam_data['exam_name'] = $this->input->post('exam_name');
+			$exam_data['exam_code'] = $this->input->post('exam_code');
+			$exam_data['exam_status'] = ($this->input->post('status'))?1:0;
+			$exam_data['exam_duration'] = $this->input->post('exam_duration');
+			$exam_data['exam_marks'] = $this->input->post('exam_marks');
+			$exam_data['exam_datetime'] = $this->input->post('exam_datetime');
+			
+			
+			$this->adminmodel->update_exam($exam_data,$exam_id);
+				
+			$this->exams();
+
+
+		}
+		else{
+			
+			$exam_id = $this->input->get('exam_id');
+			$result = $this->adminmodel->get_exam_by_id($exam_id);
+			$data['exam_data'] = $result;
+			$this->load->view('admin/edit_exam', $data);
+		
+
+		}
+		
+	}
+
+	public function view_exam(){
+		
+		
+		$exam_id = $this->input->get('exam_id');
+		$result = $this->adminmodel->get_exam_by_id($exam_id);
+		$data['exam_data'] = $result;
+		
+		$this->load->view('admin/view_exam', $data);
+	
+	
+	}
+
+	public function delete_exam(){
+		$exam_id = $this->input->get('exam_id');
+		$status = 0;
+		$this->adminmodel->update_exam_status($exam_id,$status);
+		$this->exams();
+		
+	}
+
+	public function create_question_paper(){
+		$data['title'] = 'New Question paper';
+		$this->form_validation->set_rules('question_paper_name', 'Question Paper Name', 'required');
 		$this->form_validation->set_rules('question_paper_code', 'Question Paper Code', 'required');
+		$this->form_validation->set_rules('exam_id', 'Exam ', 'required');
+		
 		
 			
 		if ($this->form_validation->run() === TRUE)
@@ -933,46 +1049,45 @@ public function create_question_paper(){
 				
 			$question_paper_data['question_paper_name'] = $this->input->post('question_paper_name');
 			$question_paper_data['question_paper_code'] = $this->input->post('question_paper_code');
-			$question_paper_data['question_paper_status'] = $this->input->post('question_paper_status');
-			$question_data['difficulty_level'] = $this->input->post('difficulty_level');
-			$question_data['question_status'] = 1;
-			if (!empty($_FILES['question_image']['name'])) {
-
-				$upload_config = $this->config->item('question_upload');
-				$this->load->library('upload', $upload_config);	
-				if ( ! $this->upload->do_upload('question_image'))
-         		{
-				 
-					   $error = array('error' => $this->upload->display_errors());
-					   
-				}
-				else{
-					$question_image_data = $this->upload->data();
-					$question_data['question_image'] = $question_image_data['orig_name'];
-				}
-			}
-			$this->adminmodel->create_question($question_data);
-			$new_question_id = $this->db->insert_id();
-			if($new_question_id){
-				$this->create_question_options($new_question_id);
+			$question_paper_data['question_paper_status'] = 1;
+			$question_paper_data['exam_id'] = $this->input->post('exam_id');
+			
+			
+			
+			$this->adminmodel->create_question_paper($question_paper_data);
+			$new_paper_id = $this->db->insert_id();
+			if($new_paper_id){
+				//$this->create_question_paper($new_question_id);
 			}
 						
-			$this->questions();
+			$this->question_papers();
 
 
 		}
 		else{
 			
 			
-			$topics_list = $this->adminmodel->get_all_topics();
-			
+			//$question_papers_list = $this->adminmodel->get_all_question_papers();
+			$questions_list = $this->adminmodel->get_all_questions();
+			$exam_list = $this->adminmodel->get_all_exams();
 
-			$data['topics_list'] = $topics_list;
+			$data['question_list'] = $questions_list;
+			$data['exam_list'] = $exam_list;
 			
-			$this->load->view('admin/create_question', $data);
+			$this->load->view('admin/create_question_paper', $data);
 		}
 		
 	}
+
+
+	/*public function load_questions_for_exam(){
+
+		$questions_list = $this->adminmodel->get_all_questions();
+		$data['question_list'] = $questions_list;
+		$this->load->view('admin/iframe_questions_list', $data);
+	}*/
+	
+
 
 
 }

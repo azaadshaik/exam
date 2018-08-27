@@ -12,6 +12,7 @@
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/bootstrap.min.css">
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/magnific-popup.css">
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/font-awesome.min.css">
+      <link rel="stylesheet" href="<?php echo $asset_url; ?>/js/datetimepicker/jquery.datetimepicker.css">
       <link href="https://fonts.googleapis.com/css?family=Oswald:200,400,700" rel="stylesheet">
       <!-- MAIN CSS -->
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/templatemo-style.css">
@@ -64,6 +65,7 @@
       <?php echo $body; ?>
       <script src="<?php echo $asset_url; ?>/js/jquery.js"></script>
 	  <script src="<?php echo $asset_url; ?>/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+      <script src="<?php echo $asset_url; ?>/js/datetimepicker/jquery.datetimepicker.full.js"></script>
       <script src="<?php echo $asset_url; ?>/js/bootstrap.min.js"></script>
       <script src="<?php echo $asset_url; ?>/js/jquery.stellar.min.js"></script>
       <script src="<?php echo $asset_url; ?>/js/jquery.magnific-popup.min.js"></script>

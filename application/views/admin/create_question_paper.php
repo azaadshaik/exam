@@ -1,81 +1,159 @@
-<!--Image Questions starts here -->
-                  <div id="question_bank" class="tab-pane">
-				  <form action="admin/create_question" method="post" enctype="multipart/form-data" id="questionForm">
-                     <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create Question</h2>
-                     <div class="adm_inputs_wrap">
-                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Topic Code</label>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
-                           <div class="form-group">
-                              <select class="dropdown form-control" id="topic" name="topic">
-                                 <option value="0"> Topic Code</option>
-                                 <?php
-                                 foreach($topics_list as $topic){
-                                    echo '<option value="'.$topic['topic_id'].'">'.$topic['topic_code'].'</option>';  
-                                 }
-                                 ?>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-					 
-                     <div class="adm_inputs_wrap">
-                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Question Text</label>
-                        <textarea rows="2" name="question_text" id="question_text" cols="12" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></textarea>
-                     </div>
-                     <div class="custom-file-upload">
-                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Question Image</label>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <img id="question_imageBox" src="#" class="hide"  />
-                           <label for="question_image" class="custom-file-upload-label">
-                           <i class="fa fa-cloud-upload"></i> Upload Image
-                           </label>
-                           <input id="question_image" name="question_image" type="file" onchange="renderOptionImage(this,'question_imageBox');" />
-                        </div>
-                     </div>
-					 <div class="adm_inputs_wrap">
-                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Difficulty Level</label>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
-                           <div class="form-group">
-                              <select class="dropdown form-control" id="difficulty_level" name="difficulty_level">
-                                 <option value="0"> Select</option>
-								 <option value="1"> 1</option>
-								 <option value="2"> 2</option>
-								 <option value="3"> 3</option>
-								 <option value="4"> 4</option>
-								 <option value="5"> 5</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="adm_inputs_wrap">
-                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Average Time</label>
-                        <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12" type="text" placeholder="Number in Seconds" id="AvgTime" name="AvgTime">
-                     </div>
-					 <div class="adm_inputs_wrap">
-                        <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">NUmber Of Options</label>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
-                           <div class="form-group">
-                              <select class="dropdown form-control" id="options_count" name="options_count" onchange="renderQuestionOptions(this.value);">
-                                 <option value="0"> Select</option>
-								 <option value="1"> 1</option>
-								 <option value="2"> 2</option>
-								 <option value="3"> 3</option>
-								 <option value="4"> 4</option>
-								 <option value="5"> 5</option>
-								 <option value="1"> 6</option>
-								 <option value="2"> 7</option>
-								 <option value="3"> 8</option>
-								 <option value="4"> 9</option>
-								 <option value="5"> 10</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <div id="question_options"></div>
-                     
-                     
-                     <div class="col-md-12">
-                        <button class="signin-btn" type="button" onclick="submitForm('questionForm','adm','questions_tab');">Submit</button>
-                     </div>
-					 </form>
-                  </div>
+<!-- Create Institute starts here -->
+<style>
+#div1, #div2 {
+    
+    min-height:500px ;
+    
+    border: 1px solid black;
+    overflow-y:scroll;
+}
+</style>
+<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create Question paper</h2>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<form action="admin/create_question_paper" method="post"  id="questionPaperForm">
+<div class="adm_inputs_wrap">
+    <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Question Paper Name</label>
+    <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12 <?php echo form_error('question_paper_name') ? 'error':'';?> " value="<?php echo set_value('question_paper_name');?>" type="text"  placeholder="Question Paper Name" id="questionPaperName" name="question_paper_name">
+    
+</div>
+<div class="validationError"><?php echo form_error('question_paper_name'); ?></div>
+
+<div class="adm_inputs_wrap">
+    <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Question Paper Code</label>
+    
+    <input class="col-lg-6 col-md-6 col-sm-12 col-xs-12  <?php echo form_error('question_paper_code') ? 'error':'';?>" value="<?php echo set_value('question_paper_code');?>" type="text"  placeholder="Question Paper Code" id="questionPaperCode" name="question_paper_code" >
+    
+</div>
+<div class="validationError"><?php echo form_error('question_paper_code'); ?></div>
+
+<div class="adm_inputs_wrap">
+	<label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Exam</label>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 drop_down">
+	<div class="form-group">
+	<select class="dropdown form-control" id="exam_id" name="exam_id" >
+	<option value="">Select </option>
+	<?php
+	foreach($exam_list as $exam){
+
+	echo "<option value='".$exam['exam_id']."'>".$exam['exam_name']."</option>" ;
+	}
+	?>
+
+	</select>
+	</div>
+	</div>
+</div>
+<div class="validationError"><?php echo form_error('exam_id'); ?></div>
+
+<div class="row" >
+<div  class="col-sm-6"  ></div>  
+<div  class="col-sm-6"  ><span>Added:</span> <span id="qcount">0</span>Question paper Duration:</span><span id="qtime">0</span><span>&nbsp;Min</span></div>
+</div>
+ <div class="row" >
+
+ 
+ <div id="div1" class="col-sm-6" ondrop="drop(event)" ondragover="allowDrop(event)">
+ <div class="header">
+ <span class="col-sm-1">No</span>
+      <span class="col-sm-3">Question</span>
+      <span class="col-sm-2">Class</span>
+      <span class="col-sm-2">Subject</span>
+      <span class="col-sm-2">Topic</span>
+      <span class="col-sm-1">Time</span>
+      <span class="col-sm-1">Level</span>
+     
+   </div>
+   
+
+ <?php 
+    $i=1;
+foreach($question_list as $question) { ?>
+
+    
+   <div class="draggable-row" draggable="true" ondragstart="drag(event)" id="<?php echo $question['question_id'].'-'.$question['avg_time'];?>" >
+     <span class="col-sm-1"><?php echo $i; ?></span>
+      <span class="col-sm-3"><?php echo $question['question'];?></span>
+      <span class="col-sm-2"><?php echo $question['class_name'];?></span>
+      <span class="col-sm-2"><?php echo $question['subject_name'];?></span>
+      <span class="col-sm-2"><?php echo $question['topic_name'];?></span>
+      <span class="col-sm-1"><?php echo $question['avg_time'];?></span>
+      <span class="col-sm-1"><?php echo $question['difficulty_level'];?></span>
+     
+   </div>
+ <?php $i++; } ?>
+  
+</div>
+
+<div id="div2" class="col-sm-6" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+
+
+
+            <!--Rendering div -->
+
+</div
+
+
+
+
+
+
+<div class="col-md-12">
+    <button class="signin-btn" onclick="submitForm('questionPaperForm','bla','question_papers_tab');" type="button">Submit</button>
+</div>
+</form>
+</div>
+                  
+  <script>
+  
+ /* $( function() {
+            $( ".draggable" ).draggable();
+            $( ".droppable" ).droppable({
+              drop: function( event, ui ) {
+                $( this )
+                  .addClass( "ui-state-highlight" )
+                  .find( "p" )
+                    .html( "Dropped!" );
+              }
+            });
+          } );*/
+
+          function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+    var numItems = $('#div2 > div').length;
+    
+    $('#qcount').html(numItems);
+}
+
+function drop(ev) {
+    
+  //  console.log(elem);
+    ev.preventDefault();
+    
+    var data = ev.dataTransfer.getData("text");
+    var current_time = $('#qtime').html();
+    var idArray = data.split('-');
+    var id = idArray[0];
+    var time = (idArray[1]) /60;
+    var newTime = Number(current_time) + Number(time);
+
+
+    $('#qtime').html(newTime);
+    
+    ev.target.appendChild(document.getElementById(data));
+}
+document.addEventListener("dragend", function( event ) {
+      // reset the transparency
+      
+     var numItems = $('#div2 > div').length;
+     
+
+
+    
+    $('#qcount').html(numItems);
+      
+  }, false);
+  </script>                

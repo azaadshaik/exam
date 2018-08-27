@@ -1,11 +1,4 @@
-<?php
-// echo "<pre>";
-// print_r($question_data);
-// die;
-?>
 
-<!--User List starts here -->
-<h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><?php echo trim($question_data[0]['question']);?></h2>
                      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 						<div class="userprof2">			
                                     <div class="adm_inputs_wrap">

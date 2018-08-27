@@ -356,6 +356,8 @@ function deleteInstitution(institutionId,divToUpdate){
          return false;
         }
     });
+
+
        
    
    
@@ -551,4 +553,82 @@ function deleteUser(userId,divToUpdate){
             reader.readAsDataURL(input.files[0]);
         }
       }
+
+      function editExam(examId,divToUpdate){
+        $('#loader').show();
+            $.ajax({
+                url: 'admin/edit_exam/?exam_id='+examId,
+                type: 'GET',
+                success: function (data) {
+                $('#loader').hide();
+                    $('#'+divToUpdate).html(data);
+                }
+                
+            });
+        }
+        
+        function viewExam(examId,divToUpdate){
+        $('#loader').show();
+            $.ajax({
+                url: 'admin/view_exam/?exam_id='+examId,
+                type: 'GET',
+                success: function (data) {
+                $('#loader').hide();
+                    $('#'+divToUpdate).html(data);
+                }
+                
+            });
+        }
+        function deleteExam(examId,divToUpdate){
+        
+         $.confirm({
+                text: "Are you sure to delete?",
+                confirm: function(button) {
+                $('#loader').show();
+                     $.ajax({
+                        url: 'admin/delete_exam/?exam_id='+examId,
+                        type: 'GET',
+                        success: function (data) {
+                        $('#loader').hide();
+                            $('#'+divToUpdate).html(data);
+                        }
+                
+                    });
+                },
+                cancel: function(button) {
+                 return false;
+                }
+            });
+        }
+        $(document).delegate("#examDatetime", "click", function() {
+            
+        $('#examDatetime').datetimepicker({
+            formatDate:'Y/m/d',
+           minDate:'-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
+           //maxDate:'+1970/01/02'//tomorrow is maximum date calendar
+           step:15,
+          });
+        });
+
+        $(document).delegate("input", "focus", function() {
+            if($(this).hasClass('error')){    
+                $( this ).removeClass('error');
+                $( this ).parent().next('div' ).hide();
+            }
+
+        });
+
+       /* $( function() {
+            $( "#draggable" ).draggable();
+            $( "#droppable" ).droppable({
+              drop: function( event, ui ) {
+                $( this )
+                  .addClass( "ui-state-highlight" )
+                  .find( "p" )
+                    .html( "Dropped!" );
+              }
+            });
+          } );*/
+          
+          
 

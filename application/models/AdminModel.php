@@ -120,6 +120,15 @@ class AdminModel extends CI_Model
         $result = $this->db->get()->result_array();
         return $result;
     }
+    public function get_all_question_papers(){
+        $this->db->select('question_paper.*,exams.exam_name');
+        $this->db->from('question_paper');
+        $this->db->join('exams','question_paper.exam_id = exams.exam_id');
+        $this->db->order_by("question_paper_id", "desc");
+        $result = $this->db->get()->result_array();
+        
+        return $result;
+    }
     
 
 
@@ -192,6 +201,15 @@ class AdminModel extends CI_Model
 
         
         $result= $this->db->insert('topics', $topic_data);
+        return $result;
+           
+
+       
+    }
+    public function create_exam($exam_data){
+
+        
+        $result= $this->db->insert('exams', $exam_data);
         return $result;
            
 
@@ -407,7 +425,40 @@ class AdminModel extends CI_Model
         
 
     }
-	
+
+    public function get_all_exams(){
+
+        $this->db->select('*');
+        $this->db->from('exams');
+		$this->db->order_by("exam_id", "desc");
+		$result = $this->db->get()->result_array();
+        return $result;
+    }
+    public function get_exam_by_id($exam_id){
+		$where ='exam_id='.$exam_id;
+        $this->db->select('*');
+        $this->db->from('exams');
+		$this->db->where($where);
+        $result = $this->db->get()->row();
+        return $result;
+    }
+
+    public function update_exam($exam_data,$exam_id){
+       
+        $result= $this->db->update('exams', $exam_data, "exam_id = $exam_id");
+        return $result;
+  
+    }
+    public function update_exam_status($exam_id,$status){
+        $result= $this->db->update('exams', array('exam_status'=>$status), "exam_id = $exam_id");
+       return $result;
+    }
+    
+	public function create_question_paper($question_paper_data){
+        
+        $result= $this->db->insert('question_paper', $question_paper_data);
+        return $result;
+    }
     
     
     

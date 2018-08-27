@@ -24,9 +24,14 @@ class Search extends CI_Controller
 		   $result = $this->searchmodel->search_by_single_field($search,$module,$fields,$join_table,$join_on);
 		   $view = 'search/user_search';
 		   break;
+		   case 'exams':
+		   $fields = array('exam_name','exam_code');
+		   $result = $this->searchmodel->search_by_single_field($search,$module,$fields);
+		   $view = 'search/exam_search';
+		   break;
 	   }
 	   $data['search_results'] = $result;
-	   $this->load->view('search/user_search', $data);
+	   $this->load->view($view, $data);
         
 	}
 

@@ -9,7 +9,7 @@ class SearchModel extends CI_Model
 
 	
     
-   public function search_by_single_field($search,$table,$fields,$join_table,$join_on){
+   public function search_by_single_field($search,$table,$fields,$join_table='',$join_on=''){
 	    $this->db->like($fields[0], $search);
 		if(count($fields) > 1){
 		 for($i=1;$i<count($fields);$i++){
