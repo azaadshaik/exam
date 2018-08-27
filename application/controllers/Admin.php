@@ -1069,10 +1069,12 @@ public function create_exam(){
 			
 			//$question_papers_list = $this->adminmodel->get_all_question_papers();
 			$questions_list = $this->adminmodel->get_all_questions();
+			$classes_list = $this->adminmodel->get_all_classes();
 			$exam_list = $this->adminmodel->get_all_exams();
 
 			$data['question_list'] = $questions_list;
 			$data['exam_list'] = $exam_list;
+			$data['classes_list'] = $classes_list;
 			
 			$this->load->view('admin/create_question_paper', $data);
 		}

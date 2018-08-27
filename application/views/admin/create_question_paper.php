@@ -1,13 +1,4 @@
-<!-- Create Institute starts here -->
-<style>
-#div1, #div2 {
-    
-    min-height:500px ;
-    
-    border: 1px solid black;
-    overflow-y:scroll;
-}
-</style>
+
 <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Create Question paper</h2>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <form action="admin/create_question_paper" method="post"  id="questionPaperForm">
@@ -46,7 +37,65 @@
 <div class="validationError"><?php echo form_error('exam_id'); ?></div>
 
 <div class="row" >
-<div  class="col-sm-6"  ></div>  
+<div  class="col-sm-6" id="drag-drop-filters" >
+<!--FIlters comes here -->
+<div class="user-list-header">
+                        <div class="adm_inputs_wrap">
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
+                             
+                              <div class="form-group">
+                                 <select class="dropdown form-control" onchange="loadSubjects(this.value);" id="class">
+                                    <option value="0">Class</option>
+									<?php
+                                  foreach($classes_list as $class){
+									  ?>
+									  <option value="<?php echo $class['class_id'];?>"><?php echo $class['class_name'];?></option>
+									  <?php
+								  }
+								  ?>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
+                             
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="subject">
+                                    <option value="0">Subject</option>
+                                    <option>Google</option>
+                                    <option>Bhashyam</option>
+                                    <option>RSR</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
+                            
+                              <div class="form-group">
+                                 <select class="dropdown form-control" id="sel1">
+                                    <option value="0">Topic</option>
+                                  </select>
+                              </div>
+                           </div>
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
+                       
+                              <select class="dropdown form-control" id="">
+							  
+							   <option value="0">Level</option>
+                                 <option value="1">1</option>
+                                 <option value="2">2</option>
+								  <option value="3">3</option>
+								   <option value="4">4</option>
+								    <option value="5">5</option>
+                              </select>
+                           </div>
+                           
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
+                              <button class="apply-btn">Apply</button>
+                           </div>
+                        </div>
+                     </div>
+					 <!-- filters ends here -->
+
+</div>  
 <div  class="col-sm-6"  ><span>Added:</span> <span id="qcount">0</span>Question paper Duration:</span><span id="qtime">0</span><span>&nbsp;Min</span></div>
 </div>
  <div class="row" >
@@ -103,21 +152,8 @@ foreach($question_list as $question) { ?>
 </form>
 </div>
                   
-  <script>
-  
- /* $( function() {
-            $( ".draggable" ).draggable();
-            $( ".droppable" ).droppable({
-              drop: function( event, ui ) {
-                $( this )
-                  .addClass( "ui-state-highlight" )
-                  .find( "p" )
-                    .html( "Dropped!" );
-              }
-            });
-          } );*/
-
-          function allowDrop(ev) {
+<script>
+ function allowDrop(ev) {
     ev.preventDefault();
 }
 
@@ -130,30 +166,23 @@ function drag(ev) {
 
 function drop(ev) {
     
-  //  console.log(elem);
+ 
     ev.preventDefault();
-    
     var data = ev.dataTransfer.getData("text");
-    var current_time = $('#qtime').html();
-    var idArray = data.split('-');
-    var id = idArray[0];
-    var time = (idArray[1]) /60;
-    var newTime = Number(current_time) + Number(time);
-
-
-    $('#qtime').html(newTime);
-    
     ev.target.appendChild(document.getElementById(data));
 }
 document.addEventListener("dragend", function( event ) {
       // reset the transparency
-      
+   
+	 var time =0;
      var numItems = $('#div2 > div').length;
-     
-
-
-    
+    $('#div2 > div').each(function(){
+	var idArray = (this.id).split('-');
+    time = Number(time)+Number(idArray[1]) ;
+	});
+	var timeInMin = time /60;
     $('#qcount').html(numItems);
+	$('#qtime').html(timeInMin);
       
   }, false);
   </script>                

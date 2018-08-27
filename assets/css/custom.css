@@ -629,6 +629,23 @@ padding-left:10px;
   height:80px;
   padding:10px 0;
 }
+#div1, #div2 {
+    
+    min-height:500px ;
+    border: 1px solid black;
+    overflow-y:scroll;
+}
+#div1.col-sm-6 ,#div2.col-sm-6,#div1 span.col-sm-2{
+padding:0px;
+}
+#drag-drop-filters .adm_inputs_wrap .dropdown{
+	padding:0;
+	font-size:12px;
+}
+#drag-drop-filters .apply-btn {
+margin:0;
+padding:0;
+}
 
 @media (max-width: 768px){
   .logo{
