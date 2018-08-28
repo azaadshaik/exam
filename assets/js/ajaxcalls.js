@@ -699,5 +699,18 @@ var selectedlevel = $('#level').val();
     });   
 }
 
+function editQuestionPaper(questionPaperId,divToUpdate){
+    $('#loader').show();
+        $.ajax({
+            url: 'admin/edit_question_paper/?question_paper_id='+questionPaperId,
+            type: 'GET',
+            success: function (data) {
+            $('#loader').hide();
+                $('#'+divToUpdate).html(data);
+            }
+            
+        });
+    }
+
  
 

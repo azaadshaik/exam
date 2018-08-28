@@ -1095,6 +1095,59 @@ public function create_exam(){
 		
 	}
 
+	public function edit_question_paper(){
+		
+		
+		$data['title'] = 'Update Question paper';
+		$this->form_validation->set_rules('question_paper_name', 'Question Paper Name', 'required');
+		$this->form_validation->set_rules('question_paper_code', 'Question Paper Code', 'required');
+		$this->form_validation->set_rules('exam_id', 'Exam ', 'required');
+	   
+	   
+		   
+	   if ($this->form_validation->run() === TRUE)
+	   {
+		   
+			$question_paper_id = $this->input->post('question_paper_id');   
+		   $question_paper_data['question_paper_name'] = $this->input->post('question_paper_name');
+		   $question_paper_data['question_paper_code'] = $this->input->post('question_paper_code');
+		   $question_paper_data['question_paper_status'] = $this->input->post('status');;
+		   $question_paper_data['exam_id'] = $this->input->post('exam_id');
+		   $question_ids = $this->input->post('questions_added');
+		   $question_paper_data['question_paper_questions'] = serialize($question_paper_questions);
+		   
+		   
+		   $this->adminmodel->update_question_paper($question_paper_data,$question_paper_id);
+		   
+					   
+		   $this->question_papers();
+
+
+	   }
+	   else{
+		   
+		   $question_paper_data = $this->adminmodel->get_question_paper_by_id($this->input->get('question_paper_id'));
+		   print_r(unserialize($question_paper_data->question_paper_questions));
+		   $question_paper_questions_array = unserialize($question_paper_data->question_paper_questions);
+		   if(!empty($question_paper_questions_array)){
+			  
+			   $added_questions = $this->adminmodel->get_questions_by_question_ids($question_paper_questions_array);
+			}
+		   //$question_papers_list = $this->adminmodel->get_all_question_papers();
+		   $questions_list = $this->adminmodel->get_all_questions();
+		   $classes_list = $this->adminmodel->get_all_classes();
+		   $exam_list = $this->adminmodel->get_all_exams();
+		   $data['question_paper_data'] = $question_paper_data;
+		   $data['question_paper_questions'] = $added_questions;	
+		   $data['question_list'] = $questions_list;
+		   $data['exam_list'] = $exam_list;
+		   $data['classes_list'] = $classes_list; 
+		   
+		   $this->load->view('admin/edit_question_paper', $data);
+	   }
+	   
+   }
+
 public function loadQuestions(){
 	$filters = array();
 	$filters['class_id'] = $this->input->post('class_id');

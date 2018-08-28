@@ -494,7 +494,29 @@ class AdminModel extends CI_Model
             $result = $this->db->get()->result_array();
 		    return $result;
     }
-	
+
+    public function get_question_paper_by_id($question_paper_id){
+		$where ='question_paper_id='.$question_paper_id;
+        $this->db->select('*');
+        $this->db->from('question_paper');
+		$this->db->where($where);
+        $result = $this->db->get()->row();
+        return $result;
+    }
+    
+	public function get_questions_by_question_ids($question_id_array){
+        $this->db->select('question_bank.*,topics.topic_id,topics.topic_code,topics.topic_name,classes.class_name,classes.class_id,subjects.subject_name,subjects.subject_id');
+        $this->db->from('question_bank');
+        $this->db->join('topics','topics.topic_id = question_bank.topic_id');
+        $this->db->join('subjects','subjects.subject_id = topics.topic_subject_id');
+        $this->db->join('classes','classes.class_id = topics.topic_class_id');
+        $this->db->where_in('question_id', $question_id_array);
+		$this->db->where('question_status=1');
+        $result = $this->db->get()->result_array();
+        echo $this->db->last_query();
+        
+        return $result;
+    }
 	
     
     
