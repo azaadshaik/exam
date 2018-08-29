@@ -712,5 +712,39 @@ function editQuestionPaper(questionPaperId,divToUpdate){
         });
     }
 
+    function viewQuestionPaper(questionPaperId,divToUpdate){
+        $('#loader').show();
+            $.ajax({
+                url: 'admin/view_question_paper/?question_paper_id='+questionPaperId,
+                type: 'GET',
+                success: function (data) {
+                $('#loader').hide();
+                    $('#'+divToUpdate).html(data);
+                }
+                
+            });
+        }
+        function deleteQuestionPaper(questionPaperId,divToUpdate){
+        
+         $.confirm({
+                text: "Are you sure to delete?",
+                confirm: function(button) {
+                $('#loader').show();
+                     $.ajax({
+                        url: 'admin/delete_question_paper/?question_paper_id='+questionPaperId,
+                        type: 'GET',
+                        success: function (data) {
+                        $('#loader').hide();
+                            $('#'+divToUpdate).html(data);
+                        }
+                
+                    });
+                },
+                cancel: function(button) {
+                 return false;
+                }
+            });
+        }
+
  
 

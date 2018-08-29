@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2018 at 01:58 PM
+-- Generation Time: Aug 29, 2018 at 04:56 AM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `onlineexam`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+CREATE TABLE `ci_sessions` (
+  `id` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `timestamp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `last_activity` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `data` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -83,16 +97,25 @@ INSERT INTO `districts` (`district_id`, `district_name`, `district_state_id`, `d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `exam`
+-- Table structure for table `exams`
 --
 
-CREATE TABLE `exam` (
+CREATE TABLE `exams` (
   `exam_id` int(10) UNSIGNED NOT NULL,
   `exam_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exam_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `exam_datetime` datetime NOT NULL,
   `exam_duration` int(11) NOT NULL,
+  `exam_marks` int(11) NOT NULL,
   `exam_status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `exams`
+--
+
+INSERT INTO `exams` (`exam_id`, `exam_name`, `exam_code`, `exam_datetime`, `exam_duration`, `exam_marks`, `exam_status`) VALUES
+(4, 'teste123', '232323', '2018-08-26 02:00:00', 60, 100, 1);
 
 -- --------------------------------------------------------
 
@@ -175,7 +198,11 @@ CREATE TABLE `question_answers` (
 --
 
 INSERT INTO `question_answers` (`answer_id`, `question_id`, `choice_id`) VALUES
-(3, 4, 10);
+(3, 4, 10),
+(4, 5, 15),
+(5, 6, 19),
+(6, 7, 21),
+(7, 8, 25);
 
 -- --------------------------------------------------------
 
@@ -198,7 +225,11 @@ CREATE TABLE `question_bank` (
 --
 
 INSERT INTO `question_bank` (`question_id`, `question`, `question_image`, `topic_id`, `avg_time`, `difficulty_level`, `question_status`) VALUES
-(4, 'Identify the person in this picture ', 'sardar.jpg', 3, 90, 3, 1);
+(4, 'Identify the person in this picture ', 'DSC_6372_-_Copy.JPG', 3, 90, 3, 1),
+(5, 'Grand Central Terminal, Park Avenue, New York is the world\'s', '', 2, 60, 2, 1),
+(6, 'Entomology is the science that studies', '', 3, 30, 2, 1),
+(7, 'Eritrea, which became the 182nd member of the UN in 1993, is in the continent of', '', 3, 90, 2, 1),
+(8, 'Garampani sanctuary is located at', '', 3, 30, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -218,10 +249,24 @@ CREATE TABLE `question_choices` (
 --
 
 INSERT INTO `question_choices` (`choice_id`, `choice_text`, `choice_image`, `question_id`) VALUES
-(9, 'Mahatma Gandhi', '', 4),
-(10, 'Sardar Vallabhai Patel', '', 4),
-(11, 'Jawaharlal Nehru', '', 4),
-(12, 'Subhash Chandra Bose', '', 4);
+(9, 'Mahatma Gandhi                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ', '', 4),
+(10, 'Azaad                                                                                                ', '', 4),
+(11, 'Jawaharlal Nehru                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ', '', 4),
+(12, 'Subhash Chandra Bose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ', '', 4),
+(13, 'largest railway station', '', 5),
+(14, 'highest railway station', '', 5),
+(15, 'longest railway station', '', 5),
+(16, 'None of the above\r\n', '', 5),
+(17, 'Behavior of human beings', '', 6),
+(18, 'Insects', '', 6),
+(19, 'The formation of rocks', '', 6),
+(20, 'Asia', '', 7),
+(21, 'Africa', '', 7),
+(22, 'Europe', '', 7),
+(23, 'Junagarh, Gujarat', '', 8),
+(24, 'Diphu, Assam\r\n', '', 8),
+(25, 'Kohima, Nagaland', '', 8),
+(26, 'Gangtok, Sikkim\r\n', '', 8);
 
 -- --------------------------------------------------------
 
@@ -231,10 +276,20 @@ INSERT INTO `question_choices` (`choice_id`, `choice_text`, `choice_image`, `que
 
 CREATE TABLE `question_paper` (
   `question_paper_id` int(10) UNSIGNED NOT NULL,
-  `question_id` int(11) NOT NULL,
+  `question_paper_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `question_paper_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `exam_id` int(11) NOT NULL,
+  `question_paper_questions` blob NOT NULL,
   `question_paper_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `question_paper`
+--
+
+INSERT INTO `question_paper` (`question_paper_id`, `question_paper_name`, `question_paper_code`, `exam_id`, `question_paper_questions`, `question_paper_status`) VALUES
+(2, 'Question paper 1', 'QP1', 4, 0x613a333a7b693a303b733a313a2235223b693a313b733a313a2237223b693a323b733a313a2238223b7d, 0),
+(3, 'Question paper 2', 'QP2', 4, 0x613a323a7b693a303b733a313a2237223b693a313b733a313a2235223b7d, 0);
 
 -- --------------------------------------------------------
 
@@ -524,9 +579,9 @@ ALTER TABLE `districts`
   ADD PRIMARY KEY (`district_id`);
 
 --
--- Indexes for table `exam`
+-- Indexes for table `exams`
 --
-ALTER TABLE `exam`
+ALTER TABLE `exams`
   ADD PRIMARY KEY (`exam_id`);
 
 --
@@ -681,10 +736,10 @@ ALTER TABLE `districts`
   MODIFY `district_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `exam`
+-- AUTO_INCREMENT for table `exams`
 --
-ALTER TABLE `exam`
-  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `exams`
+  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `exam_enrollment`
@@ -708,25 +763,25 @@ ALTER TABLE `institution`
 -- AUTO_INCREMENT for table `question_answers`
 --
 ALTER TABLE `question_answers`
-  MODIFY `answer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `answer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `question_bank`
 --
 ALTER TABLE `question_bank`
-  MODIFY `question_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `question_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `question_choices`
 --
 ALTER TABLE `question_choices`
-  MODIFY `choice_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `choice_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `question_paper`
 --
 ALTER TABLE `question_paper`
-  MODIFY `question_paper_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `question_paper_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `roles`

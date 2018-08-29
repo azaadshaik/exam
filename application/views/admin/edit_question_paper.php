@@ -134,9 +134,9 @@ if(!empty($question_paper_questions)){
 
  <?php 
     $i=1;
-foreach($question_list as $question) { ?>
+foreach($question_list as $question) {
 
-    
+    if(!in_array($question['question_id'],$added_question_ids_array)){ ?>
    <div class="draggable-row" draggable="true" ondragstart="drag(event)" id="<?php echo $question['question_id'].'-'.$question['avg_time'];?>" >
      <span class="col-sm-1"><?php echo $i; ?></span>
       <span class="col-sm-3"><?php echo $question['question'];?></span>
@@ -147,7 +147,7 @@ foreach($question_list as $question) { ?>
       <span class="col-sm-1"><?php echo $question['difficulty_level'];?></span>
      
    </div>
- <?php $i++; } ?>
+    <?php } $i++; } ?>
   
 </div>
 
@@ -201,8 +201,41 @@ function drop(ev) {
     
  
     ev.preventDefault();
+    var exists =false;
     var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    if(ev.target.id=='div2'){
+    
+    $('#div2 > div').each(function(){
+	if(this.id == data){
+        exists = true;
+        
+    }
+        
+    });
+
+}
+if(ev.target.id=='div1'){
+    
+    $('#div1 > div').each(function(){
+	if(this.id == data){
+        exists = true;
+        
+    }
+        
+    });
+
+}
+    
+
+    if(!exists){
+        ev.target.appendChild(document.getElementById(data));
+    }
+    else{
+        alert('Question already exists');
+        return false;
+    }
+   
+   
 }
 document.addEventListener("dragend", function( event ) {
       // reset the transparency

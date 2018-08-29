@@ -497,7 +497,8 @@ class AdminModel extends CI_Model
 
     public function get_question_paper_by_id($question_paper_id){
 		$where ='question_paper_id='.$question_paper_id;
-        $this->db->select('*');
+        $this->db->select('question_paper.*,exams.exam_name,exams.exam_code');
+        $this->db->join('exams','question_paper.exam_id=exams.exam_id');
         $this->db->from('question_paper');
 		$this->db->where($where);
         $result = $this->db->get()->row();
@@ -511,13 +512,29 @@ class AdminModel extends CI_Model
         $this->db->join('subjects','subjects.subject_id = topics.topic_subject_id');
         $this->db->join('classes','classes.class_id = topics.topic_class_id');
         $this->db->where_in('question_id', $question_id_array);
-		$this->db->where('question_status=1');
+        $this->db->where('question_status=1');
         $result = $this->db->get()->result_array();
-        echo $this->db->last_query();
-        
+               
         return $result;
     }
-	
+    
+	public function update_question_paper($question_paper_data,$question_paper_id){
+       
+        $result= $this->db->update('question_paper', $question_paper_data, "question_paper_id = $question_paper_id");
+        return $result;
+  
+    }
+
+    public function delete_question_paper($question_paper_id){
+        $result = $this->db->delete('question_paper', array('question_paper_id' => $question_paper_id));
+        return $result;
+    }
+
+    public function update_question_paper_status($question_paper_id,$status){
+        
+        $result= $this->db->update('question_paper', array('question_paper_status'=>$status), "question_paper_id = $question_paper_id");
+       return $result;
+   }
     
     
     

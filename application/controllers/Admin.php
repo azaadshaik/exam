@@ -1108,12 +1108,12 @@ public function create_exam(){
 	   if ($this->form_validation->run() === TRUE)
 	   {
 		   
-			$question_paper_id = $this->input->post('question_paper_id');   
+		   $question_paper_id = $this->input->post('question_paper_id');   
 		   $question_paper_data['question_paper_name'] = $this->input->post('question_paper_name');
 		   $question_paper_data['question_paper_code'] = $this->input->post('question_paper_code');
 		   $question_paper_data['question_paper_status'] = $this->input->post('status');;
 		   $question_paper_data['exam_id'] = $this->input->post('exam_id');
-		   $question_ids = $this->input->post('questions_added');
+		   $question_paper_questions = $this->input->post('questions_added');
 		   $question_paper_data['question_paper_questions'] = serialize($question_paper_questions);
 		   
 		   
@@ -1127,7 +1127,7 @@ public function create_exam(){
 	   else{
 		   
 		   $question_paper_data = $this->adminmodel->get_question_paper_by_id($this->input->get('question_paper_id'));
-		   print_r(unserialize($question_paper_data->question_paper_questions));
+		   
 		   $question_paper_questions_array = unserialize($question_paper_data->question_paper_questions);
 		   if(!empty($question_paper_questions_array)){
 			  
@@ -1141,7 +1141,8 @@ public function create_exam(){
 		   $data['question_paper_questions'] = $added_questions;	
 		   $data['question_list'] = $questions_list;
 		   $data['exam_list'] = $exam_list;
-		   $data['classes_list'] = $classes_list; 
+		   $data['classes_list'] = $classes_list;
+		   $data['added_question_ids_array']  = $question_paper_questions_array;
 		   
 		   $this->load->view('admin/edit_question_paper', $data);
 	   }
@@ -1166,6 +1167,32 @@ public function create_question_paper_questions($question_paper_id){
 			
 		}
 	}
+}
+public function view_question_paper(){
+		
+		
+	$question_paper_id = $this->input->get('question_paper_id');
+	$result = $this->adminmodel->get_question_paper_by_id($question_paper_id);
+	$data['question_paper_data'] = $result;
+	$question_paper_questions_ids_array = unserialize($result->question_paper_questions);
+	
+	if(!empty($question_paper_questions_ids_array)){
+		$questions_list = $this->adminmodel->get_questions_by_question_ids($question_paper_questions_ids_array);
+		$data['questions_list'] = $questions_list;
+	}
+	
+	
+	$this->load->view('admin/view_question_paper', $data);
+
+
+}
+
+public function delete_question_paper(){
+	$question_paper_id = $this->input->get('question_paper_id');
+	$status = 0;
+	$this->adminmodel->update_question_paper_status($question_paper_id,$status);
+	$this->question_papers();
+	
 }
 	
 
