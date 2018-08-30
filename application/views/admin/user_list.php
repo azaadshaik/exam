@@ -1,7 +1,7 @@
 <div id="User_List" class="tab-pane ">
                      <h2 class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-left">User List</h2>
-                     <div id="table-search-input">
-                        <div class="input-group col-md-4 pull-right">
+                     <div id="table-search-input" class="col-md-4 pull-right">
+                        <div class="input-group">
                            <input type="text" id="user_search" data-table="users" data-search="search/index" class="form-control input-lg " placeholder="Search By Username" />
                            <span class="input-group-btn search-button">
                            <button class="btn btn-info btn-lg" type="button">

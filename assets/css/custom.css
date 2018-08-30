@@ -19,7 +19,7 @@ body {
 
 .sign-bgcolor {
   background: #222222;
-  width: 100g
+  width: 100%;
   padding: 45px 50px;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
@@ -29,7 +29,8 @@ body {
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
 }
-
+.sign-bgcolor img{margin-bottom: 10px;}
+.Username-wrap input{background: transparent;}
 .input-fields {
   font-family: Oswald !important;
   width: 100%;
@@ -212,7 +213,7 @@ input:-moz-placeholder {
   color: #8a8e9c;
 }
 
-.Signin-sec::before {
+/*.Signin-sec::before {
   width: 213px;
   height: 314px;
   background: url(../images/pen.jpg);
@@ -230,7 +231,7 @@ input:-moz-placeholder {
   right: 0;
   top: 0;
 }
-
+*/
 .bg-layer {
   width: 100%;
   height: 100%;
@@ -289,7 +290,7 @@ footer{
   margin-top: 50px;
 }
 .bg_img {
-  position: absolute;
+  position: fixed;
   left: 0;
   max-width: 100%;
 }
@@ -595,13 +596,15 @@ img.image_holder{
   }
   .search-result {
     position: absolute;
-	float: right;
-	z-index: 100;
-	top: 10%;
-	right: 20%;
-	background: rgba(255,255,255,.5);
-	padding: 25px;
-	display:none;
+    float: right;
+    z-index: 100;
+    top: 10%;
+    right: 11%;
+    background: rgba(255,255,255,.5);
+    padding: 10px;
+    display: none;
+    margin-top: 39px;
+    width: 79%;
 }
 ol{
 padding-left:10px;
@@ -651,7 +654,18 @@ font-size: 25px;
 color: #FFF;
 margin: 10px;
 }
+/* latest issue fixes */
+#users_tab #table-search-input{position: relative;}
+#users_tab .search-result ul li{list-style-type: none;}
+#users_tab .search-result ul,
+#exams_tab .search-result ul{padding: 0;}
+#users_tab .search-result ul li,
+#exams_tab .search-result ul li{list-style-type: none;text-align: left;}
+#users_tab .search-result ul li span{margin-right:10px;}
+#users_tab .search-result ul,
+#exams_tab .search-result ul{margin:0;cursor: pointer;}
 
+#exams_tab .search-result{left: 6%;}
 @media (max-width: 768px){
   .logo{
         margin-top: 15px;
@@ -667,4 +681,32 @@ margin: 10px;
   }
 }
 
+@media (max-width:320px){
+.signin-inner{    margin-top: 2em;}
+.sign-bgcolor{    padding: 45px 20px;}
+}
 
+
+
+
+@media only screen and (min-device-width: 321px) and (max-device-height:568px){
+.signin-inner{    margin-top: 2em;}
+.sign-bgcolor{    padding: 45px 20px;}
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+.signin-inner {
+    margin-top: 10em;
+}
+}

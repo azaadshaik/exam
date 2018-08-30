@@ -21,7 +21,8 @@ exit;
                      
                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div id="table-search-input">
-                           <div class="input-group col-md-6">
+                          <div class="col-md-6">
+                           <div class="input-group">
                               <input type="text" id="exams_search" data-table="exams" data-search="search/index" class="form-control input-lg" placeholder="Search by name" />
                               <span class="input-group-btn">
                               <button class="btn btn-info btn-lg" type="button">
@@ -32,6 +33,7 @@ exit;
                            <div class="search-result">
 					
 					        </div>
+                    </div>
 						   <div class="col-md-3 pull-right">
                               
                               
