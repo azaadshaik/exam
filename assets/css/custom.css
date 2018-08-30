@@ -432,12 +432,21 @@ footer{
 .custom-file-upload input[type="file"] {
     display: none;
 }
+.custom-file-upload img{    
+  border: 3px solid #ffffff;
+    margin-top: -5px;
+    margin-right: 10px;}
 .custom-file-upload .custom-file-upload-label {
     border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
+    display: inline-block !important;
+    padding: 6px 12px !important;
     cursor: pointer;
 }
+#question_imageBox{float: none;}
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th{vertical-align: middle;}
+.sub-table tr,
+.sub-table table,
+.sub-table tr td{border:none !important;}
 .custom-table{    margin: 50px 0;}
 .custom-table table th,.custom-table table td{text-align: left;color: #ffffff;}
 .adm_checkbox .stu_inn_checker .checkbox-inline{width:20%;}
