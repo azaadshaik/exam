@@ -98,7 +98,7 @@
       <div  class="col-lg-4 col-md-4 col-sm-4 col-xs-12 auto-numbering"  ><span>Questions:</span> <span id="qcount"><?php echo count($question_paper_questions);?></span> <span>Duration:</span><span id="qtime"><?php echo $total_duration /60 ;?></span><span>&nbsp;Min</span></div>
    </div>
    <div class="row edit_questions" >
-      <div id="div1" class="col-sm-6" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div id="div1" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 padding0" ondrop="drop(event)" ondragover="allowDrop(event)">
          <div class="header">
             <span class="col-sm-1">No</span>
             <span class="col-sm-3">Question</span>
@@ -124,7 +124,13 @@
          </div>
          <?php } $i++; } ?>
       </div>
-      <div id="div2" class="col-sm-6" ondrop="drop(event,this)" ondragover="allowDrop(event)">
+
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 padding0 auto-numbering">
+        <span class="drag-drop">Drag & Drop </span>
+        <i class="fa fa-arrows-h" aria-hidden="true"></i>
+      </div>
+
+      <div id="div2" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 padding0" ondrop="drop(event,this)" ondragover="allowDrop(event)">
         <div class="header">
             <span class="col-sm-1">No</span>
             <span class="col-sm-3">Question</span>

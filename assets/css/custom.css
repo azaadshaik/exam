@@ -645,10 +645,13 @@ padding-left:10px;
     
     min-height:500px ;
     max-height:600px ;
-    border: 1px solid black;
+    border: 1px solid #ffffff;
     overflow-y:auto;
+    padding: 10px;
 }
-
+.edit_questions .fa{font-size: 40px;color:#f3db14  !important;margin-top: 20%;}
+.auto-numbering .drag-drop{    width: 100%;
+    text-align: center;}
 #drag-drop-filters .adm_inputs_wrap .dropdown{
 
 	font-size:12px;
