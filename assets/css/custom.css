@@ -652,6 +652,13 @@ padding-left:10px;
 .edit_questions .fa{font-size: 40px;color:#f3db14  !important;margin-top: 20%;}
 .auto-numbering .drag-drop{    width: 100%;
     text-align: center;}
+#question_options .custom-file-upload .custom-file-upload-label{margin:0;}
+#question_options .radiowraper{
+  color: #ffffff;
+    font-size: 18px;
+    display: inline-block;
+    font-weight: 300;}
+#question_options .radiowraper input{margin-right: 10px;}
 #drag-drop-filters .adm_inputs_wrap .dropdown{
 
 	font-size:12px;

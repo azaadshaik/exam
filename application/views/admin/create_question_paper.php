@@ -83,7 +83,7 @@
       <div  class="col-sm-6 auto-numbering"><span>Questions:</span> <span id="qcount">0</span> Duration:</span><span id="qtime">0</span><span>&nbsp;Min</span></div>
    </div>
    <div class="row edit_questions" >
-      <div id="div1" class="col-sm-6" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div id="div1" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 padding0" ondrop="drop(event)" ondragover="allowDrop(event)">
          <div class="header">
             <span class="col-sm-1">No</span>
             <span class="col-sm-3">Question</span>
@@ -107,7 +107,23 @@
          </div>
          <?php $i++; } ?>
       </div>
-      <div id="div2" class="col-sm-6" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 padding0 auto-numbering">
+        <span class="drag-drop">Drag & Drop </span>
+        <i class="fa fa-arrows-h" aria-hidden="true"></i>
+      </div>
+      
+      <div id="div2" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 padding0" ondrop="drop(event,this)" ondragover="allowDrop(event)">
+        <div class="header">
+            <span class="col-sm-1">No</span>
+            <span class="col-sm-3">Question</span>
+            <span class="col-sm-2">Class</span>
+            <span class="col-sm-2">Subject</span>
+            <span class="col-sm-2">Topic</span>
+            <span class="col-sm-1">Time</span>
+            <span class="col-sm-1">Level</span>
+         </div>
+      </div>
       <!--Rendering div -->
       </div
       <div class="col-md-12">
