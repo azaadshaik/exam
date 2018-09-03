@@ -484,7 +484,7 @@ input,.right_wrap1 .tab-content .adm_inputs_wrap input,
 .adm_inputs_wrap {
   display: inline-block;
   width: 100%;
-  /*margin: 10px 0;*/
+  margin:5px 0;
 }
 
 .adm_inputs_wrap .dropdown {
