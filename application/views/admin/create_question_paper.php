@@ -80,7 +80,7 @@
          </div>
          <!-- filters ends here -->
       </div>
-      <div  class="col-sm-6"  ><span>Questions:</span> <span id="qcount">0</span> Duration:</span><span id="qtime">0</span><span>&nbsp;Min</span></div>
+      <div  class="col-sm-6 auto-numbering"><span>Questions:</span> <span id="qcount">0</span> Duration:</span><span id="qtime">0</span><span>&nbsp;Min</span></div>
    </div>
    <div class="row" >
       <div id="div1" class="col-sm-6" ondrop="drop(event)" ondragover="allowDrop(event)">

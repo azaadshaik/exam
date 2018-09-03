@@ -28,7 +28,7 @@
    <div class="validationError"><?php echo form_error('question_paper_code'); ?></div>
    <div class="adm_inputs_wrap">
       <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12 drop_down">Exam</label>
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding0">
          <div class="form-group">
             <select class="dropdown form-control" id="exam_id" name="exam_id" >
                <option value="">Select </option>
@@ -46,7 +46,7 @@
       </div>
    </div>
    <div class="row" >
-      <div  class="col-sm-6" id="drag-drop-filters" >
+      <div  class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="drag-drop-filters" >
          <!--FIlters comes here -->
          <div class="user-list-header">
             <div class="adm_inputs_wrap">
@@ -95,9 +95,9 @@
          </div>
          <!-- filters ends here -->
       </div>
-      <div  class="col-sm-6"  ><span>Questions:</span> <span id="qcount"><?php echo count($question_paper_questions);?></span> Duration:</span><span id="qtime"><?php echo $total_duration /60 ;?></span><span>&nbsp;Min</span></div>
+      <div  class="col-lg-4 col-md-4 col-sm-4 col-xs-12 auto-numbering"  ><span>Questions:</span> <span id="qcount"><?php echo count($question_paper_questions);?></span> <span>Duration:</span><span id="qtime"><?php echo $total_duration /60 ;?></span><span>&nbsp;Min</span></div>
    </div>
-   <div class="row" >
+   <div class="row edit_questions" >
       <div id="div1" class="col-sm-6" ondrop="drop(event)" ondragover="allowDrop(event)">
          <div class="header">
             <span class="col-sm-1">No</span>
@@ -125,6 +125,15 @@
          <?php } $i++; } ?>
       </div>
       <div id="div2" class="col-sm-6" ondrop="drop(event,this)" ondragover="allowDrop(event)">
+        <div class="header">
+            <span class="col-sm-1">No</span>
+            <span class="col-sm-3">Question</span>
+            <span class="col-sm-2">Class</span>
+            <span class="col-sm-2">Subject</span>
+            <span class="col-sm-2">Topic</span>
+            <span class="col-sm-1">Time</span>
+            <span class="col-sm-1">Level</span>
+         </div>
          <?php
             $i=1;
             foreach($question_paper_questions as $question) { ?>

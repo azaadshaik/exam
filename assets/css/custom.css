@@ -408,7 +408,7 @@ footer{
   text-align: left;
   margin-bottom: 20px;
 }
-
+.auto-numbering span,
 .right_wrap1 .tab-content label {
   color: #ffffff;
   font-size: 18px;
@@ -419,6 +419,7 @@ footer{
     margin: 15px 0;
 	    padding: 0;
 }
+#qcount,#qtime{color: #f3db14  !important;}
 #View_school_tab .adm_inputs_wrap{margin: 0;}
 #View_school_tab .adm_inputs_wrap label,
 #View_school_tab .adm_inputs_wrap .user-static{
@@ -630,12 +631,11 @@ padding-left:10px;
 }
 .header span{
   background-color: #215dba;
-  height:30px;
   border:1px solid #FFF;
 }
 .draggable-row span {
-  border:1px solid #FFF;
-  background-color: #aa7bf6;
+ border: 1px solid #ddd;
+  background-color: #ffffff;
   color: #000;
   font-size:12px;
   height:80px;
@@ -644,19 +644,17 @@ padding-left:10px;
 #div1, #div2 {
     
     min-height:500px ;
+    max-height:600px ;
     border: 1px solid black;
-    overflow-y:scroll;
+    overflow-y:auto;
 }
-#div1.col-sm-6 ,#div2.col-sm-6,#div1 span.col-sm-2{
-padding:0px;
-}
+
 #drag-drop-filters .adm_inputs_wrap .dropdown{
-	padding:0;
+
 	font-size:12px;
 }
 #drag-drop-filters .apply-btn {
 margin:0;
-padding:0;
 }
 #qcount,#qtime{
 font-size: 25px;
@@ -664,6 +662,10 @@ color: #FFF;
 margin: 10px;
 }
 /* latest issue fixes */
+.edit_questions .header span{    
+  text-align: center;
+    background: #f3db14;
+    padding: 10px 8px;}
 #users_tab #table-search-input{position: relative;}
 #users_tab .search-result ul li{list-style-type: none;}
 #users_tab .search-result ul,
@@ -675,6 +677,7 @@ margin: 10px;
 #exams_tab .search-result ul{margin:0;cursor: pointer;}
 
 #exams_tab .search-result{left: 6%;}
+
 @media (max-width: 768px){
   .logo{
         margin-top: 15px;
