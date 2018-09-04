@@ -605,7 +605,7 @@ input,.right_wrap1 .tab-content .adm_inputs_wrap input,
   color: #ffffff;
 }
 
-.right_wrap1 .tab-content textarea {
+.right_wrap1 .tab-content textarea,.user_body .tab-content textarea {
   color: #0078ff;
   border: none;
   outline: none;
@@ -724,4 +724,7 @@ footer p {
 .user_body .user_body_left .nav-tabs>li.four:before,
 .user_body .user_body_left .nav-tabs>li.five:before,
 .user_body .user_body_left .nav-tabs>li.six:before{left:75px;}
+.user_container .user_inp_search{padding: 18px 35px;}
+.user_inner_usericon {width: 30%;padding: 15px 0px;}
+.logo{margin: 0;}
 }
