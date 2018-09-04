@@ -485,6 +485,13 @@ input:-moz-placeholder {
 
 
 /* user dashbaord css ends here */
+#schools_tab .adm_inputs_wrap .drop_down{text-align: center;}
+.adm_check_inner .school{}
+.adm_check_inner .school{}
+.adm_check_inner .classes{padding: 0 5px;}
+.adm_check_inner .classes .lables{color:#f3db14  !important}
+.adm_check_inner .classes input{margin-right:5px;}
+.right_wrap1 .tab-content .adm_check_inner > span > label{margin: 10px 0;}
 
 /* student dashboard css starts here */
 

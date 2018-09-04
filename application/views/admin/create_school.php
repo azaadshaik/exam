@@ -19,13 +19,13 @@
 
                               foreach($classes_list as $class){
                                 ?>
-                                <div>
+                                <div class="adm_check_inner">
                                 
-                                <span><label class="checkbox-inline"><input type="checkbox" name="classes[]" value="<?php echo $class['class_id'];?>"><?php echo $class['class_name'];?></label></span>
+                                <span class="school"><label class="checkbox-inline"><input type="checkbox" name="classes[]" value="<?php echo $class['class_id'];?>"><?php echo $class['class_name'];?></label></span>
                                 <?php
                                 foreach($sections_list as $section){
                                     ?>
-                                    <span><label class=""><input type="checkbox" name="sections[]" value="<?php echo $class['class_id'].'-'.$section['section_id'];?>"><?php echo $section['section_code'];?></label></span>
+                                    <span class="classes"><label class="lables"><input type="checkbox" name="sections[]" value="<?php echo $class['class_id'].'-'.$section['section_id'];?>"><?php echo $section['section_code'];?></label></span>
                                 <?php
                                 }
                                 ?>
