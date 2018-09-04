@@ -33,12 +33,12 @@
                <span class="icon icon-bar"></span>
                </button>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">   
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">   
                <img src="<?php echo $asset_url; ?>/images/logo.png">
             </div>
 			<?php
 			if($this->session->userdata('user_name')){ ?>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
                <span class="stuhead_wel_txt col-lg-5 col-md-5 col-sm-5 col-xs-5">Welcome</span> 
                <div class="stu_acct-wrap col-lg-4 col-md-4 col-sm-4 col-xs-4">
                   <div class="input-group">
@@ -52,7 +52,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                   <img src="<?php echo $asset_url; ?>/images/profile-pic.png" class="profile-pic img-circle" alt="Cinque Terre" width="80" > 
                </div>
             </div>
