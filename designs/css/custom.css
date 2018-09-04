@@ -229,6 +229,121 @@ input:-moz-placeholder {
 
 /*.main_bg{background:url("../images/dashbaord_bg2.jpg");}*/
 
+/* user dashbaord css starts here */
+.user_header{max-height:78px;}
+.user_header,.user_body{display: inline-block;width: 100%;position: relative;}
+.user_logo_head{    background: #f3db14;
+    text-align: center;
+    padding: 20px 0;}
+.user_inp_section{background: rgba(255,255,255,0.4);padding:22.5px 20px;    display: inline-block;
+    width: 100%;}
+    .user_container{padding: 0;width: 100%;}
+.user_container .user_inp_search{padding:5px 35px;background: transparent;color: #ffffff;width: 100%;}
+.user_container .user_inner_search{width: 40%;}
+.user_container .user_inner_search:before {
+   font-family: FontAwesome;
+    content: "\f002";
+    position: absolute;
+    left: 35px;
+    top: 31px;
+}
+.user_inner_usericon{width: 20%;}
+.user_inner_usericon .dropdown-menu .dropdown-item {
+  width: 100%;
+  display: inline-block;
+}
+.user_inner_usericon .dropdown-menu {
+  padding: 15px;
+}
+.user_container .stuhead_wel_txt{font-size: 16px;letter-spacing: 0;}
+.user_container .input-group-append{    margin-left: 15px;
+    margin-top: 6px;}
+.user_mail_setting{    padding:27.5px 20px;background:rgba(255,255,255,0.5);}
+.user_notif_icon,.user_emai_icon,.user_setting_icon{padding: 0 10px; position: relative;background: none;border: none;}
+.user_notif_icon:before {
+  font-family: FontAwesome;
+      content: "\f0a2";
+      color: #fff;
+    font-size: 20px;
+}
+.user_emai_icon:before{font-family: FontAwesome;
+      content: "\f003";
+      color: #fff;
+    font-size: 20px;}
+.user_setting_icon:before{font-family: FontAwesome;
+      content:"\f013";
+      color: #fff;
+    font-size: 20px;}
+.user_notif_number{position: absolute;}
+.user_notif_number{    top: -15px;
+    background: #fb5557;
+    padding: 1px 9px;
+    border-radius: 42px;
+    color: #ffffff;
+    left: 15px;}
+.user_container .user_inp_search::placeholder {
+    color: #ffffff;
+    opacity:0.5; /* Firefox */
+}
+.user_body .user_body_left .nav-tabs>li{ background: #3d4a53;
+    width: 100%;
+    text-align: center;
+    border-bottom:2px solid #333d47;}
+    .user_body .user_body_left .nav-tabs>li.active{background: #2f3a40;box-shadow: inset 0px 0px 78px rgba(0,0,0,.5);-moz-box-shadow: inset 0px 0px 78px rgba(0,0,0,.5);-webkit-box-shadow: inset 0px 0px 78px rgba(0,0,0,.5);}
+    .user_body .user_body_left .nav-tabs>li>a{color: #d5d6d8;padding:81px 0 30px 0;border: none;}
+    .user_body .user_body_left .nav-tabs>li>a:hover{background: none;border: transparent;}
+    .user_body .user_body_left .nav-tabs>li.active a{background: none;border: none;border-left:5px solid red;}
+    .user_body .user_body_left .nav-tabs>li.one:before{font-family: FontAwesome;
+    content:"\f015";
+    color: #fff;
+    font-size: 48px;
+    position: absolute;
+    left: 83px;
+    top: 13px;}
+     .user_body .user_body_left .nav-tabs>li.two:before{font-family: FontAwesome;
+    content:"\f003";
+    color: #fff;
+    font-size: 48px;
+    position: absolute;
+    left: 83px;
+    top: 13px;}
+     .user_body .user_body_left .nav-tabs>li.three:before{font-family: FontAwesome;
+    content:"\f007";
+    color: #fff;
+    font-size: 48px;
+    position: absolute;
+    left: 83px;
+    top: 13px;}
+     .user_body .user_body_left .nav-tabs>li.four:before{font-family: FontAwesome;
+    content:"\f021";
+    color: #fff;
+    font-size: 48px;
+    position: absolute;
+    left: 83px;
+    top: 13px;}
+     .user_body .user_body_left .nav-tabs>li.five:before{font-family: FontAwesome;
+    content:"\f059";
+    color: #fff;
+    font-size: 48px;
+    position: absolute;
+    left: 83px;
+    top: 13px;}
+     .user_body .user_body_left .nav-tabs>li.six:before{font-family: FontAwesome;
+    content: "\f013";
+    color: #fff;
+    font-size: 48px;
+    position: absolute;
+    left: 83px;
+    top: 13px;}
+.user_content{display: inline-block;width: 100%;}
+.user_content{padding:40px;}
+.Pos_abs_tab{    height: 100%;
+    position: absolute;
+    right: 0;
+    background:rgba(0,0,0,0.3);}
+.user_body .tab-content input,
+.user_body .tab-content textarea{    color: #333;}
+/* user dashbaord css ends here */
 
 /* student dashboard css starts here */
 
@@ -394,7 +509,7 @@ footer{
   margin-bottom: 20px;
 }
 
-.right_wrap1 .tab-content label {
+.right_wrap1 .tab-content label,.user_body .tab-content label {
   color: #ffffff;
   font-size: 18px;
   display: inline-block;
@@ -402,6 +517,7 @@ footer{
   text-align: left;
      line-height: 30px;
     margin: 15px 0;
+    padding: 0;
 }
 .custom-file-upload{display:inline-block;width: 100%;    margin: 10px 0;}
 .custom-file-upload input[type="file"] {
@@ -546,4 +662,66 @@ footer p {
   .left_wrap1{
     padding:0 15px !important;
   }
+}
+
+@media (max-width:321px){
+.user_header{height:auto;max-height:initial;}
+.user_body .user_body_left .nav-tabs>li.one:before,
+.user_body .user_body_left .nav-tabs>li.two:before,
+.user_body .user_body_left .nav-tabs>li.three:before,
+.user_body .user_body_left .nav-tabs>li.four:before,
+.user_body .user_body_left .nav-tabs>li.five:before,
+.user_body .user_body_left .nav-tabs>li.six:before{left:20px;font-size: 40px;}
+.user_content {
+    padding: 5px 10px;
+}
+.adm_inputs_wrap{margin:0;}
+.user_header div+div{max-height:110px;}
+.user_header div+div+div{max-height:78px;}
+}
+
+
+
+
+@media only screen and (min-device-width: 322px) and (max-device-height:568px){
+.user_header div+div{max-height: 83px;}
+.user_header div+div+div{max-height:78px;}
+.user_content {
+    padding:0px 20px;
+}
+.user_header{
+  height:auto;max-height:initial;
+}
+.signin-btn{margin-top: 10px;}
+.user_body .user_body_left .nav-tabs>li.one:before,
+.user_body .user_body_left .nav-tabs>li.two:before,
+.user_body .user_body_left .nav-tabs>li.three:before,
+.user_body .user_body_left .nav-tabs>li.four:before,
+.user_body .user_body_left .nav-tabs>li.five:before,
+.user_body .user_body_left .nav-tabs>li.six:before{display: none;}
+}
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+.user_body .user_body_left .nav-tabs>li.one:before,
+.user_body .user_body_left .nav-tabs>li.two:before,
+.user_body .user_body_left .nav-tabs>li.three:before,
+.user_body .user_body_left .nav-tabs>li.four:before,
+.user_body .user_body_left .nav-tabs>li.five:before,
+.user_body .user_body_left .nav-tabs>li.six:before{left: 63px;}
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+.user_inp_section{padding: 8.5px 20px;}
+.user_body .user_body_left .nav-tabs>li.one:before,
+.user_body .user_body_left .nav-tabs>li.two:before,
+.user_body .user_body_left .nav-tabs>li.three:before,
+.user_body .user_body_left .nav-tabs>li.four:before,
+.user_body .user_body_left .nav-tabs>li.five:before,
+.user_body .user_body_left .nav-tabs>li.six:before{left:75px;}
 }
