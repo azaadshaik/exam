@@ -10,6 +10,10 @@ if(empty($question_list)){
                              <button class="addnew-btn pull-left" type="button" onclick="createNew('admin/create_question','questions_tab');">
                              Add New
                              </button>
+							 
+							  <button class="addnew-btn pull-right" type="button" onclick="createNew('uploads/question_upload','questions_tab');">
+                             Upload Questions
+                             </button>
                              
                           </div>
 <?php  

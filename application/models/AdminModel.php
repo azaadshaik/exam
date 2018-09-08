@@ -18,7 +18,13 @@ class AdminModel extends CI_Model
 
        
     }
+    public function get_all_roles(){
 
+        $this->db->select('*');
+        $this->db->from('roles');
+		$result = $this->db->get()->result_array();
+        return $result;
+    }
     public function get_all_institutions(){
 
         $this->db->select('*');

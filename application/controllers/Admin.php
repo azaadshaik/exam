@@ -40,6 +40,10 @@ class Admin extends CI_Controller
 
 		$user_list = $this->usermodel->get_all_users();
 		$data['user_list'] = $user_list;
+		$data['institutions'] = $this->adminmodel->get_all_institutions();
+		$data['roles'] = $this->adminmodel->get_all_roles();
+		
+
 		$this->load->view('admin/user_list', $data);
 		
 		
