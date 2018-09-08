@@ -19,45 +19,53 @@
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                               <label>Institution</label>
                               <div class="form-group">
-                                 <select class="dropdown form-control" id="sel1">
-                                    <option>Nalanda</option>
-                                    <option>Google</option>
-                                    <option>Bhashyam</option>
-                                    <option>RSR</option>
+                                 <select class="dropdown form-control" id="institution" onchange="loadSchools(this.value);">
+                                    <option value="0">Select</option>
+                                    <?php
+                                    if(!empty($institutions)){
+                                      foreach($institutions as $institute){
+                                        ?>
+                                        <option value="<?php echo $institute['institution_id'];?>"><?php echo $institute['institution_name'];?></option>
+                                        <?php
+
+                                      }
+                                    }
+                                    
+                                    ?>
                                  </select>
                               </div>
                            </div>
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                               <label>School</label>
                               <div class="form-group">
-                                 <select class="dropdown form-control" id="sel1">
-                                    <option>Nalanda</option>
-                                    <option>Google</option>
-                                    <option>Bhashyam</option>
-                                    <option>RSR</option>
+                                 <select class="dropdown form-control" id="school" onchange="loadClasses(this.value);">
+                                    
                                  </select>
                               </div>
                            </div>
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                               <label>Class</label>
                               <div class="form-group">
-                                 <select class="dropdown form-control" id="sel1">
-                                    <option>6<sup>th</sup></option>
-                                    <option>7<sup>th</sup></option>
-                                    <option>8<sup>th</sup></option>
-                                    <option>9<sup>th</sup></option>
-                                    <option>10<sup>th</sup></option>
+                                 <select class="dropdown form-control" id="class">
+                                    
                                  </select>
                               </div>
                            </div>
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                               <label>Role</label>
-                              <select class="dropdown form-control" id="">
-                                 <option>Admin</option>
-                                 <option>Manager</option>
-                                 <option>Question Preparation</option>
-                                 <option >Student</option>
-                                 <option>Parent</option>
+                              <select class="dropdown form-control" id="role">
+                                 <option value="0">Select</option>
+                                 <?php
+                                    if(!empty($roles)){
+                                      foreach($roles as $role){
+                                        ?>
+                                        <option value="<?php echo $role['role_id'];?>"><?php echo $role['role_name'];?></option>
+                                        <?php
+
+                                      }
+                                    }
+                                    
+                                    ?>
                               </select>
                            </div>
                            
