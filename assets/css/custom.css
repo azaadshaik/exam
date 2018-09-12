@@ -546,8 +546,9 @@ footer{
 .stu_sec_left {
   /*background:rgba(0,0,0,0.3);*/
   width: 100%;
-  height: 835px;
+  min-height:620px;
   padding:40px 25px;
+  height: auto;
 }
 
 .stu_sec_right {
