@@ -30,13 +30,15 @@ exit;
                               </button>
                               </span>
                            </div>
-						   <div class="col-md-3 pull-right">
+						   <div class="col-md-6 ">
                               
                               
-                              <button class="addnew-btn pull-left" type="button" onclick="createNew('admin/create_topic','topics_tab');">
+                              <span><button class="addnew-btn pull-left" type="button" onclick="createNew('admin/create_topic','topics_tab');">
                               Add New
-                              </button>
-                              
+                              </button></span>
+							<span><button class="addnew-btn pull-right" type="button" onclick="createNew('uploads/upload_topics','topics_tab');">
+                              Upload 
+                              </button>	</span>
                            </div>
                         </div>
                         <div class="user-table">
