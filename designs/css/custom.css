@@ -343,7 +343,41 @@ input:-moz-placeholder {
 
 
 /*.main_bg{background:url("../images/dashbaord_bg2.jpg");}*/
-
+/* student exam tab*/
+#userSecondTab{padding: 10px;}
+.stu-exam-tab .header{background:rgba(0, 0, 0, 0.6);padding: 10px 20px;width: 100%;display: inline-block;}
+.stu-exam-tab .header-name,
+.stu-exam-tab .header-text{color: #fff;font-size: 16px;display: inline-block;width: 100%;margin: 5px 0;}
+.stu-exam-tab .header h2{    color: #ffffff;
+    text-align: center;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    line-height: 62px;}
+.stu-exam-tab .exam-body-left{border-right:3px solid red;}
+.exam-answer-selction{margin:30px 0 30px 20px;}
+.stu-exam-tab .exam-body{padding:20px;background:rgba(0, 0, 0, 0.3);border: 1px solid rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    width: 100%;}
+.stu-exam-tab .exam-body .mark-review label,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio label{margin: 0;padding: 0;}
+.stu-exam-tab .exam-body .mark-review input,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio input{    margin-left: -20px;
+    margin-top: 10px;}
+.stu-exam-tab .mark-review {    margin-top: 30px;
+    margin-left: 20px;}
+.stu-exam-tab .mark-review label{color: #FFA500 !important;}
+.stu-exam-tab .exam-btn-wrap{margin: 30px 0;
+    display: inline-block;}
+.exam-btn-wrap .btn-left{margin-right: 20px;}
+.exam-ques-num{padding: 40px 20px;display: inline-block;width: 100%;}
+.exam-ques-num span{margin: 0 5px;padding: 15px 15px;
+    background: #D3D3D3;
+    min-width: 48px;}
+.exam-ques-num .ques-rows{display: inline-block;    width: 100%;
+    margin: 10px 0;}
+/* student exam tab*/ 
 
 /* user dashbaord css starts here */
 

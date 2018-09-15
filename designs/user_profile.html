@@ -16,6 +16,9 @@
       <link rel="stylesheet" href="css/templatemo-style.css">
       <link rel="stylesheet" href="css/custom.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <style type="text/css">
+         .exam-tab .header{}
+      </style>
    </head>
    <body>
       <img class="bg_img" src="images/dashbaord_bg2.png">
@@ -57,7 +60,7 @@
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 user_body_left padding0">
                <ul class="nav nav-tabs">
                   <li class="one active"><a data-toggle="tab" href="#userFirstTab">Home</a></li>
-                  <li class="two"><a  data-toggle="tab" href="#userSecondTab">Menu 1</a></li>
+                  <li class="two"><a  data-toggle="tab" href="#userSecondTab">Exam</a></li>
                   <li class="three"><a  data-toggle="tab" href="#userThirdTab">Menu 2</a></li>
                   <li class="four"><a  data-toggle="tab" href="#userFourthTab">Menu 3</a></li>
                   <li class="five"><a  data-toggle="tab" href="#userFifthTab">Menu 4</a></li>
@@ -68,87 +71,138 @@
                <div class="tab-content">
                   <div id="userFirstTab" class="tab-pane fade in active">
                      <div class="user_content">
-                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
-                           <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           <div class="adm_inputs_wrap">
+                              <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
+                              <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                           </div>
+                           <div class="adm_inputs_wrap">
+                              <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Password</label>
+                              <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="password" id="UserPassword" name="UserPassword">
+                           </div>
+                           <div class="adm_inputs_wrap">
+                              <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Confirm Password</label>
+                              <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="password" id="ConfPassword" name="ConfPassword">
+                           </div>
+                           <div class="adm_inputs_wrap">
+                              <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Phone No</label>
+                              <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" id="PhoneNo" name="PhoneNo">
+                           </div>
+                           <div class="adm_inputs_wrap">
+                              <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Address</label>
+                              <textarea rows="3" cols="12" class="col-lg-6 col-md-6 col-sm-9 col-xs-12"></textarea>
+                           </div>
+                           <div class="col-md-12">
+                              <button class="signin-btn">Submit</button>
+                           </div>
                         </div>
-                        <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Password</label>
-                           <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="password" id="UserPassword" name="UserPassword">
-                        </div>
-                        <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Confirm Password</label>
-                           <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="password" id="ConfPassword" name="ConfPassword">
-                        </div>
-                        <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Phone No</label>
-                           <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" id="PhoneNo" name="PhoneNo">
-                        </div>
-                        <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Address</label>
-                           <textarea rows="3" cols="12" class="col-lg-6 col-md-6 col-sm-9 col-xs-12"></textarea>
-                        </div>
-                        <div class="col-md-12">
-                           <button class="signin-btn">Submit</button>
-                        </div>
-                     </div>
                      </div>
                   </div>
                   <div id="userSecondTab" class="tab-pane fade">
-                      <div class="user_content">
-                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
-                           <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                     <div class="stu-exam-tab col-lg12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="header">
+                           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                              <span class="header-name"><b>Name:</b> Wasim</span>
+                              <span class="header-name"><b>Exam Centre:</b> JBDC</span>
+                           </div>
+                           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                              <h2>Mock Test</h2>
+                           </div>
+                           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                              <span class="header-name"><b>Timer:</b> 02:00:00</span>
+                           </div>
                         </div>
-                        
+                        <div class="exam-body">
+                           <div class="exam-body-left col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                              <span class="header-text">Question 4 of 10:</span>
+                              <span class="header-text">Who was the first English President of the Indian National Congress ?</span>
+                              <div class="mark-review checkbox">
+  <label><input class="markinput" type="checkbox" value="">Mark For Review Later</label>
+</div>
+                              <div class="exam-answer-selction">
+                                 <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                    <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                    <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                    <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                    <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                   <div class="exam-btn-wrap">
+                                    <input type="submit" class="btn btn-large btn-left" value=" Next ">
+                                    <input type="submit" class="btn btn-large btn-right" value=" Save & Continue ">
+                                 </div>
+                                 </form>
+
+                              </div>
+                           </div>
+                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                              <div class="exam-ques-num">
+                                 <div class="ques-rows">
+                                 <span class="btn">1</span>
+                                 <span class="btn">2</span>
+                                 <span class="btn">3</span>
+                                 <span class="btn btn-current">4</span>
+                               </div>
+                               <div class="ques-rows">
+                                 <span class="btn">5</span>
+                                 <span class="btn">6</span>
+                                 <span class="btn">7</span>
+                                 <span class="btn">8</span>
+                               </div>
+                               <div class="ques-rows">
+                                 <span class="btn">9</span>
+                                 <span class="btn">10</span>
+                                 <span class="btn">11</span>
+                                 <span class="btn">12</span>
+                               </div>
+                               <div class="ques-rows">
+                                 <span class="btn">13</span>
+                                 <span class="btn">14</span>
+                                 <span class="btn">15</span>
+                                 <span class="btn">16</span>
+                               </div>
+                              </div>
+                           </div>
+                        </div>
                      </div>
-                  </div>
                   </div>
                   <div id="userThirdTab" class="tab-pane fade">
-                      <div class="user_content">
-                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
-                           <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                     <div class="user_content">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           <div class="adm_inputs_wrap">
+                              <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
+                              <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                           </div>
                         </div>
-                        
                      </div>
-                  </div>
                   </div>
                   <div id="userFourthTab" class="tab-pane fade">
-                      <div class="user_content">
-                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
-                           <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                     <div class="user_content">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           <div class="adm_inputs_wrap">
+                              <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
+                              <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                           </div>
                         </div>
-                        
                      </div>
-                  </div>
                   </div>
                   <div id="userFifthTab" class="tab-pane fade">
-                      <div class="user_content">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
-                           <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                     <div class="user_content">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           <div class="adm_inputs_wrap">
+                              <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
+                              <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                           </div>
                         </div>
-                        
                      </div>
-                  </div>
                   </div>
                   <div id="userSixthTab" class="tab-pane fade">
-                      <div class="user_content">
-                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="adm_inputs_wrap">
-                           <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
-                           <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                     <div class="user_content">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           <div class="adm_inputs_wrap">
+                              <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
+                              <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                           </div>
                         </div>
-                        
                      </div>
-                  </div>
                   </div>
                </div>
             </div>
