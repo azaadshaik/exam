@@ -17,7 +17,125 @@
       <link rel="stylesheet" href="css/custom.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <style type="text/css">
-         .exam-tab .header{}
+         /* student exam tab*/
+#userSecondTab,#userThirdTab{padding: 20px 10px;}
+.stu-exam-tab .header{background:rgba(0, 0, 0, 0.6);padding: 10px 20px;width: 100%;display: inline-block;}
+.stu-exam-tab .header-name,
+.stu-exam-tab .header-text{color: #fff;font-size: 16px;display: inline-block;width: 100%;margin: 5px 0;}
+.stu-exam-tab .header h2{    color: #ffffff;
+    text-align: center;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    line-height: 62px;}
+.stu-exam-tab .exam-body-left{border-right:3px solid red;}
+.exam-answer-selction{margin:30px 0 30px 20px;}
+.stu-exam-tab .exam-body{padding:20px;background:rgba(0, 0, 0, 0.3);border: 1px solid rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    width: 100%;}
+.stu-exam-tab .exam-body .mark-review label,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio label{margin: 0;padding: 0;}
+.stu-exam-tab .exam-body .mark-review input,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio input{    margin-left: -20px;
+    margin-top: 10px;}
+.stu-exam-tab .mark-review {    margin-top: 30px;
+    margin-left: 20px;}
+.stu-exam-tab .mark-review label{color: #FFA500 !important;}
+.stu-exam-tab .exam-btn-wrap{margin: 30px 0;
+    display: inline-block;}
+.exam-btn-wrap .btn-left{margin-right: 20px;}
+.exam-ques-num{display: inline-block;width: 100%;}
+.exam-ques-num span{margin: 0 5px;padding: 15px 15px;
+    background: #D3D3D3;
+    min-width: 48px;}
+.exam-ques-num span.btn-current{    box-shadow: inset 0px 0px 13px rgba(0,0,0,0.8);
+      -moz-box-shadow: inset 0px 0px 13px rgba(0,0,0,0.8);
+      -webkit-box-shadow: inset 0px 0px 13px rgba(0,0,0,0.8);}
+.exam-ques-num span.btn-unanswered{    background: #FF0000;
+    color: #ffffff;}
+    .exam-ques-num span.btn-answered{    background: #008000;
+    color: #ffffff;}
+.exam-ques-num span.btn-markreview{    background: #FFA500;
+    color: #ffffff;}
+.exam-ques-num .ques-rows{display: inline-block;    width: 100%;
+    margin: 10px 0;}
+
+
+/* custum scroll ba*****/
+.scrollbar {
+  margin-left: 22px;
+  float: left;
+  max-height: 360px;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+}
+
+.force-overflow {
+  min-height: 450px;
+}
+
+#exam-ques-num {
+  text-align: center;
+  margin: auto;
+}
+
+#style-1::-webkit-scrollbar,
+#style-2::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar,
+#style-5::-webkit-scrollbar,
+#style-6::-webkit-scrollbar,
+#style-7::-webkit-scrollbar,
+#style-8::-webkit-scrollbar,
+#style-9::-webkit-scrollbar,
+#style-10::-webkit-scrollbar,
+#style-11::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+/**  STYLE 1 */
+#style-1::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
+
+#style-1::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+/* custum scroll bar ends ***/
+/* student exam tab*/ 
+
+/* my exams css starts here */
+#userThirdTab .my-exams{padding: 100px;}
+#userThirdTab .tab-content h3{color: #fff;margin-bottom: 40px;}
+#userThirdTab .tab-content p{color: #fff;font-size: 16px;}
+#userThirdTab .tab-content .complte-exam{cursor: pointer;color: }
+#userThirdTab .tab-content{    padding:40px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    width: 100%;}
+#userThirdTab .nav-tabs>li>a{color: #ffffff;}
+#userThirdTab .nav-tabs>li.active a{color:#333;}
+#userThirdTab #upcoming .table-bordered>tbody>tr>td,
+#userThirdTab #attended .table-bordered>tbody>tr>td{text-align: center;}
+#userThirdTab #attended .table-bordered>tbody>tr>td.sub-table button,
+#userThirdTab #upcoming .table-bordered>tbody>tr>td.sub-table button{margin-top: 4px;
+    display: inline-block;color:#333;}
+#userThirdTab .modal .modal-content{background: #fff;}
+#userThirdTab .modal .modal-body .exam-data{margin:10px 0;border-bottom: 1px solid #363636;}
+#userThirdTab .modal .modal-body .exam-data label{color:#696969;padding: 0;margin: 0;display: inline-block;width: 30%;    font-weight: 700;font-size: 16px; }
+#userThirdTab .modal .modal-body .exam-data span{display: inline-block;width: 30%; font-weight: 500;font-size: 16px;text-align: left;}
+#userThirdTab .modal .modal-footer{border: none;}
+/* my exams css ends here */
       </style>
    </head>
    <body>
@@ -60,8 +178,8 @@
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 user_body_left padding0">
                <ul class="nav nav-tabs">
                   <li class="one active"><a data-toggle="tab" href="#userFirstTab">Home</a></li>
-                  <li class="two"><a  data-toggle="tab" href="#userSecondTab">Exam</a></li>
-                  <li class="three"><a  data-toggle="tab" href="#userThirdTab">Menu 2</a></li>
+                  <li class="two"><a  data-toggle="tab" href="#userSecondTab">Exams</a></li>
+                  <li class="three"><a  data-toggle="tab" href="#userThirdTab">My Exams</a></li>
                   <li class="four"><a  data-toggle="tab" href="#userFourthTab">Menu 3</a></li>
                   <li class="five"><a  data-toggle="tab" href="#userFifthTab">Menu 4</a></li>
                   <li class="six"><a  data-toggle="tab" href="#userSixthTab">Menu 5</a></li>
@@ -98,6 +216,7 @@
                         </div>
                      </div>
                   </div>
+                  <!-- exams tab starts here -->
                   <div id="userSecondTab" class="tab-pane fade">
                      <div class="stu-exam-tab col-lg12 col-md-12 col-sm-12 col-xs-12">
                         <div class="header">
@@ -117,83 +236,249 @@
                               <span class="header-text">Question 4 of 10:</span>
                               <span class="header-text">Who was the first English President of the Indian National Congress ?</span>
                               <div class="mark-review checkbox">
-  <label><input class="markinput" type="checkbox" value="">Mark For Review Later</label>
-</div>
+                                 <label><input class="markinput" type="checkbox" value="">Mark For Review Later</label>
+                              </div>
                               <div class="exam-answer-selction">
                                  <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
                                     <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
                                     <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
                                     <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
                                     <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
-                                   <div class="exam-btn-wrap">
-                                    <input type="submit" class="btn btn-large btn-left" value=" Next ">
-                                    <input type="submit" class="btn btn-large btn-right" value=" Save & Continue ">
-                                 </div>
+                                    <div class="exam-btn-wrap">
+                                       <input type="submit" class="btn btn-large btn-left" value=" Next ">
+                                       <input type="submit" class="btn btn-large btn-right" value=" Save & Continue ">
+                                    </div>
                                  </form>
-
                               </div>
                            </div>
                            <div id="exam-ques-num" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                               <div  class="scrollbar exam-ques-num"  id="style-1">
                                  <div class="ques-rows">
-                                 <span class="btn btn-markreview">1</span>
-                                 <span class="btn btn-answered">2</span>
-                                 <span class="btn btn-unanswered">3</span>
-                                 <span class="btn btn-current">4</span>
-                               </div>
-                               <div class="ques-rows">
-                                 <span class="btn">5</span>
-                                 <span class="btn">6</span>
-                                 <span class="btn">7</span>
-                                 <span class="btn">8</span>
-                               </div>
-                               <div class="ques-rows">
-                                 <span class="btn">9</span>
-                                 <span class="btn">10</span>
-                                 <span class="btn">11</span>
-                                 <span class="btn">12</span>
-                               </div>
-                               <div class="ques-rows">
-                                 <span class="btn">13</span>
-                                 <span class="btn">14</span>
-                                 <span class="btn">15</span>
-                                 <span class="btn">16</span>
-                               </div>
-                               <div class="ques-rows">
-                                 <span class="btn">17</span>
-                                 <span class="btn">18</span>
-                                 <span class="btn">19</span>
-                                 <span class="btn">20</span>
-                               </div>
-                               <div class="ques-rows">
-                                 <span class="btn">21</span>
-                                 <span class="btn">22</span>
-                                 <span class="btn">23</span>
-                                 <span class="btn">24</span>
-                               </div>
-                               <div class="ques-rows">
-                                 <span class="btn">25</span>
-                                 <span class="btn">26</span>
-                                 <span class="btn">27</span>
-                                 <span class="btn">28</span>
-                               </div>
-                               <div class="force-overflow"></div>
+                                    <span class="btn btn-markreview">1</span>
+                                    <span class="btn btn-answered">2</span>
+                                    <span class="btn btn-unanswered">3</span>
+                                    <span class="btn btn-current">4</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">5</span>
+                                    <span class="btn">6</span>
+                                    <span class="btn">7</span>
+                                    <span class="btn">8</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">9</span>
+                                    <span class="btn">10</span>
+                                    <span class="btn">11</span>
+                                    <span class="btn">12</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">13</span>
+                                    <span class="btn">14</span>
+                                    <span class="btn">15</span>
+                                    <span class="btn">16</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">17</span>
+                                    <span class="btn">18</span>
+                                    <span class="btn">19</span>
+                                    <span class="btn">20</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">21</span>
+                                    <span class="btn">22</span>
+                                    <span class="btn">23</span>
+                                    <span class="btn">24</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">25</span>
+                                    <span class="btn">26</span>
+                                    <span class="btn">27</span>
+                                    <span class="btn">28</span>
+                                 </div>
+                                 <div class="force-overflow"></div>
                               </div>
-                        
                            </div>
                         </div>
                      </div>
                   </div>
+                  <!-- exams tab ends here -->
+                  <!-- My exams tab starts here -->
                   <div id="userThirdTab" class="tab-pane fade">
-                     <div class="user_content">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                           <div class="adm_inputs_wrap">
-                              <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">User Name *</label>
-                              <input class="col-lg-6 col-md-6 col-sm-9 col-xs-12" type="text" placeholder="User Name" id="Username" name="Username" readonly="">
+                     <div class="my-exams col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <ul class="nav nav-tabs">
+                           <li class="active"><a data-toggle="tab" href="#ongoing">On Going</a></li>
+                           <li><a data-toggle="tab" href="#upcoming">Upcoming</a></li>
+                           <li><a data-toggle="tab" href="#attended">Attended</a></li>
+                        </ul>
+                        <div class="tab-content">
+                           <div id="ongoing" class="tab-pane fade in active">
+                              <h3>On Going</h3>
+                              <p>There is one exam yet to complete</p>
+                              <button href="" class="btn complte-exam">Click here to complete exam</button>
                            </div>
+                           <div id="upcoming" class="tab-pane fade">
+                              <h3>Up coming</h3>
+                              <div class="user-table">
+                                 <table class="table table-bordered table-striped">
+                                    <thead>
+                                       <tr>
+                                          <th scope="col">Exam Name</th>
+                                          <th scope="col">Exam Date</th>
+                                          <th scope="col">Exam Time</th>
+                                          <th scope="col">Exam Centre</th>
+                                          <th scope="col">Actions</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                          <td>Arthimatic</td>
+                                          <td>10/10/2018</td>
+                                          <td>10AM</td>
+                                          <td>VBHS</td>
+                                          <td class="sub-table">
+                                            <button data-toggle="modal" data-target="#up-detail-one">Details</button>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Reasoning</td>
+                                          <td>10/12/2018</td>
+                                          <td>10AM</td>
+                                          <td>nalanda</td>
+                                         <td class="sub-table">
+                                            <button data-toggle="modal" data-target="#up-detail-one">Details</button>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Maths</td>
+                                          <td>08/01/2019</td>
+                                          <td>10AM</td>
+                                          <td>VBHS</td>
+                                         <td class="sub-table">
+                                            <button data-toggle="modal" data-target="#up-detail-one">Details</button>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Science</td>
+                                          <td>05/03/2019</td>
+                                          <td>10AM</td>
+                                          <td>Nalanda</td>
+                                          <td class="sub-table">
+                                            <button data-toggle="modal" data-target="#up-detail-one">Details</button>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Sccial</td>
+                                          <td>03/05/2019</td>
+                                          <td>10AM</td>
+                                          <td>ZPHS</td>
+                                          <td class="sub-table">
+                                            <button data-toggle="modal" data-target="#up-detail-one">Details</button>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+                           <div id="attended" class="tab-pane fade">
+                              <h3>Attended</h3>
+                              <div class="user-table">
+                                 <table class="table table-bordered table-striped">
+                                    <thead>
+                                       <tr>
+                                          <th scope="col">Exam Name</th>
+                                          <th scope="col">Exam Date</th>
+                                          <th scope="col">Exam Time</th>
+                                          <th scope="col">Exam Centre</th>
+                                          <th scope="col">Actions</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                          <td>Arthimatic</td>
+                                          <td>10/10/2017</td>
+                                          <td>10AM</td>
+                                          <td>VBHS</td>
+                                           <td class="sub-table">
+                                            <button data-toggle="modal" data-target="#up-detail-one">Details</button>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Reasoning</td>
+                                          <td>10/12/2017</td>
+                                          <td>10AM</td>
+                                          <td>nalanda</td>
+                                           <td class="sub-table">
+                                            <button data-toggle="modal" data-target="#up-detail-one">Details</button>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Maths</td>
+                                          <td>08/01/2018</td>
+                                          <td>10AM</td>
+                                          <td>VBHS</td>
+                                           <td class="sub-table">
+                                            <button data-toggle="modal" data-target="#up-detail-one">Details</button>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Science</td>
+                                          <td>05/03/2018</td>
+                                          <td>10AM</td>
+                                          <td>Nalanda</td>
+                                           <td class="sub-table">
+                                            <button data-toggle="modal" data-target="#up-detail-one">Details</button>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Sccial</td>
+                                          <td>03/05/2018</td>
+                                          <td>10AM</td>
+                                          <td>ZPHS</td>
+                                           <td class="sub-table">
+                                            <button data-toggle="modal" data-target="#up-detail-one">Details</button>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+
+                           <!-- model for popup data -->
+
+                            <!-- Modal -->
+                                <div class="modal fade" id="up-detail-one" role="dialog">
+                                  <div class="modal-dialog">
+                                  
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h2 class="modal-title">Details</h2>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="exam-data">
+                                           <label>Exam Id:</label> <span>MA1258</span>
+                                        </div>
+                                         <div class="exam-data">
+                                           <label>Exam Name:</label> <span>Maths</span>
+                                        </div>
+                                        <div class="exam-data">
+                                           <label>Exam Code:</label> <span>25848</span>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      </div>
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+
+                           <!-- model for popup data ends-->
                         </div>
                      </div>
                   </div>
+                  <!-- My exams tab ends here -->
                   <div id="userFourthTab" class="tab-pane fade">
                      <div class="user_content">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
