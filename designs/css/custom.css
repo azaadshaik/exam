@@ -371,12 +371,72 @@ input:-moz-placeholder {
 .stu-exam-tab .exam-btn-wrap{margin: 30px 0;
     display: inline-block;}
 .exam-btn-wrap .btn-left{margin-right: 20px;}
-.exam-ques-num{padding: 40px 20px;display: inline-block;width: 100%;}
+.exam-ques-num{display: inline-block;width: 100%;}
 .exam-ques-num span{margin: 0 5px;padding: 15px 15px;
     background: #D3D3D3;
     min-width: 48px;}
+.exam-ques-num span.btn-current{    box-shadow: inset 0px 0px 13px rgba(0,0,0,0.8);
+      -moz-box-shadow: inset 0px 0px 13px rgba(0,0,0,0.8);
+      -webkit-box-shadow: inset 0px 0px 13px rgba(0,0,0,0.8);}
+.exam-ques-num span.btn-unanswered{    background: #FF0000;
+    color: #ffffff;}
+    .exam-ques-num span.btn-answered{    background: #008000;
+    color: #ffffff;}
+.exam-ques-num span.btn-markreview{    background: #FFA500;
+    color: #ffffff;}
 .exam-ques-num .ques-rows{display: inline-block;    width: 100%;
     margin: 10px 0;}
+
+
+/* custum scroll ba*****/
+.scrollbar {
+  margin-left: 22px;
+  float: left;
+  max-height: 360px;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+}
+
+.force-overflow {
+  min-height: 450px;
+}
+
+#exam-ques-num {
+  text-align: center;
+  margin: auto;
+}
+
+#style-1::-webkit-scrollbar,
+#style-2::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar,
+#style-5::-webkit-scrollbar,
+#style-6::-webkit-scrollbar,
+#style-7::-webkit-scrollbar,
+#style-8::-webkit-scrollbar,
+#style-9::-webkit-scrollbar,
+#style-10::-webkit-scrollbar,
+#style-11::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+/**  STYLE 1 */
+#style-1::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
+
+#style-1::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+/* custum scroll bar ends ***/
 /* student exam tab*/ 
 
 /* user dashbaord css starts here */
@@ -1051,6 +1111,8 @@ footer p {
 /* iPads (landscape) ----------- */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .exam-ques-num span{    min-width: 40%;margin: 5px;}
+  .exam-ques-num .ques-rows{margin: 0;}
   .user_body .user_body_left .nav-tabs>li.one:before,
   .user_body .user_body_left .nav-tabs>li.two:before,
   .user_body .user_body_left .nav-tabs>li.three:before,
@@ -1065,6 +1127,8 @@ footer p {
 /* iPads (portrait) ----------- */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .exam-ques-num span{    min-width: 40%;margin: 5px;}
+  .exam-ques-num .ques-rows{margin: 0;}
   .user_inp_section {
     padding: 8.5px 20px;
   }
