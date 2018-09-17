@@ -8,7 +8,7 @@ class Uploads extends CI_Controller {
        public function __construct() {
 	   parent::__construct();
 	   $this->load->library(array('form_validation'));
-	   $this->load->model(array('usermodel','adminmodel'));
+	   $this->load->model(array('UserModel','AdminModel'));
            
        }
 
@@ -61,7 +61,7 @@ class Uploads extends CI_Controller {
 
 		}
 		else{
-			$classes = $this->adminmodel->get_all_classes();
+			$classes = $this->AdminModel->get_all_classes();
 			$data['classes'] = $classes;
 			$this->load->view('uploads/upload_topics', $data);
 			

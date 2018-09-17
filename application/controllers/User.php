@@ -9,7 +9,7 @@ class User extends CI_Controller {
 		
 		parent::__construct();
 		$this->load->library(array('form_validation'));
-		$this->load->model(array('usermodel','adminmodel'));
+		$this->load->model(array('UserModel','adminmodel'));
 		
 	}
 	public function index()
@@ -61,9 +61,9 @@ class User extends CI_Controller {
 			
 			
 			
-			$result = $this->usermodel->add_user($user_data);
+			$result = $this->UserModel->add_user($user_data);
 			$user_id = $this->db->insert_id();
-			$role = $this->usermodel->get_role_by_id($user_data['user_role']);
+			$role = $this->UserModel->get_role_by_id($user_data['user_role']);
 			$role_code = $role->role_code;
 			$this->map_users_to_classes($role_code,$user_id);
 			$data['message'] = 'User created successfully';
@@ -71,7 +71,7 @@ class User extends CI_Controller {
 			redirect('admin/users');
 		}
 		else{
-			$roles = $this->usermodel->get_roles();
+			$roles = $this->UserModel->get_roles();
 			$data['roles'] = $roles;
 
 			$this->load->view('user/registration', $data);
@@ -117,8 +117,8 @@ class User extends CI_Controller {
 			$user_data['user_reg_date'] = date('Y-m-d');
 			$user_data['user_status'] = 1;
 			$user_data['user_role'] = $this->input->post('role');
-			$result = $this->usermodel->update_user($user_data,$user_id);
-			$role = $this->usermodel->get_role_by_id($user_data['user_role']);
+			$result = $this->UserModel->update_user($user_data,$user_id);
+			$role = $this->UserModel->get_role_by_id($user_data['user_role']);
 			$role_code = $role->role_code;
 			$this->update_users_to_classes($role_code,$user_id);
 
@@ -130,7 +130,7 @@ class User extends CI_Controller {
 		}
 		else{
 			$user_id = $this->input->get('user_id');
-			$result = $this->usermodel->get_user_by_id($user_id);
+			$result = $this->UserModel->get_user_by_id($user_id);
 			
 			
 			$institutions = $this->adminmodel->get_all_institutions();
@@ -150,7 +150,7 @@ class User extends CI_Controller {
 			$sections = $this->adminmodel->get_sections_by_class_id($result->class);
 			$data['sections'] = $sections;
 			}
-			$roles = $this->usermodel->get_roles();
+			$roles = $this->UserModel->get_roles();
 			$data['roles'] = $roles;
 			$data['user_data'] = $result;
 			$this->load->view('user/edit', $data);
@@ -162,7 +162,7 @@ class User extends CI_Controller {
 	public function view_user(){
 
 		$user_id= $this->input->get('user_id');
-		$user_data = $this->usermodel->load_user_profile($user_id);
+		$user_data = $this->UserModel->load_user_profile($user_id);
 		$data['user_data'] = $user_data;
 		$this->load->view('user/profile', $data);
 	}
@@ -180,10 +180,10 @@ class User extends CI_Controller {
 
 		switch($role_code){
 			case 'teacher':
-				$this->usermodel->map_user_to_class($data);
+				$this->UserModel->map_user_to_class($data);
 			break;
 			case 'student':
-				$this->usermodel->map_user_to_class($data);
+				$this->UserModel->map_user_to_class($data);
 			break;
 			case 'parent':
 			break;
@@ -207,10 +207,10 @@ class User extends CI_Controller {
 
 switch($role_code){
 	case 'teacher':
-		$this->usermodel->update_user_to_class($data,$user_id);
+		$this->UserModel->update_user_to_class($data,$user_id);
 	break;
 	case 'student':
-		$this->usermodel->update_user_to_class($data,$user_id);
+		$this->UserModel->update_user_to_class($data,$user_id);
 	break;
 	case 'parent':
 	break;

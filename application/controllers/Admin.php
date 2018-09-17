@@ -9,9 +9,9 @@ class Admin extends CI_Controller
        
 		parent::__construct();
 		$this->load->library(array('form_validation'));
-		$this->load->model(array('usermodel','adminmodel'));
+		$this->load->model(array('UserModel','AdminModel'));
 		if (!$this->session->userdata('logged_in')){
-            redirect('pulseauth/login','refresh');
+            redirect('PulseAuth/login','refresh');
         }
         elseif($this->session->userdata('user_rolecode')!='admin'){
             $this->data['title']='Unauthorized Access';
@@ -38,10 +38,10 @@ class Admin extends CI_Controller
 
 	public function users(){
 
-		$user_list = $this->usermodel->get_all_users();
+		$user_list = $this->UserModel->get_all_users();
 		$data['user_list'] = $user_list;
-		$data['institutions'] = $this->adminmodel->get_all_institutions();
-		$data['roles'] = $this->adminmodel->get_all_roles();
+		$data['institutions'] = $this->AdminModel->get_all_institutions();
+		$data['roles'] = $this->AdminModel->get_all_roles();
 		
 
 		$this->load->view('admin/user_list', $data);
@@ -50,43 +50,43 @@ class Admin extends CI_Controller
 	}
 	public function schools(){
 
-		$school_list = $this->adminmodel->get_all_schools();
+		$school_list = $this->AdminModel->get_all_schools();
 		$data['school_list'] = $school_list;
 		$this->load->view('admin/school_list', $data);
 	}
 	public function institutions(){
 
-		$institution_list = $this->adminmodel->get_all_institutions();
+		$institution_list = $this->AdminModel->get_all_institutions();
 		$data['institution_list'] = $institution_list;
 		$this->load->view('admin/institution_list', $data);
 	}
 	public function exams(){
 
-		$exams_list = $this->adminmodel->get_all_exams();
+		$exams_list = $this->AdminModel->get_all_exams();
 		$data['exams_list'] = $exams_list;
 		$this->load->view('admin/exams_list', $data);
 	}
 	public function question_papers(){
 
-		$question_papers_list = $this->adminmodel->get_all_question_papers();
+		$question_papers_list = $this->AdminModel->get_all_question_papers();
 		$data['question_papers_list'] = $question_papers_list;
 		$this->load->view('admin/question_papers_list', $data);
 	}
 	public function subjects(){
 
-		$subjects_list = $this->adminmodel->get_all_subjects();
+		$subjects_list = $this->AdminModel->get_all_subjects();
 		$data['subjects_list'] = $subjects_list;
 		$this->load->view('admin/subjects_list', $data);
 	}
 	public function topics(){
 
-		$topics_list = $this->adminmodel->get_all_topics();
+		$topics_list = $this->AdminModel->get_all_topics();
 		$data['topics_list'] = $topics_list;
 		$this->load->view('admin/topics_list', $data);
 	}
 	public function questions(){
 
-		$questions_list = $this->adminmodel->get_all_questions();
+		$questions_list = $this->AdminModel->get_all_questions();
 		$data['question_list'] = $questions_list;
 		$this->load->view('admin/questions_list', $data);
 	}
@@ -104,7 +104,7 @@ class Admin extends CI_Controller
 			$institution_data['institution_status'] = 1;
 			
 						
-			$this->adminmodel->create_institution($institution_data);
+			$this->AdminModel->create_institution($institution_data);
 			$this->institutions();
 			
 
@@ -134,14 +134,14 @@ class Admin extends CI_Controller
 			
 						
 
-			$this->adminmodel->create_subject($subject_data);
+			$this->AdminModel->create_subject($subject_data);
 			$this->subjects();
 			
 
 
 		}
 		else{
-			$data['classes_list'] = $this->adminmodel->get_all_classes();
+			$data['classes_list'] = $this->AdminModel->get_all_classes();
 			$this->load->view('admin/create_subject', $data);
 			
 		}
@@ -167,14 +167,14 @@ class Admin extends CI_Controller
 			
 						
 
-			$this->adminmodel->create_topic($topic_data);
+			$this->AdminModel->create_topic($topic_data);
 			$this->topics();
 			
 
 
 		}
 		else{
-			$data['classes_list'] = $this->adminmodel->get_all_classes();
+			$data['classes_list'] = $this->AdminModel->get_all_classes();
 			$this->load->view('admin/create_topic', $data);
 			
 		}
@@ -200,7 +200,7 @@ class Admin extends CI_Controller
 			
 						
 
-			$this->adminmodel->update_topic($topic_data,$topic_id);
+			$this->AdminModel->update_topic($topic_data,$topic_id);
 			$this->topics();
 			
 
@@ -208,11 +208,11 @@ class Admin extends CI_Controller
 		}
 		else{
 			$topic_id = $this->input->get('topic_id');
-			$topic_data = $this->adminmodel->get_topic_by_id($topic_id);
-			$topic_subjects = $this->adminmodel->get_subjects_by_class_id($topic_data->topic_class_id);			
+			$topic_data = $this->AdminModel->get_topic_by_id($topic_id);
+			$topic_subjects = $this->AdminModel->get_subjects_by_class_id($topic_data->topic_class_id);			
 			$data['topic_data'] = $topic_data;
 			$data['topic_subjects'] = $topic_subjects;
-			$data['classes_list'] = $this->adminmodel->get_all_classes();
+			$data['classes_list'] = $this->AdminModel->get_all_classes();
 			$this->load->view('admin/edit_topic', $data);
 			
 		}
@@ -238,7 +238,7 @@ class Admin extends CI_Controller
 			
 						
 
-			$this->adminmodel->update_subject($subject_data,$subject_id);
+			$this->AdminModel->update_subject($subject_data,$subject_id);
 			$this->subjects();
 			
 
@@ -246,8 +246,8 @@ class Admin extends CI_Controller
 		}
 		else{
 			$subject_id = $this->input->get('subject_id');
-			$data['classes_list'] = $this->adminmodel->get_all_classes();
-			$data['subject_data'] = $this->adminmodel->get_subject_by_id($subject_id);
+			$data['classes_list'] = $this->AdminModel->get_all_classes();
+			$data['subject_data'] = $this->AdminModel->get_subject_by_id($subject_id);
 			$this->load->view('admin/edit_subject', $data);
 			
 		}
@@ -269,7 +269,7 @@ class Admin extends CI_Controller
 			$institution_data['institution_status'] = ($status) ? 1:0;
 			
 						
-			$this->adminmodel->update_institution($institution_data,$institution_id);
+			$this->AdminModel->update_institution($institution_data,$institution_id);
 			$this->institutions();
 
 
@@ -277,7 +277,7 @@ class Admin extends CI_Controller
 		else{
 			
 			$institution_id = $this->input->get('institution_id');
-			$result = $this->adminmodel->get_institution_by_id($institution_id);
+			$result = $this->AdminModel->get_institution_by_id($institution_id);
 			$data['institution_data'] = $result; 
 			$this->load->view('admin/edit_institute', $data);
 			
@@ -309,7 +309,7 @@ class Admin extends CI_Controller
 			$classes = $this->input->post('classes');
 			$sections = $this->input->post('sections');
 					
-			$this->adminmodel->create_school($school_data);
+			$this->AdminModel->create_school($school_data);
 			
 			$new_school_id = $this->db->insert_id();
 			if($new_school_id){
@@ -320,10 +320,10 @@ class Admin extends CI_Controller
 
 		}
 		else{
-			$institution_list = $this->adminmodel->get_all_institutions();
-			$state_list = $this->adminmodel->get_all_states();	
-			$classes_list = $this->adminmodel->get_all_classes();
-			$sections_list = $this->adminmodel->get_all_sections();		
+			$institution_list = $this->AdminModel->get_all_institutions();
+			$state_list = $this->AdminModel->get_all_states();	
+			$classes_list = $this->AdminModel->get_all_classes();
+			$sections_list = $this->AdminModel->get_all_sections();		
 
 			$data['institution_list'] = $institution_list;
 			$data['state_list'] = $state_list;
@@ -363,7 +363,7 @@ class Admin extends CI_Controller
 					$question_data['question_image'] = $question_image_data['orig_name'];
 				}
 			}
-			$this->adminmodel->create_question($question_data);
+			$this->AdminModel->create_question($question_data);
 			$new_question_id = $this->db->insert_id();
 			if($new_question_id){
 				$this->create_question_options($new_question_id);
@@ -376,7 +376,7 @@ class Admin extends CI_Controller
 		else{
 			
 			
-			$topics_list = $this->adminmodel->get_all_topics();
+			$topics_list = $this->AdminModel->get_all_topics();
 			
 
 			$data['topics_list'] = $topics_list;
@@ -421,7 +421,7 @@ class Admin extends CI_Controller
 
 		 }
 		 
-			$result = $this->adminmodel->update_question($question_data,$question_id);
+			$result = $this->AdminModel->update_question($question_data,$question_id);
 		
 			if($result){
 				$this->update_question_options($question_id);
@@ -434,8 +434,8 @@ class Admin extends CI_Controller
 		else{
 			
 			$question_id = $this->input->get('question_id');
-			$data['topics_list'] = $this->adminmodel->get_all_topics();
-			$data['question_data'] = $this->adminmodel->get_question_by_id($question_id);
+			$data['topics_list'] = $this->AdminModel->get_all_topics();
+			$data['question_data'] = $this->AdminModel->get_question_by_id($question_id);
 			
 			$this->load->view('admin/edit_question', $data);
 		}
@@ -471,14 +471,14 @@ class Admin extends CI_Controller
 					$choice_data['choice_image'] = $hidden_option_image;
 				}
 
-				$this->adminmodel->create_question_option($choice_data);
+				$this->AdminModel->create_question_option($choice_data);
 			    $created_choices[] = $this->db->insert_id(); 
 			
 			}
 			$correct_option = $this->input->post('correct_option');
 			$question_answer['question_id'] = $question_id;
 			$question_answer['choice_id'] = $created_choices[$correct_option-1];
-			$this->adminmodel->create_question_answer($question_answer);
+			$this->AdminModel->create_question_answer($question_answer);
 	}
 	public function map_question_options($choices_array){
 		
@@ -509,7 +509,7 @@ class Admin extends CI_Controller
 					$choice_data['choice_image'] = $hidden_option_image;
 				}
 
-				$this->adminmodel->update_question_option($choice_data,$choice_id);
+				$this->AdminModel->update_question_option($choice_data,$choice_id);
 			    $choices[] = $choice_id;
 				
 			
@@ -520,7 +520,7 @@ class Admin extends CI_Controller
 		
 			$answer_id = $this->input->post('answer_id');
 			$options_count = $this->input->post('options_count');
-			$existing_choices = $this->adminmodel->get_question_choices_by_id($question_id);
+			$existing_choices = $this->AdminModel->get_question_choices_by_id($question_id);
 			if($options_count == count($existing_choices)){ 
 			
 				$choice_id_array = $this->map_question_options($existing_choices);
@@ -552,7 +552,7 @@ class Admin extends CI_Controller
 					}
 				}
 				$choice_data['question_id'] = $question_id;
-				$this->adminmodel->create_question_option($choice_data);
+				$this->AdminModel->create_question_option($choice_data);
 			    $choice_id_array[] =$this->db->insert_id(); 
 			}
 			
@@ -566,24 +566,24 @@ class Admin extends CI_Controller
 			for($i=count($existing_choices); $i>$options_count; $i--){
 						
 				$choice_id = $existing_choices[$i-1]['choice_id'];		
-				$this->adminmodel->delete_question_option($choice_id);
+				$this->AdminModel->delete_question_option($choice_id);
 			 
 			}
 			
 			}
 			
 			$correct_option = $this->input->post('correct_option');
-			$this->adminmodel->get_question_choices_by_id($question_id);
+			$this->AdminModel->get_question_choices_by_id($question_id);
 			$question_answer['question_id'] = $question_id;
 			$question_answer['choice_id'] = $choice_id_array[$correct_option-1];
-			$this->adminmodel->update_question_answer($question_answer,$answer_id);
+			$this->AdminModel->update_question_answer($question_answer,$answer_id);
 	}
 	
 	public function view_institution(){
 		
 		
 			$institution_id = $this->input->get('institution_id');
-			$result = $this->adminmodel->get_institution_schools_by_id($institution_id);
+			$result = $this->AdminModel->get_institution_schools_by_id($institution_id);
 			
 			$data['institution_data'] = $result;
 			$this->load->view('admin/view_institution', $data);
@@ -594,14 +594,14 @@ class Admin extends CI_Controller
 	public function delete_institution(){
 		$institution_id = $this->input->get('institution_id');
 		$status = 0;
-		$this->adminmodel->update_institution_status($institution_id,$status);
+		$this->AdminModel->update_institution_status($institution_id,$status);
 		$this->institutions();
 		
 	}
 	public function delete_subject(){
 		$subject_id = $this->input->get('subject_id');
 		$status = 0;
-		$this->adminmodel->update_subject_status($subject_id,$status);
+		$this->AdminModel->update_subject_status($subject_id,$status);
 		$this->subjects();
 		
 	}
@@ -609,7 +609,7 @@ class Admin extends CI_Controller
 		
 		
 			$school_id = $this->input->get('school_id');
-			$result = $this->adminmodel->get_school_by_id($school_id);
+			$result = $this->AdminModel->get_school_by_id($school_id);
 			$data['school_data'] = $result;
 			$class_sections = array();
 			foreach($result as $item){
@@ -633,7 +633,7 @@ class Admin extends CI_Controller
 		
 		
 			$question_id = $this->input->get('question_id');
-			$result = $this->adminmodel->get_question_by_id($question_id);
+			$result = $this->AdminModel->get_question_by_id($question_id);
 			$data['question_data'] = $result;
 			
 			
@@ -645,7 +645,7 @@ class Admin extends CI_Controller
 		
 		
 		$subject_id = $this->input->get('subject_id');
-		$result = $this->adminmodel->get_subject_by_id($subject_id);
+		$result = $this->AdminModel->get_subject_by_id($subject_id);
 		$data['subject_data'] = $result;
 		
 		$this->load->view('admin/view_subject', $data);
@@ -656,7 +656,7 @@ public function view_topic(){
 		
 		
 	$topic_id = $this->input->get('topic_id');
-	$result = $this->adminmodel->get_topic_by_id($topic_id);
+	$result = $this->AdminModel->get_topic_by_id($topic_id);
 	$data['topic_data'] = $result;
 	
 	$this->load->view('admin/view_topic', $data);
@@ -682,7 +682,7 @@ public function view_topic(){
 			$classes = $this->input->post('classes');
 			$sections = $this->input->post('sections');
 			$school_id = $this->input->post('school_id');		
-			$this->adminmodel->update_school($school_data,$school_id);
+			$this->AdminModel->update_school($school_data,$school_id);
 			$this->update_classes_and_sections($school_id,$classes,$sections);
 			
 			$this->schools();
@@ -691,11 +691,11 @@ public function view_topic(){
 		}
 		else{
 		$school_id = $this->input->get('school_id');
-		$result = $this->adminmodel->get_school_by_id($school_id);
+		$result = $this->AdminModel->get_school_by_id($school_id);
 		
 		
 		$school_state = $result[0]['state_id'];
-		$state_districts = $this->adminmodel->get_districts_by_state_id($school_state);
+		$state_districts = $this->AdminModel->get_districts_by_state_id($school_state);
 			
 		$data['school_data'] = $result;
 		
@@ -715,10 +715,10 @@ public function view_topic(){
 			}
 		}
 			$data['class_sections'] = $class_sections;
-			$institution_list = $this->adminmodel->get_all_institutions();
-			$state_list = $this->adminmodel->get_all_states();	
-			$classes_list = $this->adminmodel->get_all_classes();
-			$sections_list = $this->adminmodel->get_all_sections();		
+			$institution_list = $this->AdminModel->get_all_institutions();
+			$state_list = $this->AdminModel->get_all_states();	
+			$classes_list = $this->AdminModel->get_all_classes();
+			$sections_list = $this->AdminModel->get_all_sections();		
 
 			$data['institution_list'] = $institution_list;
 			$data['state_list'] = $state_list;
@@ -737,14 +737,14 @@ public function view_topic(){
 	public function delete_school(){
 		$school_id = $this->input->get('school_id');
 		$status = 0;
-		$this->adminmodel->update_school_status($school_id,$status);
+		$this->AdminModel->update_school_status($school_id,$status);
 		$this->schools();
 		
 	}
 	public function delete_topic(){
 		$topic_id = $this->input->get('topic_id');
 		$status = 0;
-		$this->adminmodel->update_topic_status($topic_id,$status);
+		$this->AdminModel->update_topic_status($topic_id,$status);
 		$this->topics();
 		
 	}
@@ -754,7 +754,7 @@ public function view_topic(){
 			
 			if(!empty($classes_selected)){
 				//first deactivate all class sections of this school
-				$this->adminmodel->deactivate_school_classes($school_id);
+				$this->AdminModel->deactivate_school_classes($school_id);
 				
 				
 				
@@ -763,10 +763,10 @@ public function view_topic(){
 					foreach($section as $class => $sec){
 						echo $class .'=>'.$sec;
 					//check if the class is already  exist
-					$result = $this->adminmodel->check_class_exist($school_id,$class,$sec);
+					$result = $this->AdminModel->check_class_exist($school_id,$class,$sec);
 					if(!empty($result)){
 						
-						$this->adminmodel->activate_school_classes($school_id,$class,$sec);
+						$this->AdminModel->activate_school_classes($school_id,$class,$sec);
 					}
 					else{
 						
@@ -774,7 +774,7 @@ public function view_topic(){
 						$data['school_classes_class_id']=$class;
 						$data['school_classes_section_id']=$sec;
 						$data['status']=1;
-						$this->adminmodel->add_school_classes($data);
+						$this->AdminModel->add_school_classes($data);
 					}
 					
 					}
@@ -795,7 +795,7 @@ public function view_topic(){
 			$role_data['role_code'] = $this->input->post('rolecode');
 			$role_data['role_name'] = $this->input->post('rolename');
 						
-			$this->adminmodel->create_role($role_data);
+			$this->AdminModel->create_role($role_data);
 			
 
 
@@ -812,11 +812,11 @@ public function view_topic(){
 		$role_id = $this->input->get('role_id');
 		if(!empty($role_id)){
 
-			$role = $this->usermodel->get_role_by_id($role_id);
+			$role = $this->UserModel->get_role_by_id($role_id);
 			$data['role_code'] = $role->role_code;
 			if(in_array($role->role_code,array('teacher','student','parent'))){
 
-				$institution_list = $this->adminmodel->get_all_institutions();
+				$institution_list = $this->AdminModel->get_all_institutions();
 				$data['institutions'] = $institution_list;
 			}
 			$this->load->view('ajax_templates/role_based_fields', $data);
@@ -828,7 +828,7 @@ public function view_topic(){
 		$ins_id = $this->input->get('ins_id');
 		if(!empty($ins_id)){
 
-			$schools = $this->adminmodel->get_schools_by_institution_id($ins_id);
+			$schools = $this->AdminModel->get_schools_by_institution_id($ins_id);
 			echo json_encode($schools);
 			exit;
 			
@@ -840,7 +840,7 @@ public function getSubjectsByClassId(){
 	$class_id = $this->input->get('class_id');
 	if(!empty($class_id)){
 
-		$subjects = $this->adminmodel->get_subjects_by_class_id($class_id);
+		$subjects = $this->AdminModel->get_subjects_by_class_id($class_id);
 		echo json_encode($subjects);
 		exit;
 		
@@ -852,7 +852,7 @@ public function getTopicsBySubjectId(){
 	$subject_id = $this->input->get('subject_id');
 	if(!empty($subject_id)){
 
-		$topics = $this->adminmodel->get_topics_by_subject_id($subject_id);
+		$topics = $this->AdminModel->get_topics_by_subject_id($subject_id);
 		echo json_encode($topics);
 		exit;
 		
@@ -865,7 +865,7 @@ public function getClassesBySchoolId(){
 		$school_id = $this->input->get('school_id');
 		if(!empty($school_id)){
 
-			$classes = $this->adminmodel->get_classes_by_school_id($school_id);
+			$classes = $this->AdminModel->get_classes_by_school_id($school_id);
 			echo json_encode($classes);
 			exit;
 			
@@ -877,7 +877,7 @@ public function getSectionsByClassId(){
 		$class_id = $this->input->get('class_id');
 		if(!empty($class_id)){
 
-			$sections = $this->adminmodel->get_sections_by_class_id($class_id);
+			$sections = $this->AdminModel->get_sections_by_class_id($class_id);
 			echo json_encode($sections);
 			exit;
 			
@@ -893,7 +893,7 @@ public function getDistrictsBystateId(){
 	$state_id = $this->input->get('state_id');
 	if(!empty($state_id)){
 
-		$districts = $this->adminmodel->get_districts_by_state_id($state_id);
+		$districts = $this->AdminModel->get_districts_by_state_id($state_id);
 		echo json_encode($districts);
 		exit;
 
@@ -918,7 +918,7 @@ private function mapClassesToSchool($school_id,$classes,$sections){
 
 							$school_classes_data['school_classes_section_id']=!empty($class_section_array[1]) ? $class_section_array[1] : 1;
 							$school_classes_data['status']=1;
-							$this->adminmodel->map_school_classes($school_classes_data);
+							$this->AdminModel->map_school_classes($school_classes_data);
 						}
 						
 					}
@@ -932,7 +932,7 @@ private function mapClassesToSchool($school_id,$classes,$sections){
 public function delete_user(){
 
 	$user_id= $this->input->get('user_id');
-	$user_data = $this->usermodel->delete_user($user_id);
+	$user_data = $this->UserModel->delete_user($user_id);
 	$this->users();
 	
 }
@@ -970,7 +970,7 @@ public function create_exam(){
 			$exam_data['exam_datetime'] = $this->input->post('exam_datetime');
 			
 			
-			$this->adminmodel->create_exam($exam_data);
+			$this->AdminModel->create_exam($exam_data);
 			$new_exam_id = $this->db->insert_id();
 			if($new_exam_id){
 				//$this->create_question_paper($new_question_id);
@@ -983,7 +983,7 @@ public function create_exam(){
 		else{
 			
 			
-			$exams_list = $this->adminmodel->get_all_exams();
+			$exams_list = $this->AdminModel->get_all_exams();
 			
 
 			$data['exams_list'] = $exams_list;
@@ -1013,7 +1013,7 @@ public function create_exam(){
 			$exam_data['exam_datetime'] = $this->input->post('exam_datetime');
 			
 			
-			$this->adminmodel->update_exam($exam_data,$exam_id);
+			$this->AdminModel->update_exam($exam_data,$exam_id);
 				
 			$this->exams();
 
@@ -1022,7 +1022,7 @@ public function create_exam(){
 		else{
 			
 			$exam_id = $this->input->get('exam_id');
-			$result = $this->adminmodel->get_exam_by_id($exam_id);
+			$result = $this->AdminModel->get_exam_by_id($exam_id);
 			$data['exam_data'] = $result;
 			$this->load->view('admin/edit_exam', $data);
 		
@@ -1035,7 +1035,7 @@ public function create_exam(){
 		
 		
 		$exam_id = $this->input->get('exam_id');
-		$result = $this->adminmodel->get_exam_by_id($exam_id);
+		$result = $this->AdminModel->get_exam_by_id($exam_id);
 		$data['exam_data'] = $result;
 		
 		$this->load->view('admin/view_exam', $data);
@@ -1046,7 +1046,7 @@ public function create_exam(){
 	public function delete_exam(){
 		$exam_id = $this->input->get('exam_id');
 		$status = 0;
-		$this->adminmodel->update_exam_status($exam_id,$status);
+		$this->AdminModel->update_exam_status($exam_id,$status);
 		$this->exams();
 		
 	}
@@ -1074,7 +1074,7 @@ public function create_exam(){
 			$question_paper_data['question_paper_questions'] = $question_paper_questions;
 			
 			
-			$this->adminmodel->create_question_paper($question_paper_data);
+			$this->AdminModel->create_question_paper($question_paper_data);
 			
 						
 			$this->question_papers();
@@ -1084,10 +1084,10 @@ public function create_exam(){
 		else{
 			
 			
-			//$question_papers_list = $this->adminmodel->get_all_question_papers();
-			$questions_list = $this->adminmodel->get_all_questions();
-			$classes_list = $this->adminmodel->get_all_classes();
-			$exam_list = $this->adminmodel->get_all_exams();
+			//$question_papers_list = $this->AdminModel->get_all_question_papers();
+			$questions_list = $this->AdminModel->get_all_questions();
+			$classes_list = $this->AdminModel->get_all_classes();
+			$exam_list = $this->AdminModel->get_all_exams();
 		
 
 			$data['question_list'] = $questions_list;
@@ -1121,7 +1121,7 @@ public function create_exam(){
 		   $question_paper_data['question_paper_questions'] = serialize($question_paper_questions);
 		   
 		   
-		   $this->adminmodel->update_question_paper($question_paper_data,$question_paper_id);
+		   $this->AdminModel->update_question_paper($question_paper_data,$question_paper_id);
 		   
 					   
 		   $this->question_papers();
@@ -1130,17 +1130,17 @@ public function create_exam(){
 	   }
 	   else{
 		   
-		   $question_paper_data = $this->adminmodel->get_question_paper_by_id($this->input->get('question_paper_id'));
+		   $question_paper_data = $this->AdminModel->get_question_paper_by_id($this->input->get('question_paper_id'));
 		   
 		   $question_paper_questions_array = unserialize($question_paper_data->question_paper_questions);
 		   if(!empty($question_paper_questions_array)){
 			  
-			   $added_questions = $this->adminmodel->get_questions_by_question_ids($question_paper_questions_array);
+			   $added_questions = $this->AdminModel->get_questions_by_question_ids($question_paper_questions_array);
 			}
-		   //$question_papers_list = $this->adminmodel->get_all_question_papers();
-		   $questions_list = $this->adminmodel->get_all_questions();
-		   $classes_list = $this->adminmodel->get_all_classes();
-		   $exam_list = $this->adminmodel->get_all_exams();
+		   //$question_papers_list = $this->AdminModel->get_all_question_papers();
+		   $questions_list = $this->AdminModel->get_all_questions();
+		   $classes_list = $this->AdminModel->get_all_classes();
+		   $exam_list = $this->AdminModel->get_all_exams();
 		   $data['question_paper_data'] = $question_paper_data;
 		   $data['question_paper_questions'] = $added_questions;	
 		   $data['question_list'] = $questions_list;
@@ -1159,7 +1159,7 @@ public function loadQuestions(){
 	$filters['subject_id'] = $this->input->post('subject_id');
 	$filters['topic_id'] = $this->input->post('topic_id');
 	$filters['level'] = $this->input->post('level');
-	$result = $this->adminmodel->getFilteredQuestions($filters);
+	$result = $this->AdminModel->getFilteredQuestions($filters);
 	$data['filtered_questions'] = $result;
 	$this->load->view('ajax_templates/filtered_questions', $data);
 }
@@ -1176,12 +1176,12 @@ public function view_question_paper(){
 		
 		
 	$question_paper_id = $this->input->get('question_paper_id');
-	$result = $this->adminmodel->get_question_paper_by_id($question_paper_id);
+	$result = $this->AdminModel->get_question_paper_by_id($question_paper_id);
 	$data['question_paper_data'] = $result;
 	$question_paper_questions_ids_array = unserialize($result->question_paper_questions);
 	
 	if(!empty($question_paper_questions_ids_array)){
-		$questions_list = $this->adminmodel->get_questions_by_question_ids($question_paper_questions_ids_array);
+		$questions_list = $this->AdminModel->get_questions_by_question_ids($question_paper_questions_ids_array);
 		$data['questions_list'] = $questions_list;
 	}
 	
@@ -1194,7 +1194,7 @@ public function view_question_paper(){
 public function delete_question_paper(){
 	$question_paper_id = $this->input->get('question_paper_id');
 	$status = 0;
-	$this->adminmodel->update_question_paper_status($question_paper_id,$status);
+	$this->AdminModel->update_question_paper_status($question_paper_id,$status);
 	$this->question_papers();
 	
 }
