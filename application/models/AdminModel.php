@@ -541,8 +541,68 @@ class AdminModel extends CI_Model
         $result= $this->db->update('question_paper', array('question_paper_status'=>$status), "question_paper_id = $question_paper_id");
        return $result;
    }
+   public function get_active_exams(){
+
+        $this->db->select('*');
+        $this->db->from('exams');
+		$this->db->where('exam_status=1');
+        $result = $this->db->get()->result_array();
+        return $result;
+    }
+	
+	
+    public function get_all_students_by_class_id($class_id){
+
+        $this->db->select('user');
+        $this->db->from('user_class');
+		$this->db->where("class=$class_id");
+        $result = $this->db->get()->result_array();
+        return $result;
+    }
+	
+	public function create_enrollment($enrollment_data){
+	
+		$result= $this->db->insert('exam_enrollment', $enrollment_data);
+        return $result;
+	}
     
-    
+	
+	public function get_all_enrollments(){
+	
+		$this->db->select('exams.exam_name,exams.exam_id,exams.exam_datetime,exam_enrollment.exam_enrollment_id,exam_enrollment.students');
+        $this->db->from('exam_enrollment');
+        $this->db->join('exams','exams.exam_id = exam_enrollment.exam_id');
+		$this->db->order_by("exam_enrollment.exam_enrollment_id", "desc");
+		$result = $this->db->get()->result_array();
+        return $result;
+	}
+
+	public function get_enrollment_by_id($enrollment_id){
+		$where ='exam_enrollment_id='.$enrollment_id;
+        $this->db->select('exam_enrollment.*,exams.exam_name,exams.exam_code,exams.exam_datetime');
+		$this->db->from('exam_enrollment');
+        $this->db->join('exams','exams.exam_id = exam_enrollment.exam_id');
+		$this->db->where($where);
+        $result = $this->db->get()->row();
+        return $result;
+    }
+	
+	public function get_student_data_by_student_ids($student_id_array){
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->join('user_class', 'users.user_id = user_class.user','left');
+        $this->db->join('institution', 'institution.institution_id = user_class.institution','left');
+        $this->db->join('schools', 'schools.school_id = user_class.school','left');
+        $this->db->join('classes', 'classes.class_id = user_class.class','left');
+        $this->db->join('sections', 'sections.section_id = user_class.section','left');
+        $this->db->where_in('users.user_id', $student_id_array);
+        
+        $result = $this->db->get()->result_array();
+               
+        return $result;
+    }
+	
+		
     
    
 }

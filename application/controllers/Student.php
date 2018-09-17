@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class Student extends CI_Controller {
 
 	
 	public function __construct()
@@ -9,12 +9,13 @@ class User extends CI_Controller {
 		
 		parent::__construct();
 		$this->load->library(array('form_validation'));
-		$this->load->model(array('UserModel','AdminModel'));
+		$this->load->model(array('UserModel','adminmodel'));
 		
 	}
 	public function index()
 	{
-		
+		 $this->data['title'] = 'Student Dashboard';
+        $this->template->load('student', 'student/dashboard', $this->data);
 	}
 	public function get_users(){
 
@@ -133,21 +134,21 @@ class User extends CI_Controller {
 			$result = $this->UserModel->get_user_by_id($user_id);
 			
 			
-			$institutions = $this->AdminModel->get_all_institutions();
+			$institutions = $this->adminmodel->get_all_institutions();
 			$data['institutions'] = $institutions;
 			
 			
 			if(isset($result->institution)){
-				$schools = $this->AdminModel->get_schools_by_institution_id($result->institution);
+				$schools = $this->adminmodel->get_schools_by_institution_id($result->institution);
 				$data['schools'] = $schools;
 			}
 			
 			if(isset($result->school)){
-			$classes = $this->AdminModel->get_classes_by_school_id($result->school);
+			$classes = $this->adminmodel->get_classes_by_school_id($result->school);
 			$data['classes'] = $classes;
 			}
 			if(isset($result->class)){
-			$sections = $this->AdminModel->get_sections_by_class_id($result->class);
+			$sections = $this->adminmodel->get_sections_by_class_id($result->class);
 			$data['sections'] = $sections;
 			}
 			$roles = $this->UserModel->get_roles();
@@ -222,13 +223,6 @@ switch($role_code){
 
 
 }
-}
-
-public function student_exams(){
-		$user_id= $this->input->get('user_id');
-		$user_data = $this->UserModel->load_user_profile($user_id);
-		$data['user_data'] = $user_data;
-		$this->load->view('user/exams', $data);
 }
 
 	

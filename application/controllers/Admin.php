@@ -1198,8 +1198,77 @@ public function delete_question_paper(){
 	$this->question_papers();
 	
 }
+
+public function create_exam_enrollment(){
+
+		 $data['title'] = 'New Enrollment';
+		 $this->form_validation->set_rules('exam', 'Exam', 'required');
+		 $this->form_validation->set_rules('class', 'Class', 'required');
+		 
+		
+		
+			
+		if ($this->form_validation->run() === TRUE)
+		{
+			
+			$class = $this->input->post('class');	
+			$enrollment_data['exam_id'] = $this->input->post('exam');
+			
+						
+			$student_ids = $this->AdminModel->get_all_students_by_class_id($class);
+			$formattedArray = array();
+			foreach($student_ids as $student){
+				$formattedArray[] = $student['user'];
+			}
+			
+			$enrollment_data['students'] = serialize($formattedArray);
+			
+			
+			
+			$this->AdminModel->create_enrollment($enrollment_data);
+			
+						
+			$this->enrollments();
+
+
+		}
+		else{
+		
+			$data['classes_list'] = $this->AdminModel->get_all_classes();
+			
+			$data['exams_list'] = $this->AdminModel->get_active_exams();
+			$this->load->view('admin/create_exam_enrollment', $data);
+				
+		}
+
+}
+
+public function enrollments(){
+
+		$exam_enrollment_list = $this->AdminModel->get_all_enrollments();
+		$data['exam_enrollment_list'] = $exam_enrollment_list;
+		$this->load->view('admin/enrollment_list', $data);
+	}
 	
-
-
+	public function view_enrollment(){
+		
+		
+		$enrollment_id = $this->input->get('enrollment_id');
+		$result = $this->AdminModel->get_enrollment_by_id($enrollment_id);
+		$data['enrollment_data'] = $result;
+		$data['student_count'] = count(unserialize($result->students));
+		$studentsArray = unserialize($result->students);
+		
+		
+		if($data['student_count']){
+			$students_data = $this->AdminModel->get_student_data_by_student_ids($studentsArray);
+		}
+		$data['students_data'] = $students_data;
+		
+		$this->load->view('admin/view_enrollment', $data);
+	
+	
+	}
+	
 
 }

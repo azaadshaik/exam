@@ -47,7 +47,7 @@
                         <a href="#" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
                         <div class="dropdown-menu">
                             <a style="padding-bottom:10px;" class="dropdown-item" data-toggle="tab" href="#users_tab" onclick="viewUser(<?php echo $this->session->userdata('user_id');?>,'users_tab');" >Profile</a>
-                           <a class="dropdown-item" href="pulseauth/logout">Logout</a>
+                           <a class="dropdown-item" href="PulseAuth/logout">Logout</a>
                         </div>
                      </div>
                   </div>

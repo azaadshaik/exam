@@ -8,7 +8,7 @@ class PulseAuth extends CI_Controller
 		
 		parent::__construct();
 		$this->load->library(array('form_validation'));
-		$this->load->model(array('pulseauthmodel','usermodel'));
+		$this->load->model(array('PulseAuthModel','UserModel'));
 		
 		
 
@@ -24,7 +24,7 @@ class PulseAuth extends CI_Controller
 		{
 			// redirect them to the login page
 			
-			redirect('pulseauth/login', 'refresh');
+			redirect('PulseAuth/login', 'refresh');
 		}
 		
 		else
@@ -35,10 +35,10 @@ class PulseAuth extends CI_Controller
 			
 			switch($role_name){
 				case 'admin':
-				$path='admin';
+				$path='Admin';
 				break;
-				case 'branch_manager':
-				$path='bm';
+				case 'student':
+				$path='Student';
 				break;
 				case 'parent':
 				$path='parent';
@@ -74,13 +74,13 @@ class PulseAuth extends CI_Controller
 			// check to see if the user is logging in
 			// check for "remember me"
 			//$remember = (bool)$this->input->post('remember');
-      $result = $this->pulseauthmodel->login($this->input->post('username'), $this->input->post('password'));
+      $result = $this->PulseAuthModel->login($this->input->post('username'), $this->input->post('password'));
 
 			if ($result)
 			{
 				
 				
-				$role_data = $this->usermodel->get_role_by_id($result->user_role);
+				$role_data = $this->UserModel->get_role_by_id($result->user_role);
 				$rolecode='';
 				if($role_data) $rolecode=$role_data->role_code;
 				$session_data =  array(
@@ -136,7 +136,7 @@ class PulseAuth extends CI_Controller
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('pulseauth/login', 'refresh');
+		redirect('PulseAuth/login', 'refresh');
 	}
 
 	public function is_logged_in(){
