@@ -1016,7 +1016,8 @@ footer p {
 /* iPads (landscape) ----------- */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  .exam-ques-num span{    min-width: 40%;margin: 5px;}
+  #exam-ques-num .scrollbar{margin:0;}
+  .exam-ques-num span{min-width: 40% !important;margin: 5px !important;}
   .exam-ques-num .ques-rows{margin: 0;}
   .user_body .user_body_left .nav-tabs>li.one:before,
   .user_body .user_body_left .nav-tabs>li.two:before,
@@ -1032,7 +1033,8 @@ footer p {
 /* iPads (portrait) ----------- */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  .exam-ques-num span{    min-width: 40%;margin: 5px;}
+  #exam-ques-num .scrollbar{margin:0;}
+  .exam-ques-num span{min-width: 40% !important;margin: 5px !important;}
   .exam-ques-num .ques-rows{margin: 0;}
   .user_inp_section {
     padding: 8.5px 20px;
