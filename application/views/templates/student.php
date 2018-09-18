@@ -21,6 +21,7 @@
       
    </head>
    <body>
+   
       <img class="bg_img" src="<?php echo $asset_url; ?>/images/dashbaord_bg2.png">
       <!-- Header -->
       <div class="container user_container">
@@ -60,8 +61,7 @@
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 user_body_left padding0">
                <ul class="nav nav-tabs">
                   <li class="one active"><a data-toggle="tab" href="#users_tab"  data-url="admin/users" onclick="viewUser(<?php echo $this->session->userdata('user_id');?>,'users_tab');" > Home</a></li>
-                  <li class="two"><a  data-toggle="tab" href="#userSecondTab">Exams</a></li>
-                  <li class="three"><a  data-toggle="tab" href="#my_exams"  data-url="user/studentExams" onclick="viewExams(<?php echo $this->session->userdata('user_id');?>,'my_exams');">My Exams</a></li>
+                   <li class="three"><a  data-toggle="tab" href="#my_exams"  data-url="user/studentExams" onclick="viewExams(<?php echo $this->session->userdata('user_id');?>,'my_exams');">My Exams</a></li>
                   
                </ul>
             </div>

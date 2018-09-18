@@ -492,7 +492,7 @@ $('#loader').show();
 function viewExams(userId,divToUpdate){
 	$('#loader').show();
     $.ajax({
-       url: 'user/student_exams/?user_id='+userId,
+       url: 'student/student_exams/?user_id='+userId,
        type: 'GET',
        success: function (data) {
 	   $('#loader').hide();
