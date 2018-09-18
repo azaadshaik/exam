@@ -8,7 +8,7 @@
       <meta name="description" content="">
       <meta name="keywords" content="">
       <meta name="author" content="">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/bootstrap.min.css">
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/magnific-popup.css">
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/font-awesome.min.css">
@@ -18,11 +18,48 @@
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/custom.css">
 	  <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/student.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      
+      <style type="text/css">
+         /* DEMO-SPECIFIC STYLES */
+         .typewriter{position: relative;display: inline-block;float: left;}
+.typewriter h3 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .12em; /* Adjust as needed */
+  animation: 
+    typing 5.5s steps(40, end),
+    blink-caret .95s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  80% { border-color: transparent; }
+}
+.blinkwrap{display: inline-block;position: relative;float: left;margin-left: 40px;}
+.blinking{
+   animation:blinkingText 0.9s infinite;
+   display: inline-block;position: relative;line-height: 31px;
+}
+.blinking button{background: }
+@keyframes blinkingText{
+   0%{      color: #000;   }
+   49%{  color: transparent;  }
+  
+   100%{ color: #000;   }
+}
+      </style>
    </head>
    <body>
    
-      <img class="bg_img" src="<?php echo $asset_url; ?>/images/dashbaord_bg2.png">
+     
       <!-- Header -->
       <div class="container user_container">
          <div class="user_header">
@@ -32,10 +69,16 @@
             <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 padding0">
                <div class="user_inp_section">
                   <div class="user_inner_search pull-left">
-                     <input class="user_inp_search" type="text" placeholder="Search" />
+                    <div class="typewriter">
+  <h3>Currently one exam is going on</h3>
+
+</div> 
+<div class="blinkwrap">
+<span class="blinking"><button class="btn brn-primary">Click here to complete</button></span>
+</div>
                   </div>
                   <div class="user_inner_usericon pull-right">
-                     <img src="<?php echo $asset_url; ?>/images/profile-pic.png" class="img-circle pull-left" alt="Cinque Terre" width="40">
+                     <img src="<?php echo $asset_url; ?>/images/profile-pic.png" class="img-circle pull-left" alt="Cinque Terre" width="40" style="display: none;">
                      <div class="input-group pull-left">
                         <div class="input-group-append">
                            <span class="stuhead_wel_txt"><?php echo $this->session->userdata('user_name');?></span> 

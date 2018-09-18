@@ -1,3 +1,12 @@
+body{background-image: url('../images/dashbaord_bg2.png');background-size: cover;}
+body::before{
+  background-color: rgba(0, 0, 0, 0.37);
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
 #userSecondTab,#userThirdTab{padding: 20px 10px;}
 .stu-exam-tab .header{background:rgba(0, 0, 0, 0.6);padding: 10px 20px;width: 100%;display: inline-block;}
 .stu-exam-tab .header-name,
@@ -118,3 +127,7 @@
 #userThirdTab .modal .modal-body .exam-data span{display: inline-block;width: 30%; font-weight: 500;font-size: 16px;text-align: left;}
 #userThirdTab .modal .modal-footer{border: none;}
 /* my exams css ends here */
+#user-detail .user-profile_container .adm_inputs_wrap label,
+#parent-detail .user-profile_container .adm_inputs_wrap label,
+#user-prof .user-profile_container .adm_inputs_wrap label{color:#ffffff;line-height: 38px;}
+

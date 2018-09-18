@@ -273,6 +273,7 @@ input:-moz-placeholder {
 .user_container {
   padding: 0;
   width: 100%;
+  position: relative;
 }
 
 .user_container .user_inp_search {
@@ -283,16 +284,16 @@ input:-moz-placeholder {
 }
 
 .user_container .user_inner_search {
-  width: 40%;
+  width: 70%;
 }
 
-.user_container .user_inner_search:before {
+/*.user_container .user_inner_search:before {
   font-family: FontAwesome;
   content: "\f002";
   position: absolute;
   left: 35px;
   top: 31px;
-}
+}*/
 
 .user_inner_usericon {
   width: 20%;
@@ -471,12 +472,7 @@ input:-moz-placeholder {
   padding: 40px;
 }
 
-.Pos_abs_tab {
-  height: 100%;
-  position: absolute;
-  right: 0;
-  background: rgba(0, 0, 0, 0.3);
-}
+
 
 .user_body .tab-content input,
 .user_body .tab-content textarea {
@@ -1028,6 +1024,7 @@ margin: 10px;
 
 /* iPads (landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+  .typewriter h3{font-size: 16px;line-height: 35px;}
   #User_List h2{margin: 0;}
    .user_body .user_body_left .nav-tabs>li.one:before,
   .user_body .user_body_left .nav-tabs>li.two:before,
@@ -1042,6 +1039,7 @@ margin: 10px;
 
 /* iPads (portrait) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+  .typewriter h3{    line-height: 32px;}
 .signin-inner {
     margin-top: 10em;
 }
