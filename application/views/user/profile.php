@@ -25,7 +25,7 @@
                                        
                                     </div>
                                  </div>
-                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 padding0">
                                     <div class="adm_inputs_wrap">
                                        <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">User Name</label>
                                        <span class="user-static col-lg-8 col-md-8 col-sm-8 col-xs-8"><?php echo $user_data->user_name;?></span>
@@ -71,7 +71,7 @@
                            </div>
                            <div id="parent-detail" class="tab-pane fade">
                               <div class="user-profile_container userprof2">
-                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 padding0">
                                     <div class="adm_inputs_wrap">
                                        <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Parent Name</label>
                                        <span class="user-static col-lg-8 col-md-8 col-sm-8 col-xs-8"><?php echo 'Yet to implement';?></span>
@@ -88,7 +88,7 @@
                            <div id="user-prof" class="tab-pane fade">
                                <div class="user-profile_container userprof2">
                                  
-                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 pull-left">
+                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 padding0 pull-left">
                                  <div class="adm_inputs_wrap">
                                        <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Institute</label>
                                        <span class="user-static col-lg-8 col-md-8 col-sm-8 col-xs-8"><?php echo $user_data->institution_name;?></span>
