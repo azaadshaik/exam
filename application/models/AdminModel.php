@@ -601,6 +601,16 @@ class AdminModel extends CI_Model
                
         return $result;
     }
+	public function get_all_enrolled_exams_by_class($class_id){
+		$where ='class_id='.$class_id;
+		$this->db->select('exams.exam_name,exams.exam_id,exams.exam_datetime,exams.exam_duration,exam_enrollment.exam_enrollment_id,exam_enrollment.students');
+        $this->db->from('exam_enrollment');
+        $this->db->join('exams','exams.exam_id = exam_enrollment.exam_id');
+		$this->db->order_by("exam_enrollment.exam_enrollment_id", "desc");
+		$result = $this->db->get()->result_array();
+        return $result;
+	
+	}
 	
 		
     

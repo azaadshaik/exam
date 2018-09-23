@@ -224,12 +224,7 @@ switch($role_code){
 }
 }
 
-public function student_exams(){
-		$user_id= $this->input->get('user_id');
-		$user_data = $this->UserModel->load_user_profile($user_id);
-		$data['user_data'] = $user_data;
-		$this->load->view('user/exams', $data);
-}
+
 
 	
 	

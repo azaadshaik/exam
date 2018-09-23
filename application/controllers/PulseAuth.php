@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+ <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 class PulseAuth extends CI_Controller
@@ -75,7 +75,7 @@ class PulseAuth extends CI_Controller
 			// check for "remember me"
 			//$remember = (bool)$this->input->post('remember');
       $result = $this->PulseAuthModel->login($this->input->post('username'), $this->input->post('password'));
-
+    
 			if ($result)
 			{
 				
@@ -89,6 +89,7 @@ class PulseAuth extends CI_Controller
 					'user_firstname'     => $result->user_firstname,
 					'user_lastname'     => $result->user_lastname,
 					'user_rolecode'     => $rolecode,
+					'user_class' => $result->class,
 					'logged_in' => TRUE
 				);
 				$this->session->set_userdata($session_data);

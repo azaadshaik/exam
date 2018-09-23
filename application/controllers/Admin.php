@@ -1213,7 +1213,7 @@ public function create_exam_enrollment(){
 			
 			$class = $this->input->post('class');	
 			$enrollment_data['exam_id'] = $this->input->post('exam');
-			
+			$enrollment_data['class_id'] = $class;
 						
 			$student_ids = $this->AdminModel->get_all_students_by_class_id($class);
 			$formattedArray = array();
@@ -1222,12 +1222,7 @@ public function create_exam_enrollment(){
 			}
 			
 			$enrollment_data['students'] = serialize($formattedArray);
-			
-			
-			
 			$this->AdminModel->create_enrollment($enrollment_data);
-			
-						
 			$this->enrollments();
 
 

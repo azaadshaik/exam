@@ -70,12 +70,11 @@
                <div class="user_inp_section">
                   <div class="user_inner_search pull-left">
                     <div class="typewriter">
-  <h3>Currently one exam is going on</h3>
-
-</div> 
-<div class="blinkwrap">
-<span class="blinking"><button class="btn brn-primary">Click here to complete</button></span>
-</div>
+						<h3>Currently one exam is going on</h3>
+					</div> 
+					<div class="blinkwrap">
+						<span class="blinking"><button class="btn brn-primary">Click here to complete</button></span>
+					</div>
                   </div>
                   <div class="user_inner_usericon pull-right">
                      <img src="<?php echo $asset_url; ?>/images/profile-pic.png" class="img-circle pull-left" alt="Cinque Terre" width="40" style="display: none;">
@@ -111,12 +110,12 @@
             <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 padding0 Pos_abs_tab">
                <div class="tab-content" style="padding-top:30px;">
                   
-                 <div id="users_tab" >
+                 <div id="users_tab" class="tab-pane fade in active">
 				</div> 
 				<div id="exam">
                      
                  </div>
-				 <div id="my_exams">
+				 <div id="my_exams" class="tab-pane fade">
                      
                  </div>
 

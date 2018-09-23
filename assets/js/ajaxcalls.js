@@ -490,6 +490,7 @@ $('#loader').show();
 }
 
 function viewExams(userId,divToUpdate){
+alert(divToUpdate);
 	$('#loader').show();
     $.ajax({
        url: 'student/student_exams/?user_id='+userId,

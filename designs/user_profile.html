@@ -313,6 +313,11 @@
                            <li><a data-toggle="tab" href="#attended">Attended</a></li>
                         </ul>
                         <div class="tab-content">
+						<?php
+							if($ongoing){
+							 print_r($ongoing);
+							}
+						?>
                            <div id="ongoing" class="tab-pane fade in active">
                               <h3>On Going</h3>
                               <p>There is one exam yet to complete</p>
