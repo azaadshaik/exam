@@ -1,4 +1,4 @@
-body{background-image: url('../images/dashbaord_bg2.png');background-size: cover;}
+body{background-image: url('../images/dashbaord_bg2.png');background-size: cover;background-repeat: no-repeat;}
 body::before{
   background-color: rgba(0, 0, 0, 0.37);
   content: '';
@@ -129,5 +129,8 @@ body::before{
 /* my exams css ends here */
 #user-detail .user-profile_container .adm_inputs_wrap label,
 #parent-detail .user-profile_container .adm_inputs_wrap label,
-#user-prof .user-profile_container .adm_inputs_wrap label{color:#ffffff;line-height: 38px;}
+#user-prof .user-profile_container .adm_inputs_wrap label{color:#ffffff;line-height: 38px;font-weight: 500;
+    font-size: 18px;}
+.transparent-bg{background: rgba(0,0,0,0.4);position: absolute;left:0;}
+#User_Profile1{padding: 20px;}
 

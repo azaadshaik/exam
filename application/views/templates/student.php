@@ -66,7 +66,7 @@
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 padding0">
                <div class="user_logo_head"><img class="logo" src="<?php echo $asset_url; ?>/images/logo.png"></div>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 padding0">
+            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 padding0">
                <div class="user_inp_section">
                   <div class="user_inner_search pull-left">
                     <div class="typewriter">
@@ -80,8 +80,8 @@
                      <img src="<?php echo $asset_url; ?>/images/profile-pic.png" class="img-circle pull-left" alt="Cinque Terre" width="40" style="display: none;">
                      <div class="input-group pull-left">
                         <div class="input-group-append">
-                           <span class="stuhead_wel_txt"><?php echo $this->session->userdata('user_name');?></span> 
-                           <a href="#" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
+                           <a href="#" data-toggle="dropdown"><span class="stuhead_wel_txt"><?php echo $this->session->userdata('user_name');?></span> 
+                           <i class="fa fa-caret-down"></i></a>
                            <div class="dropdown-menu">
                               <a class="dropdown-item" href="#">Profile</a>
                               <a class="dropdown-item" href="PulseAuth/logout">Logout</a>
@@ -91,7 +91,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 padding0">
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 padding0" style="display: none;">
                <div class="user_mail_setting">
                   <button class="user_notif_icon"><span class="user_notif_number">2</span></button> 
                   <button class="user_emai_icon"></button> 
@@ -101,6 +101,7 @@
          </div>
          <div class="user_body">
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 user_body_left padding0">
+               <div class="transparent-bg"></div>
                <ul class="nav nav-tabs">
                   <li class="one active"><a data-toggle="tab" href="#users_tab"  data-url="admin/users" onclick="viewUser(<?php echo $this->session->userdata('user_id');?>,'users_tab');" > Home</a></li>
                    <li class="three"><a  data-toggle="tab" href="#my_exams"  data-url="user/studentExams" onclick="viewExams(<?php echo $this->session->userdata('user_id');?>,'my_exams');">My Exams</a></li>
