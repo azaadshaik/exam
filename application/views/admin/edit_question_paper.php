@@ -131,15 +131,7 @@
       </div>
 
       <div id="div2" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 padding0" ondrop="drop(event,this)" ondragover="allowDrop(event)">
-        <div class="header">
-            <span class="col-sm-1">No</span>
-            <span class="col-sm-3">Question</span>
-            <span class="col-sm-2">Class</span>
-            <span class="col-sm-2">Subject</span>
-            <span class="col-sm-2">Topic</span>
-            <span class="col-sm-1">Time</span>
-            <span class="col-sm-1">Level</span>
-         </div>
+        
          <?php
             $i=1;
             foreach($question_paper_questions as $question) { ?>

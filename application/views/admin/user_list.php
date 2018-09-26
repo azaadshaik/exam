@@ -53,7 +53,7 @@
                            </div>
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                               <label>Role</label>
-                              <select class="dropdown form-control" id="role">
+                              <select class="dropdown form-control" id="role" onchange="resetUserFilters(this.value);">
                                  <option value="0">Select</option>
                                  <?php
                                     if(!empty($roles)){
@@ -70,7 +70,7 @@
                            </div>
                            
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
-                              <button class="apply-btn">Apply</button>
+                              <button class="apply-btn" type="button" onclick="filterUsers();">Apply</button>
                            </div>
                         </div>
                      </div>

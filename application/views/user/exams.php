@@ -11,7 +11,7 @@
 							  <?php
 							  if(isset($ongoing)){ ?>
 								<p>There is one ongoing exam :<?php echo $ongoing[0]['exam_name'];?></p>
-								<button type="button" onclick="launchExam(<?php echo $ongoing[0]['exam_id'];?>,<?php echo $this->session->userdata('user_id');?>);" class="btn complte-exam">Click here to attend</button>
+								<button type="button" onclick="launchExam(<?php echo $ongoing[0]['exam_id'];?>,'my_exams');" class="btn complte-exam">Click here to attend</button>
 							<?php	
 							  }
 							  else{
@@ -32,9 +32,10 @@
                                        <tr>
                                           <th scope="col">Exam Name</th>
                                           <th scope="col">Exam Date</th>
-                                          <th scope="col">Exam Time</th>
-                                          <th scope="col">Exam Centre</th>
-                                          <th scope="col">Actions</th>
+										  <th scope="col">Exam Duration in Min</th>
+                                          
+                                          
+                                          <th scope="col">Details</th>
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -42,10 +43,10 @@
 								 foreach($upcoming as $upcoming_exam){ ?>
 								 
 								 <tr>
-                                          <td>Sccial</td>
-                                          <td>03/05/2019</td>
-                                          <td>10AM</td>
-                                          <td>ZPHS</td>
+                                          <td><?php echo $upcoming_exam['exam_name'];?></td>
+                                          <td><?php echo date('d-m-Y h:i', strtotime($upcoming_exam['exam_datetime']));?></td>
+                                          <td><?php echo $upcoming_exam['exam_duration'];?></td>
+                                          
                                           <td class="sub-table">
                                             <button data-toggle="modal" data-target="#up-detail-one">Details</button>
                                           </td>
@@ -76,19 +77,18 @@
                                        <tr>
                                           <th scope="col">Exam Name</th>
                                           <th scope="col">Exam Date</th>
-                                          <th scope="col">Exam Time</th>
-                                          <th scope="col">Exam Centre</th>
-                                          <th scope="col">Actions</th>
+                                          <th scope="col">Exam Duration in Min</th>
+                                          
+                                          <th scope="col">Details</th>
                                        </tr>
                                     </thead>
                                     <tbody>
 								<?php
 								foreach($completed as $completed_exam){ ?>
 									<tr>
-                                          <td>Sccial</td>
-                                          <td>03/05/2018</td>
-                                          <td>10AM</td>
-                                          <td>ZPHS</td>
+                                          <td><?php echo $completed_exam['exam_name'];?></td>
+                                          <td><?php echo date('d-m-Y h:i', strtotime($completed_exam['exam_datetime']));?></td>
+                                          <td><?php echo $completed_exam['exam_duration'];?></td>
                                            <td class="sub-table">
                                             <button data-toggle="modal" data-target="#up-detail-one">Details</button>
                                           </td>

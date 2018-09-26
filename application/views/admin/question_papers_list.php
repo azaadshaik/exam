@@ -22,13 +22,14 @@ exit;
                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div id="table-search-input">
                            <div class="input-group col-md-6">
-                              <input type="text" id="question_papers_search" data-table="question_papers" data-search="search/index" class="form-control input-lg" placeholder="Search by name" />
+                              <input type="text" id="question_papers_search" data-table="question_paper" data-search="search/index" class="form-control input-lg" placeholder="Search by name" />
                               <span class="input-group-btn">
                               <button class="btn btn-info btn-lg" type="button">
                               <i class="fa fa-search-plus"></i>
                               </button>
                               </span>
                            </div>
+						   
                            <div class="search-result">
 					
 					        </div>

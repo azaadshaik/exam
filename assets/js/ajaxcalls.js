@@ -490,7 +490,7 @@ $('#loader').show();
 }
 
 function viewExams(userId,divToUpdate){
-alert(divToUpdate);
+
 	$('#loader').show();
     $.ajax({
        url: 'student/student_exams/?user_id='+userId,
@@ -502,6 +502,71 @@ alert(divToUpdate);
        
    });
 }
+function launchExam(examId,divToUpdate){
+
+	$('#loader').show();
+    $.ajax({
+       url: 'student/launch_exam/?exam_id='+examId,
+       type: 'GET',
+       success: function (data) {
+	   $('#loader').hide();
+           $('#'+divToUpdate).html(data);
+       }
+       
+   });
+}
+function hideInstructions(questionId,buttonId){
+	$('#instructions').hide();
+	$('#userSecondTab').css('display','block');
+	loadQuestion(questionId,buttonId);
+}
+function loadQuestion(questionId,buttonId){
+	
+	  $( ".ques-rows span" ).each(function( index, element ) {
+    console.log(element);
+				$( element ).removeClass( "btn-current" );
+     });
+	 $('#'+buttonId).addClass('btn-current');
+  
+	$('.dynamicQuestion').hide();
+	
+	$('#loader').show();
+    $.ajax({
+       url: 'admin/loadQuestion/?question_id='+questionId,
+       type: 'GET',
+       success: function (data) {
+	   $('#loader').hide();
+           $('.dynamicQuestion').html(data);
+		   $('.dynamicQuestion').show();
+       }
+       
+   });
+}
+function markAsReview(){
+	var currentQuestionId = $('#current_question_id').val();
+	var currentQuestionNumber = $('#current_question_number').val();
+	var examId = $('#exam_id').val();
+	var totalQuestions = $('#total_questions').val();
+	$('#question-'+currentQuestionNumber).addClass('btn-markreview');
+	var nextQuestionNumber = Number(currentQuestionNumber) + Number(1);
+	var selectedAnswerId = $("input[name='choice']:checked"). val();
+	
+	$('#loader').show();
+    $.ajax({
+       url: 'admin/captureStudentAnswer',
+       type: 'POST',
+	   data:{'questionId':currentQuestionId,'choiceId':selectedAnswerId,'examId':examId},
+       success: function (data) {
+	   $('#loader').hide();
+           $('.dynamicQuestion').html(data);
+		   $('.dynamicQuestion').show();
+       }
+       
+   });
+	
+	
+}
+
 
 function viewTopic(topicId,divToUpdate){
 $('#loader').show();
@@ -774,6 +839,58 @@ function editQuestionPaper(questionPaperId,divToUpdate){
                 }
             });
         }
+		
+	function filterUsers(){
+	
+		var institutionId = $('#institution').val();
+		var schoolId = $('#school').val();
+		var classId = $('#class').val();
+		var roleId = $('#role').val();
+		$('#loader').show();
+    $.ajax({
+        url: 'Search/filterUsers',
+        type: 'POST',
+		data:{classId:classId,schoolId:schoolId,roleId:roleId,institutionId:institutionId},
+        success: function (data) {
+		$('#loader').hide();
+            $('.user-table').html(data);
+        }
+        
+    });
+	
+	}
+	
+	function filterQuestions(){
+		var classId = $('#class').val();
+		var subjectId = $('#subject').val();
+		var topicId = $('#topic').val();
+		var diffLevel = $('#diffLevel').val();
+		var avgTime = $('#avgTime').val();
+		$('#loader').show();
+    $.ajax({
+        url: 'Search/filterQuestions',
+        type: 'POST',
+		data:{classId:classId,subjectId:subjectId,topicId:topicId,diffLevel:diffLevel,avgTime:avgTime},
+        success: function (data) {
+		$('#loader').hide();
+            $('.user-table').html(data);
+        }
+        
+    });
+	}
+
+function resetUserFilters(roleId){
+	if(roleId !=0){
+		//clear all other filters
+		 $('#institution').val('');
+		$('#school').val('');
+		$('#class').val('');
+	}
+}
+(function ($) {
+
+
+})(jQuery);	
 
  
 

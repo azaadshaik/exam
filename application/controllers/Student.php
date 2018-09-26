@@ -52,6 +52,44 @@ class Student extends CI_Controller {
 		// print_r($user_enrollment_data);
 		$this->load->view('user/exams', $user_enrollment_data);
 }
+
+public function launch_exam(){
+
+	$user_id = $this->session->userdata('user_id');
+	$exam_id = $this->input->get('exam_id');
+	$is_enrolled = $this->check_user_enrollment($user_id,$exam_id);
+	if($is_enrolled){
+	
+	$question_paper = $this->AdminModel->get_question_paper_by_exam($exam_id);
+	// echo "<pre>";
+	// print_r($question_paper);
+	$question_paper_questions = unserialize($question_paper->question_paper_questions);
+	// echo "<pre>";
+	// print_r($question_paper_questions);
+	// die;
+	
+	$question_paper->question_paper_questions = $question_paper_questions;
+	$data['exam_data'] = $question_paper;
+	$this->load->view('student/exam_screen', $data);
+	
+	}
+
+}
+
+public function check_user_enrollment($user_id,$exam_id){
+
+$enrollment_data = $this->AdminModel->get_enrollment_by_exam_id($exam_id);
+
+$enrolled_users = unserialize($enrollment_data->students);
+foreach($enrolled_users as $student){
+				if($student==$user_id){
+					return true;
+				}
+}
+
+
+	
+}
 	
 
 	

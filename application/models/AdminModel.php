@@ -576,6 +576,15 @@ class AdminModel extends CI_Model
 		$result = $this->db->get()->result_array();
         return $result;
 	}
+	public function get_enrollment_by_exam_id($exam_id){
+		$where ='exam_id='.$exam_id;
+		$this->db->select('*');
+        $this->db->from('exam_enrollment');
+        $this->db->where($where);
+		$result = $this->db->get()->row();
+        return $result;
+	}
+	
 
 	public function get_enrollment_by_id($enrollment_id){
 		$where ='exam_enrollment_id='.$enrollment_id;
@@ -610,6 +619,16 @@ class AdminModel extends CI_Model
 		$result = $this->db->get()->result_array();
         return $result;
 	
+	}
+	
+	public function get_question_paper_by_exam($exam_id){
+		$where ='exam_id='.$exam_id;
+		$this->db->select('*');
+        $this->db->from('question_paper');
+        $this->db->join('exams','exams.exam_id = question_paper.exam_id');
+		$result = $this->db->get()->row();
+		
+        return $result;
 	}
 	
 		

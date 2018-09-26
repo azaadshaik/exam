@@ -87,7 +87,9 @@ class Admin extends CI_Controller
 	public function questions(){
 
 		$questions_list = $this->AdminModel->get_all_questions();
+		$classes = $this->AdminModel->get_all_classes();
 		$data['question_list'] = $questions_list;
+		$data['classes'] = $classes;
 		$this->load->view('admin/questions_list', $data);
 	}
 	
@@ -1118,6 +1120,7 @@ public function create_exam(){
 		   $question_paper_data['question_paper_status'] = $this->input->post('status');;
 		   $question_paper_data['exam_id'] = $this->input->post('exam_id');
 		   $question_paper_questions = $this->input->post('questions_added');
+		   
 		   $question_paper_data['question_paper_questions'] = serialize($question_paper_questions);
 		   
 		   
@@ -1263,6 +1266,26 @@ public function enrollments(){
 		$this->load->view('admin/view_enrollment', $data);
 	
 	
+	}
+	
+	public function loadQuestion(){
+		$question_id = $this->input->get('question_id');
+		$question_data = $this->AdminModel->get_question_by_id($question_id);
+		$data['question_data'] = $question_data;
+		$this->load->view('student/question_display', $data);
+	}
+	
+	public function captureStudentAnswer(){
+		echo $question_id = $this->input->post('questionId');
+		echo $choice_id = $this->input->post('choiceId');
+		$exam_id = $this->input->post('examId');
+		$student_id = $this->session->userdata('user_id');
+		echo $student_id;
+		die;
+		$answer_data = array();
+		
+		$result = $this->AdminModel->store_student_answer($answer_data);
+		
 	}
 	
 

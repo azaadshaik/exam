@@ -26,73 +26,78 @@ exit;
                      <h2 class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-left">Question Bank</h2>
                      <div id="table-search-input">
                         <div class="input-group col-md-4 pull-right">
-                           <input type="text" class="form-control input-lg" placeholder="Search By Question" />
+                           <input type="text" class="form-control input-lg" placeholder="Search By Question" id="user_search"  data-table="question_bank" data-search="search/index" />
                            <span class="input-group-btn">
                            <button class="btn btn-info btn-lg" type="button">
                            <i class="fa fa-search-plus"></i>
                            </button>
                            </span>
                         </div>
+						<div class="search-result">
+					
+							</div>
                      </div>
                      <div class="user-list-header">
                         <div class="adm_inputs_wrap">
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                               <label>Class</label>
                               <div class="form-group">
-                                 <select class="dropdown form-control" id="sel1">
-                                    <option>Nalanda</option>
-                                    <option>Google</option>
-                                    <option>Bhashyam</option>
-                                    <option>RSR</option>
+                                 <select class="dropdown form-control" id="class" onchange="loadSubjects(this.value);">
+                                    <option value="0">Select</option>
+                                    <?php
+									foreach($classes as $class){ ?>
+										<option value="<?php echo $class['class_id'];?>"><?php echo $class['class_name'];?></option>
+									<?php
+									}
+									?>
                                  </select>
                               </div>
                            </div>
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                               <label>Subject</label>
                               <div class="form-group">
-                                 <select class="dropdown form-control" id="sel1">
-                                    <option>Nalanda</option>
-                                    <option>Google</option>
-                                    <option>Bhashyam</option>
-                                    <option>RSR</option>
+                                 <select class="dropdown form-control" id="subject" onchange="loadTopics(this.value);">
+                                    <option value="0">Select</option>
+                                    
                                  </select>
                               </div>
                            </div>
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                               <label>Topic</label>
                               <div class="form-group">
-                                 <select class="dropdown form-control" id="sel1">
-                                    <option>6<sup>th</sup></option>
-                                    <option>7<sup>th</sup></option>
-                                    <option>8<sup>th</sup></option>
-                                    <option>9<sup>th</sup></option>
-                                    <option>10<sup>th</sup></option>
+                                 <select class="dropdown form-control" id="topic">
+                                    <option value="0">Select</option>
+                                    
                                  </select>
                               </div>
                            </div>
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
                               <label>Difficulty Level</label>
-                              <select class="dropdown form-control" id="">
-                                 <option>Admin</option>
-                                 <option>Manager</option>
-                                 <option>Question Preparation</option>
-                                 <option >Student</option>
-                                 <option>Parent</option>
+                              <select class="dropdown form-control" id="diffLevel">
+                                 <option value="0">Select</option>
+								 <option value="1">1</option>
+								 <option value="2">2</option>
+								 <option value="3">3</option>
+								 <option value="4">4</option>
+								 <option value="5">5</option>
+                                 
                               </select>
                            </div>
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
-                              <label>Average Time</label>
-                              <select class="dropdown form-control" id="">
-                                 <option>Admin</option>
-                                 <option>Manager</option>
-                                 <option>Question Preparation</option>
-                                 <option >Student</option>
-                                 <option>Parent</option>
+                              <label>Average Time<small>(in sec)</small></label>
+                              <select class="dropdown form-control" id="avgTime">
+                                 <option value="0">Select</option>
+								 <option value="30">30</option>
+								 <option value="60">60</option>
+								 <option value="90">90</option>
+								 <option value="120">120</option>
+								 <option value="150">150</option>
+								 <option value="150">180</option>
                               </select>
                            </div>
                            
                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 drop_down">
-                              <button class="apply-btn">Apply</button>
+                              <button class="apply-btn" type="button" onclick="filterQuestions();" >Apply</button>
                            </div>
                         </div>
                      </div>
@@ -142,9 +147,6 @@ exit;
                                <?php } ?>
                                        </tbody>
                                     </table>
-                                 </td>
-                              </tr>
-                           </tbody>
-                        </table>
+                                 
                      </div>
                   </div>
