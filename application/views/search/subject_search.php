@@ -9,7 +9,7 @@ else{
 	<?php
 	foreach($search_results as $result){
 	?>
-	<li onclick="viewSubject(<?php echo $result->subject_id;?>,'schools_tab');"><span><?php echo $result->subject_name;?></span>&nbsp;&nbsp;<span><?php echo $result->subject_code;?></span></li>
+	<li onclick="viewSubject(<?php echo $result->subject_id;?>,'subjects_tab');"><span><?php echo $result->subject_name;?></span>&nbsp;&nbsp;<span><?php echo $result->subject_code;?></span></li>
 	<?php
 	}
 	?>

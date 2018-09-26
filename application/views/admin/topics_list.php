@@ -23,7 +23,7 @@ exit;
                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div id="table-search-input">
                            <div class="input-group col-md-6">
-                              <input type="text" class="form-control input-lg" placeholder="Search by name" id="user_search"  data-table="topics" data-search="search/index"/>
+                              <input type="text" class="form-control input-lg" placeholder="Search by name" id="topic_search"  data-table="topics" data-search="search/index"/>
                               <span class="input-group-btn">
                               <button class="btn btn-info btn-lg" type="button">
                               <i class="fa fa-search-plus"></i>

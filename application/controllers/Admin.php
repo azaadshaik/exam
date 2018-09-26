@@ -763,7 +763,7 @@ public function view_topic(){
 				foreach($sections_selected as  $section){
 					
 					foreach($section as $class => $sec){
-						echo $class .'=>'.$sec;
+						
 					//check if the class is already  exist
 					$result = $this->AdminModel->check_class_exist($school_id,$class,$sec);
 					if(!empty($result)){
@@ -914,7 +914,7 @@ private function mapClassesToSchool($school_id,$classes,$sections){
 				
 				foreach($sections as $key => $section){
 
-						echo $key.'=>'.$section;
+						
 						$class_section_array = explode('-',$section);
 						if($class_section_array[0]==$class){
 
@@ -1276,12 +1276,11 @@ public function enrollments(){
 	}
 	
 	public function captureStudentAnswer(){
-		echo $question_id = $this->input->post('questionId');
-		echo $choice_id = $this->input->post('choiceId');
+		 $question_id = $this->input->post('questionId');
+		 $choice_id = $this->input->post('choiceId');
 		$exam_id = $this->input->post('examId');
 		$student_id = $this->session->userdata('user_id');
-		echo $student_id;
-		die;
+		
 		$answer_data = array();
 		
 		$result = $this->AdminModel->store_student_answer($answer_data);

@@ -435,7 +435,7 @@ class AdminModel extends CI_Model
             $this->db->where($where);
             $this->db->order_by('question_choices.choice_id','asc');
             $result = $this->db->get()->result_array();
-            echo $this->db->last_query();
+            
             return $result;
         
 

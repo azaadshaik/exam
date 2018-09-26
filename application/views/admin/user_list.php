@@ -11,7 +11,7 @@
                         </div>
 						 <div class="search-result">
 					
-					 </div>
+					    </div>
                      </div>
 					
                      <div class="user-list-header">
