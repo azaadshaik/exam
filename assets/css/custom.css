@@ -723,7 +723,7 @@ footer{
 
 input,.right_wrap1 .tab-content .adm_inputs_wrap input,
 .right_wrap1 .tab-content .adm_inputs_wrap .text_filed {
-  color: #e6af08;
+  color:#333;
   border: none;
   outline: none;
   padding: 10px 20px;
@@ -783,7 +783,7 @@ input,.right_wrap1 .tab-content .adm_inputs_wrap input,
 }
 
 .right_wrap1 .tab-content textarea {
-  color: #0078ff;
+  color:#333;
   border: none;
   outline: none;
   padding: 10px 20px;
