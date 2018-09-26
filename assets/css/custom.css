@@ -836,6 +836,18 @@ border:2px solid #7f1010 !important;
   color:#7f1010;
   font-family: Arial, Helvetica, sans-serif;
 }
+.confirmation-modal .modal-dialog{top:30%;}
+.confirmation-modal .modal-dialog .modal-content{background:rgba(0,0,0,0.9);}
+.confirmation-modal .modal-dialog .btn{
+    padding: 15px 40px;
+    margin-bottom: 20px;
+    border: none;
+    outline: none;
+    color: #000000;
+    border-radius: 35px;
+    -moz-border-radius: 35px;
+    -webkit-border-radius: 35px;}
+    .confirmation-modal .modal-dialog .confirm.btn{background: #f3db14;}
 .modal-dialog .modal-content{
   color:#FFF;
 }
