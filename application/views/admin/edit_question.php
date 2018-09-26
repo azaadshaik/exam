@@ -168,7 +168,7 @@
                     ?>
                     <div class="adm_inputs_wrap">
                         <label class="col-lg-3 col-md-3 col-sm-12 col-xs-12">Correct Option</label>
-	                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 padding0">
+	                    <div class="radiowraper col-lg-6 col-md-6 col-sm-12 col-xs-12 padding0">
 	                    <?php
                         //get the offset of the option where answer value is not null. that should be the correct option
                         foreach($question_data as $key => $value){
