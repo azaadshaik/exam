@@ -103,7 +103,7 @@ body {
     font-weight: 300;
     text-align: left;
     line-height: 36px;
-    margin: 15px 0;}
+    margin:5px 0 !important;}
 .userprof2 .adm_inputs_wrap{margin:0;}
 .userprof2 .adm_inputs_wrap label,.userprof2 .adm_inputs_wrap .user-static{    margin: 5px 0 !important;}
 .form-control{height: auto !important;}
@@ -674,7 +674,7 @@ footer{
   font-weight: 300;
   text-align: left;
      line-height: 30px;
-    margin: 15px 0;
+    margin:5px 0 !important;
 	    padding: 0;
 }
 #qcount,#qtime{color: #f3db14  !important;}
