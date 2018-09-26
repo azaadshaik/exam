@@ -76,7 +76,13 @@
       <script src="<?php echo $asset_url; ?>/js/smoothscroll.js"></script>
       <script src="<?php echo $asset_url; ?>/js/custom.js"></script>
       <script src="<?php echo $asset_url; ?>/js/ajaxcalls.js"></script>
-	  
+	  <script>
+	  $("document").ready(function() {
+		setTimeout(function() {
+        $("ul.nav li:first-child a").trigger('click');
+    },10);
+});
+	  </script>
 	
       
 
