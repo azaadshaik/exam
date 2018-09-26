@@ -873,6 +873,9 @@ img.image_holder{
     display: none;
     margin-top: 39px;
     width: 79%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 ol{
 padding-left:10px;
@@ -934,17 +937,72 @@ margin: 10px;
   text-align: center;
     background: #f3db14;
     padding: 10px 8px;}
-#users_tab #table-search-input{position: relative;}
-#users_tab .search-result ul li{list-style-type: none;}
+
+#exam_enrollment_tab #table-search-input,
+#question_papers_tab #table-search-input,
+#questions_tab #table-search-input,
+#topics_tab #table-search-input,
+#subjects_tab #table-search-input,
+#schools_tab #table-search-input,
+#users_tab #table-search-input,
+#institutions_tab #table-search-input{position: relative;}
+
+#exam_enrollment_tab #table-search-input ul li,
+#question_papers_tab #table-search-input ul li,
+#questions_tab #table-search-input ul li,
+#topics_tab #table-search-input ul li,
+#subjects_tab #table-search-input ul li,
+#schools_tab #table-search-input ul li,
+#users_tab .search-result ul li,
+#institutions_tab #table-search-input .search-result ul li{list-style-type: none;}
+
+#exam_enrollment_tab #table-search-input ul,
+#question_papers_tab #table-search-input ul,
+#questions_tab #table-search-input ul,
+#topics_tab #table-search-input ul,
+#subjects_tab #table-search-input ul,
+#schools_tab #table-search-input ul,
+#institutions_tab #table-search-input .search-result ul,
 #users_tab .search-result ul,
 #exams_tab .search-result ul{padding: 0;}
+
+#exam_enrollment_tab #table-search-input ul li,
+#question_papers_tab #table-search-input ul li,
+#questions_tab #table-search-input ul li,
+#topics_tab #table-search-input ul li,
+#subjects_tab #table-search-input ul li,
+#schools_tab #table-search-input ul li,
+#institutions_tab #table-search-input .search-result ul li,
 #users_tab .search-result ul li,
-#exams_tab .search-result ul li{list-style-type: none;text-align: left;}
+#exams_tab .search-result ul li{list-style-type: none;text-align: left;padding: 5px 0;border-bottom: 1px solid rgba(255,255,255,0.5);}
+
+#exam_enrollment_tab #table-search-input ul li span,
+#question_papers_tab #table-search-input ul li span,
+#questions_tab #table-search-input ul li span,
+#topics_tab #table-search-input ul li span,
+#subjects_tab #table-search-input ul li span,
+#schools_tab #table-search-input ul li span,
+#institutions_tab #table-search-input .search-result ul li span,
 #users_tab .search-result ul li span{margin-right:10px;}
+
+#exam_enrollment_tab #table-search-input ul,
+#question_papers_tab #table-search-input ul,
+#questions_tab #table-search-input ul,
+#topics_tab #table-search-input ul,
+#subjects_tab #table-search-input ul,
+#schools_tab #table-search-input ul,
+#institutions_tab #table-search-input .search-result ul,
 #users_tab .search-result ul,
 #exams_tab .search-result ul{margin:0;cursor: pointer;}
 
 #exams_tab .search-result{left: 6%;}
+
+#exam_enrollment_tab #table-search-input .search-result,
+#question_papers_tab #table-search-input .search-result,
+#topics_tab #table-search-input .search-result,
+#subjects_tab #table-search-input .search-result,
+#schools_tab #table-search-input .search-result,
+#institutions_tab #table-search-input .search-result{left:2%;    width: 45%;}
 
 @media (max-width: 768px){
   .logo{

@@ -24,8 +24,8 @@ exit;
 
 <div class="tab-pane ">
                      <h2 class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-left">Question Bank</h2>
-                     <div id="table-search-input">
-                        <div class="input-group col-md-4 pull-right">
+                     <div id="table-search-input" class="col-lg-4 col-md-4 col-sm-6 col-sx-12 pull-right">
+                        <div class="input-group">
                            <input type="text" class="form-control input-lg" placeholder="Search By Question" id="user_search"  data-table="question_bank" data-search="search/index" />
                            <span class="input-group-btn">
                            <button class="btn btn-info btn-lg" type="button">
