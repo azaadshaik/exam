@@ -878,9 +878,9 @@ ol{
 padding-left:10px;
 }
 .fa-close {
-	color : #9c0303;
-	font-size:25px;
-	margin-left:10px;
+	
+	font-size:24px !important;
+	margin-right:10px;
 }
 .fa-check {
 	color : #0be00b;
