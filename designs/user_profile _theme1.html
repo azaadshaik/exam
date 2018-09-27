@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>PULSE - User Dashbaord</title>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+      <meta name="author" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/magnific-popup.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Oswald:200,400,700" rel="stylesheet">
+      <!-- MAIN CSS -->
+      <link rel="stylesheet" href="css/templatemo-style.css">
+      <link rel="stylesheet" href="css/custom.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <style type="text/css">
+         /* user_Theme1 css here */
+         .user_Theme1_wrap header{padding:50px 0;}
+         .user_Theme1_wrap footer{position: absolute;bottom: 0;}
+         /* user_profile _theme1 css here*/
+         .user_Theme1{height:100%;width:100%;position:absolute;/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3ab7f2+0,633799+100 */
+         background: #3ab7f2; /* Old browsers */
+         background: -moz-linear-gradient(45deg, #3ab7f2 0%, #633799 100%); /* FF3.6-15 */
+         background: -webkit-linear-gradient(45deg, #3ab7f2 0%,#633799 100%); /* Chrome10-25,Safari5.1-6 */
+         background: linear-gradient(45deg, #3ab7f2 0%,#633799 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ab7f2', endColorstr='#633799',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */}
+         /* user_profile _theme1 css ends*/
+         .user_Theme1 header{padding: 10px 0;}
+         .theme_head_left,.theme_head_right{display: inline-block;width: 100%;}
+         .theme_head_left h3{display: inline-block;margin: 5px 0;width: 100%;color: #ffffff;}
+         .theme_head_left span{display: inline-block;margin:0;width: 100%;color: #ffffff;}
+         .theme_head_right a{color: #ffffff;}
+         .theme_head_right .dropdown-menu{padding: 10px;}
+         .theme_head_right .dropdown-menu a{color:#333;width: 100%;display: inline-block;margin:2px 0;}
+         .user_Theme1 .stuhead_wel_txt{    color: #ffffff;
+         font-size:18px;
+         letter-spacing:0;
+         text-align: right;}
+         .theme_head_right .input-group{margin: 10px 15px 0 0;}
+         .user_Theme_navs{padding: 50px 0;}
+         .user_Theme_navs ul li{display: inline-block;width: 100%;}
+         .user_Theme_navs ul li a{color: #ffffff;font-size: 18px;}
+         .user_Theme1_body{margin-top:10px;}
+         .user_Theme1_body h2{letter-spacing: 1px;
+         font-weight: 500;color: #ffffff;font-size: 24px;padding: 0;margin: 0;}
+         .utheme_body_right{}
+         .utheme_body_header{padding:20px 0;}
+         .utheme_bg_overlay{min-height:300px;margin:5px 0;background: rgba(255,255,255,0.4);display: inline-block;width: 100%;padding: 20px;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
+         .utheme_bg_overlay h4{padding-bottom:5px;margin:0;color: #ffffff;    font-size: 18px;
+         display: inline-block;
+         font-weight:500;letter-spacing: 1px;    width: 100%;border-bottom: 2px solid #ffffff;}
+         .tot_test_num{font-size:80px;font-weight:700;color:#ffffff;text-align:center;display: inline-block;width: 100%;}
+         .utheme_bg_overlay .exam_status{width:40%;margin: 0 auto;padding: 10px 0;text-align: center;}
+         .utheme_bg_overlay .exam_status li{list-style-type: none;font-size: 20px;color:#ffffff;    position: relative;}
+         .utheme_bg_overlay .exam_status li::before {width: 20px;height: 20px;background: #363636;content: "";display: inline-block;position: absolute;left:-21px;top: 4px;border-radius: 50px;-moz-border-radius: 50px;-webkit-border-radius: 50px;}
+         .exam_status li.passed::before{background: #00ff00;}
+         .exam_status li.failed::before{background: #ff0000;}
+         .exam_status li.absent::before{background: #045cc9;}
+         .exam_status li span{display: inline-block;float: right; }
+         .exam_status li.passed span{color: #00ff00; }
+         .exam_status li.failed span{color: #ff0000; }
+         .exam_status li.absent span{color: #045cc9; }
+         .percentage_circle{position:relative;width:150px;height:150px;border-radius: 200px;border:20px solid red;margin: 20px auto;}
+         .percentage_circle::after{    content: "";
+         border: 20px solid #ffffff;
+         position: absolute;
+         top: -15px;
+         z-index: 9999;
+         height: 140px;
+         width: 140px;
+         border-radius: 300px;
+         left: -14px;}
+         .percentage_circle::before{content: "";
+         width: 40px;height: 40px;background: transparent;
+         position: absolute;}
+         .utheme_bg_overlay.right .tot_test_num{font-size:120px;font-weight:700;}
+         .utheme_bg_overlay.right .tot_test_num .percent{font-size:40px;color: #00ff00;}
+         .user_Theme1_body .user_Theme_navs .nav-tabs>li>a:hover{color: #363636;}
+         /* user_Theme1 css ends here */
+      </style>
+   </head>
+   <body class="user_Theme1_wrap">
+      <div class="user_Theme1"></div>
+      <!-- Header -->
+      <div class="container user_container">
+         <header>
+            <div class="container">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                     <div class="theme_head_left">
+                        <h3>Wasim Shaik</h3>
+                        <span>E5640</span>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pull-right">
+                     <div class="theme_head_right">
+                        <div class="input-group pull-left">
+                           <div class="input-group-append">
+                              <span class="stuhead_wel_txt">My Account</span> 
+                              <a href="#" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
+                              <div class="dropdown-menu">
+                                 <a class="dropdown-item" href="#">Profile</a>
+                                 <a class="dropdown-item" href="#">ID : 25045</a>
+                              </div>
+                           </div>
+                        </div>
+                        <img src="images/profile-pic.png" class="img-circle pull-left" alt="Cinque Terre" width="80">
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+         <div class="user_Theme1_body">
+            <div class="container">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                     <div class="user_Theme_navs">
+                        <ul class="nav nav-tabs">
+                           <li class="nav-item">
+                              <a class="nav-link active" data-toggle="tab" href="#Dashboard">Dashboard</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#History">History</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#Start_Exam">Start Exam</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#Reports">Reports</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#Practice_Test">Practice Test</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 utheme_body_right">
+                     <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_content">
+                           <div class="tab-content">
+                              <div id="Dashboard" class="tab-pane fade in active">
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                       <h2>Dashboard</h2>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-right">
+                                       <div class="input-group">
+                                          <input type="text" id="" data-table="" data-search="" class="form-control input-lg " placeholder="Search">
+                                          <span class="input-group-btn search-button">
+                                          <button class="btn btn-info btn-lg" type="button">
+                                          <i class="fa fa-search-plus"></i>
+                                          </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="utheme_bg_overlay">
+                                       <h4>Total Main Tests</h4>
+                                       <span class="tot_test_num">24</span>
+                                       <ul class="exam_status">
+                                          <li class="passed">PASSED <span>20</span></li>
+                                          <li class="failed">FAILED <span>02</span></li>
+                                          <li class="absent">ABSENT <span>02</span></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="utheme_bg_overlay right">
+                                       <h4>Main Tests Overview</h4>
+                                       <span class="tot_test_num">80<span class="percent">%</span></span>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div id="History" class="tab-pane fade">
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                       <h2>History</h2>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-right">
+                                       <div class="input-group">
+                                          <input type="text" id="" data-table="" data-search="" class="form-control input-lg " placeholder="Search">
+                                          <span class="input-group-btn search-button">
+                                          <button class="btn btn-info btn-lg" type="button">
+                                          <i class="fa fa-search-plus"></i>
+                                          </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div id="Start_Exam" class="tab-pane fade">
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                       <h2>Start Exam</h2>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-right">
+                                       <div class="input-group">
+                                          <input type="text" id="" data-table="" data-search="" class="form-control input-lg " placeholder="Search">
+                                          <span class="input-group-btn search-button">
+                                          <button class="btn btn-info btn-lg" type="button">
+                                          <i class="fa fa-search-plus"></i>
+                                          </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div id="Reports" class="tab-pane fade">
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                       <h2>Reports</h2>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-right">
+                                       <div class="input-group">
+                                          <input type="text" id="" data-table="" data-search="" class="form-control input-lg " placeholder="Search">
+                                          <span class="input-group-btn search-button">
+                                          <button class="btn btn-info btn-lg" type="button">
+                                          <i class="fa fa-search-plus"></i>
+                                          </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div id="Practice_Test" class="tab-pane fade">
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                       <h2>Practice Test</h2>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-right">
+                                       <div class="input-group">
+                                          <input type="text" id="" data-table="" data-search="" class="form-control input-lg " placeholder="Search">
+                                          <span class="input-group-btn search-button">
+                                          <button class="btn btn-info btn-lg" type="button">
+                                          <i class="fa fa-search-plus"></i>
+                                          </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Header ends -->
+      <!-- Center Container -->
+      <!-- Center Container ends-->
+      <footer class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+         <p>Copyright © 2018</p>
+      </footer>
+      <!-- SCRIPTS -->
+      <script src="js/jquery.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+   </body>
+</html>
