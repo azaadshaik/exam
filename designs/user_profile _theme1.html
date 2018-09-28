@@ -17,6 +17,103 @@
       <link rel="stylesheet" href="css/custom.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <style type="text/css">
+              /* student exam tab*/
+#userSecondTab,#userThirdTab{padding: 20px 10px;}
+.stu-exam-tab .header{background:rgba(0, 0, 0, 0.6);padding: 10px 20px;width: 100%;display: inline-block;}
+.stu-exam-tab .header-name,
+.stu-exam-tab .header-text{color: #fff;font-size: 16px;display: inline-block;width: 100%;margin: 5px 0;}
+.stu-exam-tab .header h2{    color: #ffffff;
+    text-align: center;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    line-height: 62px;}
+.stu-exam-tab .exam-body-left{border-right:3px solid red;}
+.exam-answer-selction{margin:30px 0 30px 20px;}
+.stu-exam-tab .exam-body{padding:20px;background:rgba(0, 0, 0, 0.3);border: 1px solid rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    width: 100%;}
+.stu-exam-tab .exam-body .mark-review label,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio label{margin: 0;padding: 0;}
+.stu-exam-tab .exam-body .mark-review input,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio input{    margin-left: -20px;
+    margin-top: 10px;}
+.stu-exam-tab .mark-review {    margin-top: 30px;
+    margin-left: 20px;}
+.stu-exam-tab .mark-review label{color: #FFA500 !important;}
+.stu-exam-tab .exam-btn-wrap{margin: 30px 0;
+    display: inline-block;}
+.exam-btn-wrap .btn-left{margin-right: 20px;}
+.exam-ques-num{display: inline-block;width: 100%;}
+.exam-ques-num span{margin: 0 5px;padding: 15px 15px;
+    background:#D3D3D3;
+    min-width: 48px;}
+    .exam-ques-num span:hover{background: #fff;}
+.exam-ques-num span.btn-current,.exam-ques-num span:active{    box-shadow: inset 7px 7px 7px rgba(0,0,0,0.8);
+      -moz-box-shadow: inset 7px 7px 7px rgba(0,0,0,0.8);
+      -webkit-box-shadow:inset 7px 7px 7px rgba(0,0,0,0.8);}
+.exam-ques-num span.btn-unanswered{    background: #FF0000;
+    color: #ffffff;}
+
+    .exam-ques-num span.btn-answered{    background: #008000;
+    color: #ffffff;}
+.exam-ques-num span.btn-markreview{    background: #FFA500;
+    color: #ffffff;}
+.exam-ques-num .ques-rows{display: inline-block;    width: 100%;
+    margin: 10px 0;}
+
+
+/* custum scroll ba*****/
+.scrollbar {
+  margin-left: 22px;
+  float: left;
+  max-height: 360px;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+}
+
+.force-overflow {
+  min-height: 450px;
+}
+
+#exam-ques-num {
+  text-align: center;
+  margin: auto;
+}
+
+#style-1::-webkit-scrollbar,
+#style-2::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar,
+#style-5::-webkit-scrollbar,
+#style-6::-webkit-scrollbar,
+#style-7::-webkit-scrollbar,
+#style-8::-webkit-scrollbar,
+#style-9::-webkit-scrollbar,
+#style-10::-webkit-scrollbar,
+#style-11::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+/**  STYLE 1 */
+#style-1::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
+
+#style-1::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+/* custum scroll bar ends ***/
+/* student exam tab*/ 
          /* user_Theme1 css here */
          .user_Theme1_wrap header {
          padding: 50px 0;
@@ -764,38 +861,101 @@
       </div>
        <!-- ******* Running exam code starts here ******* -->
        <div class="container user_container" id="theme_show" style="display: none;">
-        <header>
-            <div class="container">
-               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                     <div class="theme_head_left">
-                        <h3>Wasim Shaik</h3>
-                        <span>E5640</span>
-                     </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pull-right">
-                     <div class="theme_head_right">
-                        <div class="input-group pull-left">
-                           <div class="input-group-append">
-                              <span class="stuhead_wel_txt">My Account</span>
-                              <a href="#" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
-                              <div class="dropdown-menu">
-                                 <a class="nav-link" data-toggle="tab" href="#Profile">Profile</a>
-                                 <a class="dropdown-item" href="#">ID : 25045</a>
-                              </div>
+        
+        <div class="container">
+         <div class="stu-exam-tab col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="header">
+                           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                              <span class="header-name"><b>Name:</b> Wasim</span>
+                              <span class="header-name"><b>Exam Centre:</b> JBDC</span>
+                           </div>
+                           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                              <h2>Mock Test</h2>
+                           </div>
+                           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                              <span class="header-name"><b>Timer:</b> 02:00:00</span>
                            </div>
                         </div>
-                        <img src="images/profile-pic.png" class="img-circle pull-left" alt="Cinque Terre" width="80">
+                        
                      </div>
-                  </div>
-               </div>
-            </div>
-         </header>
+                   </div>
 
          <div class="user_Theme1_body">
            <div class="container">
              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-               Exam dashbaord yet to implement
+               
+                     <div class="stu-exam-tab col-lg12 col-md-12 col-sm-12 col-xs-12">
+                        
+                        <div class="exam-body">
+                           <div class="exam-body-left col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                              <span class="header-text">Question 4 of 10:</span>
+                              <span class="header-text">Who was the first English President of the Indian National Congress ?</span>
+                              <div class="mark-review checkbox">
+                                 <label><input class="markinput" type="checkbox" value="">Mark For Review Later</label>
+                              </div>
+                              <div class="exam-answer-selction">
+                                 <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                    <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                    <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                    <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                    <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                    <div class="exam-btn-wrap">
+                                       <input type="submit" class="btn btn-large btn-left" value=" Next ">
+                                       <input type="submit" class="btn btn-large btn-right" value=" Save &amp; Continue ">
+                                    </div>
+                                 </form>
+                              </div>
+                           </div>
+                           <div id="exam-ques-num" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                              <div class="scrollbar exam-ques-num" id="style-1">
+                                 <div class="ques-rows">
+                                    <span class="btn btn-markreview">1</span>
+                                    <span class="btn btn-answered">2</span>
+                                    <span class="btn btn-unanswered">3</span>
+                                    <span class="btn btn-current">4</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">5</span>
+                                    <span class="btn">6</span>
+                                    <span class="btn">7</span>
+                                    <span class="btn">8</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">9</span>
+                                    <span class="btn">10</span>
+                                    <span class="btn">11</span>
+                                    <span class="btn">12</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">13</span>
+                                    <span class="btn">14</span>
+                                    <span class="btn">15</span>
+                                    <span class="btn">16</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">17</span>
+                                    <span class="btn">18</span>
+                                    <span class="btn">19</span>
+                                    <span class="btn">20</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">21</span>
+                                    <span class="btn">22</span>
+                                    <span class="btn">23</span>
+                                    <span class="btn">24</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">25</span>
+                                    <span class="btn">26</span>
+                                    <span class="btn">27</span>
+                                    <span class="btn">28</span>
+                                 </div>
+                                 <div class="force-overflow"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                
              </div>
            </div>
          </div>
