@@ -1164,6 +1164,7 @@ public function loadQuestions(){
 	$filters['level'] = $this->input->post('level');
 	$result = $this->AdminModel->getFilteredQuestions($filters);
 	$data['filtered_questions'] = $result;
+	
 	$this->load->view('ajax_templates/filtered_questions', $data);
 }
 
@@ -1270,21 +1271,42 @@ public function enrollments(){
 	
 	public function loadQuestion(){
 		$question_id = $this->input->get('question_id');
+		$question_num = $this->input->get('qno');
+		
 		$question_data = $this->AdminModel->get_question_by_id($question_id);
 		$data['question_data'] = $question_data;
+		$data['question_num'] = $question_num;
 		$this->load->view('student/question_display', $data);
 	}
 	
 	public function captureStudentAnswer(){
-		 $question_id = $this->input->post('questionId');
-		 $choice_id = $this->input->post('choiceId');
-		$exam_id = $this->input->post('examId');
-		$student_id = $this->session->userdata('user_id');
-		
+	
 		$answer_data = array();
 		
-		$result = $this->AdminModel->store_student_answer($answer_data);
-		
+		$answer_data['question_id'] = $this->input->post('questionId');
+		$answer_data['choice_id'] = $this->input->post('choiceId');
+		$answer_data['exam_id'] = $this->input->post('examId');
+		$answer_data['review_again'] = $this->input->post('isMarked');
+		$answer_data['is_answered'] = $this->input->post('isAnswered');
+		$answer_data['is_unanswered'] = $this->input->post('isUnAnswered');
+		$answer_data['answered_time'] = $this->input->post('answeredTime');
+		$answer_data['is_correct']=0;
+		$answer_data['student_id'] = $this->session->userdata('user_id');
+		if($answer_data['choice_id']){
+			$choice_result = $this->AdminModel->validate_question_choice($answer_data['question_id'],$answer_data['choice_id']);
+			$answer_data['is_correct'] = !empty($choice_result)?1:0;
+		}
+		//first check if the user already submitted this answer if so update else insert
+		$record = $this->AdminModel->get_exam_answer_submitted($answer_data);
+		if(!empty($record)){
+			$this->AdminModel->update_user_answer($answer_data,$record->exam_answers_id);
+			exit;
+		}
+		else{
+			$this->AdminModel->store_student_answer($answer_data);
+			exit;
+		}
+	
 	}
 	
 

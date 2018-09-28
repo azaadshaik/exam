@@ -1,4 +1,8 @@
-<?php $asset_url = $this->config->item('asset_url'); ?>
+<?php $asset_url = $this->config->item('asset_url'); 
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -12,12 +16,14 @@
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/bootstrap.min.css">
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/magnific-popup.css">
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/jquery.countdownTimer.css">
       <link href="https://fonts.googleapis.com/css?family=Oswald:200,400,700" rel="stylesheet">
       <!-- MAIN CSS -->
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/templatemo-style.css">
       <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/custom.css">
 	  <link rel="stylesheet" href="<?php echo $asset_url; ?>/css/student.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  
       <style type="text/css">
          /* DEMO-SPECIFIC STYLES */
          .typewriter{position: relative;display: inline-block;float: left;}
@@ -68,14 +74,20 @@
             </div>
             <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 padding0">
                <div class="user_inp_section">
-                  <div class="user_inner_search pull-left">
+			   <?php if(!empty($this->data['ongoing_exam'])){
+					$ongoing_exam_id = $this->data['ongoing_exam']['ongoing'][0]['exam_id'];
+			   ?>
+                  <div class="user_inner_search pull-left " id="exam-alert">
                     <div class="typewriter">
 						<h3>Currently one exam is going on</h3>
 					</div> 
 					<div class="blinkwrap">
-						<span class="blinking"><button class="btn brn-primary">Click here to complete</button></span>
+						<span class="blinking"><button class="btn brn-primary" data-toggle="tab" type="button" onclick="$('li.three a').trigger('click');launchExam(<?php echo $ongoing_exam_id; ?>,'my_exams');">Click here to attend</button></span>
 					</div>
                   </div>
+				  <?php
+				  }
+				  ?>
                   <div class="user_inner_usericon pull-right">
                      <img src="<?php echo $asset_url; ?>/images/profile-pic.png" class="img-circle pull-left" alt="Cinque Terre" width="40" style="display: none;">
                      <div class="input-group pull-left">
@@ -132,13 +144,15 @@
 
       <!-- SCRIPTS -->
       
-      <script src="<?php echo $asset_url; ?>/js/jquery.js"></script>
+      <script src="<?php echo $asset_url; ?>/js/jquery-2.2.4.js"></script>
 	  <script src="<?php echo $asset_url; ?>/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
       <script src="<?php echo $asset_url; ?>/js/datetimepicker/jquery.datetimepicker.full.js"></script>
       <script src="<?php echo $asset_url; ?>/js/bootstrap.min.js"></script>
       <script src="<?php echo $asset_url; ?>/js/jquery.stellar.min.js"></script>
       <script src="<?php echo $asset_url; ?>/js/jquery.magnific-popup.min.js"></script>
 	   <script src="<?php echo $asset_url; ?>/js/jquery.confirm.min.js"></script>
+	   <script src="<?php echo $asset_url; ?>/js/jquery.countdownTimer.min.js"></script>
+	   
 	  
       <script src="<?php echo $asset_url; ?>/js/smoothscroll.js"></script>
       <script src="<?php echo $asset_url; ?>/js/custom.js"></script>

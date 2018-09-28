@@ -503,7 +503,7 @@ function viewExams(userId,divToUpdate){
    });
 }
 function launchExam(examId,divToUpdate){
-
+	$('#exam-alert').hide();
 	$('#loader').show();
     $.ajax({
        url: 'student/launch_exam/?exam_id='+examId,
@@ -518,9 +518,9 @@ function launchExam(examId,divToUpdate){
 function hideInstructions(questionId,buttonId){
 	$('#instructions').hide();
 	$('#userSecondTab').css('display','block');
-	loadQuestion(questionId,buttonId);
+	loadQuestion(questionId,buttonId,1);
 }
-function loadQuestion(questionId,buttonId){
+function loadQuestion(questionId,buttonId,qno){
 	
 	  $( ".ques-rows span" ).each(function( index, element ) {
     console.log(element);
@@ -532,7 +532,7 @@ function loadQuestion(questionId,buttonId){
 	
 	$('#loader').show();
     $.ajax({
-       url: 'admin/loadQuestion/?question_id='+questionId,
+       url: 'admin/loadQuestion/?question_id='+questionId+'&qno='+qno,
        type: 'GET',
        success: function (data) {
 	   $('#loader').hide();
@@ -542,31 +542,119 @@ function loadQuestion(questionId,buttonId){
        
    });
 }
-function markAsReview(){
+
+
+ $(document).delegate("#markncontinue", "click", function() {
+    //var currentTime = new Date().getTime();
+	var selectedAnswerId = $("input[name='choice']:checked"). val();
+	if(typeof selectedAnswerId=='undefined'){
+	
+		$('#submit-message').html('You need to select an option to mark it for review');
+		$('#submit-message').removeClass('hide');
+		return false;
+	}
+	
+	var currentTime = Math.round((new Date()).getTime() / 1000);
+
+	var questionViewTime = $('#question_start_time').val();
+	var answerdTime = currentTime - questionViewTime;
+	
+	
 	var currentQuestionId = $('#current_question_id').val();
 	var currentQuestionNumber = $('#current_question_number').val();
 	var examId = $('#exam_id').val();
 	var totalQuestions = $('#total_questions').val();
 	$('#question-'+currentQuestionNumber).addClass('btn-markreview');
+	$('#question-'+currentQuestionNumber).removeClass('btn-current');
 	var nextQuestionNumber = Number(currentQuestionNumber) + Number(1);
-	var selectedAnswerId = $("input[name='choice']:checked"). val();
+	
+	
 	
 	$('#loader').show();
     $.ajax({
        url: 'admin/captureStudentAnswer',
        type: 'POST',
-	   data:{'questionId':currentQuestionId,'choiceId':selectedAnswerId,'examId':examId},
+	   data:{questionId:currentQuestionId,choiceId:selectedAnswerId,examId:examId,isMarked:1,isAnswered:1,isUnAnswered:0,answeredTime:answerdTime},
        success: function (data) {
 	   $('#loader').hide();
-           $('.dynamicQuestion').html(data);
-		   $('.dynamicQuestion').show();
+          
+		    $('#current_question_number').val(nextQuestionNumber);
+		   $('#question-'+nextQuestionNumber).trigger('click');
        }
        
    });
+ });
+ 
+ $(document).delegate("#skipncontinue", "click", function() {
+    
 	
 	
-}
+	
+	var currentQuestionId = $('#current_question_id').val();
+	var currentQuestionNumber = $('#current_question_number').val();
+	var examId = $('#exam_id').val();
+	var totalQuestions = $('#total_questions').val();
+	$('#question-'+currentQuestionNumber).addClass('btn-unanswered');
+	$('#question-'+currentQuestionNumber).removeClass('btn-current');
+	var nextQuestionNumber = Number(currentQuestionNumber) + Number(1);
+	
+	
+	
+	$('#loader').show();
+    $.ajax({
+       url: 'admin/captureStudentAnswer',
+       type: 'POST',
+	   data:{questionId:currentQuestionId,choiceId:0,examId:examId,isMarked:0,isAnswered:0,isUnAnswered:1,answeredTime:0},
+       success: function (data) {
+	   $('#loader').hide();
+          
+		    $('#current_question_number').val(nextQuestionNumber);
+		   $('#question-'+nextQuestionNumber).trigger('click');
+       }
+       
+   });
+ });
 
+ $(document).delegate("#savencontinue", "click", function() {
+    //var currentTime = new Date().getTime();
+	var selectedAnswerId = $("input[name='choice']:checked"). val();
+	if(typeof selectedAnswerId=='undefined'){
+	
+		$('#submit-message').html('You need to select an option to save');
+		$('#submit-message').removeClass('hide');
+		return false;
+	}
+	
+	var currentTime = Math.round((new Date()).getTime() / 1000);
+
+	var questionViewTime = $('#question_start_time').val();
+	var answerdTime = currentTime - questionViewTime;
+	
+	
+	var currentQuestionId = $('#current_question_id').val();
+	var currentQuestionNumber = $('#current_question_number').val();
+	var examId = $('#exam_id').val();
+	var totalQuestions = $('#total_questions').val();
+	$('#question-'+currentQuestionNumber).addClass('btn-answered');
+	$('#question-'+currentQuestionNumber).removeClass('btn-current');
+	var nextQuestionNumber = Number(currentQuestionNumber) + Number(1);
+	
+	
+	
+	$('#loader').show();
+    $.ajax({
+       url: 'admin/captureStudentAnswer',
+       type: 'POST',
+	   data:{questionId:currentQuestionId,choiceId:selectedAnswerId,examId:examId,isMarked:0,isAnswered:1,isUnAnswered:0,answeredTime:answerdTime},
+       success: function (data) {
+	   $('#loader').hide();
+          
+		    $('#current_question_number').val(nextQuestionNumber);
+		   $('#question-'+nextQuestionNumber).trigger('click');
+       }
+       
+   });
+ });
 
 function viewTopic(topicId,divToUpdate){
 $('#loader').show();
