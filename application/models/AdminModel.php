@@ -622,14 +622,49 @@ class AdminModel extends CI_Model
 	}
 	
 	public function get_question_paper_by_exam($exam_id){
-		$where ='exam_id='.$exam_id;
+		$where ='exams.exam_id='.$exam_id;
 		$this->db->select('*');
         $this->db->from('question_paper');
         $this->db->join('exams','exams.exam_id = question_paper.exam_id');
+		$this->db->where($where);
+		$result = $this->db->get()->row();
+		
+		
+        return $result;
+	}
+	
+	public function store_student_answer($answer_data){
+		$result= $this->db->insert('exam_answers', $answer_data);
+        return $result;
+	}
+	
+	public function validate_question_choice($questionId,$choice_id){
+		$where ='question_id='.$questionId.' and choice_id='.$choice_id;
+		$this->db->select('*');
+        $this->db->from('question_answers');
+       	$this->db->where($where);
 		$result = $this->db->get()->row();
 		
         return $result;
 	}
+	
+	public function get_exam_answer_submitted($answer_data){
+	
+		$where ='question_id='.$answer_data['question_id'].' and exam_id='.$answer_data['exam_id'].' and student_id='.$answer_data['student_id'];
+		$this->db->select('*');
+        $this->db->from('exam_answers');
+       	$this->db->where($where);
+		$result = $this->db->get()->row();
+		return $result;
+	}
+	
+	public function update_user_answer($answer_data,$answer_id){
+       
+        $result= $this->db->update('exam_answers', $answer_data, "exam_answers_id = $answer_id");
+        return $result;
+  
+    }
+	
 	
 		
     

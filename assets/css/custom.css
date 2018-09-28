@@ -1015,6 +1015,26 @@ margin: 10px;
 #subjects_tab #table-search-input .search-result,
 #schools_tab #table-search-input .search-result,
 #institutions_tab #table-search-input .search-result{left:2%;    width: 45%;}
+#instructions{
+	margin:10px 30px;
+}
+#instructions-headline {
+	color:#FFF;
+   font-size: 20px;
+    margin-bottom: 10px
+}
+#timer {
+border:0;
+padding:0 5px;
+}
+
+.option-no{
+left: -30px;
+    position: relative;
+    float: left;
+    top: 5px;
+    color: #fff;
+}
 
 @media (max-width: 768px){
   .logo{
@@ -1149,3 +1169,4 @@ margin: 10px;
     margin: 0;
   }
 }
+
