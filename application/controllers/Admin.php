@@ -1317,5 +1317,21 @@ public function enrollments(){
 	
 	}
 	
+	public function submit_exam(){
+	
+		$exam_id = $this->input->get('examId');
+		$student_id = $this->session->userdata('user_id');
+		$exam_result = $this->AdminModel->get_student_answers($student_id,$exam_id);
+		$question_paper = $this->AdminModel->get_question_paper_by_exam($exam_id);
+		$exam_questions = unserialize($question_paper->question_paper_questions);
+		$questions_data = $this->AdminModel->get_questions_and_options_by_question_ids($exam_questions);
+		
+		
+		echo "<pre>";
+		print_r($exam_result);
+		print_r($questions_data);
+		die;
+	}
+	
 
 }

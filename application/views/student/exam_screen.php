@@ -108,7 +108,8 @@
 						   <div class="exam-btn-wrap">
                                        <input type="buttom" class="btn btn-large btn-left" id="markncontinue"  value=" Mark For Review & Continue ">
                                        <input type="button" class="btn btn-large btn-left" id="skipncontinue" value=" Skip & Continue ">
-									   <input type="button" class="btn btn-large btn-right" id="savencontinue" value=" Save & Continue ">
+									   <input type="button" class="btn btn-large btn-left" id="savencontinue" value=" Save & Continue ">
+									   <input type="button" class="btn btn-large btn-right" id="submit_exam" value=" Submit Exam ">
                                     </div>
                         </div>
                      </div>

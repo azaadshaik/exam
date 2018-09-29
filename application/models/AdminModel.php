@@ -675,6 +675,21 @@ class AdminModel extends CI_Model
   
     }
 	
+	public function get_questions_and_options_by_question_ids($question_id_array){
+			//$where ='question_bank.question_id in='.$question_id_array;
+            $this->db->select('question_bank.*,question_choices.choice_id,choice_text,choice_image');
+            $this->db->from('question_bank');
+			$this->db->join('question_choices','question_choices.question_id=question_bank.question_id');
+            //$this->db->join('question_answers','question_answers.choice_id=question_choices.choice_id','left');
+            $this->db->where_in('question_bank.question_id',$question_id_array);
+            //$this->db->order_by('question_choices.choice_id','asc');
+            $result = $this->db->get()->result_array();
+            return $result;
+               
+        return $result;
+    }
+	
+	
 	
 		
     
