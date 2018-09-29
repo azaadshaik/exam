@@ -658,6 +658,16 @@ class AdminModel extends CI_Model
 		return $result;
 	}
 	
+	public function get_student_answers($student_id,$exam_id){
+	
+		$where =' exam_id='.$exam_id.' and student_id='.$student_id;
+		$this->db->select('*');
+        $this->db->from('exam_answers');
+       	$this->db->where($where);
+		$result = $this->db->get()->result_array();
+		return $result;
+	}
+	
 	public function update_user_answer($answer_data,$answer_id){
        
         $result= $this->db->update('exam_answers', $answer_data, "exam_answers_id = $answer_id");

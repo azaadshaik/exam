@@ -15,8 +15,14 @@
 								 <?php 
 								 $i=1;
 								 foreach($question_data as $option){ ?>
-								 
-								  <div class="radio"><span class="option-no"><?php echo $i;?>)</span><span><label><input type="radio" name="choice" id="user_choice" value="<?php echo $option['choice_id'];?>"> <?php echo !empty($option['choice_text'])?$option['choice_text']:'';?>
+								  
+								 <?php 
+								 $checked='';
+								 if(!empty($submitted_data->choice_id) && ($submitted_data->choice_id==$option['choice_id'])) {
+									$checked='checked=checked';
+								 }
+								 ?>
+								  <div class="radio"><span class="option-no"><?php echo $i;?>)</span><span><label><input type="radio" name="choice" id="user_choice" <?php echo $checked; ?> value="<?php echo $option['choice_id'];?>"> <?php echo !empty($option['choice_text'])?$option['choice_text']:'';?>
 								 <?php echo !empty($option['choice_image'])?'<img src="'.$this->config->item('asset_url').'/uploads/question_images/'.$option['choice_image'].'">' :'';?>
 								 
 								 </label></span></div>

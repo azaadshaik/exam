@@ -522,6 +522,7 @@ function hideInstructions(questionId,buttonId){
 }
 function loadQuestion(questionId,buttonId,qno){
 	
+	var examId = $('#exam_id').val();
 	  $( ".ques-rows span" ).each(function( index, element ) {
     console.log(element);
 				$( element ).removeClass( "btn-current" );
@@ -532,7 +533,7 @@ function loadQuestion(questionId,buttonId,qno){
 	
 	$('#loader').show();
     $.ajax({
-       url: 'admin/loadQuestion/?question_id='+questionId+'&qno='+qno,
+       url: 'admin/loadQuestion/?question_id='+questionId+'&qno='+qno+'&exam_id='+examId,
        type: 'GET',
        success: function (data) {
 	   $('#loader').hide();
@@ -564,8 +565,8 @@ function loadQuestion(questionId,buttonId,qno){
 	var currentQuestionNumber = $('#current_question_number').val();
 	var examId = $('#exam_id').val();
 	var totalQuestions = $('#total_questions').val();
-	$('#question-'+currentQuestionNumber).addClass('btn-markreview');
-	$('#question-'+currentQuestionNumber).removeClass('btn-current');
+	$('#question-'+currentQuestionNumber).removeAttr('class');
+	$('#question-'+currentQuestionNumber).attr('class','btn btn-markreview');
 	var nextQuestionNumber = Number(currentQuestionNumber) + Number(1);
 	
 	
@@ -594,8 +595,8 @@ function loadQuestion(questionId,buttonId,qno){
 	var currentQuestionNumber = $('#current_question_number').val();
 	var examId = $('#exam_id').val();
 	var totalQuestions = $('#total_questions').val();
-	$('#question-'+currentQuestionNumber).addClass('btn-unanswered');
-	$('#question-'+currentQuestionNumber).removeClass('btn-current');
+	$('#question-'+currentQuestionNumber).removeAttr('class');
+	$('#question-'+currentQuestionNumber).attr('class','btn btn-current');
 	var nextQuestionNumber = Number(currentQuestionNumber) + Number(1);
 	
 	
@@ -635,8 +636,9 @@ function loadQuestion(questionId,buttonId,qno){
 	var currentQuestionNumber = $('#current_question_number').val();
 	var examId = $('#exam_id').val();
 	var totalQuestions = $('#total_questions').val();
-	$('#question-'+currentQuestionNumber).addClass('btn-answered');
-	$('#question-'+currentQuestionNumber).removeClass('btn-current');
+	$('#question-'+currentQuestionNumber).removeAttr('class');
+	$('#question-'+currentQuestionNumber).attr('class','btn btn-answered');
+	
 	var nextQuestionNumber = Number(currentQuestionNumber) + Number(1);
 	
 	

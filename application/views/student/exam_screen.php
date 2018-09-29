@@ -1,4 +1,4 @@
-<?php date_default_timezone_set('Asia/Kolkata'); ?>
+<?php date_default_timezone_set('Asia/Kolkata');?>
 <div id="instructions" class="row" >
 <div id="instructions-headline">Please read the instructions below</div>
 
@@ -73,8 +73,29 @@
 							  <?php
 								$i=1;
 								
-								foreach($exam_data->question_paper_questions as $question){ ?>
-									 <span class="btn"  id="question-<?php echo $i;?>" onclick="loadQuestion(<?php echo $exam_data->question_paper_questions[$i-1];?>,this.id,<?php echo $i;?>);" style="margin-bottom:10px;"><?php echo $i;?></span>
+								foreach($exam_data->question_paper_questions as $question){ 
+								
+									if(!empty($student_answers)){
+										foreach($student_answers as $answers){
+											if($answers['question_id']==$question){
+												$class='';
+												if($answers['review_again'] && $answers['review_again'] ){
+													$class='btn-markreview';
+													
+												}
+												if($answers['is_unanswered']){
+													$class='btn-unanswered';
+													
+												}
+												if($answers['is_answered'] && !$answers['review_again']){
+													$class='btn-answered';
+													
+												}
+											}
+										}
+									}
+								?>
+									 <span class="btn <?php echo $class;?>"  id="question-<?php echo $i;?>" onclick="loadQuestion(<?php echo $exam_data->question_paper_questions[$i-1];?>,this.id,<?php echo $i;?>);" style="margin-bottom:10px;"><?php echo $i;?></span>
 									 <?php
 									$i++;
 								}

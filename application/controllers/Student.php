@@ -97,17 +97,13 @@ public function launch_exam(){
 	$is_enrolled = $this->check_user_enrollment($user_id,$exam_id);
 	if($is_enrolled){
 	
-	$question_paper = $this->AdminModel->get_question_paper_by_exam($exam_id);
-	// echo "<pre>";
-	// print_r($question_paper);
-	$question_paper_questions = unserialize($question_paper->question_paper_questions);
-	// echo "<pre>";
-	// print_r($question_paper_questions);
-	// die;
-	
-	$question_paper->question_paper_questions = $question_paper_questions;
-	$data['exam_data'] = $question_paper;
-	$this->load->view('student/exam_screen', $data);
+		$question_paper = $this->AdminModel->get_question_paper_by_exam($exam_id);
+		$question_paper_questions = unserialize($question_paper->question_paper_questions);
+		$question_paper->question_paper_questions = $question_paper_questions;
+		$student_answers = $this->AdminModel->get_student_answers($user_id,$exam_id); 
+		$data['exam_data'] = $question_paper;
+		$data['student_answers'] = $student_answers;
+		$this->load->view('student/exam_screen', $data);
 	
 	}
 
