@@ -17,54 +17,283 @@
       <link rel="stylesheet" href="css/custom.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <style type="text/css">
+              /* student exam tab*/
+#userSecondTab,#userThirdTab{padding: 20px 10px;}
+.stu-exam-tab .header{background:rgba(0, 0, 0, 0.6);padding: 10px 20px;width: 100%;display: inline-block;}
+.stu-exam-tab .header-name,
+.stu-exam-tab .header-text{color: #fff;font-size: 16px;display: inline-block;width: 100%;margin: 5px 0;}
+.stu-exam-tab .header h2{    color: #ffffff;
+    text-align: center;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    line-height: 62px;}
+.stu-exam-tab .exam-body-left{border-right:3px solid red;}
+.exam-answer-selction{margin:30px 0 30px 20px;}
+.stu-exam-tab .exam-body{padding:20px;background:rgba(0, 0, 0, 0.3);border: 1px solid rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    width: 100%;}
+.stu-exam-tab .exam-body .mark-review label,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio label{margin: 0;padding: 0;}
+.stu-exam-tab .exam-body .mark-review input,
+.stu-exam-tab .exam-answer-selction .exam-ans-form .radio input{    margin-left: -20px;
+    margin-top: 10px;}
+.stu-exam-tab .mark-review {    margin-top: 30px;
+    margin-left: 20px;}
+.stu-exam-tab .mark-review label{color: #FFA500 !important;}
+.stu-exam-tab .exam-btn-wrap{margin: 30px 0;
+    display: inline-block;}
+.exam-btn-wrap .btn-left{margin-right: 20px;}
+.exam-ques-num{display: inline-block;width: 100%;}
+.exam-ques-num span{margin: 0 5px;padding: 15px 15px;
+    background:#D3D3D3;
+    min-width: 48px;}
+    .exam-ques-num span:hover{background: #fff;}
+.exam-ques-num span.btn-current,.exam-ques-num span:active{    box-shadow: inset 7px 7px 7px rgba(0,0,0,0.8);
+      -moz-box-shadow: inset 7px 7px 7px rgba(0,0,0,0.8);
+      -webkit-box-shadow:inset 7px 7px 7px rgba(0,0,0,0.8);}
+.exam-ques-num span.btn-unanswered{    background: #FF0000;
+    color: #ffffff;}
+
+    .exam-ques-num span.btn-answered{    background: #008000;
+    color: #ffffff;}
+.exam-ques-num span.btn-markreview{    background: #FFA500;
+    color: #ffffff;}
+.exam-ques-num .ques-rows{display: inline-block;    width: 100%;
+    margin: 10px 0;}
+
+
+/* custum scroll ba*****/
+.scrollbar {
+  margin-left: 22px;
+  float: left;
+  max-height: 360px;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+}
+
+.force-overflow {
+  min-height: 450px;
+}
+
+#exam-ques-num {
+  text-align: center;
+  margin: auto;
+}
+
+#style-1::-webkit-scrollbar,
+#style-2::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar,
+#style-5::-webkit-scrollbar,
+#style-6::-webkit-scrollbar,
+#style-7::-webkit-scrollbar,
+#style-8::-webkit-scrollbar,
+#style-9::-webkit-scrollbar,
+#style-10::-webkit-scrollbar,
+#style-11::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+/**  STYLE 1 */
+#style-1::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
+
+#style-1::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+/* custum scroll bar ends ***/
+/* student exam tab*/ 
          /* user_Theme1 css here */
-         .user_Theme1_wrap header{padding:50px 0;}
-         .user_Theme1_wrap footer{position: absolute;bottom: 0;}
+         .user_Theme1_wrap header {
+         padding: 50px 0;
+         }
+         .user_Theme1_wrap footer {
+         position: absolute;
+         bottom: 0;
+         }
          /* user_profile _theme1 css here*/
-         .user_Theme1{height:100%;width:100%;position:absolute;/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3ab7f2+0,633799+100 */
-         background: #3ab7f2; /* Old browsers */
-         background: -moz-linear-gradient(45deg, #3ab7f2 0%, #633799 100%); /* FF3.6-15 */
-         background: -webkit-linear-gradient(45deg, #3ab7f2 0%,#633799 100%); /* Chrome10-25,Safari5.1-6 */
-         background: linear-gradient(45deg, #3ab7f2 0%,#633799 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ab7f2', endColorstr='#633799',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */}
+         .user_Theme1 {
+         height: 100%;
+         width: 100%;
+         position: absolute;
+         /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3ab7f2+0,633799+100 */
+         background: #3ab7f2;
+         /* Old browsers */
+         background: -moz-linear-gradient(45deg, #3ab7f2 0%, #633799 100%);
+         /* FF3.6-15 */
+         background: -webkit-linear-gradient(45deg, #3ab7f2 0%, #633799 100%);
+         /* Chrome10-25,Safari5.1-6 */
+         background: linear-gradient(45deg, #3ab7f2 0%, #633799 100%);
+         /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+         filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3ab7f2', endColorstr='#633799', GradientType=1);
+         /* IE6-9 fallback on horizontal gradient */
+         }
          /* user_profile _theme1 css ends*/
-         .user_Theme1 header{padding: 10px 0;}
-         .theme_head_left,.theme_head_right{display: inline-block;width: 100%;}
-         .theme_head_left h3{display: inline-block;margin: 5px 0;width: 100%;color: #ffffff;}
-         .theme_head_left span{display: inline-block;margin:0;width: 100%;color: #ffffff;}
-         .theme_head_right a{color: #ffffff;}
-         .theme_head_right .dropdown-menu{padding: 10px;}
-         .theme_head_right .dropdown-menu a{color:#333;width: 100%;display: inline-block;margin:2px 0;}
-         .user_Theme1 .stuhead_wel_txt{    color: #ffffff;
-         font-size:18px;
-         letter-spacing:0;
-         text-align: right;}
-         .theme_head_right .input-group{margin: 10px 15px 0 0;}
-         .user_Theme_navs{padding: 50px 0;}
-         .user_Theme_navs ul li{display: inline-block;width: 100%;}
-         .user_Theme_navs ul li a{color: #ffffff;font-size: 18px;}
-         .user_Theme1_body{margin-top:10px;}
-         .user_Theme1_body h2{letter-spacing: 1px;
-         font-weight: 500;color: #ffffff;font-size: 24px;padding: 0;margin: 0;}
-         .utheme_body_right{}
-         .utheme_body_header{padding:20px 0;}
-         .utheme_bg_overlay{min-height:300px;margin:5px 0;background: rgba(255,255,255,0.4);display: inline-block;width: 100%;padding: 20px;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
-         .utheme_bg_overlay h4{padding-bottom:5px;margin:0;color: #ffffff;    font-size: 18px;
+         .user_Theme1 header {
+         padding: 10px 0;
+         }
+         .theme_head_left,
+         .theme_head_right {
          display: inline-block;
-         font-weight:500;letter-spacing: 1px;    width: 100%;border-bottom: 2px solid #ffffff;}
-         .tot_test_num{font-size:80px;font-weight:700;color:#ffffff;text-align:center;display: inline-block;width: 100%;}
-         .utheme_bg_overlay .exam_status{width:40%;margin: 0 auto;padding: 10px 0;text-align: center;}
-         .utheme_bg_overlay .exam_status li{list-style-type: none;font-size: 20px;color:#ffffff;    position: relative;}
-         .utheme_bg_overlay .exam_status li::before {width: 20px;height: 20px;background: #363636;content: "";display: inline-block;position: absolute;left:-21px;top: 4px;border-radius: 50px;-moz-border-radius: 50px;-webkit-border-radius: 50px;}
-         .exam_status li.passed::before{background: #00ff00;}
-         .exam_status li.failed::before{background: #ff0000;}
-         .exam_status li.absent::before{background: #045cc9;}
-         .exam_status li span{display: inline-block;float: right; }
-         .exam_status li.passed span{color: #00ff00; }
-         .exam_status li.failed span{color: #ff0000; }
-         .exam_status li.absent span{color: #045cc9; }
-         .percentage_circle{position:relative;width:150px;height:150px;border-radius: 200px;border:20px solid red;margin: 20px auto;}
-         .percentage_circle::after{    content: "";
+         width: 100%;
+         }
+         .theme_head_left h3 {
+         display: inline-block;
+         margin: 5px 0;
+         width: 100%;
+         color: #ffffff;
+         }
+         .theme_head_left span {
+         display: inline-block;
+         margin: 0;
+         width: 100%;
+         color: #ffffff;
+         }
+         .theme_head_right a {
+         color: #ffffff;
+         }
+         .theme_head_right .dropdown-menu {
+         padding: 10px;
+         }
+         .theme_head_right .dropdown-menu a {
+         color: #333;
+         width: 100%;
+         display: inline-block;
+         margin: 2px 0;
+         }
+         .user_Theme1 .stuhead_wel_txt {
+         color: #ffffff;
+         font-size: 18px;
+         letter-spacing: 0;
+         text-align: right;
+         }
+         .theme_head_right .input-group {
+         margin: 10px 15px 0 0;
+         }
+         .user_Theme_navs {
+         padding: 50px 0;
+         }
+         .user_Theme_navs ul li {
+         display: inline-block;
+         width: 100%;
+         }
+         .user_Theme_navs ul li a {
+         color: #ffffff;
+         font-size: 18px;
+         }
+         .user_Theme1_body {
+         margin-top: 10px;
+         }
+         .user_Theme1_body h2 {
+         letter-spacing: 1px;
+         font-weight: 500;
+         color: #ffffff;
+         font-size: 24px;
+         padding: 0;
+         margin: 0;
+         }
+         .utheme_body_right {}
+         .utheme_body_header {
+         padding: 20px 0;
+         }
+         .utheme_bg_overlay {
+         min-height: 300px;
+         margin: 5px 0;
+         background: rgba(255, 255, 255, 0.4);
+         display: inline-block;
+         width: 100%;
+         padding: 20px;
+         border-radius: 5px;
+         -moz-border-radius: 5px;
+         -webkit-border-radius: 5px;
+         }
+         .utheme_bg_overlay h4 {
+         padding-bottom: 5px;
+         margin: 0;
+         color: #ffffff;
+         font-size: 18px;
+         display: inline-block;
+         font-weight: 500;
+         letter-spacing: 1px;
+         width: 100%;
+         border-bottom: 2px solid #ffffff;
+         }
+         .tot_test_num {
+         font-size: 80px;
+         font-weight: 700;
+         color: #ffffff;
+         text-align: center;
+         display: inline-block;
+         width: 100%;
+         }
+         .utheme_bg_overlay .exam_status {
+         width: 40%;
+         margin: 0 auto;
+         padding: 10px 0;
+         text-align: center;
+         }
+         .utheme_bg_overlay .exam_status li {
+         list-style-type: none;
+         font-size: 20px;
+         color: #ffffff;
+         position: relative;
+         }
+         .utheme_bg_overlay .exam_status li::before {
+         width: 20px;
+         height: 20px;
+         background: #363636;
+         content: "";
+         display: inline-block;
+         position: absolute;
+         left: -21px;
+         top: 4px;
+         border-radius: 50px;
+         -moz-border-radius: 50px;
+         -webkit-border-radius: 50px;
+         }
+         .exam_status li.passed::before {
+         background: #00ff00;
+         }
+         .exam_status li.failed::before {
+         background: #ff0000;
+         }
+         .exam_status li.absent::before {
+         background: #045cc9;
+         }
+         .exam_status li span {
+         display: inline-block;
+         float: right;
+         }
+         .exam_status li.passed span {
+         color: #00ff00;
+         }
+         .exam_status li.failed span {
+         color: #ff0000;
+         }
+         .exam_status li.absent span {
+         color: #045cc9;
+         }
+         .percentage_circle {
+         position: relative;
+         width: 150px;
+         height: 150px;
+         border-radius: 200px;
+         border: 20px solid red;
+         margin: 20px auto;
+         }
+         .percentage_circle::after {
+         content: "";
          border: 20px solid #ffffff;
          position: absolute;
          top: -15px;
@@ -72,20 +301,74 @@
          height: 140px;
          width: 140px;
          border-radius: 300px;
-         left: -14px;}
-         .percentage_circle::before{content: "";
-         width: 40px;height: 40px;background: transparent;
-         position: absolute;}
-         .utheme_bg_overlay.right .tot_test_num{font-size:120px;font-weight:700;}
-         .utheme_bg_overlay.right .tot_test_num .percent{font-size:40px;color: #00ff00;}
-         .user_Theme1_body .user_Theme_navs .nav-tabs>li>a:hover{color: #363636;}
+         left: -14px;
+         }
+         .percentage_circle::before {
+         content: "";
+         width: 40px;
+         height: 40px;
+         background: transparent;
+         position: absolute;
+         }
+         .utheme_bg_overlay.right .tot_test_num {
+         font-size: 120px;
+         font-weight: 700;
+         }
+         .utheme_bg_overlay.right .tot_test_num .percent {
+         font-size: 40px;
+         color: #00ff00;
+         }
+         .user_Theme1_body .user_Theme_navs .nav-tabs>li>a:hover {
+         color: #363636;
+         }
+         /****/
+         .pro-wraper {
+         display: inline-block;
+         width: 100%;
+         margin: 10px 0;
+         }
+         .pro-wraper .btn {
+         margin-left: 20px;
+         width: 30%;
+         border-radius: 20px;
+         -moz-border-radius: 20px;
+         -webkit-border-radius: 20px;
+         }
+         .pro-wraper input {
+         padding: 10px 20px;
+         width: 60%;
+         margin-top: 2px;
+         line-height: 1;
+         background: rgba(0, 0, 0, 0.1);
+         color: #ffffff;
+         }
+         .pro-wraper input::placeholder {
+         color: #ffffff;
+         }
+         .user_Theme1_body .user-table th {
+         background-color: #5bc0de;
+         color: #ffffff;
+         font-weight: 500;
+         }
+         .user_Theme1_body .user-table tr td {
+         text-align: center;
+         }
          /* user_Theme1 css ends here */
       </style>
+      <script>
+          $(document).ready(function(){
+          $("#hide").click(function(){
+            $("#theme_hide").hide();
+            $("#theme_show").show();
+         });
+         
+          });
+    </script>
    </head>
    <body class="user_Theme1_wrap">
       <div class="user_Theme1"></div>
       <!-- Header -->
-      <div class="container user_container">
+      <div class="container user_container" id="theme_hide">
          <header>
             <div class="container">
                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -99,10 +382,10 @@
                      <div class="theme_head_right">
                         <div class="input-group pull-left">
                            <div class="input-group-append">
-                              <span class="stuhead_wel_txt">My Account</span> 
+                              <span class="stuhead_wel_txt">My Account</span>
                               <a href="#" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
                               <div class="dropdown-menu">
-                                 <a class="dropdown-item" href="#">Profile</a>
+                                 <a class="nav-link" data-toggle="tab" href="#Profile">Profile</a>
                                  <a class="dropdown-item" href="#">ID : 25045</a>
                               </div>
                            </div>
@@ -141,6 +424,8 @@
                      <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_content">
                            <div class="tab-content">
+
+                              <!-- Dashboard page starts here -->
                               <div id="Dashboard" class="tab-pane fade in active">
                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -175,6 +460,9 @@
                                     </div>
                                  </div>
                               </div>
+                              <!-- Dashboard page starts here -->
+
+                              <!-- History page starts here -->
                               <div id="History" class="tab-pane fade">
                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -191,7 +479,70 @@
                                        </div>
                                     </div>
                                  </div>
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="utheme_bg_overlay">
+                                       <div class="user-table">
+                                          <table class="table table-bordered table-striped">
+                                             <thead>
+                                                <tr>
+                                                   <th scope="col">S.no</th>
+                                                   <th scope="col">Date</th>
+                                                   <th scope="col">Test Name</th>
+                                                   <th scope="col">Result</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>1</td>
+                                                   <td>09/05/2018</td>
+                                                   <td><a data-toggle="tab" href="#exam_results_tab">Test1</a></td>
+                                                   <td>9</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>2</td>
+                                                   <td>09/06/2018</td>
+                                                   <td><a href="">Test 2</a></td>
+                                                   <td>8</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>3</td>
+                                                   <td>09/07/2018</td>
+                                                   <td>Test 3</td>
+                                                   <td>7</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>4</td>
+                                                   <td>09/08/2018</td>
+                                                   <td>Test 4</td>
+                                                   <td>7</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>5</td>
+                                                   <td>09/09/2018</td>
+                                                   <td>Test 5</td>
+                                                   <td>7</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>6</td>
+                                                   <td>09/10/2018</td>
+                                                   <td>Test 6</td>
+                                                   <td>7</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>7</td>
+                                                   <td>09/11/2018</td>
+                                                   <td>Test 7</td>
+                                                   <td>7</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </div>
+                                 </div>
                               </div>
+                              <!-- History page starts here -->
+
+                              <!-- Start_Exam page starts here -->
                               <div id="Start_Exam" class="tab-pane fade">
                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -208,7 +559,78 @@
                                        </div>
                                     </div>
                                  </div>
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="utheme_bg_overlay">
+                                      
+                                          
+                                             <div class="user-table">
+                                                <table class="table table-bordered table-striped">
+                                                   <thead>
+                                                      <tr>
+                                                         <th scope="col">S.no</th>
+                                                         <th scope="col">Date</th>
+                                                         <th scope="col">Test Name</th>
+                                                         <th scope="col">Avg Time</th>
+                                                      </tr>
+                                                   </thead>
+                                                   <tbody>
+                                                      <tr>
+                                                         <td>1</td>
+                                                         <td>09/05/2018</td>
+                                                         <td>
+                                                          <button id="hide">Test1</button></td>
+                                                         <td>60 mins</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>2</td>
+                                                         <td>09/06/2018</td>
+                                                         <td><a href="">Test 2</a></td>
+                                                         <td>60 mins</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>3</td>
+                                                         <td>09/07/2018</td>
+                                                         <td>Test 3</td>
+                                                         <td>70 mins</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>4</td>
+                                                         <td>09/08/2018</td>
+                                                         <td>Test 4</td>
+                                                         <td>60 mins</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>5</td>
+                                                         <td>09/09/2018</td>
+                                                         <td>Test 5</td>
+                                                         <td>80 mins</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>6</td>
+                                                         <td>09/10/2018</td>
+                                                         <td>Test 6</td>
+                                                         <td>40 mins</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>7</td>
+                                                         <td>09/11/2018</td>
+                                                         <td>Test 7</td>
+                                                         <td>50 mins</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                             </div>
+                                         
+                                         
+                                      
+                                    </div>
+                                 </div>
                               </div>
+                              <!-- Start_Exam page starts here -->
+
+
+
+                              <!-- Reports page starts here -->
                               <div id="Reports" class="tab-pane fade">
                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -226,6 +648,9 @@
                                     </div>
                                  </div>
                               </div>
+                              <!-- Reports page starts here -->
+
+                              <!-- Practice_Test page starts here -->
                               <div id="Practice_Test" class="tab-pane fade">
                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -243,14 +668,300 @@
                                     </div>
                                  </div>
                               </div>
+                              <!-- Practice_Test page starts here -->
+
+                              <!-- profile page starts here -->
+                              <div id="Profile" class="tab-pane fade">
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                       <h2>Profile</h2>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-right">
+                                       <div class="input-group">
+                                          <input type="text" id="" data-table="" data-search="" class="form-control input-lg " placeholder="Search">
+                                          <span class="input-group-btn search-button">
+                                          <button class="btn btn-info btn-lg" type="button">
+                                          <i class="fa fa-search-plus"></i>
+                                          </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                       <div class="utheme_bg_overlay">
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                             <div class="pro-wraper">
+                                                <img src="images/profile-pic.png" class="pull-left" alt="Cinque Terre" width="80">
+                                                <button class="btn btn-info pull-right">Change</button>
+                                             </div>
+                                             <div class="pro-wraper">
+                                                <input type="password" class="pull-left" name="Password" placeholder="Password">
+                                                <button class="btn btn-info pull-right">Change</button>
+                                             </div>
+                                             <div class="pro-wraper">
+                                                <input type="text" class="pull-left" name="Mobile" placeholder="Mobile">
+                                                <button class="btn btn-info pull-right">Change</button>
+                                             </div>
+                                          </div>
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                             <div class="pro-wraper">
+                                                <input type="text" class="pull-left" name="Address1" placeholder="Address1">
+                                                <button class="btn btn-info pull-right">Change</button>
+                                             </div>
+                                             <div class="pro-wraper">
+                                                <input type="text" class="pull-left" name="Address2" placeholder="Address2">
+                                                <button class="btn btn-info pull-right">Change</button>
+                                             </div>
+                                             <div class="pro-wraper">
+                                                <input type="text" class="pull-left" name="District" placeholder="District">
+                                                <button class="btn btn-info pull-right">Change</button>
+                                             </div>
+                                             <div class="pro-wraper">
+                                                <input type="text" class="pull-left" name="State" placeholder="State">
+                                                <button class="btn btn-info pull-right">Change</button>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- profile page ends here -->
+
+                              <!-- Exam Results  tabs page starts here -->
+                              <div id="exam_results_tab" class="tab-pane fade">
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                       <h2>Test1 Results</h2>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-right">
+                                       <div class="input-group">
+                                          <input type="text" id="" data-table="" data-search="" class="form-control input-lg " placeholder="Search">
+                                          <span class="input-group-btn search-button">
+                                          <button class="btn btn-info btn-lg" type="button">
+                                          <i class="fa fa-search-plus"></i>
+                                          </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div >
+                                       <ul class="nav nav-tabs" id="" role="tablist">
+                                          <li class="nav-item active">
+                                             <a class="nav-link" data-toggle="tab" href="#tabler-view" role="tab" aria-controls="tabler-view" aria-selected="false">Tabler View</a>
+                                          </li>
+                                          <li class="nav-item">
+                                             <a class="nav-link"  data-toggle="tab" href="#graph-view" role="tab" aria-controls="graph-view" aria-selected="false">Graph View</a>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="utheme_bg_overlay">
+                                       <div class="tab-content">
+                                          <div class="tab-pane fade active in" id="tabler-view" role="tabpanel" aria-labelledby="tabler-tab">
+                                             <div class="user-table">
+                                                <table class="table table-bordered table-striped">
+                                                   <thead>
+                                                      <tr>
+                                                         <th scope="col">S.no</th>
+                                                         <th scope="col">Date</th>
+                                                         <th scope="col">Test Name</th>
+                                                         <th scope="col">Result</th>
+                                                      </tr>
+                                                   </thead>
+                                                   <tbody>
+                                                      <tr>
+                                                         <td>1</td>
+                                                         <td>09/05/2018</td>
+                                                         <td><a href="">Test 1</a></td>
+                                                         <td>9</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>2</td>
+                                                         <td>09/06/2018</td>
+                                                         <td><a href="">Test 2</a></td>
+                                                         <td>8</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>3</td>
+                                                         <td>09/07/2018</td>
+                                                         <td>Test 3</td>
+                                                         <td>7</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>4</td>
+                                                         <td>09/08/2018</td>
+                                                         <td>Test 4</td>
+                                                         <td>7</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>5</td>
+                                                         <td>09/09/2018</td>
+                                                         <td>Test 5</td>
+                                                         <td>7</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>6</td>
+                                                         <td>09/10/2018</td>
+                                                         <td>Test 6</td>
+                                                         <td>7</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td>7</td>
+                                                         <td>09/11/2018</td>
+                                                         <td>Test 7</td>
+                                                         <td>7</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                             </div>
+                                          </div>
+                                          <div class="tab-pane fade" id="graph-view" role="tabpanel" aria-labelledby="graph-tab">
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <nav aria-label="" class="pull-right"> 
+                                    <ul class="pagination">
+                                       <li class="page-item disabled">
+                                          <span class="page-link">Previous</span>
+                                       </li>
+                                       
+                                       <li class="page-item active">
+                                          <span class="page-link">
+                                          1
+                                          <span class="sr-only">(current)</span>
+                                          </span>
+                                       </li>
+                                       <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                       <li class="page-item">
+                                          <a class="page-link" href="#">Next</a>
+                                       </li>
+                                    </ul>
+                                 </nav>
+                              </div>
+                              <!-- Exam Results  tabs page ends here -->
+
+
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
+
+                
+
             </div>
          </div>
+
+        
+
       </div>
+       <!-- ******* Running exam code starts here ******* -->
+       <div class="container user_container" id="theme_show" style="display: none;">
+        
+        <div class="container">
+         <div class="stu-exam-tab col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="header">
+                           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                              <span class="header-name"><b>Name:</b> Wasim</span>
+                              <span class="header-name"><b>Exam Centre:</b> JBDC</span>
+                           </div>
+                           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                              <h2>Mock Test</h2>
+                           </div>
+                           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                              <span class="header-name"><b>Timer:</b> 02:00:00</span>
+                           </div>
+                        </div>
+                        
+                     </div>
+                   </div>
+
+         <div class="user_Theme1_body">
+           <div class="container">
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+               
+                     <div class="stu-exam-tab col-lg12 col-md-12 col-sm-12 col-xs-12">
+                        
+                        <div class="exam-body">
+                           <div class="exam-body-left col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                              <span class="header-text">Question 4 of 10:</span>
+                              <span class="header-text">Who was the first English President of the Indian National Congress ?</span>
+                              <div class="mark-review checkbox">
+                                 <label><input class="markinput" type="checkbox" value="">Mark For Review Later</label>
+                              </div>
+                              <div class="exam-answer-selction">
+                                 <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                    <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                    <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                    <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                    <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                    <div class="exam-btn-wrap">
+                                       <input type="submit" class="btn btn-large btn-left" value=" Next ">
+                                       <input type="submit" class="btn btn-large btn-right" value=" Save &amp; Continue ">
+                                    </div>
+                                 </form>
+                              </div>
+                           </div>
+                           <div id="exam-ques-num" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                              <div class="scrollbar exam-ques-num" id="style-1">
+                                 <div class="ques-rows">
+                                    <span class="btn btn-markreview">1</span>
+                                    <span class="btn btn-answered">2</span>
+                                    <span class="btn btn-unanswered">3</span>
+                                    <span class="btn btn-current">4</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">5</span>
+                                    <span class="btn">6</span>
+                                    <span class="btn">7</span>
+                                    <span class="btn">8</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">9</span>
+                                    <span class="btn">10</span>
+                                    <span class="btn">11</span>
+                                    <span class="btn">12</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">13</span>
+                                    <span class="btn">14</span>
+                                    <span class="btn">15</span>
+                                    <span class="btn">16</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">17</span>
+                                    <span class="btn">18</span>
+                                    <span class="btn">19</span>
+                                    <span class="btn">20</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">21</span>
+                                    <span class="btn">22</span>
+                                    <span class="btn">23</span>
+                                    <span class="btn">24</span>
+                                 </div>
+                                 <div class="ques-rows">
+                                    <span class="btn">25</span>
+                                    <span class="btn">26</span>
+                                    <span class="btn">27</span>
+                                    <span class="btn">28</span>
+                                 </div>
+                                 <div class="force-overflow"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                
+             </div>
+           </div>
+         </div>
+                
+     </div>        
+                <!-- ******* Running exam code ends here ******* -->
       <!-- Header ends -->
       <!-- Center Container -->
       <!-- Center Container ends-->
