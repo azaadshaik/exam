@@ -880,7 +880,8 @@ img.image_holder{
     z-index: 100;
     top: 10%;
     right: 11%;
-    background: rgba(255,255,255,.5);
+    background: rgba(0,0,0,.8);
+    color: #ffffff;
     padding: 10px;
     display: none;
     margin-top: 39px;
