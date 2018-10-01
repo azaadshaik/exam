@@ -18,19 +18,20 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <style type="text/css">
          /* student exam tab*/
+         .stu-exam-tab .timer{margin-top: 25px !important;}
          #userSecondTab,#userThirdTab{padding: 20px 10px;}
-         .stu-exam-tab .header{background:rgba(0, 0, 0, 0.6);padding: 10px 20px;width: 100%;display: inline-block;}
+         .stu-exam-tab .header{padding: 10px 20px;width: 100%;display: inline-block;}
          .stu-exam-tab .header-name,
-         .stu-exam-tab .header-text{color: #fff;font-size: 16px;display: inline-block;width: 100%;margin: 5px 0;}
+         .stu-exam-tab .header-text{color: #fff;font-size: 16px;display: inline-block;width: 100%;margin: 15px 0;}
          .stu-exam-tab .header h2{    color: #ffffff;
          text-align: center;
          vertical-align: top;
          padding: 0;
          margin: 0;
          line-height: 62px;}
-         .stu-exam-tab .exam-body-left{border-right:3px solid red;}
+         .stu-exam-tab .question-text{color: #fff;font-size: 26px;}
          .exam-answer-selction{margin:30px 0 30px 20px;}
-         .stu-exam-tab .exam-body{padding:20px;background:rgba(0, 0, 0, 0.3);border: 1px solid rgba(0, 0, 0, 0.3);
+         .stu-exam-tab .exam-body{padding:20px;background:rgba(0, 0, 0, 0.1);border: 1px solid rgba(0, 0, 0, 0.3);
          display: inline-block;
          width: 100%;}
          .stu-exam-tab .exam-body .mark-review label,
@@ -39,8 +40,7 @@
          .stu-exam-tab .exam-body .mark-review input,
          .stu-exam-tab .exam-answer-selction .exam-ans-form .radio input{    margin-left: -20px;
          margin-top: 10px;}
-         .stu-exam-tab .mark-review {    margin-top: 30px;
-         margin-left: 20px;}
+         .stu-exam-tab .mark-review {margin-top: 30px;}
          .stu-exam-tab .mark-review label{color: #FFA500 !important;}
          .stu-exam-tab .exam-btn-wrap{margin: 30px 0;
          display: inline-block;}
@@ -945,82 +945,96 @@
                   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                      <h2>Mock Test</h2>
                   </div>
-                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                     <span class="header-name"><b>Timer:</b> 02:00:00</span>
+                  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 pull-right">
+                     <span class="header-name timer"><b>Timer:</b> 02:00:00</span>
                   </div>
                </div>
             </div>
-         </div>
-         <div class="user_Theme1_body">
-            <div class="container">
-               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="stu-exam-tab col-lg12 col-md-12 col-sm-12 col-xs-12">
-                     <div class="exam-body">
-                        <div class="exam-body-left col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                           <span class="header-text">Question 4 of 10:</span>
-                           <span class="header-text">Who was the first English President of the Indian National Congress ?</span>
-                           <div class="mark-review checkbox">
-                              <label><input class="markinput" type="checkbox" value="">Mark For Review Later</label>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+               <div class="stu-exam-tab col-lg12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="exam-body">
+                     <div class="exam-body_left col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="exam_body_left">
+                           <div class="exam_body_Linfo Unanswered">Unanswered <span class="pull-right">21</span></div>
+                           <div class="exam_body_Linfo answered">answered <span class="pull-right">2</span></div>
+                           <div class="exam_body_Linfo starred">Starred <span class="pull-right">2</span></div>
+                        </div>
+                        <div class="acrrodian_wrap">
+                           <div class="panel-group" id="accordion">
+                              <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                       Maths <span class="pull-right">(2)</span></a>
+                                    </h4>
+                                 </div>
+                                 <div id="collapse1" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                       <div class="numbers_wrap">
+                                          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                                          <span>6</span><span>7</span><span>8</span><span>9</span><span class="center">0</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                       Physics <span class="pull-right">(10)</span></a>
+                                    </h4>
+                                 </div>
+                                 <div id="collapse2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                       <div class="numbers_wrap">
+                                          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                                          <span>6</span><span>7</span><span>8</span><span>9</span><span class="center">0</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                       Chemistry <span class="pull-right">(15)</span></a>
+                                    </h4>
+                                 </div>
+                                 <div id="collapse3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                       <div class="numbers_wrap">
+                                          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                                          <span>6</span><span>7</span><span>8</span><span>9</span><span class="center">0</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
                            </div>
+                        </div>
+                     </div>
+
+                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div class="exam-body-left">
+                           <span class="header-text">Question 4 of 10:</span>
+                           <span class="question-text">Who was the first English President of the Indian National Congress ?</span>
+                           
                            <div class="exam-answer-selction">
                               <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
                                  <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
                                  <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
                                  <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
                                  <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
-                                 <div class="exam-btn-wrap">
+                                 
+                              </form>
+                           </div>
+                           <div class="mark-review checkbox">
+                             <div class="exam_body_Linfo starred">Mark For Review Later</div>
+                           </div>
+
+                           <div class="exam-btn-wrap pull-right">
                                     <input type="submit" class="btn btn-large btn-left" value=" Next ">
                                     <input type="submit" class="btn btn-large btn-right" value=" Save &amp; Continue ">
                                  </div>
-                              </form>
-                           </div>
-                        </div>
-                        <div id="exam-ques-num" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                           <div class="scrollbar exam-ques-num" id="style-1">
-                              <div class="ques-rows">
-                                 <span class="btn btn-markreview">1</span>
-                                 <span class="btn btn-answered">2</span>
-                                 <span class="btn btn-unanswered">3</span>
-                                 <span class="btn btn-current">4</span>
-                              </div>
-                              <div class="ques-rows">
-                                 <span class="btn">5</span>
-                                 <span class="btn">6</span>
-                                 <span class="btn">7</span>
-                                 <span class="btn">8</span>
-                              </div>
-                              <div class="ques-rows">
-                                 <span class="btn">9</span>
-                                 <span class="btn">10</span>
-                                 <span class="btn">11</span>
-                                 <span class="btn">12</span>
-                              </div>
-                              <div class="ques-rows">
-                                 <span class="btn">13</span>
-                                 <span class="btn">14</span>
-                                 <span class="btn">15</span>
-                                 <span class="btn">16</span>
-                              </div>
-                              <div class="ques-rows">
-                                 <span class="btn">17</span>
-                                 <span class="btn">18</span>
-                                 <span class="btn">19</span>
-                                 <span class="btn">20</span>
-                              </div>
-                              <div class="ques-rows">
-                                 <span class="btn">21</span>
-                                 <span class="btn">22</span>
-                                 <span class="btn">23</span>
-                                 <span class="btn">24</span>
-                              </div>
-                              <div class="ques-rows">
-                                 <span class="btn">25</span>
-                                 <span class="btn">26</span>
-                                 <span class="btn">27</span>
-                                 <span class="btn">28</span>
-                              </div>
-                              <div class="force-overflow"></div>
-                           </div>
                         </div>
                      </div>
                   </div>

@@ -585,6 +585,67 @@ input:-moz-placeholder {
 
 /* user dashbaord css ends here */
 
+/* student exam new css starts here */
+.exam_body_left{display: inline-block;width: 100%;}
+.exam_body_Linfo{color: #ffffff;
+    font-size: 16px;display: inline-block;width: 100%;margin:5px 0;}
+ .exam_body_Linfo.Unanswered::before { 
+    content: "\f165";
+    font-size:20px;
+    margin-right: 15px;
+    color: #f72d12;
+    font-family: FontAwesome;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.exam_body_Linfo.answered::before { 
+        content: "\f164";
+    font-size:20px;
+    margin-right: 15px;
+    color: #01fd2a;
+    font-family: FontAwesome;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.exam_body_Linfo.starred::before { 
+        content: "\f005";
+    font-size:20px;
+    margin-right: 15px;
+    color: #ffff00;
+    font-family: FontAwesome;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+.acrrodian_wrap{display: inline-block;width: 100%;margin:20px 0;}
+.acrrodian_wrap .panel-group .panel {background: transparent;border: none;} 
+.acrrodian_wrap .panel-group .panel .panel-heading .panel-title{color: #ffffff;}
+.acrrodian_wrap .panel-group .panel .panel-heading{padding: 10px 0;background: transparent;border: none;}
+.acrrodian_wrap .panel-group .panel .panel-heading .panel-title a:hover{color: #333333;}
+.numbers_wrap span{    padding: 10px;
+    color: #ffffff;
+    background: rgba(255,255,255,0.4);
+    display: inline-block;
+    margin: 2px;
+    float: left;
+    text-align: center;
+    min-width: 30px;
+    border-radius: 5px;}
+    /*.numbers_wrap span.center{margin-left: 31%;}*/
+    .numbers_wrap span:hover{background: #eee;color: #333333;cursor: pointer;}
+    .numbers_wrap span:active,.numbers_wrap span:focus{box-shadow:inset 1px 5px 5px rgba(0,0,0.4);}
+    .exam-body_left{    padding: 0 25px;border-right: 3px solid red;}
+    .exam-body-left .exam-answer-selction .radio label{color: #ffffff;font-size: 20px;}
+    .exam-body-left{padding: 0 20px;}
+    .exam-body-left .exam-btn-wrap .btn{color: #333333;}
+    .stu-exam-tab .header .header-name{margin: 5px 0;}
+    #Dashboard .utheme_bg_overlay{    min-height: 270px;}
+    #theme_show{margin-top:120px;    float: left;}
+/* student exam new css edns here */
 
 /* student dashboard css starts here */
 
