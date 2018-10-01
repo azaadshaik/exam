@@ -1272,10 +1272,18 @@ public function enrollments(){
 	public function loadQuestion(){
 		$question_id = $this->input->get('question_id');
 		$question_num = $this->input->get('qno');
+		$exam_id = $this->input->get('exam_id');
 		
 		$question_data = $this->AdminModel->get_question_by_id($question_id);
+		$filters = array();
+		$filters['question_id'] = $question_id;
+		$filters['exam_id'] = $exam_id;
+		$filters['student_id'] = $this->session->userdata('user_id');
+		$submitted_data = $this->AdminModel->get_exam_answer_submitted($filters);
 		$data['question_data'] = $question_data;
 		$data['question_num'] = $question_num;
+		$data['submitted_data'] = $submitted_data;
+		
 		$this->load->view('student/question_display', $data);
 	}
 	
@@ -1307,6 +1315,22 @@ public function enrollments(){
 			exit;
 		}
 	
+	}
+	
+	public function submit_exam(){
+	
+		$exam_id = $this->input->get('examId');
+		$student_id = $this->session->userdata('user_id');
+		$exam_result = $this->AdminModel->get_student_answers($student_id,$exam_id);
+		$question_paper = $this->AdminModel->get_question_paper_by_exam($exam_id);
+		$exam_questions = unserialize($question_paper->question_paper_questions);
+		$questions_data = $this->AdminModel->get_questions_and_options_by_question_ids($exam_questions);
+		
+		
+		echo "<pre>";
+		print_r($exam_result);
+		print_r($questions_data);
+		die;
 	}
 	
 

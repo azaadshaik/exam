@@ -522,6 +522,7 @@ function hideInstructions(questionId,buttonId){
 }
 function loadQuestion(questionId,buttonId,qno){
 	
+	var examId = $('#exam_id').val();
 	  $( ".ques-rows span" ).each(function( index, element ) {
     console.log(element);
 				$( element ).removeClass( "btn-current" );
@@ -532,7 +533,7 @@ function loadQuestion(questionId,buttonId,qno){
 	
 	$('#loader').show();
     $.ajax({
-       url: 'admin/loadQuestion/?question_id='+questionId+'&qno='+qno,
+       url: 'admin/loadQuestion/?question_id='+questionId+'&qno='+qno+'&exam_id='+examId,
        type: 'GET',
        success: function (data) {
 	   $('#loader').hide();
@@ -564,8 +565,8 @@ function loadQuestion(questionId,buttonId,qno){
 	var currentQuestionNumber = $('#current_question_number').val();
 	var examId = $('#exam_id').val();
 	var totalQuestions = $('#total_questions').val();
-	$('#question-'+currentQuestionNumber).addClass('btn-markreview');
-	$('#question-'+currentQuestionNumber).removeClass('btn-current');
+	$('#question-'+currentQuestionNumber).removeAttr('class');
+	$('#question-'+currentQuestionNumber).attr('class','btn btn-markreview');
 	var nextQuestionNumber = Number(currentQuestionNumber) + Number(1);
 	
 	
@@ -594,8 +595,8 @@ function loadQuestion(questionId,buttonId,qno){
 	var currentQuestionNumber = $('#current_question_number').val();
 	var examId = $('#exam_id').val();
 	var totalQuestions = $('#total_questions').val();
-	$('#question-'+currentQuestionNumber).addClass('btn-unanswered');
-	$('#question-'+currentQuestionNumber).removeClass('btn-current');
+	$('#question-'+currentQuestionNumber).removeAttr('class');
+	$('#question-'+currentQuestionNumber).attr('class','btn btn-current');
 	var nextQuestionNumber = Number(currentQuestionNumber) + Number(1);
 	
 	
@@ -635,8 +636,9 @@ function loadQuestion(questionId,buttonId,qno){
 	var currentQuestionNumber = $('#current_question_number').val();
 	var examId = $('#exam_id').val();
 	var totalQuestions = $('#total_questions').val();
-	$('#question-'+currentQuestionNumber).addClass('btn-answered');
-	$('#question-'+currentQuestionNumber).removeClass('btn-current');
+	$('#question-'+currentQuestionNumber).removeAttr('class');
+	$('#question-'+currentQuestionNumber).attr('class','btn btn-answered');
+	
 	var nextQuestionNumber = Number(currentQuestionNumber) + Number(1);
 	
 	
@@ -652,6 +654,65 @@ function loadQuestion(questionId,buttonId,qno){
 		    $('#current_question_number').val(nextQuestionNumber);
 		   $('#question-'+nextQuestionNumber).trigger('click');
        }
+       
+   });
+ });
+ 
+ $(document).delegate("#submit_exam", "click", function() {
+ 
+ 
+	
+    //var currentTime = new Date().getTime();
+	var selectedAnswerId = $("input[name='choice']:checked"). val();
+	
+	
+	var currentTime = Math.round((new Date()).getTime() / 1000);
+
+	var questionViewTime = $('#question_start_time').val();
+	var answerdTime = currentTime - questionViewTime;
+	
+	
+	var currentQuestionId = $('#current_question_id').val();
+	var currentQuestionNumber = $('#current_question_number').val();
+	var examId = $('#exam_id').val();
+	var totalQuestions = $('#total_questions').val();
+	$('#question-'+currentQuestionNumber).removeAttr('class');
+	$('#question-'+currentQuestionNumber).attr('class','btn btn-answered');
+	
+	var nextQuestionNumber = Number(currentQuestionNumber) + Number(1);
+	
+	
+	
+	$('#loader').show();
+    $.ajax({
+       url: 'admin/captureStudentAnswer',
+       type: 'POST',
+	   data:{questionId:currentQuestionId,choiceId:selectedAnswerId,examId:examId,isMarked:0,isAnswered:1,isUnAnswered:0,answeredTime:answerdTime},
+       success: function (data) {
+	   $('#loader').hide();
+          
+		    $.confirm({
+           text: "Are you sure to Submit? <br> You will not be able to change anything after this",
+           confirm: function(button) {
+		   $('#loader').show();
+                $.ajax({
+				
+                   url: 'admin/submit_exam/?examId='+examId,
+                   type: 'GET',
+                   success: function (data) {
+				   $('#loader').hide();
+                       $('#'+divToUpdate).html(data);
+                   }
+           
+               });
+           },
+           cancel: function(button) {
+            return false;
+           }
+       });
+       
+	   
+	   }
        
    });
  });

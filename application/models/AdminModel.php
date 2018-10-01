@@ -658,12 +658,37 @@ class AdminModel extends CI_Model
 		return $result;
 	}
 	
+	public function get_student_answers($student_id,$exam_id){
+	
+		$where =' exam_id='.$exam_id.' and student_id='.$student_id;
+		$this->db->select('*');
+        $this->db->from('exam_answers');
+       	$this->db->where($where);
+		$result = $this->db->get()->result_array();
+		return $result;
+	}
+	
 	public function update_user_answer($answer_data,$answer_id){
        
         $result= $this->db->update('exam_answers', $answer_data, "exam_answers_id = $answer_id");
         return $result;
   
     }
+	
+	public function get_questions_and_options_by_question_ids($question_id_array){
+			//$where ='question_bank.question_id in='.$question_id_array;
+            $this->db->select('question_bank.*,question_choices.choice_id,choice_text,choice_image');
+            $this->db->from('question_bank');
+			$this->db->join('question_choices','question_choices.question_id=question_bank.question_id');
+            //$this->db->join('question_answers','question_answers.choice_id=question_choices.choice_id','left');
+            $this->db->where_in('question_bank.question_id',$question_id_array);
+            //$this->db->order_by('question_choices.choice_id','asc');
+            $result = $this->db->get()->result_array();
+            return $result;
+               
+        return $result;
+    }
+	
 	
 	
 		
