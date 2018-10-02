@@ -271,7 +271,8 @@
          margin: 5px 0;
          background: rgba(255, 255, 255, 0.4);
          display: inline-block;
-         width: 100%;
+         width:auto;
+         min-width: 100%;
          padding: 20px;
          border-radius: 5px;
          -moz-border-radius: 5px;
@@ -443,6 +444,14 @@
          #Profile .pro-wraper input{background:rgba(255,255,255,0.2);}
          .pic-change-btn{margin-top:50px;}
          .pro-wraper img{border: 5px solid #ffffff;}
+         #Reports .table-striped>tbody>tr:nth-of-type(even),
+         #Reports .table-striped>tbody>tr:nth-of-type(odd){
+            background: rgba(0,0,0,0.1);
+         }
+         #Reports .table-striped>tbody>tr:nth-of-type(1){background: rgba(255,255,255,0.5);}
+         #Reports .table-striped>tbody>tr:nth-of-type(1)>td{color: #333333;font-size: 20px;}
+         #Reports .table-striped>tbody>tr>td{color: #ffffff;}
+         #Reports h3{color: #ffffff;}
       </style>
       <script>
          $(document).ready(function(){
@@ -889,6 +898,75 @@
                                        </div>
                                     </div>
                                  </div>
+
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <h3>Test1 Results</h3>
+                                       <div class="utheme_bg_overlay">
+                                          <div class="user-table">
+                                                         <table class="table table-bordered table-striped">
+                                                            <thead>
+                                                               <tr>
+                                                                  <th scope="col">Overall Results</th>
+                                                                  <th scope="col">Subject</th>
+                                                                  <th scope="col">Topic</th>
+                                                                  <th scope="col">Result</th>
+                                                                  <th scope="col">Difficulty Level</th>
+                                                                  <th scope="col">Avg Time</th>
+                                                                  <th scope="col">Time Taken</th>
+                                                                  <th scope="col">Varience</th>
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>20/30</td>
+                                                                  <td></td>
+                                                                  <td></td>
+                                                                  <td></td>
+                                                                  <td>***</td>
+                                                                  <td>60 Mins</td>
+                                                                  <td>45 Mins</td>
+                                                                  <td>15 Mins</td>
+                                                                  
+                                                               </tr>
+                                                               <tr>
+                                                                  <td></td>
+                                                                  <td>Maths</td>
+                                                                  <td>Arithmatic</td>
+                                                                  <td>8/10</td>
+                                                                  <td>***</td>
+                                                                  <td>20 Mins</td>
+                                                                  <td>10 Mins</td>
+                                                                  <td>10 Mins</td>
+                                                                  
+                                                               </tr>
+                                                             
+                                                               <tr>
+                                                                  <td></td>
+                                                                  <td>Physics</td>
+                                                                  <td>Waves</td>
+                                                                  <td>7/10</td>
+                                                                  <td>**</td>
+                                                                  <td>20 Mins</td>
+                                                                  <td>15 Mins</td>
+                                                                  <td>5 Mins</td>
+                                                                  
+                                                               </tr>
+                                                               <tr>
+                                                                  <td></td>
+                                                                  <td>Chemistry</td>
+                                                                  <td>Organic</td>
+                                                                  <td>9/10</td>
+                                                                  <td>****</td>
+                                                                  <td>20 Mins</td>
+                                                                  <td>18 Mins</td>
+                                                                  <td>2 Mins</td>
+                                                                  
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                       </div>
+                                    </div>
                               </div>
                               <!-- Reports page ends here -->
                               <!-- profile page starts here -->
