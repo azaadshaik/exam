@@ -645,6 +645,17 @@ input:-moz-placeholder {
     .stu-exam-tab .header .header-name{margin: 5px 0;}
     #Dashboard .utheme_bg_overlay{    min-height: 270px;}
     #theme_show{margin-top:120px;    float: left;}
+    #accordion_review>.panel>.panel-heading{background: rgba(255,255,255,0.4);padding: 10px 20px;}
+    #accordion_review>.panel>.panel-collapse .panel-heading{background: rgba(0,0,0,0.2);padding: 5px 15px;}
+    #accordion_review .panel-collapse .panel-group{padding: 0;    margin: 0;}
+    .pagination-container .exam-answer-selction .radio{float: left;
+    margin-right: 36px !important;}
+    .pagination-container .question-text{float: left;width: 100%;}
+    .pagination-container .exam-answer-selction{display: inline-block;margin: 15px 0;}
+    #review_test .pagination-container .header-text{font-size: 24px;
+    background: rgba(255,255,255,0.2);
+    padding: 5px 20px;}
+    #review_test .pagination-container  .question-text{color:#FFD700;}
 /* student exam new css edns here */
 
 /* student dashboard css starts here */

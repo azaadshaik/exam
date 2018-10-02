@@ -379,6 +379,47 @@
          
          });
       </script>
+      <script>
+         $(document).ready(function(){
+         $("#hide1").click(function(){
+           $("#exam_body").hide();
+           
+           $("#review_test").show();
+         });
+         
+         });
+      </script>
+      <script>
+         var paginationHandler = function(){
+             // store pagination container so we only select it once
+             var $paginationContainer = $(".pagination-container"),
+                 $pagination = $paginationContainer.find('.pagination ul');
+             // click event
+             $pagination.find("li a").on('click.pageChange',function(e){
+                 e.preventDefault();
+                 // get parent li's data-page attribute and current page
+             var parentLiPage = $(this).parent('li').data("page"),
+             currentPage = parseInt( $(".pagination-container div[data-page]:visible").data('page') ),
+             numPages = $paginationContainer.find("div[data-page]").length;
+             // make sure they aren't clicking the current page
+             if ( parseInt(parentLiPage) !== parseInt(currentPage) ) {
+             // hide the current page
+             $paginationContainer.find("div[data-page]:visible").hide();
+             if ( parentLiPage === '+' ) {
+                         // next page
+                 $paginationContainer.find("div[data-page="+( currentPage+1>numPages ? numPages : currentPage+1 )+"]").show();
+             } else if ( parentLiPage === '-' ) {
+                         // previous page
+                 $paginationContainer.find("div[data-page="+( currentPage-1<1 ? 1 : currentPage-1 )+"]").show();
+             } else {
+                 // specific page
+                 $paginationContainer.find("div[data-page="+parseInt(parentLiPage)+"]").show();
+                     }
+                 }
+             });
+         };
+         $( document ).ready( paginationHandler );
+      </script>
    </head>
    <body class="user_Theme1_wrap">
       <div class="user_Theme1"></div>
@@ -427,6 +468,9 @@
                            </li>
                            <li class="nav-item">
                               <a class="nav-link" data-toggle="tab" href="#Start_Exam">My Exams</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#Reports" aria-expanded="false">Reports</a>
                            </li>
                         </ul>
                      </div>
@@ -753,7 +797,26 @@
                                     </div>
                                  </div>
                               </div>
-                              <!-- Start_Exam page starts here -->
+                              <!-- Start_Exam page ends here -->
+                              <!-- Reports page starts here -->
+                              <div id="Reports" class="tab-pane fade">
+                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                       <h2>Reports</h2>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-right">
+                                       <div class="input-group">
+                                          <input type="text" id="" data-table="" data-search="" class="form-control input-lg " placeholder="Search">
+                                          <span class="input-group-btn search-button">
+                                          <button class="btn btn-info btn-lg" type="button">
+                                          <i class="fa fa-search-plus"></i>
+                                          </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- Reports page ends here -->
                               <!-- profile page starts here -->
                               <div id="Profile" class="tab-pane fade">
                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 utheme_body_header">
@@ -952,7 +1015,7 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                <div class="stu-exam-tab col-lg12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="exam-body">
+                  <div class="exam-body" id="exam_body">
                      <div class="exam-body_left col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <div class="exam_body_left">
                            <div class="exam_body_Linfo Unanswered">Unanswered <span class="pull-right">21</span></div>
@@ -1012,32 +1075,297 @@
                            </div>
                         </div>
                      </div>
-
                      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
                         <div class="exam-body-left">
                            <span class="header-text">Question 4 of 10:</span>
                            <span class="question-text">Who was the first English President of the Indian National Congress ?</span>
-                           
                            <div class="exam-answer-selction">
                               <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
                                  <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
                                  <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
                                  <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
                                  <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
-                                 
                               </form>
                            </div>
                            <div class="mark-review checkbox">
-                             <div class="exam_body_Linfo starred">Mark For Review Later</div>
+                              <div class="exam_body_Linfo starred">Mark For Review Later</div>
                            </div>
-
                            <div class="exam-btn-wrap pull-right">
-                                    <input type="submit" class="btn btn-large btn-left" value=" Next ">
-                                    <input type="submit" class="btn btn-large btn-right" value=" Save &amp; Continue ">
-                                 </div>
+                              <input type="submit" class="btn btn-large btn-left" value=" Back ">
+                              <input type="submit" class="btn btn-large btn-left" value=" Next ">
+                              <input id="hide1" type="submit" class="btn btn-large btn-left" value=" Review Test ">
+                              <input type="submit" class="btn btn-large btn-right" value=" Save &amp; Continue ">
+                           </div>
                         </div>
                      </div>
                   </div>
+                  <!-- review test -->
+                  <div class="exam-body" id="review_test" style="display: none;">
+                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div class="exam-body-left">
+                           <span class="header-text">Review Your Test</span>
+                           <div class="acrrodian_wrap" style="display: none;">
+                              <div class="panel-group" id="accordion_review">
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                       <h4 class="panel-title">
+                                          <a data-toggle="collapse" data-parent="#accordion_review" href="#collapse11">
+                                          Maths <span class="pull-right">(3)</span></a>
+                                       </h4>
+                                    </div>
+                                    <div id="collapse11" class="panel-collapse collapse in">
+                                       <div class="panel-body">
+                                          <div class="panel-group" id="accordion_review1">
+                                             <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                   <h4 class="panel-title">
+                                                      <a data-toggle="collapse" data-parent="#accordion_review1" href="#collapse111">
+                                                      1 <span class="pull-right">Avg Time : 1 min</span></a>
+                                                   </h4>
+                                                </div>
+                                                <div id="collapse111" class="panel-collapse collapse in">
+                                                   <div class="panel-body">
+                                                      <span class="question-text">Who was the first English President of the Indian National Congress ?</span>
+                                                      <div class="exam-answer-selction">
+                                                         <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                                         </form>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                   <h4 class="panel-title">
+                                                      <a data-toggle="collapse" data-parent="#accordion_review1" href="#collapse112">
+                                                      2 <span class="pull-right">Avg Time : 1 min</span></a>
+                                                   </h4>
+                                                </div>
+                                                <div id="collapse112" class="panel-collapse collapse">
+                                                   <div class="panel-body">
+                                                      <span class="question-text">Who was the first English President of the Indian National Congress ?</span>
+                                                      <div class="exam-answer-selction">
+                                                         <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                                         </form>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                   <h4 class="panel-title">
+                                                      <a data-toggle="collapse" data-parent="#accordion_review1" href="#collapse113">
+                                                      3 <span class="pull-right">Avg Time : 1 min</span></a>
+                                                   </h4>
+                                                </div>
+                                                <div id="collapse113" class="panel-collapse collapse">
+                                                   <div class="panel-body">
+                                                      <span class="question-text">Who was the first English President of the Indian National Congress ?</span>
+                                                      <div class="exam-answer-selction">
+                                                         <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                                            <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                                         </form>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                       <h4 class="panel-title">
+                                          <a data-toggle="collapse" data-parent="#accordion_review" href="#collapse12">
+                                          Physics <span class="pull-right">(10)</span></a>
+                                       </h4>
+                                    </div>
+                                    <div id="collapse12" class="panel-collapse collapse">
+                                       <div class="panel-body">
+                                          <div class="numbers_wrap">
+                                             <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                                             <span>6</span><span>7</span><span>8</span><span>9</span><span class="center">0</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                       <h4 class="panel-title">
+                                          <a data-toggle="collapse" data-parent="#accordion_review" href="#collapse13">
+                                          Chemistry <span class="pull-right">(15)</span></a>
+                                       </h4>
+                                    </div>
+                                    <div id="collapse13" class="panel-collapse collapse">
+                                       <div class="panel-body">
+                                          <div class="numbers_wrap">
+                                             <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                                             <span>6</span><span>7</span><span>8</span><span>9</span><span class="center">0</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="pagination-container" >
+                              <div data-page="1" >
+                                 <div class="exam-body-left padding0">
+                                    <span class="header-text">Maths</span>
+                                    <span class="question-text">First Question ?</span>
+                                    <div class="exam-answer-selction">
+                                       <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                          <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                       </form>
+                                    </div>
+                                    <span class="question-text">Second Question ?</span>
+                                    <div class="exam-answer-selction">
+                                       <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                          <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                       </form>
+                                    </div>
+                                    <span class="question-text">Third Question ?</span>
+                                    <div class="exam-answer-selction">
+                                       <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                          <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                       </form>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div data-page="2" style="display:none;">
+                                 <div class="exam-body-left padding0">
+                                    <span class="header-text">Physics</span>
+                                    <span class="question-text">Fourth Question ?</span>
+                                    <div class="exam-answer-selction">
+                                       <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                          <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                       </form>
+                                    </div>
+                                    <span class="question-text">Fifth Question ?</span>
+                                    <div class="exam-answer-selction">
+                                       <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                          <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                       </form>
+                                    </div>
+                                    <span class="question-text">Sixth Question ?</span>
+                                    <div class="exam-answer-selction">
+                                       <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                          <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                       </form>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div data-page="3" style="display:none;">
+                                 <div class="exam-body-left padding0">
+                                    <span class="header-text">Chemistry</span>
+                                    <span class="question-text">Fourth Question ?</span>
+                                    <div class="exam-answer-selction">
+                                       <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                          <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                       </form>
+                                    </div>
+                                    <span class="question-text">Fifth Question ?</span>
+                                    <div class="exam-answer-selction">
+                                       <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                          <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                       </form>
+                                    </div>
+                                    <span class="question-text">Sixth Question ?</span>
+                                    <div class="exam-answer-selction">
+                                       <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                          <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                       </form>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div data-page="4" style="display:none;">
+                                 <div class="exam-body-left padding0">
+                                    <span class="header-text">Physics</span>
+                                    <span class="question-text">Fourth Question ?</span>
+                                    <div class="exam-answer-selction">
+                                       <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                          <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                       </form>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div data-page="5" style="display:none;">
+                                 <div class="exam-body-left padding0">
+                                    <span class="header-text">Science</span>
+                                    <span class="question-text">Fifth Question ?</span>
+                                    <div class="exam-answer-selction">
+                                       <form class="exam-ans-form" role="form" name="quizform" action="" method="post">
+                                          <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> George Yule</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> William Wedderburn</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> A.O. Hume</label></div>
+                                          <div class="radio"><label><input type="radio" name="quiz" id="4" value="4"> Henry Cotton</label></div>
+                                       </form>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="text-right">
+                                 <div class="pagination pagination-centered">
+                                    <ul class="pagination ">
+                                       <li data-page="-" ><a href="#" >&lt;</a></li>
+                                       <li data-page="1"><a href="#" >1</a></li>
+                                       <li data-page="2"><a href="#" >2</a></li>
+                                       <li data-page="3"><a href="#" >3</a></li>
+                                       <li data-page="4"><a href="#" >4</a></li>
+                                       <li data-page="5"><a href="#" >5</a></li>
+                                       <li data-page="+"><a href="#" >&gt;</a></li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="exam-btn-wrap pull-right">
+                              <input type="submit" class="btn btn-large btn-left" value=" Back ">
+                              <input type="submit" class="btn btn-large btn-left" value=" Next ">
+                              <input id="hide1" type="submit" class="btn btn-large btn-left" value=" Review Test ">
+                              <input type="submit" class="btn btn-large btn-right" value=" Save &amp; Continue ">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- review test ends-->
                </div>
             </div>
          </div>
